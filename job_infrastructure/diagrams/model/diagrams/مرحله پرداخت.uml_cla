@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:c49dd151-f5cc-4807-b3e6-994dbe0c82d2'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='مرحله پرداخت'
+   visibility='public'>
+  <ownedAttribute xmi:uuid='urn:uuid:e0bcf26f-dd79-40c6-ab2a-cc525b77fb74'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/String:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:0b933372-b167-4639-a06a-8f987314f03b'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:3db7c935-98c1-4704-9e3e-78e0eeb05ccf'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

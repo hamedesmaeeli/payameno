@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns="http://myfaces.apache.org/trinidad/menu">
+  <itemNode id="itemNode_students" label="دانش آموزان"
+            action="adfMenu_students" focusViewId="/students"
+            icon="../Images/myProfile.png"/>
+  <itemNode id="itemNode_courses" label="دروس"
+            action="adfMenu_courses" focusViewId="/courses"/>        
+  <itemNode id="itemNode_accounting" label="حسابداری"
+            action="adfMenu_accounting" focusViewId="/accounting"
+            disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"/>
+  <itemNode id="itemNode_reports" label="گزارشات" action="adfMenu_reports"
+            focusViewId="/reports"/>
+  <itemNode id="itemNode_config" label="تنظیمات" action="adfMenu_config"
+            focusViewId="/config"
+            disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"/>
+  <itemNode id="itemNode_help" label="کمک رسانی" action="adfMenu_help"
+            focusViewId="/help"/>
+  <itemNode id="itemNode_school" label="گزارش هاي مديريتي" action="adfMenu_school"
+            focusViewId="/school"
+            disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"/>
+</menu>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegTermView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegTerm.id, 
+       RegTerm.name, 
+       RegTerm.from_date, 
+       RegTerm.to_date, 
+       RegTerm.is_current, 
+       RegTerm.year, 
+       RegTerm.dore"
+  FromList="school_new.reg_term RegTerm"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegTerm"
+    Entity="modelDb.RegTerm"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="RegTerm"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="Name"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="RegTerm"
+    AliasName="name"/>
+  <ViewAttribute
+    Name="FromDate"
+    PrecisionRule="true"
+    EntityAttrName="FromDate"
+    EntityUsage="RegTerm"
+    AliasName="from_date"/>
+  <ViewAttribute
+    Name="ToDate"
+    PrecisionRule="true"
+    EntityAttrName="ToDate"
+    EntityUsage="RegTerm"
+    AliasName="to_date"/>
+  <ViewAttribute
+    Name="IsCurrent"
+    PrecisionRule="true"
+    EntityAttrName="IsCurrent"
+    EntityUsage="RegTerm"
+    AliasName="is_current"/>
+  <ViewAttribute
+    Name="Year"
+    PrecisionRule="true"
+    EntityAttrName="Year"
+    EntityUsage="RegTerm"
+    AliasName="year"/>
+  <ViewAttribute
+    Name="Dore"
+    PrecisionRule="true"
+    EntityAttrName="Dore"
+    EntityUsage="RegTerm"
+    AliasName="dore"/>
+</ViewObject>

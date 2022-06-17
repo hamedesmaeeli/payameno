@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="cashAccountingViewPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <methodIterator Binds="searchReceivementPayments.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="finance.data.RecievementPayment"
+                    id="searchReceivementPaymentsIterator"/>
+    <searchRegion Binds="searchReceivementPaymentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RecievementPaymentQuery"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="accountManagerIterator"
+                  id="searchReceivementPayments" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="searchReceivementPayments"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.accountManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.searchReceivementPayments_searchReceivementPayments_searchReceivementPayments_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.cashAccountingBean.cashSearchStartDate}"
+                 NDType="java.util.Date"/>
+      <NamedData NDName="p1"
+                 NDValue="#{pageFlowScope.cashAccountingBean.cashSearchEndDate}"
+                 NDType="java.util.Date"/>
+      <NamedData NDName="p2"
+                 NDValue="#{pageFlowScope.cashAccountingBean.cashSearchAccount}"
+                 NDType="finance.data.Account"/>
+      <NamedData NDName="p3"
+                 NDValue="#{pageFlowScope.cashAccountingBean.cashSearchReceivePayType}"
+                 NDType="finance.data.RecievePayType"/>
+      <NamedData NDName="p4"
+                 NDValue="#{pageFlowScope.cashAccountingBean.cashSearchAccountBank}"
+                 NDType="finance.data.AccountBank"/>
+    </methodAction>
+    <tree IterBinding="searchReceivementPaymentsIterator"
+          id="RecievementPayment">
+      <nodeDefinition DefName="finance.data.RecievementPayment"
+                      Name="RecievementPayment0">
+        <AttrNames>
+          <Item Value="eventDate"/>
+          <Item Value="amount"/>
+          <Item Value="description"/>
+          <Item Value="code"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="accountBank"/>
+          <Item Value="account"/>
+          <Item Value="recievePayType"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.AccountBank"
+                      Name="RecievementPayment1">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="firstAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Account" Name="RecievementPayment2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="phone"/>
+          <Item Value="personName"/>
+          <Item Value="personMobile"/>
+          <Item Value="fax"/>
+          <Item Value="create_date"/>
+          <Item Value="address"/>
+          <Item Value="fisrtPayable"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.RecievePayType"
+                      Name="RecievementPayment3">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

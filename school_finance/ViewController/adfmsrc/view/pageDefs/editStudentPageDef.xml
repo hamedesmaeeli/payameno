@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="editStudentPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allStudentStatus" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.StudentStatus"
+                      id="allStudentStatusIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allOrganization" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.Organization"
+                      id="allOrganizationIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator"
+                      Binds="allAccountBanks" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.AccountBank"
+                      id="allAccountBanksIterator"/>
+    <taskFlow id="registrationHistroy1"
+              taskFlowId="/WEB-INF/registrationHistroy.xml#registrationHistroy"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="student_code"
+                   value="#{pageFlowScope.registerBean.currentStudent.studentCode}"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="govahi_vaziat_tahsili1"
+              taskFlowId="/WEB-INF/govahi_vaziat_tahsili.xml#govahi_vaziat_tahsili"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="st_code"
+                   value="#{pageFlowScope.registerBean.currentStudent.studentCode}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllStudentRegistrations" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getAllStudentRegistrations"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllStudentRegistrations_getAllStudentRegistrations_getAllStudentRegistrations_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.currentStudent}"
+                 NDType="registration.data.Student"/>
+    </methodAction>
+    <list IterBinding="allStudentStatusIterator" ListOperMode="navigation"
+          ListIter="allStudentStatusIterator" id="allStudentStatus"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allOrganizationIterator" ListOperMode="navigation"
+          ListIter="allOrganizationIterator" id="allOrganization"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allAccountBanksIterator" ListOperMode="navigation"
+          ListIter="allAccountBanksIterator" id="allAccountBanks"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

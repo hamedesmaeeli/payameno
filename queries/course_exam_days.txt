@@ -1,0 +1,9 @@
+SELECT 
+	
+	pdate(exam_course_view.exam_date),pweekday(exam_course_view.exam_date),exam_course_view.exam_hour,
+	GROUP_CONCAT(exam_course_view.course_display_name) 
+FROM
+	exam_course_view
+WHERE
+	exam_course_view.term_is_current = 1
+	group by exam_date ,exam_hour 

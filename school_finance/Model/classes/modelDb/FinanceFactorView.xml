@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinanceFactorView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="FinanceFactor.id, 
+       FinanceFactor.account_person_id, 
+       FinanceFactor.amount, 
+       FinanceFactor.create_date, 
+       FinanceFactor.description, 
+       FinanceFactor.type_id"
+  FromList="school_new.finance_factor FinanceFactor"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="FinanceFactor"
+    Entity="modelDb.FinanceFactor"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="FinanceFactor"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="AccountPersonId"
+    PrecisionRule="true"
+    EntityAttrName="AccountPersonId"
+    EntityUsage="FinanceFactor"
+    AliasName="account_person_id"/>
+  <ViewAttribute
+    Name="Amount"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="FinanceFactor"
+    AliasName="amount"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="FinanceFactor"
+    AliasName="create_date"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="FinanceFactor"
+    AliasName="description"/>
+  <ViewAttribute
+    Name="TypeId"
+    PrecisionRule="true"
+    EntityAttrName="TypeId"
+    EntityUsage="FinanceFactor"
+    AliasName="type_id"/>
+</ViewObject>

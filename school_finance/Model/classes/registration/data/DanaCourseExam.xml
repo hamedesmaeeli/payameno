@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="DanaCourseExam" Package="registration.data"
+          BeanClass="registration.data.DanaCourseExam" isJavaBased="true">
+  <Attribute Name="courseCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="courseName" Type="java.lang.String"/>
+  <Attribute Name="courseUint" Type="int"/>
+  <Attribute Name="courseDisplayName" Type="java.lang.String"/>
+  <Attribute Name="courseDay" Type="java.lang.String"/>
+  <Attribute Name="courseDateString" Type="java.lang.String"/>
+  <Attribute Name="courseDate" Type="java.util.Date"/>
+  <Attribute Name="isInExam" Type="java.lang.Boolean"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.DanaCourseExam"
+                     BeanClass="registration.data.DanaCourseExam"
+                     id="DanaCourseExam"/>
+</JavaBean>

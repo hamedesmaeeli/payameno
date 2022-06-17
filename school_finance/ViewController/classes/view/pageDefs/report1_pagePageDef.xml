@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="report1_pagePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="AllTermDetailsView1_2" RangeSize="-1"
+              DataControl="AppModuleDataControl"
+              id="AllTermDetailsView1_2Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="AllTermDetailsView1_2Iterator"
+           id="AllTermDetailsView1_2" xmlns="http://xmlns.oracle.com/adfm/dvt"
+           type="BAR_VERT_CLUST">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="SumTheoryUints" label="واحد ها"/>
+          </data>
+        </series>
+        <groups>
+          <item value="TermName"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+    <graph IterBinding="AllTermDetailsView1_2Iterator"
+           id="AllTermDetailsView1_21"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="BAR_VERT_CLUST">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="SumStudents" label="دانش آموزان"/>
+          </data>
+        </series>
+        <groups>
+          <item value="TermName"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+    <tree IterBinding="AllTermDetailsView1_2Iterator"
+          id="AllTermDetailsView1_22">
+      <nodeDefinition DefName="modelDb.AllTermDetailsView1"
+                      Name="AllTermDetailsView1_220">
+        <AttrNames>
+          <Item Value="TermName"/>
+          <Item Value="SumOff"/>
+          <Item Value="SumTotal"/>
+          <Item Value="SumTheoryUints"/>
+          <Item Value="SumActionalUnits"/>
+          <Item Value="SumRegistrations"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

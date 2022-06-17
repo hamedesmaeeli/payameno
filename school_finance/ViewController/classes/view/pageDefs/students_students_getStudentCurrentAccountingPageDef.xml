@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="students_students_getStudentCurrentAccountingPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="getStudentCurrentAccounting" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getStudentCurrentAccounting"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getStudentCurrentAccounting_schManager_dataProvider_getStudentCurrentAccounting_result">
+      <NamedData NDName="student"
+                 NDValue="#{pageFlowScope.registerBean.currentStudent}"
+                 NDType="registration.data.Student"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

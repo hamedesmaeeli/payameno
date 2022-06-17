@@ -1,0 +1,261 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+     
+        <af:panelDashboard id="pd1" rowHeight="100%" columns="2">
+    
+        <af:panelBox text="ویرایش اطلاعات دانش آموز" id="pb2" >
+          <f:facet name="toolbar"/>
+            <af:inputText label="نام" id="it1"
+                          value="#{pageFlowScope.registerBean.currentStudent.name}"
+                          autoSubmit="true"/>
+            <af:inputText label="نام خانوادگی" id="it2"
+                          value="#{pageFlowScope.registerBean.currentStudent.family}"
+                          autoSubmit="true"/>
+            <af:inputText label="کد ملی" id="it3"
+                          value="#{pageFlowScope.registerBean.currentStudent.nationalId}"
+                          autoSubmit="true"/>
+            <af:inputText label="نام پدر" id="it4"
+                          value="#{pageFlowScope.registerBean.currentStudent.fatherName}"
+                          autoSubmit="true"/>
+            <af:inputText label="آدرس" id="it5"
+                          value="#{pageFlowScope.registerBean.currentStudent.address}"
+                          autoSubmit="true"/>
+            <af:inputText id="ot10"
+                          value="#{pageFlowScope.registerBean.currentStudent.studentCode}"
+                          label="شماره دانش آموزی" readOnly="true"/>
+            <af:inputText id="ot11"
+                          value="#{pageFlowScope.registerBean.currentStudent.identifierCode}"
+                          label="شماره شناسنامه" readOnly="false"/>
+            <af:inputText id="ot12"
+                          value="#{pageFlowScope.registerBean.currentStudent.identifierSerial}"
+                          label="سریال شناسنامه" readOnly="false"/>
+            <af:inputText value="#{pageFlowScope.registerBean.currentStudent.identifierCode}"
+                          id="ot13" label="کاراکتر شناسنامه" readOnly="false"/>
+            <af:inputText label="موبایل" id="it6"
+                          value="#{pageFlowScope.registerBean.currentStudent.mobile}"
+                          autoSubmit="true"/>
+            <af:inputText label="تلفن" id="it7"
+                          value="#{pageFlowScope.registerBean.currentStudent.phone}"
+                          autoSubmit="true"/>
+            <af:inputText label="توضیحات" id="rte1"
+                          value="#{pageFlowScope.registerBean.currentStudent.description}"
+                          rows="2"/>
+            <af:inputText label="کد بایگانی" id="it8"
+                          value="#{pageFlowScope.registerBean.currentStudent.archiveCode}"
+                          autoSubmit="true"/>
+            <af:inputText label="كد ديپلم" id="it17" partialTriggers="cb2"
+                          value="#{pageFlowScope.registerBean.currentStudent.diplomMadrak}"/>
+            <af:inputText label="كد پيش  دانشگاهي" id="it18"
+                          partialTriggers="cb2"
+                          value="#{pageFlowScope.registerBean.currentStudent.pishMadrak}"/>
+            <af:inputDate label="تاریخ تولد" id="id2"
+                          value="#{pageFlowScope.registerBean.currentStudent.dateOfBirth}"
+                          autoSubmit="true"/>
+            <af:inputText value="#{pageFlowScope.registerBean.currentStudent.studentStatus.name}"
+                          id="ot14" partialTriggers="cil5"
+                          label="وضعیت دانش آموز" readOnly="true"/>
+            <af:selectOneChoice value="#{bindings.allStudentStatus.inputValue}"
+                                required="#{bindings.allStudentStatus.hints.mandatory}"
+                                shortDesc="#{bindings.allStudentStatus.hints.tooltip}"
+                                id="soc1"
+                                valueChangeListener="#{pageFlowScope.registerBean.changeStatus_edit}"
+                                partialTriggers="ot14" autoSubmit="true">
+              <f:selectItems value="#{bindings.allStudentStatus.items}"
+                             id="si1"/>
+            </af:selectOneChoice>
+            <af:inputText id="ot15"
+                          value="#{pageFlowScope.registerBean.currentStudent.organization.name}"
+                          partialTriggers="cil5" label="شعبه " readOnly="true"/>
+            <af:selectOneChoice value="#{bindings.allOrganization.inputValue}"
+                                required="#{bindings.allOrganization.hints.mandatory}"
+                                shortDesc="#{bindings.allOrganization.hints.tooltip}"
+                                id="soc2"
+                                valueChangeListener="#{pageFlowScope.registerBean.chenageOrgEdit}"
+                                autoSubmit="true">
+              <f:selectItems value="#{bindings.allOrganization.items}"
+                             id="si2"/>
+            </af:selectOneChoice>
+            <af:inputText label="حساب اولیه" id="it9"
+                          value="#{pageFlowScope.registerBean.currentAccount.fisrtPayable}"
+                          readOnly="true">
+              <af:convertNumber type="currency" currencySymbol="ریال"/>
+            </af:inputText>
+            <af:inputText label="مانده حساب" id="it14" readOnly="true"
+                          value="#{pageFlowScope.registerBean.currentStudentAccounting}"
+                          partialTriggers="cb2">
+              <af:convertNumber type="currency" currencySymbol="ریال"/>
+            </af:inputText>
+          
+          <af:popup id="p1">
+            <af:panelWindow id="pw1">
+              <af:inputText label="مبلغ بدهی" id="it10"
+                            value="#{pageFlowScope.registerBean.currentAccount.fisrtPayable}"/>
+              <af:commandButton text="ویرایش" id="cb3"
+                                action="#{pageFlowScope.registerBean.changeFirstAccounting}"/>
+              <af:commandButton text="انصراف" id="cb4"/>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p2">
+            <af:panelWindow id="pw2">
+              <af:panelFormLayout id="pfl2">
+                <f:facet name="footer">
+                  <af:group id="g2">
+                    <af:panelGroupLayout id="pgl2">
+                      <af:commandButton text="پرداخت" id="cb2"
+                                        action="#{pageFlowScope.registerBean.payNaghEditStudent}"/>
+                      <af:commandButton text="انصراف" id="cb5"/>
+                    </af:panelGroupLayout>
+                  </af:group>
+                </f:facet>
+                <af:inputText id="it11" label="مبلغ دریافتی"
+                              binding="#{pageFlowScope.registerBean.payNaghdAmountField}"/>
+                <af:selectBooleanCheckbox label="کارت خوان" id="sbc1"
+                                          autoSubmit="true"
+                                          selected="#{pageFlowScope.registerBean.isPos}"
+                                          valueChangeListener="#{pageFlowScope.registerBean.changeIsPos}"/>
+                <af:inputText label="توضیح" id="it12" value="دریافت نقدی"
+                              binding="#{pageFlowScope.registerBean.payDescriptionFeild}"/>
+                <af:selectOneChoice value="#{bindings.allAccountBanks.inputValue}"
+                                    label="نام حساب بانکی"
+                                    required="#{bindings.allAccountBanks.hints.mandatory}"
+                                    shortDesc="#{bindings.allAccountBanks.hints.tooltip}"
+                                    id="soc3"
+                                    disabled="#{ not pageFlowScope.registerBean.isPos}"
+                                    binding="#{pageFlowScope.registerBean.payNaghtAccountBankFeild}">
+                  <f:selectItems value="#{bindings.allAccountBanks.items}"
+                                 id="si3"/>
+                </af:selectOneChoice>
+                <af:inputText label="کد پیگیری" id="it13"
+                              binding="#{pageFlowScope.registerBean.codeRahgiriPayField}"/>
+              </af:panelFormLayout>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p3">
+            <af:panelWindow id="pw3">
+              <af:panelFormLayout id="pfl3">
+                <f:facet name="footer">
+                  <af:panelGroupLayout id="pgl3" halign="center">
+                    <af:commandButton text="پرداخت" id="cb6"
+                                      action="#{pageFlowScope.registerBean.payToStudent}"/>
+                    <af:commandButton text="انصراف" id="cb7"/>
+                  </af:panelGroupLayout>
+                </f:facet>
+                <af:inputText label="مبلغ پرداختی به دانش آموز" id="it15"
+                              binding="#{pageFlowScope.registerBean.payToStudentAmountField}"/>
+                <af:inputText label="توضیح" id="it16"
+                              binding="#{pageFlowScope.registerBean.payToStudentDescriptionField}"/>
+              </af:panelFormLayout>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p4">
+            <af:panelWindow id="pw4" styleClass="AFStretchWidth">
+              <af:region value="#{bindings.registrationHistroy1.regionModel}"
+                         id="r1"/>
+              <af:commandButton text="تایید" id="cb8"/>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p5">
+            <af:panelWindow id="pw5">
+              <af:region value="#{bindings.govahi_vaziat_tahsili1.regionModel}"
+                         id="r2"/>
+            </af:panelWindow>
+          </af:popup>
+        </af:panelBox>
+      <af:panelBox id="pb3">
+        <f:facet name="toolbar"/>
+          <af:image source="/Images/profile.jpg" id="i2"
+                    rendered="#{empty pageFlowScope.registerBean.studentPicBaseString}"/>
+          <af:image id="i1"
+                    source="data:image/png;base64,#{pageFlowScope.registerBean.studentPicBaseString}"
+                    binding="#{pageFlowScope.registerBean.studentPicImageField}"
+                    rendered="#{not empty pageFlowScope.registerBean.studentPicBaseString}"/>
+                    
+          <af:inputFile id="if1"
+                        value="#{pageFlowScope.registerBean.studentPicUploadedFile}"
+                        columns="1"/>
+          <af:panelGroupLayout id="pgl1">
+            <af:commandButton text="ویرایش عکس" id="cb1"
+                              action="#{pageFlowScope.registerBean.editStudentPic}"/>
+            <af:commandButton text="دانلود عکس" id="cb9">
+              <af:fileDownloadActionListener method="#{pageFlowScope.registerBean.downloadStudentImage}"
+                                             filename="#{pageFlowScope.registerBean.currentStudent.studentCode}.jpg"/>
+            </af:commandButton>
+          </af:panelGroupLayout>
+        </af:panelBox> 
+    
+      </af:panelDashboard>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="قابلیت های مالی" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi1">
+            <af:commandImageLink text="پرداخت به دانش آموز" id="cil1"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/down.png"
+                                 disabled="true">
+              <af:showPopupBehavior popupId="p3"/>
+            </af:commandImageLink>
+            <af:spacer width="10" height="20" id="s1"/>
+            <af:commandImageLink text="دریافت از دانش آموز" id="cil2"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/up.png"
+                                 disabled="true">
+              <af:showPopupBehavior popupId="p2"/>
+            </af:commandImageLink>
+            <af:spacer width="10" height="20" id="s2"/>
+            <af:commandImageLink text="ویرایش بدهی اولیه" id="cil3"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/application-form-edit-icon.png">
+              <af:showPopupBehavior popupId="p1"/>
+            </af:commandImageLink>
+            <af:spacer width="10" height="20" id="s3"/>
+            <af:commandImageLink text="تاریخچه ثبت نام" id="cil4"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/calendar.png">
+              <af:showPopupBehavior popupId="p4"/>
+            </af:commandImageLink>
+            <af:spacer width="10" height="30" id="s4"/>
+            <af:goImageLink text="گزارش پرداختی ها" id="gil1"
+                            targetFrame="_blank"
+                            destination="#{pageFlowScope.registerBean.totalFinanceReport}"
+                            inlineStyle="font-size:medium;"
+                            icon="/Images/16 x 16 Colorful/print.png"/>
+            <af:spacer width="10" height="30" id="s5"/>
+            <af:commandImageLink text="ويرايش اطلاعات" id="cil5"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/accept.png"
+                                 action="#{pageFlowScope.registerBean.editStudentMethod}"/>
+            <af:spacer width="10" height="30" id="s6"/>
+            <af:commandImageLink text="ليست دانش آموزان" id="cil6"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/back.png"
+                                 action="back"/>
+            <af:spacer width="10" height="30" id="s7"/>
+            <af:commandImageLink text="ثبت نام در ترم جاري" id="cil7"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/application-form-icon.png"
+                                 action="#{pageFlowScope.registerBean.gotoRegister}"/>
+            <af:spacer width="10" height="30" id="s8"/>
+            <af:commandImageLink text="معرفي به نظام وظيفه" id="cil8"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/paste.png">
+              <af:fileDownloadActionListener filename="nazam_vazifeh.pdf"
+                                             method="#{pageFlowScope.registerBean.printNezamVazifeh}"/>
+            </af:commandImageLink>
+            <af:commandImageLink text="گواهي وضعيت تحصيلي" id="cil9">
+              <af:showPopupBehavior popupId="p5"/>
+            </af:commandImageLink>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Organization" Package="registration.data"
+          BeanClass="registration.data.Organization" isJavaBased="true">
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.Organization"
+                     BeanClass="registration.data.Organization"
+                     id="Organization">
+    <ParameterInfo id="p0" Type="java.math.BigDecimal" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="registration.data.Organization"
+                     BeanClass="registration.data.Organization"
+                     id="Organization"/>
+</JavaBean>

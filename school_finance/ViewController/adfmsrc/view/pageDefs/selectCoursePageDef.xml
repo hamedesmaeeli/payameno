@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="selectCoursePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getDanaExamCourse.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.DanaCourseExam"
+                    id="getDanaExamCourseIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getDanaExamCourse" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDanaExamCourse"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getDanaExamCourse_getDanaExamCourse_getDanaExamCourse_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.schoolBean.currentSchool}"
+                 NDType="registration.data.School"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.schoolBean.currentTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+    <list IterBinding="getDanaExamCourseIterator" ListOperMode="multiSelect"
+          ListIter="getDanaExamCourseIterator" id="DanaCourseExam">
+      <AttrNames>
+        <Item Value="courseCode"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="courseCode"/>
+        <Item Value="courseName"/>
+        <Item Value="courseUint"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

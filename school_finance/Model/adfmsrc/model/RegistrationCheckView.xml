@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="RegistrationCheckView" Package="model"
+          BeanClass="model.RegistrationCheckView" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="createdDate" Type="java.util.Date"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="checkDate" Type="java.util.Date"/>
+  <Attribute Name="checkDescription" Type="java.lang.String"/>
+  <Attribute Name="checkforHow" Type="java.lang.String"/>
+  <Attribute Name="checkId" Type="java.math.BigDecimal"/>
+  <Attribute Name="checkNumber" Type="java.lang.String"/>
+  <Attribute Name="bankAccountName" Type="java.lang.String"/>
+  <Attribute Name="checkBankName" Type="java.lang.String"/>
+  <Attribute Name="checkStatusName" Type="java.lang.String"/>
+  <Attribute Name="bankAccountId" Type="java.math.BigDecimal"/>
+  <Attribute Name="checkStatusId" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="model.RegistrationCheckView"
+                     BeanClass="model.RegistrationCheckView"
+                     id="RegistrationCheckView"/>
+</JavaBean>

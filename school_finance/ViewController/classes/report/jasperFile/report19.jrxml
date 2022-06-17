@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report19" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0896e29f-36c7-440b-8e13-f2bac77dedc6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="44"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="registrations" uuid="377c2587-e691-4d8e-9165-2bebbdeb9404">
+		<parameter name="st_code" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     registration_view.`reg_date` AS registration_view_reg_date,
+     registration_view.`theory_units` AS registration_view_theory_units,
+     registration_view.`actional_units` AS registration_view_actional_units,
+     registration_view.`fix_salary` AS registration_view_fix_salary,
+     registration_view.`theory_salary` AS registration_view_theory_salary,
+     registration_view.`actional_salary` AS registration_view_actional_salary,
+     registration_view.`other_salary_comment` AS registration_view_other_salary_comment,
+     registration_view.`other_salary_amount` AS registration_view_other_salary_amount,
+     registration_view.`total_salary` AS registration_view_total_salary,
+     registration_view.`off_amount` AS registration_view_off_amount,
+     registration_view.`off_comment` AS registration_view_off_comment,
+     registration_view.`term_name` AS registration_view_term_name,
+     registration_view.`field_name` AS registration_view_field_name,
+     registration_view.`student_code` AS registration_view_student_code,
+     registration_view.`father_name` AS registration_view_father_name,
+     registration_view.`id` AS registration_view_id,
+     registration_view.`level_name` AS registration_view_level_name
+FROM
+     `registration_view` registration_view
+where  registration_view.`student_code`=$P{st_code}]]>
+		</queryString>
+		<field name="registration_view_reg_date" class="java.sql.Timestamp"/>
+		<field name="registration_view_theory_units" class="java.lang.Double"/>
+		<field name="registration_view_actional_units" class="java.lang.Integer"/>
+		<field name="registration_view_fix_salary" class="java.lang.Long"/>
+		<field name="registration_view_theory_salary" class="java.lang.Long"/>
+		<field name="registration_view_actional_salary" class="java.lang.Long"/>
+		<field name="registration_view_other_salary_comment" class="java.lang.String"/>
+		<field name="registration_view_other_salary_amount" class="java.lang.Long"/>
+		<field name="registration_view_total_salary" class="java.lang.Long"/>
+		<field name="registration_view_off_amount" class="java.lang.Long"/>
+		<field name="registration_view_off_comment" class="java.lang.String"/>
+		<field name="registration_view_term_name" class="java.lang.String"/>
+		<field name="registration_view_field_name" class="java.lang.String"/>
+		<field name="registration_view_student_code" class="java.lang.Long"/>
+		<field name="registration_view_father_name" class="java.lang.String"/>
+		<field name="registration_view_id" class="java.lang.Long"/>
+		<field name="registration_view_level_name" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="st_code" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     reg_student.`name` AS reg_student_name,
+     reg_student.`famili` AS reg_student_famili,
+     reg_student.`national_code` AS reg_student_national_code,
+     reg_student.`identifier_code` AS reg_student_identifier_code,
+     reg_student.`identifier_serial` AS reg_student_identifier_serial,
+     reg_student.`identifier_char` AS reg_student_identifier_char,
+     reg_student.`student_code` AS reg_student_student_code,
+     reg_student.`father_name` AS reg_student_father_name,
+     reg_student.`date_of_birth` AS reg_student_date_of_birth,
+     reg_student.`description` AS reg_student_description,
+     reg_student.`status_id` AS reg_student_status_id,
+     reg_student.`org_unit_id` AS reg_student_org_unit_id,
+     reg_student.`created_date` AS reg_student_created_date,
+     reg_student.`last_modified` AS reg_student_last_modified,
+     reg_student.`level_id_last` AS reg_student_level_id_last,
+     reg_student.`field_id_last` AS reg_student_field_id_last,
+     reg_student.`address` AS reg_student_address,
+     reg_student.`mobile` AS reg_student_mobile,
+     reg_student.`phone` AS reg_student_phone,
+     reg_student.`archive_code` AS reg_student_archive_code
+FROM
+     `reg_student` reg_student
+where  reg_student.`student_code`=$P{st_code}]]>
+	</queryString>
+	<field name="reg_student_name" class="java.lang.String"/>
+	<field name="reg_student_famili" class="java.lang.String"/>
+	<field name="reg_student_national_code" class="java.lang.String"/>
+	<field name="reg_student_identifier_code" class="java.lang.String"/>
+	<field name="reg_student_identifier_serial" class="java.lang.String"/>
+	<field name="reg_student_identifier_char" class="java.lang.Integer"/>
+	<field name="reg_student_student_code" class="java.lang.Long"/>
+	<field name="reg_student_father_name" class="java.lang.String"/>
+	<field name="reg_student_date_of_birth" class="java.sql.Date"/>
+	<field name="reg_student_description" class="java.lang.String"/>
+	<field name="reg_student_status_id" class="java.lang.Long"/>
+	<field name="reg_student_org_unit_id" class="java.lang.Long"/>
+	<field name="reg_student_created_date" class="java.sql.Timestamp"/>
+	<field name="reg_student_last_modified" class="java.sql.Timestamp"/>
+	<field name="reg_student_level_id_last" class="java.lang.Long"/>
+	<field name="reg_student_field_id_last" class="java.lang.Long"/>
+	<field name="reg_student_address" class="java.lang.String"/>
+	<field name="reg_student_mobile" class="java.lang.String"/>
+	<field name="reg_student_phone" class="java.lang.String"/>
+	<field name="reg_student_archive_code" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="d14de635-9400-4e45-adf8-3240d96920d9" x="155" y="0" width="206" height="27"/>
+				<textElement textAlignment="Center">
+					<font fontName="B Titr" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[گزارش خلاصه وضعيت شهريه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4f9b4ebd-6c88-44a6-8624-02d9d88889b3" x="466" y="8" width="89" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[تاريخ گزارش]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="d781774c-2b1f-4331-8033-3dc1970e1166" x="394" y="7" width="72" height="20"/>
+				<textElement>
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate(new java.util.Date()).getIranianDate()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c4afdc29-ae0f-434b-9baa-2cb4b2a56267" x="141" y="28" width="231" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="B Zar" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مدرسه آموزش از راه دور پيام نو]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="aa79c950-8051-419a-8f89-6c30dcb42a37" x="1" y="60" width="554" height="1"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="143" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="97faa7c3-bd9b-4e7e-9ab2-27b0f608a2a8" x="455" y="10" width="100" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[كد دانش آموزي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="aa400fa5-ba5c-4e9a-96bf-ca2876f29ecc" x="455" y="30" width="100" height="20"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[نام]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dd016a30-6446-4256-a883-f4db0f7dbe47" x="455" y="50" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[نام خانوادگي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="094ffd88-c177-4e79-8a24-447d049ca012" x="117" y="30" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[نام پدر]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e308bc88-9ab4-4932-ac31-238cc22072fe" x="117" y="50" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[كد ملي]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2eabf948-1615-467f-8b5e-3ae49a6b7ff5" x="355" y="10" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_student_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="99901baf-4d7b-47eb-bb33-a558d39018d2" x="355" y="30" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a3ba76dd-a70e-438e-b9c9-34f7ca2327d9" x="355" y="50" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_famili}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="3f6ec659-df9e-4a5a-8a32-e0f1cbe1b65d" x="17" y="10" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate($F{reg_student_date_of_birth}).getIranianDate()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="be2d32e7-30df-43ff-8387-cefb0e80ee1a" x="17" y="30" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_father_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="fb312b5f-42ef-4a2f-8f4b-e2b4faa82d2f" x="17" y="50" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_national_code}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="d799a7d9-529f-4583-9bc6-4c71f35d0716" x="1" y="96" width="554" height="1"/>
+			</line>
+			<textField pattern="#,##0">
+				<reportElement uuid="950cc76e-2fd9-4217-a029-426a2f78a5dd" x="17" y="76" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new registration.process.RegistrationManager().getCurrentAccounting($F{reg_student_student_code})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5e432376-6004-4c86-82ea-5ab9c673a1a1" x="117" y="76" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[بدهكاري كل]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b943447c-6534-46b3-874f-ac50ce97616a" x="117" y="10" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[تاريخ تولد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e86fbbad-8315-41af-a8da-c2ddd03bd466" x="154" y="112" width="207" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ليست ثبت نام هاي دانش آموز]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="175" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="fc68ae2d-f8d4-41b6-ac2b-d966d944c44c" key="table" style="table" x="1" y="0" width="543" height="140"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="registrations" uuid="07cb22a6-e90e-43cd-8c5d-89076b1377b9">
+						<datasetParameter name="st_code">
+							<datasetParameterExpression><![CDATA[$P{st_code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="1da2bdb0-18e4-4354-aaed-cbd79f1bc13e" width="97">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="8151bdfc-62b2-4bb7-9b0a-6ea9eb32c513" x="0" y="0" width="97" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نام ترم]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="d2ec3556-fdc8-4b96-adb2-7a24a540c140" x="0" y="0" width="97" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registration_view_term_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="14671173-0acf-464b-b261-76a40abb90bb" width="125">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="a00d66ee-82bb-41a9-b74d-fe9a434db53f" x="0" y="0" width="125" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نام مقطع]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="93482021-ebcd-4909-a5e7-7388b6b23397" x="0" y="0" width="125" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registration_view_level_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="920a1178-ce85-41bf-a0f7-717d4f1529c4" width="90">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="5beb611d-8798-40bd-939c-702b3bee6d80" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نام رشته]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField>
+								<reportElement uuid="587dcfc0-be6e-408c-958e-e652eb23db50" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registration_view_field_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="f0f4137c-2417-4143-9ca1-22a26465cced" width="76">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="698e3aa1-9ae1-4359-bc96-6bf0ea6e6d8c" x="0" y="0" width="76" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[مبلغ شهريه]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField pattern="#,##0">
+								<reportElement uuid="7c81e0aa-a84a-410f-aa88-7a705e6ed013" x="0" y="0" width="76" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registration_view_total_salary}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="ed11af7f-0bc8-48e6-9762-cf6e44af1a46" width="90">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="2ba6eb91-aa6e-4ad7-95c1-0a44fd89afbe" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[مبلغ تخفيف]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField pattern="#,##0">
+								<reportElement uuid="497e5b9e-8117-47dc-b300-471efc0afcb6" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{registration_view_off_amount}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="46fe2b06-62d3-4d71-9da7-7a680faf917b" width="90">
+						<jr:tableHeader style="table_TH" height="30" rowSpan="1"/>
+						<jr:tableFooter style="table_TH" height="30" rowSpan="1"/>
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1f650142-eeca-4332-8862-a31bee4ea04b" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14" isBold="true"/>
+								</textElement>
+								<text><![CDATA[مانده حساب ترم]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="30" rowSpan="1">
+							<textField pattern="#,##0">
+								<reportElement uuid="a0fc66c7-5448-482c-8d6b-1334161b57f3" x="0" y="0" width="90" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="14"/>
+								</textElement>
+								<textFieldExpression><![CDATA[new registration.process.RegistrationManager().getStudentAccoutingInRegistration($F{registration_view_id})]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="6b61a542-75eb-4c97-9b66-26d863ed622d" x="1" y="31" width="131" height="23"/>
+				<textElement textAlignment="Center">
+					<font fontName="B Zar" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مهر و امضاي  امور مالي]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="d799a7d9-529f-4583-9bc6-4c71f35d0716" x="1" y="0" width="554" height="1"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

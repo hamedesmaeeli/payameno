@@ -1,0 +1,102 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px" topHeight="70px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.DanaCourseStudent.collectionModel}"
+                  var="row" rows="#{bindings.DanaCourseStudent.rangeSize}"
+                  emptyText="#{bindings.DanaCourseStudent.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.DanaCourseStudent.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.DanaCourseStudentQuery.queryDescriptor}"
+                  queryListener="#{bindings.DanaCourseStudentQuery.processQuery}"
+                  filterVisible="true" varStatus="vs" id="t1">
+          <af:column sortProperty="studentCode" filterable="true"
+                     sortable="true" headerText="كد دانش آموزي" id="c6">
+            <af:outputText value="#{row.studentCode}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="firstName" filterable="true" sortable="true"
+                     headerText="نام" id="c4">
+            <af:outputText value="#{row.firstName}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="lastName" filterable="true" sortable="true"
+                     headerText="نام خانوادگي" id="c7">
+            <af:outputText value="#{row.lastName}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="fatherName" filterable="true" sortable="true"
+                     headerText="نام پدر" id="c10">
+            <af:outputText value="#{row.fatherName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="nactionalCode" filterable="true"
+                     sortable="true" headerText="كد ملي" id="c5">
+            <af:outputText value="#{row.nactionalCode}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="telephone" filterable="true" sortable="true"
+                     headerText="تلفن" id="c8">
+            <af:outputText value="#{row.telephone}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="mobile" filterable="true" sortable="true"
+                     headerText="موبايل" id="c3">
+            <af:outputText value="#{row.mobile}" id="ot10"/>
+          </af:column>
+          <af:column sortProperty="courseCode" filterable="true" sortable="true"
+                     headerText="كد درس" id="c2">
+            <af:outputText value="#{row.courseCode}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="courseName" filterable="true" sortable="true"
+                     headerText="نام درس" id="c1">
+            <af:outputText value="#{row.courseName}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="courseUint" filterable="true" sortable="true"
+                     headerText="تعداد واحد" id="c9">
+            <af:outputText value="#{row.courseUint}" id="ot3"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="ليست مدرسه ها" id="gil1"
+                                   icon="/Images/16 x 16 Colorful/back.png"
+                                   action="back"/>
+              <af:spacer width="10" height="30" id="s1"/>
+              <af:commandImageLink text="پرينت ليست" id="gil2"
+                                   icon="/Images/16 x 16 Colorful/print.png">
+                <af:exportCollectionActionListener exportedId="pc1:t1"
+                                                   type="excelHTML"
+                                                   filename="noPicStudent.xslx"
+                                                   title="ليست دانش آموزان بدون عكس"/>
+              </af:commandImageLink>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl2" rows="1">
+          <f:facet name="footer"/>
+          <af:inputText label="نام مدرسه" id="it1"
+                        value="#{pageFlowScope.schoolBean.currentSchool.description}"/>
+          <af:inputText label="نام ترم" id="it2"
+                        value="#{pageFlowScope.schoolBean.currentTerm.name}"/>
+          <af:outputText value="دانش آموزان ثبت نام شده در كلاس ها"
+                         id="outputText1" inlineStyle="font-weight:bold;"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

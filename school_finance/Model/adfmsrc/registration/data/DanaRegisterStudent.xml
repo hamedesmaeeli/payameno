@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="DanaRegisterStudent" Package="registration.data"
+          BeanClass="registration.data.DanaRegisterStudent" isJavaBased="true">
+  <Attribute Name="studentCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="firstName" Type="java.lang.String"/>
+  <Attribute Name="lastName" Type="java.lang.String"/>
+  <Attribute Name="fatherName" Type="java.lang.String"/>
+  <Attribute Name="timeyear" Type="java.lang.String"/>
+  <Attribute Name="timeDore" Type="java.lang.String"/>
+  <Attribute Name="majorCode" Type="int"/>
+  <Attribute Name="majorName" Type="java.lang.String"/>
+  <Attribute Name="imageName" Type="java.lang.String"/>
+  <Attribute Name="nactionalCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="IDno" Type="java.lang.String"/>
+  <Attribute Name="issuePlace" Type="java.lang.String"/>
+  <Attribute Name="birthDate" Type="int"/>
+  <Attribute Name="sex" Type="int"/>
+  <Attribute Name="address" Type="java.lang.String"/>
+  <Attribute Name="telephone" Type="java.lang.String"/>
+  <Attribute Name="serialId" Type="int"/>
+  <Attribute Name="radifId" Type="int"/>
+  <Attribute Name="seriId" Type="int"/>
+  <Attribute Name="birthPlace" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="registration.data.DanaRegisterStudent"
+                     BeanClass="registration.data.DanaRegisterStudent"
+                     id="DanaRegisterStudent"/>
+</JavaBean>

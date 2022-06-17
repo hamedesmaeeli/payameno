@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllTermDetailsView1"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  BindingStyle="JDBC"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery>
+    <![CDATA[SELECT SchoolNewAllTermDetails.term_name,
+       SchoolNewAllTermDetails.sum_off,
+       SchoolNewAllTermDetails.sum_total,
+       SchoolNewAllTermDetails.sum_theory_uints,
+       SchoolNewAllTermDetails.sum_actional_units,
+       SchoolNewAllTermDetails.sum_registrations,
+       SchoolNewAllTermDetails.sum_students,
+       SchoolNewAllTermDetails.reg_term_id
+FROM school_new.all_term_details SchoolNewAllTermDetails]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="TermName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    AliasName="term_name"
+    Expression="term_name"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumOff"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="41"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="DECIMAL"
+    AliasName="sum_off"
+    Expression="sum_off"
+    SQLType="DECIMAL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="42"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumTotal"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="41"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="DECIMAL"
+    AliasName="sum_total"
+    Expression="sum_total"
+    SQLType="DECIMAL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="42"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumTheoryUints"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="19"
+    Scale="2"
+    Type="java.math.BigDecimal"
+    ColumnType="DOUBLE"
+    AliasName="sum_theory_uints"
+    Expression="sum_theory_uints"
+    SQLType="DOUBLE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumActionalUnits"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="DECIMAL"
+    AliasName="sum_actional_units"
+    Expression="sum_actional_units"
+    SQLType="DECIMAL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="33"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumRegistrations"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="21"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="sum_registrations"
+    Expression="sum_registrations"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="21"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SumStudents"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="21"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="sum_students"
+    Expression="sum_students"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="21"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RegTermId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="20"
+    Scale="0"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    AliasName="reg_term_id"
+    Expression="reg_term_id"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+</ViewObject>

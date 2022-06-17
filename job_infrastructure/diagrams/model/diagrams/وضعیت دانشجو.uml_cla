@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:d5deb3a2-9379-4496-b9df-cda0574a6ff8'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='وضعیت دانشجو'
+   visibility='public'>
+  <ownedAttribute xmi:uuid='urn:uuid:e2caf22c-0da6-499e-93c3-926a855aa1eb'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه وضعیت'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/BigInteger:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:9baa5ba6-b5de-4c8f-981f-626681bf630d'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:24a1af90-241f-45ae-a878-e605a899b01a'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:c9922584-c404-46b1-b5e0-9382eabec0c7'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='نام وضعیت'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/String:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:4f661fe9-a6b3-49c0-9231-df28f7b79755'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:165875d8-a88f-4dba-8f2a-5aaa34521b2d'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

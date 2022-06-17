@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StGovahiVaziatView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="StGovahiVaziat.id, 
+       StGovahiVaziat.st_id, 
+       StGovahiVaziat.govahi_letter_num, 
+       StGovahiVaziat.govahi_letter_date, 
+       StGovahiVaziat.govahi_base, 
+       StGovahiVaziat.govahi_level, 
+       StGovahiVaziat.govahi_last_date, 
+       StGovahiVaziat.govahi_last_status, 
+       StGovahiVaziat.govahi_last_madrak, 
+       StGovahiVaziat.govahi_edit_date"
+  FromList="school_new.st_govahi_vaziat StGovahiVaziat"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="RegLevelView1"
+    ViewObjectName="modelDb.RegLevelView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RegBaseView1"
+    ViewObjectName="modelDb.RegBaseView"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="RegStudentView1"
+    ViewObjectName="modelDb.RegStudentView"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_GovahiLevel"
+    ListVOName="RegLevelView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GovahiLevel"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Id"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_GovahiBase"
+    ListVOName="RegBaseView1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GovahiBase"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="BaseId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="BaseName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="StGovahiVaziat"
+    Entity="modelDb.StGovahiVaziat"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="StGovahiVaziat"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="StId"
+    PrecisionRule="true"
+    EntityAttrName="StId"
+    EntityUsage="StGovahiVaziat"
+    AliasName="st_id"/>
+  <ViewAttribute
+    Name="GovahiLetterNum"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLetterNum"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_letter_num"/>
+  <ViewAttribute
+    Name="GovahiLetterDate"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLetterDate"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_letter_date"/>
+  <ViewAttribute
+    Name="GovahiBase"
+    PrecisionRule="true"
+    EntityAttrName="GovahiBase"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_base"
+    LOVName="LOV_GovahiBase">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GovahiLevel"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLevel"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_level"
+    LOVName="LOV_GovahiLevel">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GovahiLastDate"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLastDate"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_last_date"/>
+  <ViewAttribute
+    Name="GovahiLastStatus"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLastStatus"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_last_status"/>
+  <ViewAttribute
+    Name="GovahiLastMadrak"
+    PrecisionRule="true"
+    EntityAttrName="GovahiLastMadrak"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_last_madrak"/>
+  <ViewAttribute
+    Name="GovahiEditDate"
+    PrecisionRule="true"
+    EntityAttrName="GovahiEditDate"
+    EntityUsage="StGovahiVaziat"
+    AliasName="govahi_edit_date"/>
+</ViewObject>

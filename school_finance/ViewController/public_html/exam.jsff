@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="لیست تاریخ های امتحان در ترم جاری" id="pb2">
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="افزودن تاریخ" id="ctb1"
+                                     icon="/Images/16 x 16 Colorful/add.png">
+              <f:facet name="popup">
+                <af:popup id="p1">
+                  <af:panelWindow id="pw1">
+                    <af:panelBox text="افزودن تاریخ و ساعت امتحان" id="pb3">
+                      <f:facet name="toolbar"/>
+                      <af:panelGroupLayout id="pgl1" layout="horizontal">
+                        <af:inputNumberSpinbox label="سال" id="ins1"
+                                               value="#{pageFlowScope.courseBean.newExamTimeYear}"
+                                               minimum="1390"
+                                               valueChangeListener="#{pageFlowScope.courseBean.changeYearNewExamTime}"
+                                               autoSubmit="true"
+                                               immediate="true"/>
+                        <af:inputNumberSpinbox label="ماه" id="ins2"
+                                               value="#{pageFlowScope.courseBean.newExamTimeMonth}"
+                                               valueChangeListener="#{pageFlowScope.courseBean.changeMonthExamTime}"
+                                               immediate="true"
+                                               autoSubmit="true" minimum="1"
+                                               maximum="12"/>
+                        <af:inputNumberSpinbox label="روز" id="ins3"
+                                               value="#{pageFlowScope.courseBean.newExamTimeDay}"
+                                               minimum="1"
+                                               maximum="#{pageFlowScope.courseBean.calculatedMaxDay}"
+                                               immediate="true"
+                                               autoSubmit="true"/>
+                      </af:panelGroupLayout>
+                      <af:selectOneListbox value="#{bindings.allExamHours.inputValue}"
+                                           label="#{bindings.allExamHours.label}"
+                                           required="#{bindings.allExamHours.hints.mandatory}"
+                                           shortDesc="#{bindings.allExamHours.hints.tooltip}"
+                                           id="sol1" size="3">
+                        <f:selectItems value="#{bindings.allExamHours.items}"
+                                       id="si1"/>
+                      </af:selectOneListbox>
+                      <af:commandButton text="ثبت" id="cb1"
+                                        action="#{pageFlowScope.courseBean.createNewExamTime}"/>
+                      <af:commandButton text="انصراف" id="cb2"/>
+                    </af:panelBox>
+                  </af:panelWindow>
+                </af:popup>
+              </f:facet>
+              <af:showPopupBehavior popupId="p1"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="حذف تاریخ" id="ctb2"
+                                     icon="/Images/16 x 16 Colorful/delete.png"
+                                     action="#{pageFlowScope.courseBean.deleteExamTime}"/>
+          </af:toolbar>
+        </f:facet>
+        <af:table value="#{bindings.ExamTime.collectionModel}" var="row"
+                  rows="#{bindings.ExamTime.rangeSize}"
+                  emptyText="#{bindings.ExamTime.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ExamTime.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.ExamTimeQuery.queryDescriptor}"
+                  queryListener="#{bindings.ExamTimeQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.ExamTime.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ExamTime.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1"
+                  binding="#{pageFlowScope.courseBean.examTimesInTermTable}">
+          <af:column sortProperty="examDateShamsi"
+                     sortable="true"
+                     headerText="تاریخ امتحان"
+                     id="c12">
+            <af:outputText value="#{row.examDateShamsi}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="examDay" sortable="true"
+                     headerText="روز هفته"
+                     id="c1">
+            <af:outputText value="#{row.examDay}" id="ot11"/>
+          </af:column>
+          <af:column sortProperty="examHour" sortable="true"
+                     headerText="ساعت امتحان"
+                     id="c7">
+            <af:outputText value="#{row.examHour}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="examTimeId" sortable="true"
+                     headerText="شناسه"
+                     id="c10">
+            <af:outputText value="#{row.examTimeId}" id="ot2"/>
+          </af:column>
+        </af:table>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="منو" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:commandLink text="بازگشت" id="cl1" action="back"/>
+        <af:commandLink text="درس های امتحان" id="cl2"
+                        action="#{pageFlowScope.courseBean.examTimeCourses}"/>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

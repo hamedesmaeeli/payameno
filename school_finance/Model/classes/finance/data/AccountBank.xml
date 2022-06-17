@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="AccountBank" Package="finance.data"
+          BeanClass="finance.data.AccountBank" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="firstAmount" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="bank" IsCollection="false"
+                     BeanClass="finance.data.Bank"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setIsCash"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="boolean" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isIsCash"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.AccountBank"
+                     BeanClass="finance.data.AccountBank" id="AccountBank"/>
+</JavaBean>

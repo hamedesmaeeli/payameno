@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Bank" Package="finance.data" BeanClass="finance.data.Bank"
+          isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Bank"
+                     BeanClass="finance.data.Bank" id="Bank"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Bank"
+                     BeanClass="finance.data.Bank" id="Bank">
+    <ParameterInfo id="p0" Type="java.math.BigDecimal" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+</JavaBean>

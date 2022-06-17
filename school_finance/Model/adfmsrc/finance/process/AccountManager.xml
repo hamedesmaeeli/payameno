@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="AccountManager" Package="finance.process"
+          BeanClass="finance.process.AccountManager" isJavaBased="true">
+  <AccessorAttribute id="cash" IsCollection="false"
+                     BeanClass="finance.data.AccountBank"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="allAccountBanks" IsCollection="true"
+                     BeanClass="finance.data.AccountBank"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allAccounts" IsCollection="true"
+                     BeanClass="finance.data.Account"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allBanks" IsCollection="true"
+                     BeanClass="finance.data.Bank"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allCheckStatus" IsCollection="true"
+                     BeanClass="finance.data.CheckStatus"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="finance.data.Account"
+                  BeanClass="finance.data.Account" id="createAccount"
+                  ReturnNodeName="Account">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.Factor"
+                  BeanClass="finance.data.Factor" id="createFactor"
+                  ReturnNodeName="Factor">
+    <ParameterInfo id="p0" Type="finance.data.Factor" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.RecievementPayment"
+                  BeanClass="finance.data.RecievementPayment"
+                  id="setPayForAccount" ReturnNodeName="RecievementPayment">
+    <ParameterInfo id="p0" Type="finance.data.RecievementPayment"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getCurrentAccounting" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.Check"
+                  BeanClass="finance.data.Check" id="createNewCheck"
+                  ReturnNodeName="Check">
+    <ParameterInfo id="p0" Type="finance.data.Check" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="returnCheck"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Check" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="passCheck"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Check" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="deleteAccount"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="updateAccount"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.Check"
+                  BeanClass="finance.data.Check" id="getAllAccountChecks"
+                  ReturnNodeName="Check"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.RecievementPayment"
+                  BeanClass="finance.data.RecievementPayment"
+                  id="getAllAccountPeyments" ReturnNodeName="RecievementPayment"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.RecievementPayment"
+                  BeanClass="finance.data.RecievementPayment"
+                  id="getAllReceivements" ReturnNodeName="RecievementPayment"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.AccountTolalInfo"
+                  BeanClass="finance.data.AccountTolalInfo" id="getTotalInfo"
+                  ReturnNodeName="AccountTolalInfo">
+    <ParameterInfo id="p0" Type="finance.data.Account" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.RecievementPayment"
+                  BeanClass="finance.data.RecievementPayment"
+                  id="searchReceivementPayments"
+                  ReturnNodeName="RecievementPayment"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="p2" Type="finance.data.Account" isStructured="true"/>
+    <ParameterInfo id="p3" Type="finance.data.RecievePayType"
+                   isStructured="true"/>
+    <ParameterInfo id="p4" Type="finance.data.AccountBank" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.Check"
+                  BeanClass="finance.data.Check" id="searchChecks"
+                  ReturnNodeName="Check"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="p1" Type="java.util.Date" isStructured="false"/>
+    <ParameterInfo id="p2" Type="finance.data.CheckStatus" isStructured="true"/>
+    <ParameterInfo id="p3" Type="finance.data.Account" isStructured="true"/>
+    <ParameterInfo id="p4" Type="finance.data.AccountBank" isStructured="true"/>
+    <ParameterInfo id="p5" Type="finance.data.Bank" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getAccountBankAccounting" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.AccountBank" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.Factor"
+                  BeanClass="finance.data.Factor" id="updateFactor"
+                  ReturnNodeName="Factor">
+    <ParameterInfo id="p0" Type="finance.data.Factor" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deleteFactor"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Factor" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deleteCheck"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.Check" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deletePayForAccount"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="finance.data.RecievementPayment"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="finance.process.AccountManager"
+                     BeanClass="finance.process.AccountManager"
+                     id="AccountManager"/>
+</JavaBean>

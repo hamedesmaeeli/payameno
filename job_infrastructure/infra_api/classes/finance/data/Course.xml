@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Course" Package="finance.data" BeanClass="finance.data.Course"
+          isJavaBased="true">
+  <Attribute Name="courseId" Type="java.math.BigDecimal"/>
+  <Attribute Name="courseName" Type="java.lang.String"/>
+  <Attribute Name="courseUnits" Type="int"/>
+  <Attribute Name="displayName" Type="java.lang.String"/>
+  <Attribute Name="courseCode" Type="java.lang.String"/>
+  <Attribute Name="isFinal" Type="java.lang.Boolean"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Course"
+                     BeanClass="finance.data.Course" id="Course"/>
+</JavaBean>

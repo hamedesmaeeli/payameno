@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegSalaryParamView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegSalaryParam.term_id, 
+       RegSalaryParam.level_id, 
+       RegSalaryParam.fix_salary, 
+       RegSalaryParam.action_salary, 
+       RegSalaryParam.theory_salary, 
+       RegSalaryParam.ac_th_rate"
+  FromList="school_new.reg_salary_param RegSalaryParam"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegSalaryParam"
+    Entity="modelDb.RegSalaryParam"/>
+  <ViewAttribute
+    Name="TermId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="TermId"
+    EntityUsage="RegSalaryParam"
+    AliasName="term_id"/>
+  <ViewAttribute
+    Name="LevelId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LevelId"
+    EntityUsage="RegSalaryParam"
+    AliasName="level_id"/>
+  <ViewAttribute
+    Name="FixSalary"
+    PrecisionRule="true"
+    EntityAttrName="FixSalary"
+    EntityUsage="RegSalaryParam"
+    AliasName="fix_salary"/>
+  <ViewAttribute
+    Name="ActionSalary"
+    PrecisionRule="true"
+    EntityAttrName="ActionSalary"
+    EntityUsage="RegSalaryParam"
+    AliasName="action_salary"/>
+  <ViewAttribute
+    Name="TheorySalary"
+    PrecisionRule="true"
+    EntityAttrName="TheorySalary"
+    EntityUsage="RegSalaryParam"
+    AliasName="theory_salary"/>
+  <ViewAttribute
+    Name="AcThRate"
+    PrecisionRule="true"
+    EntityAttrName="AcThRate"
+    EntityUsage="RegSalaryParam"
+    AliasName="ac_th_rate"/>
+</ViewObject>

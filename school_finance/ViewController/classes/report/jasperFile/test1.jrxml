@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="test1" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="4760e050-b4a4-4565-98ff-52c1024cc2be">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     reg_student.`name` AS reg_student_name,
+     reg_student.`famili` AS reg_student_famili,
+     reg_student.`national_code` AS reg_student_national_code,
+     reg_student.`identifier_code` AS reg_student_identifier_code,
+     reg_student.`identifier_serial` AS reg_student_identifier_serial,
+     reg_student.`identifier_char` AS reg_student_identifier_char,
+     reg_student.`student_code` AS reg_student_student_code,
+     reg_student.`father_name` AS reg_student_father_name,
+     reg_student.`date_of_birth` AS reg_student_date_of_birth,
+     reg_student.`description` AS reg_student_description,
+     reg_student.`status_id` AS reg_student_status_id,
+     reg_student.`org_unit_id` AS reg_student_org_unit_id,
+     reg_student.`created_date` AS reg_student_created_date,
+     reg_student.`last_modified` AS reg_student_last_modified,
+     reg_student.`level_id_last` AS reg_student_level_id_last,
+     reg_student.`field_id_last` AS reg_student_field_id_last,
+     reg_student.`address` AS reg_student_address,
+     reg_student.`mobile` AS reg_student_mobile,
+     reg_student.`phone` AS reg_student_phone,
+     reg_student.`archive_code` AS reg_student_archive_code
+FROM
+     `reg_student` reg_student]]>
+	</queryString>
+	<field name="reg_student_name" class="java.lang.String"/>
+	<field name="reg_student_famili" class="java.lang.String"/>
+	<field name="reg_student_student_code" class="java.lang.Long"/>
+	<field name="reg_student_father_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="7a49789b-b14e-4663-a782-7af425025ea5" x="0" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="B Zar" pdfFontName="Helvetica" pdfEncoding="Identity-H" isPdfEmbedded="true"/>
+				</textElement>
+				<text><![CDATA[نام دانش آموز]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<textField>
+				<reportElement uuid="7d9b25a7-d6a6-4140-9482-75f54b418af3" x="0" y="0" width="100" height="20"/>
+				<textElement>
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{reg_student_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

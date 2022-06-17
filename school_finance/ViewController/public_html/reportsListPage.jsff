@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px">
+    <f:facet name="bottom"/>
+    <f:facet name="center"/>
+    <f:facet name="start">
+      <af:panelBox text="گزارش هاي آماري" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:commandImageLink text="گزارش آماري ثبت نام ها در ترم" id="cil1"
+                             action="report1"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:commandImageLink text="گزارش امتحانهای دروس در ترم جاری" id="cil2"
+                             actionListener="#{backingBeanScope.reportBean.changeReport2}"
+                             rendered="true" action="report2"/>
+      <af:spacer width="10" height="10" id="s2"/>
+        <af:commandImageLink text="دانش آموزان بدون عکس در ترم جاری" id="cil3"
+                             action="report3"/>
+      <af:spacer width="10" height="10" id="s3"/>
+        <af:commandImageLink text="تعداد ثبت نامی ها در هر درس" id="cil4"
+                             action="report4"/>
+      
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

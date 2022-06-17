@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="schoolManagePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allSchool" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.School"
+                      id="allSchoolIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allSchoolIterator" id="allSchool">
+      <nodeDefinition DefName="registration.data.School" Name="allSchool0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="description"/>
+          <Item Value="dbService"/>
+          <Item Value="dbName"/>
+          <Item Value="host"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

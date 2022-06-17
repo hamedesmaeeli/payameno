@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="checksAccountingViewPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator"
+                      Binds="allCheckStatus" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.CheckStatus"
+                      id="allCheckStatusIterator" Refresh="deferred"/>
+    <methodIterator Binds="searchChecks.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="finance.data.Check"
+                    id="searchChecksIterator"/>
+    <searchRegion Binds="searchChecksIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CheckQuery"/>
+  </executables>
+  <bindings>
+    <list IterBinding="allCheckStatusIterator" ListOperMode="navigation"
+          ListIter="allCheckStatusIterator" id="allCheckStatus"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <methodAction IterBinding="accountManagerIterator" id="searchChecks"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="searchChecks" IsViewObjectMethod="false"
+                  DataControl="schManager"
+                  InstanceName="bindings.accountManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.searchChecks_searchChecks_searchChecks_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.checksAccountingBean.expireStartDate}"
+                 NDType="java.util.Date"/>
+      <NamedData NDName="p1"
+                 NDValue="#{pageFlowScope.checksAccountingBean.expireEndDate}"
+                 NDType="java.util.Date"/>
+      <NamedData NDName="p2"
+                 NDValue="#{pageFlowScope.checksAccountingBean.checkStatus}"
+                 NDType="finance.data.CheckStatus"/>
+      <NamedData NDName="p3"
+                 NDValue="#{pageFlowScope.checksAccountingBean.account}"
+                 NDType="finance.data.Account"/>
+      <NamedData NDName="p4"
+                 NDValue="#{pageFlowScope.checksAccountingBean.accountBank}"
+                 NDType="finance.data.AccountBank"/>
+      <NamedData NDName="p5"
+                 NDValue="#{pageFlowScope.checksAccountingBean.bank}"
+                 NDType="finance.data.Bank"/>
+    </methodAction>
+    <tree IterBinding="searchChecksIterator" id="Check">
+      <nodeDefinition DefName="finance.data.Check" Name="Check0">
+        <AttrNames>
+          <Item Value="createdDate"/>
+          <Item Value="number"/>
+          <Item Value="amount"/>
+          <Item Value="forHow"/>
+          <Item Value="checkDate"/>
+          <Item Value="bankBranch"/>
+          <Item Value="description"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="bank"/>
+          <Item Value="checkStatus"/>
+          <Item Value="account"/>
+          <Item Value="accountBank"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Bank" Name="Check1">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.CheckStatus" Name="Check2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Account" Name="Check3">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="phone"/>
+          <Item Value="personName"/>
+          <Item Value="personMobile"/>
+          <Item Value="fax"/>
+          <Item Value="create_date"/>
+          <Item Value="address"/>
+          <Item Value="fisrtPayable"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.AccountBank" Name="Check4">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="firstAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

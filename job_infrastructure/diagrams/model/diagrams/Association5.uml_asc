@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Association xmi:uuid='urn:uuid:a53b5fb5-c659-4323-841f-896c9b3c87ae'
+   isAbstract='false'
+   isDerived='false'
+   isLeaf='false'
+   name='Association5'
+   visibility='public'>
+  <memberEnd href='urn:uuid:56aca783-89bf-4515-bff7-5c6e51494352'/>
+  <memberEnd href='urn:uuid:d9929b18-a8a5-497b-b428-7ff9e706653e'/>
+  <ownedEnd xmi:uuid='urn:uuid:56aca783-89bf-4515-bff7-5c6e51494352'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='endحساب'
+    aggregation='none'>
+   <association href='urn:uuid:a53b5fb5-c659-4323-841f-896c9b3c87ae'/>
+   <type href='urn:uuid:01d765e6-5744-4c42-b543-dbed50f116c4'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:fd6569d4-fff8-4a10-8e60-4c7587ef0284'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:12340c66-e994-4535-b1f1-4107eb69c707'
+     value='1'
+     visibility='public'/>
+  </ownedEnd>
+  <ownedEnd xmi:uuid='urn:uuid:d9929b18-a8a5-497b-b428-7ff9e706653e'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='endدریافت پرداخت'
+    aggregation='none'>
+   <association href='urn:uuid:a53b5fb5-c659-4323-841f-896c9b3c87ae'/>
+   <type href='urn:uuid:ef1fe51d-3001-4055-930f-413a491861a4'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:563455db-9c28-4d0f-9b4d-c9c712b1df64'
+     value='0'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:e410ed0a-bb31-4287-8a6c-75ce4dda5e82'
+     value='*'
+     visibility='public'/>
+  </ownedEnd>
+ </uml:Association>
+</xmi:XMI>

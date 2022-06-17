@@ -1,0 +1,146 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px" topHeight="70px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.DanaRegisterStudent.collectionModel}"
+                  var="row" rows="#{bindings.DanaRegisterStudent.rangeSize}"
+                  emptyText="#{bindings.DanaRegisterStudent.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.DanaRegisterStudent.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.DanaRegisterStudentQuery.queryDescriptor}"
+                  queryListener="#{bindings.DanaRegisterStudentQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.DanaRegisterStudent.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.DanaRegisterStudent.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="studentCode"
+                     sortable="true"
+                     headerText="كد دانش آموزي"
+                     id="c9">
+            <af:outputText value="#{row.studentCode}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="nactionalCode" sortable="true"
+                     headerText="كد ملي"
+                     id="c3">
+            <af:outputText value="#{row.nactionalCode}" id="ot10"/>
+          </af:column>
+          <af:column sortProperty="firstName" sortable="true"
+                     headerText="نام"
+                     id="c1">
+            <af:outputText value="#{row.firstName}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="lastName" sortable="true"
+                     headerText="نام خانوادگي"
+                     id="c8">
+            <af:outputText value="#{row.lastName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="fatherName" sortable="true"
+                     headerText="نام پدر"
+                     id="c6">
+            <af:outputText value="#{row.fatherName}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="majorName" sortable="true"
+                     headerText="نام رشته" id="c7">
+            <af:outputText value="#{row.majorName}" id="ot11"/>
+          </af:column>
+          <af:column sortProperty="majorCode" sortable="true"
+                     headerText="كد رشته"
+                     id="c2">
+            <af:outputText value="#{row.majorCode}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="IDno" sortable="false"
+                     headerText="شماره شناسنامه"
+                     id="c4">
+            <af:outputText value="#{row.IDno}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="birthPlace" sortable="false"
+                     headerText="محل تولد" id="c17">
+            <af:outputText value="#{row.birthPlace}" id="ot18"/>
+          </af:column>
+          <af:column sortProperty="issuePlace" sortable="false"
+                     headerText="محل صدور"
+                     id="c5">
+            <af:outputText value="#{row.issuePlace}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="birthDate" sortable="false"
+                     headerText="تاريخ تولد"
+                     id="c10">
+            <af:outputText value="#{row.birthDate}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="serialId" sortable="false"
+                     headerText="سريال شناسنامه"
+                     id="c14">
+            <af:outputText value="#{row.serialId}" id="ot15"/>
+          </af:column>
+          <af:column sortProperty="radifId" sortable="false"
+                     headerText="رديف شناسنامه"
+                     id="c15">
+            <af:outputText value="#{row.radifId}" id="ot16"/>
+          </af:column>
+          <af:column sortProperty="seriId" sortable="false"
+                     headerText="سري شناسنامه"
+                     id="c16">
+            <af:outputText value="#{row.seriId}" id="ot17"/>
+          </af:column>
+          <af:column sortProperty="sex" sortable="false" headerText="جنسيت"
+                     id="c11">
+            <af:outputText value="#{row.sex}" id="ot12"/>
+          </af:column>
+          <af:column sortProperty="telephone" sortable="false" headerText="تلفن"
+                     id="c13">
+            <af:outputText value="#{row.telephone}" id="ot14"/>
+          </af:column>
+          <af:column sortProperty="address" sortable="false" headerText="آدرس"
+                     id="c12">
+            <af:outputText value="#{row.address}" id="ot13"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="ليست مدرسه ها" id="gil1"
+                                   icon="/Images/16 x 16 Colorful/back.png"
+                                   action="back"/>
+              <af:spacer width="10" height="30" id="s1"/>
+              <af:commandImageLink text="پرينت ليست" id="gil2"
+                                   icon="/Images/16 x 16 Colorful/print.png">
+                <af:exportCollectionActionListener exportedId="pc1:t1"
+                                                   type="excelHTML"
+                                                   filename="RegisteredStudent.xslx"
+                                                   title="ليست دانش آموزان  ثبت نام شده"/>
+              </af:commandImageLink>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl2" rows="1">
+          <f:facet name="footer"/>
+          <af:inputText label="نام مدرسه" id="it1"
+                        value="#{pageFlowScope.schoolBean.currentSchool.description}"/>
+          <af:inputText label="نام ترم" id="it2"
+                        value="#{pageFlowScope.schoolBean.currentTerm.name}"/>
+          <af:outputText value="ليست دانش آموزان ثبت نام شده در دانا"
+                         id="ot5" inlineStyle="font-weight:bold;"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

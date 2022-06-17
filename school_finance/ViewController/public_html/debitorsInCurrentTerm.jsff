@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="پرينت" id="ctb1"
+                                     icon="/Images/16 x 16 Colorful/print.png">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"
+                                                 title="ليست بدهكاران"
+                                                 filename="debits.xls"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.debtorInCurrentTermList.collectionModel}"
+                  var="row" rows="#{bindings.debtorInCurrentTermList.rangeSize}"
+                  emptyText="#{bindings.debtorInCurrentTermList.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.debtorInCurrentTermList.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.debtorInCurrentTermListQuery.queryDescriptor}"
+                  queryListener="#{bindings.debtorInCurrentTermListQuery.processQuery}"
+                  filterVisible="true" varStatus="vs" id="t1">
+          <af:column sortProperty="name" sortable="true"
+                     headerText="نام"
+                     id="c4">
+            <af:outputText value="#{row.student.bindings.name.inputValue}"
+                           id="ot6"/>
+          </af:column>
+          <af:column sortProperty="family" sortable="true"
+                     headerText="نام خانوداگي"
+                     id="c3">
+            <af:outputText value="#{row.student.bindings.family.inputValue}"
+                           id="ot8"/>
+          </af:column>
+          <af:column sortProperty="debitValue" sortable="true"
+                     headerText="مقدار بدهي" id="c1">
+            <af:outputText value="#{row.debitValue}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="studentCode" sortable="true"
+                     headerText="كد دانش آموزي" id="c6">
+            <af:outputText value="#{row.student.bindings.studentCode.inputValue}"
+                           id="ot9"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false" headerText="اقماري"
+                     id="c11">
+            <af:outputText value="#{row.organization.bindings.name.inputValue}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="true" headerText="نام مقطع"
+                     id="c7">
+            <af:outputText value="#{row.level.bindings.name.inputValue}"
+                           id="ot10"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="true" headerText="نام رشته"
+                     id="c2">
+            <af:outputText value="#{row.field.bindings.name.inputValue}"
+                           id="ot11"/>
+          </af:column>
+          <af:column sortProperty="nationalId" sortable="true"
+                     headerText="كد ملي"
+                     id="c9">
+            <af:outputText value="#{row.student.bindings.nationalId.inputValue}"
+                           id="ot5"/>
+          </af:column>
+          <af:column sortProperty="fatherName" sortable="true"
+                     headerText="نام پدر"
+                     id="c5">
+            <af:outputText value="#{row.student.bindings.fatherName.inputValue}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="description"
+                     sortable="true"
+                     headerText="توضيح"
+                     id="c8">
+            <af:outputText value="#{row.student.bindings.description.inputValue}"
+                           id="ot7"/>
+          </af:column>
+          <af:column sortProperty="mobile" sortable="true"
+                     headerText="موبايل"
+                     id="c10">
+            <af:outputText value="#{row.student.bindings.mobile.inputValue}"
+                           id="ot1"/>
+          </af:column>
+          <af:column sortProperty="fixShahriye" sortable="false"
+                     headerText="شهريه ثابت"
+                     id="c12">
+            <af:outputText value="#{row.registration.bindings.fixShahriye.inputValue}"
+                           id="ot12"/>
+          </af:column>
+          <af:column sortProperty="numberOfTheoryUnits" sortable="false"
+                     headerText="تعداد واحد"
+                     id="c13">
+            <af:outputText value="#{row.registration.bindings.numberOfTheoryUnits.inputValue}"
+                           id="ot13"/>
+          </af:column>
+          <af:column sortProperty="totalShahriye" sortable="false"
+                     headerText="ملبغ  كل"
+                     id="c14">
+            <af:outputText value="#{row.registration.bindings.totalShahriye.inputValue}"
+                           id="ot14"/>
+          </af:column>
+          <af:column sortProperty="otherShahriyAmount" sortable="false"
+                     headerText="ساير-جبراني"
+                     id="c15">
+            <af:outputText value="#{row.registration.bindings.otherShahriyAmount.inputValue}"
+                           id="ot15"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="ليست بدهكاران ترم" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:outputLabel value="اين عمليات ممكن است طولاني شود. خواهشمند است تا اتمام عمليات صبر كنيد" id="ol1"/>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

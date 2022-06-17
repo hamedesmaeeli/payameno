@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Registration" Package="registration.data"
+          BeanClass="registration.data.Registration" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="regDate" Type="java.util.Date"/>
+  <Attribute Name="numberOfTheoryUnits" Type="double"/>
+  <Attribute Name="numberOfActionalUnits" Type="int"/>
+  <Attribute Name="fixShahriye" Type="java.math.BigDecimal"/>
+  <Attribute Name="theoryShahriye" Type="java.math.BigDecimal"/>
+  <Attribute Name="actionalShahriye" Type="java.math.BigDecimal"/>
+  <Attribute Name="otherShahriyAmount" Type="java.math.BigDecimal"/>
+  <Attribute Name="otherSalaryComment" Type="java.lang.String"/>
+  <Attribute Name="totalShahriye" Type="java.math.BigDecimal"/>
+  <Attribute Name="offAmount" Type="java.math.BigDecimal"/>
+  <Attribute Name="offComment" Type="java.lang.String"/>
+  <Attribute Name="currentAccounting" Type="java.math.BigDecimal"/>
+  <Attribute Name="totalPayments" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="student" IsCollection="false"
+                     BeanClass="registration.data.Student"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="field" IsCollection="false"
+                     BeanClass="registration.data.Field"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="term" IsCollection="false"
+                     BeanClass="registration.data.Term"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="level" IsCollection="false"
+                     BeanClass="registration.data.Level"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="base" IsCollection="false"
+                     BeanClass="registration.data.Base"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.Registration"
+                     BeanClass="registration.data.Registration"
+                     id="Registration"/>
+</JavaBean>

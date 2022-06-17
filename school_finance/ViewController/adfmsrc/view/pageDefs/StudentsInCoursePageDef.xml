@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="StudentsInCoursePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="findStudentsRegisteredInCourse.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.Registration"
+                    id="findStudentsRegisteredInCourseIterator"/>
+    <searchRegion Binds="findStudentsRegisteredInCourseIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="RegistrationQuery"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="findStudentsRegisteredInCourse" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="findStudentsRegisteredInCourse"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.findStudentsRegisteredInCourse_findStudentsRegisteredInCourse_findStudentsRegisteredInCourse_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.courseBean.selectedCourse}"
+                 NDType="finance.data.Course"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.courseBean.selectedTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+    <tree IterBinding="findStudentsRegisteredInCourseIterator"
+          id="Registration">
+      <nodeDefinition DefName="registration.data.Registration"
+                      Name="Registration0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="regDate"/>
+          <Item Value="numberOfTheoryUnits"/>
+          <Item Value="numberOfActionalUnits"/>
+          <Item Value="fixShahriye"/>
+          <Item Value="theoryShahriye"/>
+          <Item Value="actionalShahriye"/>
+          <Item Value="otherShahriyAmount"/>
+          <Item Value="otherSalaryComment"/>
+          <Item Value="totalShahriye"/>
+          <Item Value="offAmount"/>
+          <Item Value="offComment"/>
+          <Item Value="currentAccounting"/>
+          <Item Value="totalPayments"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="student"/>
+          <Item Value="field"/>
+          <Item Value="term"/>
+          <Item Value="level"/>
+          <Item Value="base"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Student" Name="Registration1">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="nationalId"/>
+          <Item Value="identifierCode"/>
+          <Item Value="identifierSerial"/>
+          <Item Value="studentCode"/>
+          <Item Value="fatherName"/>
+          <Item Value="dateOfBirth"/>
+          <Item Value="description"/>
+          <Item Value="created_date"/>
+          <Item Value="lastModified"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="identifierChar"/>
+          <Item Value="archiveCode"/>
+          <Item Value="pishMadrak"/>
+          <Item Value="diplomMadrak"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Field" Name="Registration2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Term" Name="Registration3">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="fromDate"/>
+          <Item Value="toDate"/>
+          <Item Value="isCurrent"/>
+          <Item Value="dore"/>
+          <Item Value="year"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Level" Name="Registration4">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Base" Name="Registration5">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

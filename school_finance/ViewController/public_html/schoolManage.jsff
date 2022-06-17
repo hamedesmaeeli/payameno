@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px" topHeight="50px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allSchool.collectionModel}" var="row"
+                  rows="#{bindings.allSchool.rangeSize}"
+                  emptyText="#{bindings.allSchool.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allSchool.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allSchool.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allSchool.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" inlineStyle="font-size:large;">
+          <af:column sortProperty="id" sortable="false"
+                     headerText="شناسه مدرسه" id="c5">
+            <af:outputText value="#{row.id}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="description" sortable="false"
+                     headerText="توضيحات" id="c4">
+            <af:outputText value="#{row.description}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="dbService" sortable="false"
+                     headerText="نام سرويس پايگاه" id="c1">
+            <af:outputText value="#{row.dbService}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="dbName" sortable="false"
+                     headerText="نام پايگاه" id="c2">
+            <af:outputText value="#{row.dbName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="host" sortable="false" headerText="هاست"
+                     id="c3">
+            <af:outputText value="#{row.host}" id="ot3"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text=" " id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="ليست دانش آموزان بدون عكس" id="cil1"
+                                   icon="/Images/16 x 16 Colorful/pie_chart.png"
+                                   action="#{pageFlowScope.schoolBean.goToNoPicSts}"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandImageLink text="ايجاد دانش آموز" id="cil2"
+                                   icon="/Images/16 x 16 Colorful/add.png"
+                                   action="#{pageFlowScope.schoolBean.gotoCreateDanaSt}"/>
+              <af:spacer width="10" height="10" id="s2"/>
+              <af:commandImageLink text="كارت ورود به جلسه" id="cil3"
+                                   icon="/Images/16 x 16 Colorful/download.png"
+                                   disabled="false">
+                <af:fileDownloadActionListener method="#{pageFlowScope.schoolBean.downloadKartJalase}"
+                                               contentType="`"
+                                               filename="kart.zip"/>
+              </af:commandImageLink>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:commandImageLink text="ليست دانش آموزان ثبت نام شده" id="cil4"
+                                   icon="/Images/16 x 16 Colorful/books.png"
+                                   action="#{pageFlowScope.schoolBean.goToRegisteredStudents}"/>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:commandImageLink text="دانش آموزان غير فارغ التحصيل" id="cil5"
+                                   icon="/Images/16 x 16 Colorful/full_screen.png"
+                                   action="#{pageFlowScope.schoolBean.goToUngraguated}"/>
+              <af:spacer width="10" height="10" id="s5"/>
+              <af:commandImageLink text="ليست كلاسي" id="cil6"
+                                   icon="/Images/16 x 16 Colorful/promo_green.png"
+                                   action="#{pageFlowScope.schoolBean.selectCourseAction}"/>
+              <af:commandImageLink text="انتقال عکس به مالی" id="cil7"
+                                   icon="/Images/16 x 16 Colorful/key.png"
+                                   action="#{pageFlowScope.schoolBean.transferPics}"/>                     
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

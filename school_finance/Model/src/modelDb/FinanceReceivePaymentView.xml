@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinanceReceivePaymentView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="FinanceReceivePayment.id, 
+       FinanceReceivePayment.event_date, 
+       FinanceReceivePayment.amount, 
+       FinanceReceivePayment.account_bank_id, 
+       FinanceReceivePayment.account_person_id, 
+       FinanceReceivePayment.receive_pay_type_id, 
+       FinanceReceivePayment.description, 
+       FinanceReceivePayment.code"
+  FromList="school_new.finance_receive_payment FinanceReceivePayment"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="FinanceReceivePayment"
+    Entity="modelDb.FinanceReceivePayment"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="EventDate"
+    PrecisionRule="true"
+    EntityAttrName="EventDate"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="event_date"/>
+  <ViewAttribute
+    Name="Amount"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="amount"/>
+  <ViewAttribute
+    Name="AccountBankId"
+    PrecisionRule="true"
+    EntityAttrName="AccountBankId"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="account_bank_id"/>
+  <ViewAttribute
+    Name="AccountPersonId"
+    PrecisionRule="true"
+    EntityAttrName="AccountPersonId"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="account_person_id"/>
+  <ViewAttribute
+    Name="ReceivePayTypeId"
+    PrecisionRule="true"
+    EntityAttrName="ReceivePayTypeId"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="receive_pay_type_id"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="description"/>
+  <ViewAttribute
+    Name="Code"
+    PrecisionRule="true"
+    EntityAttrName="Code"
+    EntityUsage="FinanceReceivePayment"
+    AliasName="code"/>
+</ViewObject>

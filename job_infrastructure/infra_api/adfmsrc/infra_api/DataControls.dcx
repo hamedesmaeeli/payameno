@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.61.92" id="DataControls"
+                    Package="infra_api">
+  <AdapterDataControl id="RegistrationManager"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="registration.process.RegistrationManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="registration.data.StudentStatus"/>
+      <TypeInfo FullName="registration.data.Organization"/>
+      <TypeInfo FullName="registration.data.IdentifierChar"/>
+      <TypeInfo FullName="registration.data.Field"/>
+      <TypeInfo FullName="registration.data.Level"/>
+      <TypeInfo FullName="registration.data.Term"/>
+      <TypeInfo FullName="registration.data.Student"/>
+      <TypeInfo FullName="registration.data.Registration"/>
+      <TypeInfo FullName="finance.data.Bank"/>
+      <TypeInfo FullName="finance.data.AccountBank"/>
+      <TypeInfo FullName="finance.data.Account"/>
+      <TypeInfo FullName="finance.data.RecievePayType"/>
+      <TypeInfo FullName="finance.data.RecievementPayment"/>
+      <TypeInfo FullName="registration.data.PaymentStep"/>
+      <TypeInfo FullName="finance.data.FactorType"/>
+      <TypeInfo FullName="finance.data.Factor"/>
+      <TypeInfo FullName="registration.data.SalaryParam"/>
+      <TypeInfo FullName="finance.data.CheckStatus"/>
+      <TypeInfo FullName="finance.data.Check"/>
+      <TypeInfo FullName="registration.data.RegistrationCheck"/>
+      <TypeInfo FullName="registration.process.RegistrationManager"/>
+      <TypeInfo FullName="registration.data.School"/>
+      <TypeInfo FullName="registration.data.DanaStudent"/>
+      <TypeInfo FullName="registration.data.DanaRegisterStudent"/>
+      <TypeInfo FullName="registration.data.DanaRegUnit"/>
+      <TypeInfo FullName="registration.data.DanaCourseExam"/>
+      <TypeInfo FullName="registration.data.DanaCourseStudent"/>
+      <TypeInfo FullName="registration.data.Base"/>
+      <TypeInfo FullName="finance.data.Course"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="registration.process.RegistrationManager"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="students_students_findCoursesNotRegistered1PageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="findCoursesNotRegistered.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="finance.data.Course"
+                    id="findCoursesNotRegisteredIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="findCoursesNotRegistered" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCoursesNotRegistered"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.findCoursesNotRegistered_findCoursesNotRegistered_findCoursesNotRegistered_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.newRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="157px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:table value="#{bindings.allCourses.collectionModel}" var="row"
+                rows="#{bindings.allCourses.rangeSize}"
+                emptyText="#{bindings.allCourses.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.allCourses.rangeSize}"
+                rowBandingInterval="0"
+                filterModel="#{bindings.allCoursesQuery.queryDescriptor}"
+                queryListener="#{bindings.allCoursesQuery.processQuery}"
+                filterVisible="true" varStatus="vs"
+                selectedRowKeys="#{bindings.allCourses.collectionModel.selectedRow}"
+                selectionListener="#{bindings.allCourses.collectionModel.makeCurrent}"
+                rowSelection="single" id="t1">
+        <af:column sortProperty="courseId" filterable="true" sortable="true"
+                   headerText="شناسه " id="c3">
+          <af:outputText value="#{row.courseId}" id="ot4"/>
+        </af:column>
+        <af:column sortProperty="courseName" filterable="true" sortable="true"
+                   headerText="نام " id="c7">
+          <af:outputText value="#{row.courseName}" id="ot6"/>
+        </af:column>
+        <af:column sortProperty="courseUnits" filterable="true" sortable="true"
+                   headerText="تعداد واحد" id="c1">
+          <af:outputText value="#{row.courseUnits}" id="ot7"/>
+        </af:column>
+        <af:column sortProperty="displayName" filterable="true" sortable="true"
+                   headerText="نام نمایشی" id="c6">
+          <af:outputText value="#{row.displayName}" id="ot5"/>
+        </af:column>
+        <af:column sortProperty="courseCode" filterable="true" sortable="true"
+                   headerText="کد" id="c2">
+          <af:outputText value="#{row.courseCode}" id="ot3"/>
+        </af:column>
+        <af:column sortProperty="isFinal" filterable="true" sortable="true"
+                   headerText="نهایی" id="c4">
+          <af:outputText value="#{row.isFinal}" id="ot1"/>
+        </af:column>
+        <af:column sortProperty="description" filterable="true" sortable="true"
+                   headerText="توضیحات" id="c5">
+          <af:outputText value="#{row.description}" id="ot2"/>
+        </af:column>
+      </af:table>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text="منو" id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandLink text="افرودن درس جدید" id="cl1"/>
+              <af:commandLink text="افزودن لیست دانش آموزان از طریق فایل" id="cl2"/>
+              <af:commandLink text="لیست دانش آموزان" id="cl3"
+                              action="#{pageFlowScope.courseBean.studentListInCourse}"/>
+              <af:commandLink text="کارت ورود به جلسه" id="cl4"
+                              action="printkart"/>
+              <af:commandLink text="رشته های درس" id="cl5"
+                              action="#{pageFlowScope.courseBean.courseFields}"/>
+              <af:commandLink text="امتحان" id="cl6"
+                              action="#{pageFlowScope.courseBean.goToExam}"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:inputText label="نام ترم " id="it2"/>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

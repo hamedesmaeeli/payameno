@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="ExamCourse" Package="registration.data"
+          BeanClass="registration.data.ExamCourse" isJavaBased="true">
+  <Attribute Name="examCourseId" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="examtime" IsCollection="false"
+                     BeanClass="registration.data.ExamTime"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="course" IsCollection="false"
+                     BeanClass="finance.data.Course"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.ExamCourse"
+                     BeanClass="registration.data.ExamCourse" id="ExamCourse"/>
+</JavaBean>

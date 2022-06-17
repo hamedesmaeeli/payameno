@@ -1,0 +1,130 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="100px" topHeight="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="درس ها" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="افزودن درس" id="ctb1"
+                                     icon="/Images/16 x 16 Colorful/add.png">
+              <f:facet name="popup">
+                <af:popup id="p1">
+                  <af:panelWindow id="pw1">
+                    <af:panelBox text="PanelBox1" id="pb4">
+                      <f:facet name="toolbar"/>
+                      <af:table value="#{bindings.allCourses.collectionModel}"
+                                var="row"
+                                rows="#{bindings.allCourses.rangeSize}"
+                                emptyText="#{bindings.allCourses.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.allCourses.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.allCoursesQuery.queryDescriptor}"
+                                queryListener="#{bindings.allCoursesQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectionListener="#{bindings.allCourses.collectionModel.makeCurrent}"
+                                rowSelection="multiple" id="t3"
+                                binding="#{pageFlowScope.courseBean.coursesForExamTimeTable}">
+                        <af:column sortProperty="displayName" sortable="true"
+                                   headerText="نام نمایشی"
+                                   id="c15" filterable="true">
+                          <af:outputText value="#{row.displayName}" id="ot15"/>
+                        </af:column>
+                        <af:column sortProperty="courseCode"
+                                   sortable="true"
+                                   headerText="کد درس"
+                                   id="c14" filterable="true">
+                          <af:outputText value="#{row.courseCode}" id="ot19"/>
+                        </af:column>
+                        <af:column sortProperty="description"
+                                   sortable="true"
+                                   headerText="توضیحات"
+                                   id="c17" filterable="true">
+                          <af:outputText value="#{row.description}" id="ot18"/>
+                        </af:column>
+                        <af:column sortProperty="courseName"
+                                   sortable="true"
+                                   headerText="نام درس"
+                                   id="c20" filterable="true">
+                          <af:outputText value="#{row.courseName}" id="ot20"/>
+                        </af:column>
+                      </af:table>
+                      <af:commandButton text="ثبت " id="cb1"
+                                        action="#{pageFlowScope.courseBean.addCourseToExamTime}"/>
+                      <af:commandButton text="انصراف" id="cb2"/>
+                    </af:panelBox>
+                  </af:panelWindow>
+                </af:popup>
+              </f:facet>
+              <af:showPopupBehavior popupId="p1"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="حذف درس" id="ctb2"
+                                     icon="/Images/16 x 16 Colorful/delete.png"
+                                     action="#{pageFlowScope.courseBean.deleteCourseFromExam}"/>
+          </af:toolbar>
+        </f:facet>
+        <af:table value="#{bindings.ExamCourse.collectionModel}" var="row"
+                  rows="#{bindings.ExamCourse.rangeSize}"
+                  emptyText="#{bindings.ExamCourse.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ExamCourse.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ExamCourse.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ExamCourse.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1"
+                  binding="#{pageFlowScope.courseBean.coursesExamTimeTable}">
+          <af:column sortProperty="courseCode" sortable="true"
+                     headerText="کد درس" id="c3">
+            <af:outputText value="#{row.course.bindings.courseCode.inputValue}"
+                           id="ot11"/>
+          </af:column>
+          <af:column sortProperty="description" sortable="true"
+                     headerText="توضیحات" id="c9">
+            <af:outputText value="#{row.course.bindings.description.inputValue}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="courseName" sortable="true"
+                     headerText="نام درس"
+                     id="c10">
+            <af:outputText value="#{row.course.bindings.courseName.inputValue}"
+                           id="ot13"/>
+          </af:column>
+          <af:column sortProperty="displayName" sortable="true"
+                     headerText="نام نمایشی" id="c7">
+            <af:outputText value="#{row.course.bindings.displayName.inputValue}"
+                           id="ot2"/>
+          </af:column>
+          <af:column sortProperty="examCourseId" sortable="false"
+                     headerText="شناسه"
+                     id="c1">
+            <af:outputText value="#{row.examCourseId}" id="ot1"/>
+          </af:column>
+        </af:table>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="منو" id="pb3">
+        <f:facet name="toolbar"/>
+        <af:commandLink text="back" id="cl1" action="back"/>
+        <af:commandLink text="لیست دروس" id="cl2"/>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="اطلاعات روز امتحان" id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:inputText label="تاریخ" id="it1" readOnly="true"
+                        value="#{pageFlowScope.courseBean.selectedExamTime.examDateShamsi}"/>
+          <af:inputText label="ساعت" id="it2"
+                        value="#{pageFlowScope.courseBean.selectedExamTime.examHour}"/>
+          <af:inputText label="روز هفته" id="it3"
+                        value="#{pageFlowScope.courseBean.selectedExamTime.examDay}"/>
+          <af:inputText label="نام ترم" id="it4"
+                        value="#{pageFlowScope.courseBean.selectedExamTime.term.name}"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="clearTermAccountingPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator"
+                      Binds="allAccountBanks" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.AccountBank"
+                      id="allAccountBanksIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="allAccountBanksIterator" ListOperMode="navigation"
+          ListIter="allAccountBanksIterator" id="allAccountBanks"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

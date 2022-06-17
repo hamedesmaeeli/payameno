@@ -1,0 +1,44 @@
+SELECT DISTINCT
+	reg_registration.st_id, 
+		reg_student.`name`, 
+	reg_student.famili,
+	1 as value,
+	reg_student.national_code,
+	reg_student.mobile,
+	GROUP_CONCAT(reg_course.`code`) as course_codes, 
+	GROUP_CONCAT(reg_course.present_code) as present_codes, 
+		reg_student.mobile as username,
+			reg_student.mobile as password,
+	GROUP_CONCAT(reg_course.display_name), 
+	
+	SUM(reg_course_field.unitCount), 
+SUM(reg_course_field.unitCount)*40000
+FROM
+	reg_reg_course
+	INNER JOIN
+	reg_course
+	ON 
+		reg_reg_course.course_id = reg_course.ID
+	INNER JOIN
+	reg_registration
+	ON 
+		reg_reg_course.reg_id = reg_registration.id
+	INNER JOIN
+	reg_course_field
+	ON 
+		reg_course.ID = reg_course_field.course_id
+	INNER JOIN
+	reg_term
+	ON 
+		reg_registration.term_id = reg_term.id
+	INNER JOIN
+	reg_student
+	ON 
+		reg_registration.st_id = reg_student.student_code
+WHERE
+	reg_registration.field_id = reg_course_field.field_id AND
+	reg_term.is_current = 1 AND
+	reg_reg_course.course_id = reg_course.ID AND
+	reg_course.has_online = 1
+GROUP BY
+	reg_registration.st_id 

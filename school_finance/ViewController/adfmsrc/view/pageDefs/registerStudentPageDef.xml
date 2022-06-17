@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="registerStudentPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allFields" RangeSize="20" DataControl="schManager"
+                      BeanClass="registration.data.Field"
+                      id="allFieldsIterator" Refresh="always"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allLevels" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Level"
+                      id="allLevelsIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allbases" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Base" id="allbasesIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="allFieldsIterator" ListOperMode="navigation"
+          ListIter="allFieldsIterator" id="allFields" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allLevelsIterator" ListOperMode="navigation"
+          ListIter="allLevelsIterator" id="allLevels" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="allFieldsIterator" id="allFields1">
+      <nodeDefinition DefName="registration.data.Field" Name="allFields10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allLevelsIterator" id="allLevels1">
+      <nodeDefinition DefName="registration.data.Level" Name="allLevels10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="allbasesIterator" ListOperMode="navigation"
+          ListIter="allbasesIterator" id="allbases" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="allbasesIterator" id="allbases1">
+      <nodeDefinition DefName="registration.data.Base" Name="allbases10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allbasesIterator" id="allbases2">
+      <nodeDefinition DefName="registration.data.Base" Name="allbases20">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

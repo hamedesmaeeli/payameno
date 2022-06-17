@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="coursesFlow_coursesFlow_getAllTermExamTimesPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getAllTermExamTimes.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.ExamTime"
+                    id="getAllTermExamTimesIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllTermExamTimes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getAllTermExamTimes"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllTermExamTimes_getAllTermExamTimes_getAllTermExamTimes_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.courseBean.selectedTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

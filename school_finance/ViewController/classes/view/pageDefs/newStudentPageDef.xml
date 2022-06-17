@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="newStudentPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allOrganization" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.Organization"
+                      id="allOrganizationIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allStudentStatus" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.StudentStatus"
+                      id="allStudentStatusIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allIdentiferChars" RangeSize="50"
+                      DataControl="schManager"
+                      BeanClass="registration.data.IdentifierChar"
+                      id="allIdentiferCharsIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="allOrganizationIterator" ListOperMode="navigation"
+          ListIter="allOrganizationIterator" id="allOrganization"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allStudentStatusIterator" ListOperMode="navigation"
+          ListIter="allStudentStatusIterator" id="allStudentStatus"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allIdentiferCharsIterator" ListOperMode="navigation"
+          ListIter="allIdentiferCharsIterator" id="allIdentiferChars"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="id"/>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

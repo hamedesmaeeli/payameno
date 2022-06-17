@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="reportsList">
+    <default-activity id="__1">reportsListPage</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name id="__4">reportBean</managed-bean-name>
+      <managed-bean-class id="__3">view.reportBean</managed-bean-class>
+      <managed-bean-scope id="__5">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="reportsListPage">
+      <page>/reportsListPage.jsff</page>
+    </view>
+    <view id="report1_page">
+      <page>/report1_page.jsff</page>
+    </view>
+    <view id="report2_page">
+      <page>/report2_page.jsff</page>
+    </view>
+    <view id="report3_page">
+      <page>/report3_page.jsff</page>
+    </view>
+    <view id="report4_page">
+      <page>/report4_page.jsff</page>
+    </view>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">reportsListPage</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__10">report1</from-outcome>
+        <to-activity-id id="__8">report1_page</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome id="__13">report2</from-outcome>
+        <to-activity-id id="__11">report2_page</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome id="__26">report3</from-outcome>
+        <to-activity-id id="__25">report3_page</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__33">
+        <from-outcome id="__34">report4</from-outcome>
+        <to-activity-id id="__32">report4_page</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">report1_page</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">back</from-outcome>
+        <to-activity-id id="__16">reportsListPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id id="__20">report2_page</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__23">back</from-outcome>
+        <to-activity-id id="__21">reportsListPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">report3_page</from-activity-id>
+      <control-flow-case id="__29">
+        <from-outcome id="__31">back</from-outcome>
+        <to-activity-id id="__30">reportsListPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id id="__36">report4_page</from-activity-id>
+      <control-flow-case id="__38">
+        <from-outcome id="__39">back</from-outcome>
+        <to-activity-id id="__37">reportsListPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

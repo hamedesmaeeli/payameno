@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="without-pic-students" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2523a4bf-6bbe-4b54-a8e0-13c5cab4d9f0">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT
+	registration_view.field_name,
+	registration_view.`name`,
+	registration_view.famili,
+	registration_view.national_code,
+	registration_view.mobile,
+	registration_view.archive_code,
+	registration_view.father_name,
+	registration_view.student_code
+FROM
+	registration_view
+	LEFT JOIN
+	reg_student_image
+	ON
+		reg_student_image.st_code = registration_view.student_code
+WHERE
+	registration_view.reg_term_is_current = 1 AND
+	reg_student_image.st_image IS NULL
+ORDER BY
+	registration_view.famili ASC]]>
+	</queryString>
+	<field name="famili" class="java.lang.String"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="father_name" class="java.lang.String"/>
+	<field name="student_code" class="java.lang.Long"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="archive_code" class="java.lang.String"/>
+	<field name="field_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e6b71e11-e142-462e-a66d-dae194251fc7" x="0" y="0" width="82" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[famili]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="0fe08dba-189a-4e39-85be-373825dafdd1" x="282" y="0" width="94" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[student_code]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="dc68ec27-32fc-4a58-a9e6-b29a0fe4a5be" x="459" y="0" width="96" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[field_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="92eca1bb-81f6-4ce7-9dbd-ccd9312d772a" x="376" y="0" width="83" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[mobile]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="cc8708fa-5c26-4428-9c6e-6f2dea014ba6" x="182" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[father_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="11159563-9eb6-4dcd-a220-caa827f98afb" x="82" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[name]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="6188f93e-06c6-4ba0-b487-0f05d01a6a3c" x="0" y="0" width="82" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{famili}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="24369057-98eb-4cd2-a98a-e490a868bff0" x="82" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="71df17ed-6f81-4d72-89eb-d80bf61cd892" x="282" y="0" width="94" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{student_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="7121ae0d-46fe-4d3d-b93f-f88519ff3570" x="376" y="0" width="83" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d6c115bf-f8cc-4ba7-83dc-cfc919475575" x="182" y="0" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{father_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="541161ca-0235-4b67-8f58-c8d522fc38eb" x="459" y="0" width="96" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{field_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

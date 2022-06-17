@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Check" Package="finance.data" BeanClass="finance.data.Check"
+          isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="createdDate" Type="java.util.Date"/>
+  <Attribute Name="number" Type="java.lang.String"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="forHow" Type="java.lang.String"/>
+  <Attribute Name="checkDate" Type="java.util.Date"/>
+  <Attribute Name="bankBranch" Type="java.lang.String"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <AccessorAttribute id="bank" IsCollection="false"
+                     BeanClass="finance.data.Bank"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="checkStatus" IsCollection="false"
+                     BeanClass="finance.data.CheckStatus"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="account" IsCollection="false"
+                     BeanClass="finance.data.Account"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="accountBank" IsCollection="false"
+                     BeanClass="finance.data.AccountBank"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Check"
+                     BeanClass="finance.data.Check" id="Check"/>
+</JavaBean>

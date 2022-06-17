@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegRegCheckView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegRegCheck.id, 
+       RegRegCheck.create_date, 
+       RegRegCheck.reg_id, 
+       RegRegCheck.finance_check_id"
+  FromList="school_new.reg_reg_check RegRegCheck"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegRegCheck"
+    Entity="modelDb.RegRegCheck"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="RegRegCheck"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="RegRegCheck"
+    AliasName="create_date"/>
+  <ViewAttribute
+    Name="RegId"
+    PrecisionRule="true"
+    EntityAttrName="RegId"
+    EntityUsage="RegRegCheck"
+    AliasName="reg_id"/>
+  <ViewAttribute
+    Name="FinanceCheckId"
+    PrecisionRule="true"
+    EntityAttrName="FinanceCheckId"
+    EntityUsage="RegRegCheck"
+    AliasName="finance_check_id"/>
+</ViewObject>

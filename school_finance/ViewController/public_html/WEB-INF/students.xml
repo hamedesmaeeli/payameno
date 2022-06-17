@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="students">
+    <default-activity id="__1">studentsList</default-activity>
+    <managed-bean id="__10">
+      <managed-bean-name id="__11">registerBean</managed-bean-name>
+      <managed-bean-class id="__9">view.RegistrationBean</managed-bean-class>
+      <managed-bean-scope id="__15">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="studentsList">
+      <page>/studentsList.jsff</page>
+    </view>
+    <view id="newStudent">
+      <page>/newStudent.jsff</page>
+    </view>
+    <view id="editStudent">
+      <page>/editStudent.jsff</page>
+    </view>
+    <view id="registerStudent">
+      <page>/registerStudent.jsff</page>
+    </view>
+    <view id="payments">
+      <page>/payments.jsff</page>
+    </view>
+    <method-call id="getPaymentsStepsview">
+      <method>#{bindings.getPaymentsStepsview.execute}</method>
+      <outcome id="__53">
+        <fixed-outcome>getPaymentsStepsview</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="getRegistrationChecksView">
+      <method>#{bindings.getRegistrationChecksView.execute}</method>
+      <outcome id="__45">
+        <fixed-outcome>getRegistrationChecksView</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="getStudentCurrentAccounting">
+      <method>#{bindings.getStudentCurrentAccounting.execute}</method>
+      <outcome id="__74">
+        <fixed-outcome>getStudentCurrentAccounting</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="calculateReport">
+      <method>#{pageFlowScope.registerBean.testReport}</method>
+      <outcome id="__93">
+        <fixed-outcome>run</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="financePrint">
+      <page>/financePrint.jsff</page>
+    </view>
+    <method-call id="clearForm">
+      <method>#{pageFlowScope.registerBean.clearAllData}</method>
+      <outcome id="__25">
+        <fixed-outcome>clear</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="SelectedCoures">
+      <page>/SelectedCoures.jsff</page>
+    </view>
+    <method-call id="findCoursesNotRegistered">
+      <method>#{bindings.findCoursesNotRegistered.execute}</method>
+      <outcome id="__139">
+        <fixed-outcome>findCoursesNotRegistered</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="findCoursesRegistered">
+      <method>#{bindings.findCoursesRegistered.execute}</method>
+      <outcome id="__145">
+        <fixed-outcome>findCoursesRegistered</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="findCoursesRegistered1">
+      <method>#{bindings.findCoursesRegistered.execute}</method>
+      <outcome id="__122">
+        <fixed-outcome>findCoursesRegistered</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="findCoursesNotRegistered1">
+      <method>#{bindings.findCoursesNotRegistered.execute}</method>
+      <outcome id="__128">
+        <fixed-outcome>findCoursesNotRegistered</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">studentsList</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">back</from-outcome>
+        <to-activity-id id="__5">clearForm</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__55">
+        <from-outcome id="__56">register</from-outcome>
+        <to-activity-id id="__57">registerStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__58">
+        <from-outcome id="__59">edit</from-outcome>
+        <to-activity-id id="__60">editStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__50">
+        <from-outcome id="__52">payments</from-outcome>
+        <to-activity-id id="__51">getStudentCurrentAccounting</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">newStudent</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">cancel</from-outcome>
+        <to-activity-id id="__12">studentsList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__63">
+        <from-outcome id="__64">create</from-outcome>
+        <to-activity-id id="__62">editStudent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__18">
+      <from-activity-id id="__19">editStudent</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome id="__22">back</from-outcome>
+        <to-activity-id id="__21">studentsList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__84">
+        <from-outcome id="__85">changeFirstAccount</from-outcome>
+        <to-activity-id id="__83">editStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__99">
+        <from-outcome id="__101">newPay</from-outcome>
+        <to-activity-id id="__100">editStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__66">
+        <from-outcome id="__67">register</from-outcome>
+        <to-activity-id id="__61">registerStudent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id id="__27">registerStudent</from-activity-id>
+      <control-flow-case id="__29">
+        <from-outcome id="__30">register</from-outcome>
+        <to-activity-id id="__28">getStudentCurrentAccounting</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome id="__33">back</from-outcome>
+        <to-activity-id id="__31">studentsList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome id="__71">editStudent</from-outcome>
+        <to-activity-id id="__69">editStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__108">
+        <from-outcome id="__110">payments</from-outcome>
+        <to-activity-id id="__109">payments</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__112">
+        <from-outcome id="__113">selectedCourse</from-outcome>
+        <to-activity-id id="__111">SelectedCoures</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id id="__35">payments</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__38">back</from-outcome>
+        <to-activity-id id="__36">studentsList</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome id="__41">newCheck</from-outcome>
+        <to-activity-id id="__39">getRegistrationChecksView</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__42">
+        <from-outcome id="__44">newPay</from-outcome>
+        <to-activity-id id="__43">getPaymentsStepsview</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__80">
+        <from-outcome id="__82">update</from-outcome>
+        <to-activity-id id="__81">getStudentCurrentAccounting</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__86">
+        <from-outcome id="__92">finaceReort</from-outcome>
+        <to-activity-id id="__87">calculateReport</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__102">
+        <from-outcome id="__104">editReg</from-outcome>
+        <to-activity-id id="__103">payments</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__105">
+        <from-outcome id="__107">register</from-outcome>
+        <to-activity-id id="__106">registerStudent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__54">
+      <from-activity-id id="__65">getPaymentsStepsview</from-activity-id>
+      <control-flow-case id="__70">
+        <to-activity-id id="__72">getStudentCurrentAccounting</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__46">
+      <from-activity-id id="__47">getRegistrationChecksView</from-activity-id>
+      <control-flow-case id="__49">
+        <from-outcome id="__73">getRegistrationChecksView</from-outcome>
+        <to-activity-id id="__48">getStudentCurrentAccounting</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__75">
+      <from-activity-id id="__76">getStudentCurrentAccounting</from-activity-id>
+      <control-flow-case id="__78">
+        <from-outcome id="__79">getStudentCurrentAccounting</from-outcome>
+        <to-activity-id id="__77">payments</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__88">
+      <from-activity-id id="__89">calculateReport</from-activity-id>
+      <control-flow-case id="__91">
+        <to-activity-id id="__90">financePrint</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__94">
+      <from-activity-id id="__95">financePrint</from-activity-id>
+      <control-flow-case id="__96">
+        <from-outcome id="__98">back</from-outcome>
+        <to-activity-id id="__97">payments</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">clearForm</from-activity-id>
+      <control-flow-case id="__24">
+        <to-activity-id id="__23">newStudent</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__114">
+      <from-activity-id id="__115">SelectedCoures</from-activity-id>
+      <control-flow-case id="__116">
+        <from-outcome id="__118">back</from-outcome>
+        <to-activity-id id="__117">registerStudent</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__120">
+        <from-outcome id="__121">refreshSelectedCourse</from-outcome>
+        <to-activity-id id="__119">findCoursesNotRegistered</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__150">
+        <from-outcome id="__151">refreshRegisteredCourses</from-outcome>
+        <to-activity-id id="__149">findCoursesRegistered</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__140">
+      <from-activity-id id="__141">findCoursesNotRegistered</from-activity-id>
+      <control-flow-case id="__142">
+        <from-outcome id="__144">findCoursesNotRegistered</from-outcome>
+        <to-activity-id id="__143">findCoursesRegistered1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__152">
+      <from-activity-id id="__153">findCoursesRegistered</from-activity-id>
+      <control-flow-case id="__156">
+        <from-outcome id="__155">findCoursesRegistered</from-outcome>
+        <to-activity-id id="__154">findCoursesNotRegistered1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__123">
+      <from-activity-id id="__124">findCoursesRegistered1</from-activity-id>
+      <control-flow-case id="__127">
+        <from-outcome id="__125">findCoursesRegistered</from-outcome>
+        <to-activity-id id="__126">SelectedCoures</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__129">
+      <from-activity-id id="__130">findCoursesNotRegistered1</from-activity-id>
+      <control-flow-case id="__132">
+        <from-outcome id="__131">findCoursesNotRegistered</from-outcome>
+        <to-activity-id id="__133">SelectedCoures</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

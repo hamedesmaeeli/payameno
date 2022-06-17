@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.61.92" id="DataControls" Package="model">
+  <AdapterDataControl id="schManager"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="model.schManager" BeanClass="model.schManager"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="registration.data.StudentStatus"/>
+      <TypeInfo FullName="registration.data.Organization"/>
+      <TypeInfo FullName="registration.data.Field"/>
+      <TypeInfo FullName="registration.data.Level"/>
+      <TypeInfo FullName="registration.data.Student"/>
+      <TypeInfo FullName="registration.data.Term"/>
+      <TypeInfo FullName="registration.data.Registration"/>
+      <TypeInfo FullName="views.DebtorInTerm"/>
+      <TypeInfo FullName="registration.data.IdentifierChar"/>
+      <TypeInfo FullName="registration.data.School"/>
+      <TypeInfo FullName="finance.data.Bank"/>
+      <TypeInfo FullName="finance.data.AccountBank"/>
+      <TypeInfo FullName="finance.data.Account"/>
+      <TypeInfo FullName="finance.data.RecievePayType"/>
+      <TypeInfo FullName="finance.data.RecievementPayment"/>
+      <TypeInfo FullName="registration.data.PaymentStep"/>
+      <TypeInfo FullName="finance.data.FactorType"/>
+      <TypeInfo FullName="finance.data.Factor"/>
+      <TypeInfo FullName="registration.data.SalaryParam"/>
+      <TypeInfo FullName="finance.data.CheckStatus"/>
+      <TypeInfo FullName="finance.data.Check"/>
+      <TypeInfo FullName="registration.data.RegistrationCheck"/>
+      <TypeInfo FullName="registration.data.DanaStudent"/>
+      <TypeInfo FullName="registration.data.DanaRegisterStudent"/>
+      <TypeInfo FullName="registration.data.DanaRegUnit"/>
+      <TypeInfo FullName="registration.process.RegistrationManager"/>
+      <TypeInfo FullName="finance.data.AccountTolalInfo"/>
+      <TypeInfo FullName="finance.process.AccountManager"/>
+      <TypeInfo FullName="model.PaymentStepsView"/>
+      <TypeInfo FullName="model.RegistrationCheckView"/>
+      <TypeInfo FullName="model.schManager"/>
+      <TypeInfo FullName="registration.data.DanaCourseExam"/>
+      <TypeInfo FullName="registration.data.DanaCourseStudent"/>
+      <TypeInfo FullName="model.SchoolStudentPic"/>
+      <TypeInfo FullName="registration.data.Base"/>
+      <TypeInfo FullName="finance.data.Course"/>
+      <TypeInfo FullName="java.io.InputStream"/>
+      <TypeInfo FullName="registration.data.CourseField"/>
+      <TypeInfo FullName="registration.data.ExamTime"/>
+      <TypeInfo FullName="registration.data.ExamCourse"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="model.schManager"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="100px" topHeight="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="درس های  ثبت شده" id="pb2"
+                   icon="/Images/16 x 16 Colorful/add.png">
+        <f:facet name="toolbar">
+          <af:toolbar id="t1">
+            <af:commandToolbarButton text="افزودن" id="ctb1"
+                                     icon="/Images/16 x 16 Colorful/add.png"/>
+            <af:commandToolbarButton text="حذف" id="ctb2"
+                                     icon="/Images/16 x 16 Colorful/delete.png"/>
+          </af:toolbar>
+        </f:facet>
+        <af:table value="#{bindings.ExamCourse.collectionModel}" var="row"
+                  rows="#{bindings.ExamCourse.rangeSize}"
+                  emptyText="#{bindings.ExamCourse.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.ExamCourse.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.ExamCourse.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.ExamCourse.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t2">
+          <af:column sortProperty="examCourseId" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examCourseId.label}"
+                     id="c8">
+            <af:outputText value="#{row.examCourseId}" id="ot12"/>
+          </af:column>
+          <af:column sortProperty="examTimeId" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examtime.examTimeId.label}"
+                     id="c7">
+            <af:outputText value="#{row.examtime.bindings.examTimeId.inputValue}"
+                           id="ot5"/>
+          </af:column>
+          <af:column sortProperty="examDate" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examtime.examDate.label}"
+                     id="c12">
+            <af:outputText value="#{row.examtime.bindings.examDate.inputValue}"
+                           id="ot13">
+              <af:convertDateTime pattern="#{bindings.ExamCourse.hints.examtime.examDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="examHour" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examtime.examHour.label}"
+                     id="c5">
+            <af:outputText value="#{row.examtime.bindings.examHour.inputValue}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="examDay" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examtime.examDay.label}"
+                     id="c2">
+            <af:outputText value="#{row.examtime.bindings.examDay.inputValue}"
+                           id="ot7"/>
+          </af:column>
+          <af:column sortProperty="examDateShamsi" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.examtime.examDateShamsi.label}"
+                     id="c3">
+            <af:outputText value="#{row.examtime.bindings.examDateShamsi.inputValue}"
+                           id="ot6"/>
+          </af:column>
+          <af:column sortProperty="courseId" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.courseId.label}"
+                     id="c1">
+            <af:outputText value="#{row.course.bindings.courseId.inputValue}"
+                           id="ot1"/>
+          </af:column>
+          <af:column sortProperty="courseName" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.courseName.label}"
+                     id="c9">
+            <af:outputText value="#{row.course.bindings.courseName.inputValue}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="courseUnits" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.courseUnits.label}"
+                     id="c13">
+            <af:outputText value="#{row.course.bindings.courseUnits.inputValue}"
+                           id="ot2"/>
+          </af:column>
+          <af:column sortProperty="displayName" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.displayName.label}"
+                     id="c11">
+            <af:outputText value="#{row.course.bindings.displayName.inputValue}"
+                           id="ot9"/>
+          </af:column>
+          <af:column sortProperty="courseCode" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.courseCode.label}"
+                     id="c6">
+            <af:outputText value="#{row.course.bindings.courseCode.inputValue}"
+                           id="ot10"/>
+          </af:column>
+          <af:column sortProperty="isFinal" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.isFinal.label}"
+                     id="c4">
+            <af:outputText value="#{row.course.bindings.isFinal.inputValue}"
+                           id="ot11"/>
+          </af:column>
+          <af:column sortProperty="description" sortable="true"
+                     headerText="#{bindings.ExamCourse.hints.course.description.label}"
+                     id="c10">
+            <af:outputText value="#{row.course.bindings.description.inputValue}"
+                           id="ot8"/>
+          </af:column>
+        </af:table>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="منو" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:commandLink text="بازگشت" id="cl1" action="back"/>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="امتحان" id="pb3">
+        <f:facet name="toolbar"/>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

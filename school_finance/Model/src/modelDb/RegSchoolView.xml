@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegSchoolView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegSchool.school_id, 
+       RegSchool.school_description, 
+       RegSchool.school_db_service, 
+       RegSchool.school_db_name, 
+       RegSchool.school_host"
+  FromList="school_new.reg_school RegSchool"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegSchool"
+    Entity="modelDb.RegSchool"/>
+  <ViewAttribute
+    Name="SchoolId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SchoolId"
+    EntityUsage="RegSchool"
+    AliasName="school_id"/>
+  <ViewAttribute
+    Name="SchoolDescription"
+    PrecisionRule="true"
+    EntityAttrName="SchoolDescription"
+    EntityUsage="RegSchool"
+    AliasName="school_description"/>
+  <ViewAttribute
+    Name="SchoolDbService"
+    PrecisionRule="true"
+    EntityAttrName="SchoolDbService"
+    EntityUsage="RegSchool"
+    AliasName="school_db_service"/>
+  <ViewAttribute
+    Name="SchoolDbName"
+    PrecisionRule="true"
+    EntityAttrName="SchoolDbName"
+    EntityUsage="RegSchool"
+    AliasName="school_db_name"/>
+  <ViewAttribute
+    Name="SchoolHost"
+    PrecisionRule="true"
+    EntityAttrName="SchoolHost"
+    EntityUsage="RegSchool"
+    AliasName="school_host"/>
+</ViewObject>

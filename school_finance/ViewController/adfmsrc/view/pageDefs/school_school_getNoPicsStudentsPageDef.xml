@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="school_school_getNoPicsStudentsPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getNoPicsStudents.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.Student"
+                    id="getNoPicsStudentsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getNoPicsStudents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getNoPicsStudents"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getNoPicsStudents_getNoPicsStudents_getNoPicsStudents_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.schoolBean.currentSchool}"
+                 NDType="registration.data.School"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.schoolBean.currentTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

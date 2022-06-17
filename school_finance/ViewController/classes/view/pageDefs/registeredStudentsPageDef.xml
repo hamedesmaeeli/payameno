@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="registeredStudentsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getDanaRegisteredStudents.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.DanaRegisterStudent"
+                    id="getDanaRegisteredStudentsIterator"/>
+    <searchRegion Binds="getDanaRegisteredStudentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="DanaRegisterStudentQuery"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getDanaRegisteredStudents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDanaRegisteredStudents"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getDanaRegisteredStudents_getDanaRegisteredStudents_getDanaRegisteredStudents_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.schoolBean.currentSchool}"
+                 NDType="registration.data.School"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.schoolBean.currentTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+    <tree IterBinding="getDanaRegisteredStudentsIterator"
+          id="DanaRegisterStudent">
+      <nodeDefinition DefName="registration.data.DanaRegisterStudent"
+                      Name="DanaRegisterStudent0">
+        <AttrNames>
+          <Item Value="studentCode"/>
+          <Item Value="firstName"/>
+          <Item Value="lastName"/>
+          <Item Value="fatherName"/>
+          <Item Value="timeyear"/>
+          <Item Value="timeDore"/>
+          <Item Value="majorCode"/>
+          <Item Value="majorName"/>
+          <Item Value="imageName"/>
+          <Item Value="nactionalCode"/>
+          <Item Value="IDno"/>
+          <Item Value="issuePlace"/>
+          <Item Value="birthDate"/>
+          <Item Value="sex"/>
+          <Item Value="address"/>
+          <Item Value="telephone"/>
+          <Item Value="serialId"/>
+          <Item Value="radifId"/>
+          <Item Value="seriId"/>
+          <Item Value="birthPlace"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

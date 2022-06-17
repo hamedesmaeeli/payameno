@@ -1,0 +1,21 @@
+SELECT
+	COUNT(reg_course.ID), 
+	reg_course.`code`, 
+	reg_course.display_name, 
+	pdate(exam_course_view.exam_date), 
+	exam_course_view.exam_hour
+FROM
+	reg_course
+	 INNER JOIN 
+	reg_reg_course
+	ON 
+		reg_course.ID = reg_reg_course.course_id
+	INNER JOIN
+	exam_course_view
+	ON 
+		reg_course.ID = exam_course_view.course_id
+WHERE
+	reg_reg_course.reg_id IN ((select registration_view.id from registration_view where registration_view.reg_term_is_current = 1))
+	and exam_course_view.term_is_current=1
+GROUP BY
+	reg_reg_course.course_id

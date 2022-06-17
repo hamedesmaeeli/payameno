@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="CourseField" Package="registration.data"
+          BeanClass="registration.data.CourseField" isJavaBased="true">
+  <Attribute Name="unitCount" Type="int"/>
+  <Attribute Name="courseFieldId" Type="java.math.BigDecimal" DefaultValue=""/>
+  <AccessorAttribute id="course" IsCollection="false"
+                     BeanClass="finance.data.Course"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="field" IsCollection="false"
+                     BeanClass="registration.data.Field"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <MethodAccessor IsCollection="false" Type="void" id="setIsFinal"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="boolean" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isIsFinal"
+                  ReturnNodeName="Return"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.CourseField"
+                     BeanClass="registration.data.CourseField"
+                     id="CourseField"/>
+</JavaBean>

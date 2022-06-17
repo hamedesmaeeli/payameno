@@ -1,0 +1,77 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus">
+          <af:menu text="دانلود لیست" id="m1">
+            <af:commandMenuItem text="دانلود اکسل" id="cmi1">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"
+                                                 title="دانش آموزان بدون عکس"
+                                                 filename="with_out_pic.xls"/>
+            </af:commandMenuItem>
+          </af:menu>
+        </f:facet>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.StWithoutPicViewView1_1.collectionModel}"
+                  var="row" rows="#{bindings.StWithoutPicViewView1_1.rangeSize}"
+                  emptyText="#{bindings.StWithoutPicViewView1_1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.StWithoutPicViewView1_1.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.StWithoutPicViewView1_1Query.queryDescriptor}"
+                  queryListener="#{bindings.StWithoutPicViewView1_1Query.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.StWithoutPicViewView1_1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.StWithoutPicViewView1_1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="Famili" sortable="true"
+                     headerText="نام خانوادگی" id="c2" filterable="true">
+            <af:outputText value="#{row.Famili}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="Name" sortable="true"
+                     headerText="نام "
+                     id="c4" filterable="true">
+            <af:outputText value="#{row.Name}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="FatherName" sortable="true"
+                     headerText="نام پدر" id="c3" filterable="true">
+            <af:outputText value="#{row.FatherName}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="NationalCode"
+                     sortable="true"
+                     headerText="کدملی"
+                     id="c6" filterable="true">
+            <af:outputText value="#{row.NationalCode}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="Mobile" sortable="true"
+                     headerText="موبایل"
+                     id="c5" filterable="true">
+            <af:outputText value="#{row.Mobile}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="FieldName" sortable="true"
+                     headerText="نام رشته" id="c1" filterable="true">
+            <af:outputText value="#{row.FieldName}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="ArchiveCode"
+                     sortable="true"
+                     headerText="کد بایگانی"
+                     id="c7" filterable="true">
+            <af:outputText value="#{row.ArchiveCode}" id="ot3"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl1">
+        <af:commandButton text="بازگشت به لیست" id="cb1" action="back"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

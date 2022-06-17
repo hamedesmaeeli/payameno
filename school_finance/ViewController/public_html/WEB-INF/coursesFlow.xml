@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="coursesFlow">
+    <default-activity id="__1">courses</default-activity>
+    <managed-bean id="__10">
+      <managed-bean-name id="__9">courseBean</managed-bean-name>
+      <managed-bean-class id="__8">view.CourseBean</managed-bean-class>
+      <managed-bean-scope id="__7">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="courses">
+      <page>/courses.jsff</page>
+    </view>
+    <view id="StudentsInCourse">
+      <page>/StudentsInCourse.jsff</page>
+    </view>
+    <view id="courses_kart">
+      <page>/courses_kart.jsff</page>
+    </view>
+    <view id="courseFields">
+      <page>/courseFields.jsff</page>
+    </view>
+    <method-call id="getAllAvailableFieldsForCourse">
+      <method>#{bindings.getAllAvailableFieldsForCourse.execute}</method>
+      <outcome id="__27">
+        <fixed-outcome>getAllAvailableFieldsForCourse</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="getFieldsFromCourse">
+      <method>#{bindings.getFieldsFromCourse.execute}</method>
+      <outcome id="__30">
+        <fixed-outcome>getFieldsFromCourse</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="getFieldsFromCourse1">
+      <method>#{bindings.getFieldsFromCourse.execute}</method>
+      <outcome id="__50">
+        <fixed-outcome>getFieldsFromCourse</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="exam">
+      <page>/exam.jsff</page>
+    </view>
+    <method-call id="getAllTermExamTimes">
+      <method>#{bindings.getAllTermExamTimes.execute}</method>
+      <outcome id="__58">
+        <fixed-outcome>getAllTermExamTimes</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="examDetails">
+      <page>/examTimeDetails.jsff</page>
+    </view>
+    <method-call id="getAllExamCourseFromExamTime">
+      <method>#{bindings.getAllExamCourseFromExamTime.execute}</method>
+      <outcome id="__88">
+        <fixed-outcome>getAllExamCourseFromExamTime</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">courses</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">studentList</from-outcome>
+        <to-activity-id id="__5">StudentsInCourse</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">printkart</from-outcome>
+        <to-activity-id id="__16">courses_kart</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome id="__26">CourseFields</from-outcome>
+        <to-activity-id id="__25">courseFields</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__59">
+        <from-outcome id="__60">exam</from-outcome>
+        <to-activity-id id="__61">exam</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">StudentsInCourse</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome id="__15">back</from-outcome>
+        <to-activity-id id="__13">courses</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id id="__20">courses_kart</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__23">back</from-outcome>
+        <to-activity-id id="__21">courses</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id id="__32">courseFields</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__35">back</from-outcome>
+        <to-activity-id id="__33">courses</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome id="__46">selectCourse</from-outcome>
+        <to-activity-id id="__28">getAllAvailableFieldsForCourse</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__47">
+        <from-outcome id="__49">deleteField</from-outcome>
+        <to-activity-id id="__48">getFieldsFromCourse1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id id="__37">getAllAvailableFieldsForCourse</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__39">getAllAvailableFieldsForCourse</from-outcome>
+        <to-activity-id id="__38">getFieldsFromCourse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id id="__42">getFieldsFromCourse</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__45">getFieldsFromCourse</from-outcome>
+        <to-activity-id id="__43">courseFields</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">getFieldsFromCourse1</from-activity-id>
+      <control-flow-case id="__54">
+        <from-outcome id="__53">getFieldsFromCourse</from-outcome>
+        <to-activity-id id="__55">courseFields</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__62">
+      <from-activity-id id="__63">exam</from-activity-id>
+      <control-flow-case id="__64">
+        <from-outcome id="__66">back</from-outcome>
+        <to-activity-id id="__65">courses</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome id="__69">newExamTime</from-outcome>
+        <to-activity-id id="__67">getAllTermExamTimes</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__77">
+        <from-outcome id="__78">examDetail</from-outcome>
+        <to-activity-id id="__76">examDetails</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__100">
+        <from-outcome id="__102">deleteExamTime</from-outcome>
+        <to-activity-id id="__101">getAllTermExamTimes</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__70">
+      <from-activity-id id="__71">getAllTermExamTimes</from-activity-id>
+      <control-flow-case id="__74">
+        <from-outcome id="__73">getAllTermExamTimes</from-outcome>
+        <to-activity-id id="__72">exam</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__83">
+      <from-activity-id id="__84">examDetails</from-activity-id>
+      <control-flow-case id="__86">
+        <from-outcome id="__87">back</from-outcome>
+        <to-activity-id id="__85">exam</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__89">
+        <from-outcome id="__91">addCourse</from-outcome>
+        <to-activity-id id="__90">getAllExamCourseFromExamTime</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__98">
+        <from-outcome id="__99">deleteCourseFromExam</from-outcome>
+        <to-activity-id id="__97">getAllExamCourseFromExamTime</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__92">
+      <from-activity-id id="__93">getAllExamCourseFromExamTime</from-activity-id>
+      <control-flow-case id="__95">
+        <from-outcome id="__94">getAllExamCourseFromExamTime</from-outcome>
+        <to-activity-id id="__96">examDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

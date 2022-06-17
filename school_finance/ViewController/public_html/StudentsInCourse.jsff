@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="120px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+        
+        <af:panelBox text="لیست دانش آموران درس" id="pb2">
+        <af:table value="#{bindings.Registration.collectionModel}" var="row"
+                  rows="#{bindings.Registration.rangeSize}"
+                  emptyText="#{bindings.Registration.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Registration.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.RegistrationQuery.queryDescriptor}"
+                  queryListener="#{bindings.RegistrationQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.Registration.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.Registration.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="nationalId" sortable="true"
+                     headerText="کد دانش آموزی" id="c23" filterable="true">
+            <af:outputText value="#{row.student.bindings.nationalId.inputValue}"
+                           id="ot43"/>
+          </af:column>
+          <af:column sortProperty="studentCode" sortable="true"
+                     headerText="کد ملی" id="c37" filterable="true">
+            <af:outputText value="#{row.student.bindings.studentCode.inputValue}"
+                           id="ot19"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="true"
+                     headerText="نام دانش آموز" id="c34" filterable="true">
+            <af:outputText value="#{row.student.bindings.name.inputValue}"
+                           id="ot17"/>
+          </af:column>
+          <af:column sortProperty="family" sortable="true"
+                     headerText="نام خانوادگی " id="c28" filterable="true">
+            <af:outputText value="#{row.student.bindings.family.inputValue}"
+                           id="ot10"/>
+          </af:column>
+          <af:column sortProperty="fatherName" sortable="true"
+                     headerText="نام پدر" id="c9">
+            <af:outputText value="#{row.student.bindings.fatherName.inputValue}"
+                           id="ot39"/>
+          </af:column>
+          <af:column sortProperty="dateOfBirth" sortable="true"
+                     headerText="تاریخ تولد" id="c18">
+            <af:outputText value="#{row.student.bindings.dateOfBirth.inputValue}"
+                           id="ot27">
+              <af:convertDateTime pattern="#{bindings.Registration.hints.student.dateOfBirth.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="mobile" sortable="true" headerText="موبایل"
+                     id="c12">
+            <af:outputText value="#{row.student.bindings.mobile.inputValue}"
+                           id="ot15"/>
+          </af:column>
+          <af:column sortProperty="regDate" sortable="true"
+                     headerText="تاریخ ثبت نام" id="c25">
+            <af:outputText value="#{row.regDate}" id="ot6">
+              <af:convertDateTime pattern="#{bindings.Registration.hints.regDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="id" sortable="true"
+                     headerText="شناسه ثبت نام" id="c29">
+            <af:outputText value="#{row.id}" id="ot7"/>
+          </af:column>
+        </af:table>
+          <f:facet name="toolbar"/>
+        </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="منو" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:commandLink text="بازگشت به لیست" id="cl1" action="back"/>
+        <af:commandLink text="دانلود لیست" id="cl2">
+          <af:exportCollectionActionListener type="excelHTML" exportedId="t1"
+                                             filename="sttudentInCourseList.xls"
+                                             title="لیست دروس"/>
+        </af:commandLink>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl1">
+        <af:inputText label="نام ترم" id="it1"
+                      value="#{pageFlowScope.courseBean.selectedTerm.name}"/>
+        <af:inputText label="درس  انتخاب شده" id="it2"
+                      value="#{pageFlowScope.courseBean.selectedCourse.displayName}"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

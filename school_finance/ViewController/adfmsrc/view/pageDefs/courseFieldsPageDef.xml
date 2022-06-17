@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="courseFieldsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getFieldsFromCourse.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.CourseField"
+                    id="getFieldsFromCourseIterator"/>
+    <methodIterator Binds="getAllAvailableFieldsForCourse.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.Field"
+                    id="getAllAvailableFieldsForCourseIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getFieldsFromCourse" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getFieldsFromCourse"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getFieldsFromCourse_getFieldsFromCourse_getFieldsFromCourse_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.courseBean.selectedCourse}"
+                 NDType="finance.data.Course"/>
+    </methodAction>
+    <tree IterBinding="getFieldsFromCourseIterator" id="CourseField">
+      <nodeDefinition DefName="registration.data.CourseField"
+                      Name="CourseField0">
+        <AttrNames>
+          <Item Value="unitCount"/>
+          <Item Value="courseFieldId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="course"/>
+          <Item Value="field"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Course" Name="CourseField1">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Field" Name="CourseField2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllAvailableFieldsForCourse" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="getAllAvailableFieldsForCourse"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllAvailableFieldsForCourse_getAllAvailableFieldsForCourse_getAllAvailableFieldsForCourse_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.courseBean.selectedCourse}"
+                 NDType="finance.data.Course"/>
+    </methodAction>
+    <tree IterBinding="getAllAvailableFieldsForCourseIterator" id="Field">
+      <nodeDefinition DefName="registration.data.Field" Name="Field0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="financeCash" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0e1f54b0-11e3-4d4d-a4cc-1cea9841bcb1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="list" uuid="659097a7-99eb-4fa1-b7cc-0d59edbb165b">
+		<parameter name="create_date_from" class="java.util.Date">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="create_date_to" class="java.util.Date">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     receive_pay_v.`id` AS receive_pay_v_id,
+     receive_pay_v.`event_date` AS receive_pay_v_event_date,
+     receive_pay_v.`amount` AS receive_pay_v_amount,
+     receive_pay_v.`account_bank_id` AS receive_pay_v_account_bank_id,
+     receive_pay_v.`account_person_id` AS receive_pay_v_account_person_id,
+     receive_pay_v.`receive_pay_type_id` AS receive_pay_v_receive_pay_type_id,
+     receive_pay_v.`description` AS receive_pay_v_description,
+     receive_pay_v.`code` AS receive_pay_v_code,
+     receive_pay_v.`b_a_name` AS receive_pay_v_b_a_name,
+     receive_pay_v.`bank_id` AS receive_pay_v_bank_id,
+     receive_pay_v.`first_amount` AS receive_pay_v_first_amount,
+     receive_pay_v.`is_cash` AS receive_pay_v_is_cash,
+     receive_pay_v.`bank_name` AS receive_pay_v_bank_name,
+     receive_pay_v.`account_name` AS receive_pay_v_account_name,
+     receive_pay_v.`phone` AS receive_pay_v_phone,
+     receive_pay_v.`person_name` AS receive_pay_v_person_name,
+     receive_pay_v.`person_mobile` AS receive_pay_v_person_mobile,
+     receive_pay_v.`fax` AS receive_pay_v_fax,
+     receive_pay_v.`create_date` AS receive_pay_v_create_date,
+     receive_pay_v.`address` AS receive_pay_v_address,
+     receive_pay_v.`fisrt_payable` AS receive_pay_v_fisrt_payable,
+     receive_pay_v.`rec_pay_type_name` AS receive_pay_v_rec_pay_type_name
+FROM
+     `receive_pay_v` receive_pay_v
+]]>
+		</queryString>
+		<field name="receive_pay_v_id" class="java.lang.Long"/>
+		<field name="receive_pay_v_event_date" class="java.sql.Timestamp"/>
+		<field name="receive_pay_v_amount" class="java.lang.Long"/>
+		<field name="receive_pay_v_account_bank_id" class="java.lang.Long"/>
+		<field name="receive_pay_v_account_person_id" class="java.lang.Long"/>
+		<field name="receive_pay_v_receive_pay_type_id" class="java.lang.Long"/>
+		<field name="receive_pay_v_description" class="java.lang.String"/>
+		<field name="receive_pay_v_code" class="java.lang.String"/>
+		<field name="receive_pay_v_b_a_name" class="java.lang.String"/>
+		<field name="receive_pay_v_bank_id" class="java.lang.Long"/>
+		<field name="receive_pay_v_first_amount" class="java.lang.Long"/>
+		<field name="receive_pay_v_is_cash" class="java.lang.Boolean"/>
+		<field name="receive_pay_v_bank_name" class="java.lang.String"/>
+		<field name="receive_pay_v_account_name" class="java.lang.String"/>
+		<field name="receive_pay_v_phone" class="java.lang.String"/>
+		<field name="receive_pay_v_person_name" class="java.lang.String"/>
+		<field name="receive_pay_v_person_mobile" class="java.lang.String"/>
+		<field name="receive_pay_v_fax" class="java.lang.String"/>
+		<field name="receive_pay_v_create_date" class="java.sql.Timestamp"/>
+		<field name="receive_pay_v_address" class="java.lang.String"/>
+		<field name="receive_pay_v_fisrt_payable" class="java.lang.Long"/>
+		<field name="receive_pay_v_rec_pay_type_name" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="create_date_from" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="create_date_to" class="java.util.Date">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     receive_pay_v.`id` AS receive_pay_v_id,
+     receive_pay_v.`event_date` AS receive_pay_v_event_date,
+     receive_pay_v.`amount` AS receive_pay_v_amount,
+     receive_pay_v.`account_bank_id` AS receive_pay_v_account_bank_id,
+     receive_pay_v.`account_person_id` AS receive_pay_v_account_person_id,
+     receive_pay_v.`receive_pay_type_id` AS receive_pay_v_receive_pay_type_id,
+     receive_pay_v.`description` AS receive_pay_v_description,
+     receive_pay_v.`code` AS receive_pay_v_code,
+     receive_pay_v.`b_a_name` AS receive_pay_v_b_a_name,
+     receive_pay_v.`bank_id` AS receive_pay_v_bank_id,
+     receive_pay_v.`first_amount` AS receive_pay_v_first_amount,
+     receive_pay_v.`is_cash` AS receive_pay_v_is_cash,
+     receive_pay_v.`bank_name` AS receive_pay_v_bank_name,
+     receive_pay_v.`account_name` AS receive_pay_v_account_name,
+     receive_pay_v.`phone` AS receive_pay_v_phone,
+     receive_pay_v.`person_name` AS receive_pay_v_person_name,
+     receive_pay_v.`person_mobile` AS receive_pay_v_person_mobile,
+     receive_pay_v.`fax` AS receive_pay_v_fax,
+     receive_pay_v.`create_date` AS receive_pay_v_create_date,
+     receive_pay_v.`address` AS receive_pay_v_address,
+     receive_pay_v.`fisrt_payable` AS receive_pay_v_fisrt_payable,
+     receive_pay_v.`rec_pay_type_name` AS receive_pay_v_rec_pay_type_name
+FROM
+     `receive_pay_v` receive_pay_v
+]]>
+	</queryString>
+	<field name="receive_pay_v_id" class="java.lang.Long"/>
+	<field name="receive_pay_v_event_date" class="java.sql.Timestamp"/>
+	<field name="receive_pay_v_amount" class="java.lang.Long"/>
+	<field name="receive_pay_v_account_bank_id" class="java.lang.Long"/>
+	<field name="receive_pay_v_account_person_id" class="java.lang.Long"/>
+	<field name="receive_pay_v_receive_pay_type_id" class="java.lang.Long"/>
+	<field name="receive_pay_v_description" class="java.lang.String"/>
+	<field name="receive_pay_v_code" class="java.lang.String"/>
+	<field name="receive_pay_v_b_a_name" class="java.lang.String"/>
+	<field name="receive_pay_v_bank_id" class="java.lang.Long"/>
+	<field name="receive_pay_v_first_amount" class="java.lang.Long"/>
+	<field name="receive_pay_v_is_cash" class="java.lang.Boolean"/>
+	<field name="receive_pay_v_bank_name" class="java.lang.String"/>
+	<field name="receive_pay_v_account_name" class="java.lang.String"/>
+	<field name="receive_pay_v_phone" class="java.lang.String"/>
+	<field name="receive_pay_v_person_name" class="java.lang.String"/>
+	<field name="receive_pay_v_person_mobile" class="java.lang.String"/>
+	<field name="receive_pay_v_fax" class="java.lang.String"/>
+	<field name="receive_pay_v_create_date" class="java.sql.Timestamp"/>
+	<field name="receive_pay_v_address" class="java.lang.String"/>
+	<field name="receive_pay_v_fisrt_payable" class="java.lang.Long"/>
+	<field name="receive_pay_v_rec_pay_type_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="a9f26a45-086f-4624-b070-55bbae9ee5e1" key="table" style="table" x="140" y="26" width="360" height="80"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="list" uuid="9c6ddd80-69f8-43eb-bb92-8bc4e5bf66f8">
+						<datasetParameter name="create_date_from">
+							<datasetParameterExpression><![CDATA[$P{create_date_from}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="create_date_to">
+							<datasetParameterExpression><![CDATA[$P{create_date_to}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="151e88ec-49f1-4550-b0c0-51f4bcf326ae" width="90">
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="226627b7-536e-4ea0-ac9e-9577969476c2" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[تاريخ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="1d4a2afb-86eb-46a4-9c45-877a0f56bfee" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{receive_pay_v_create_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="ee92192a-b653-475e-946e-f6e548c8d1c9" width="90">
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="2ef80688-a398-4dd1-a2c8-21663b13cdf1" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[مبلغ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="34526efd-2402-4918-9fb8-0a13a49d8f40" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{receive_pay_v_amount}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="1ae02ccb-a040-41d9-a013-295a28b83742" width="90">
+						<jr:columnHeader style="table_CH" height="30">
+							<staticText>
+								<reportElement uuid="12a03e81-c908-4fbb-8783-2b6e904847a3" x="0" y="0" width="90" height="30"/>
+								<textElement/>
+								<text><![CDATA[نوع پرداخت]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="630e2928-80c6-4c0a-b2e4-aceea9fac938" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{receive_pay_v_rec_pay_type_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="a22137f3-b7a0-4972-adc7-06de981ce0da" width="90">
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

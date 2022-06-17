@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:843d8b79-e21c-45e4-a762-c7c69b2879d0'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name=''
+   visibility='public'>
+  <ownedAttribute xmi:uuid='urn:uuid:8b4d0492-99b8-46ea-8591-e11344449c12'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه فسط'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/BigDecimal:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:90c01335-a303-4c5b-a652-677f68c9e02d'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:cab1ddad-6fbb-4777-936b-c6e6d9d8e9f4'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

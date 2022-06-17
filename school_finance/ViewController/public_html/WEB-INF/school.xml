@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1256" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="school">
+    <default-activity id="__1">schoolManage</default-activity>
+    <managed-bean id="__9">
+      <managed-bean-name id="__10">schoolBean</managed-bean-name>
+      <managed-bean-class id="__8">view.SchoolManageBean</managed-bean-class>
+      <managed-bean-scope id="__7">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="schoolManage">
+      <page>/schoolManage.jsff</page>
+    </view>
+    <view id="withoutPicsSchools">
+      <page>/withoutPicsSchools.jsff</page>
+    </view>
+    <view id="view1">
+      <page>/createDanaStudent.jsff</page>
+    </view>
+    <view id="registeredStudents">
+      <page>/registeredStudents.jsff</page>
+    </view>
+    <view id="ungraguatedStudents">
+      <page>/ungraguatedStudents.jsff</page>
+    </view>
+    <view id="showList">
+      <page>/showList.jsff</page>
+    </view>
+    <view id="listOfOtherSchoolsHasPic">
+      <page>/listOfOtherSchoolsHasPic.jsff</page>
+    </view>
+    <method-call id="getNoPicsStudents">
+      <method>#{bindings.getNoPicsStudents.execute}</method>
+      <outcome id="__59">
+        <fixed-outcome>getNoPicsStudents</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">schoolManage</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">noPicSts</from-outcome>
+        <to-activity-id id="__5">withoutPicsSchools</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">newDanaStudent</from-outcome>
+        <to-activity-id id="__16">view1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome id="__26">regStudents</from-outcome>
+        <to-activity-id id="__24">registeredStudents</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome id="__34">ungraguated</from-outcome>
+        <to-activity-id id="__33">ungraguatedStudents</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome id="__42">showList</from-outcome>
+        <to-activity-id id="__41">showList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">withoutPicsSchools</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">back</from-outcome>
+        <to-activity-id id="__14">schoolManage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__49">
+        <from-outcome id="__50">otherShools</from-outcome>
+        <to-activity-id id="__48">listOfOtherSchoolsHasPic</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id id="__20">view1</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome id="__23">back</from-outcome>
+        <to-activity-id id="__22">schoolManage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id id="__28">registeredStudents</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome id="__31">back</from-outcome>
+        <to-activity-id id="__29">schoolManage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__35">
+      <from-activity-id id="__36">ungraguatedStudents</from-activity-id>
+      <control-flow-case id="__38">
+        <from-outcome id="__39">back</from-outcome>
+        <to-activity-id id="__37">schoolManage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__43">
+      <from-activity-id id="__44">showList</from-activity-id>
+      <control-flow-case id="__45">
+        <from-outcome id="__47">back</from-outcome>
+        <to-activity-id id="__46">schoolManage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">listOfOtherSchoolsHasPic</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__55">exchangePic</from-outcome>
+        <to-activity-id id="__54">getNoPicsStudents</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__57">
+        <from-outcome id="__58">back</from-outcome>
+        <to-activity-id id="__56">withoutPicsSchools</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__60">
+      <from-activity-id id="__61">getNoPicsStudents</from-activity-id>
+      <control-flow-case id="__64">
+        <from-outcome id="__63">getNoPicsStudents</from-outcome>
+        <to-activity-id id="__62">withoutPicsSchools</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

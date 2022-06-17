@@ -1,0 +1,104 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" inlineStyle="font-size:medium;"
+                         startWidth="200">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox id="pb2" text="اطلاعات دانش آموز"
+                   icon="/Images/16 x 16 Colorful/application-form-icon.png"
+                   background="light" ramp="highlight">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" rows="7" maxColumns="2"
+                            inlineStyle="font-size:medium; ">
+          <f:facet name="footer"/>
+          <af:inputText label="نام *" id="it1"
+                        binding="#{pageFlowScope.registerBean.stNameField}"
+                        required="false" inlineStyle="font-size:medium;"/>
+          <af:inputText label="نام خانوادگی *" id="it2"
+                        binding="#{pageFlowScope.registerBean.stFamilyField}"
+                        required="false"/>
+          <af:inputText label="کد ملی*" id="it3"
+                        binding="#{pageFlowScope.registerBean.stIdentityCodeField}"
+                        maximumLength="10"/>
+          <af:inputText label="نام پدر" id="it4"
+                        binding="#{pageFlowScope.registerBean.stFatherFiled}"/>
+          <af:inputText label="آدرس" id="it5"
+                        binding="#{pageFlowScope.registerBean.stAddressFiled}"/>
+          <af:inputText label="موبایل*" id="it6"
+                        binding="#{pageFlowScope.registerBean.stMobileField}"/>
+          <af:inputText label="تلفن" id="it7"
+                        binding="#{pageFlowScope.registerBean.stPhonFiled}"/>
+          <af:inputText label="کد دانش آموزی *" id="it8" partialTriggers="cil3"
+                        binding="#{pageFlowScope.registerBean.stCodefield}"
+                        required="false"/>
+          <af:selectOneChoice value="#{bindings.allOrganization.inputValue}"
+                              label="نام شعبه"
+                              required="#{bindings.allOrganization.hints.mandatory}"
+                              shortDesc="#{bindings.allOrganization.hints.tooltip}"
+                              id="soc1"
+                              valueChangeListener="#{pageFlowScope.registerBean.changeOrg}">
+            <f:selectItems value="#{bindings.allOrganization.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.allStudentStatus.inputValue}"
+                              label="وضعیت دانش آموز"
+                              required="#{bindings.allStudentStatus.hints.mandatory}"
+                              shortDesc="#{bindings.allStudentStatus.hints.tooltip}"
+                              id="soc2"
+                              valueChangeListener="#{pageFlowScope.registerBean.changeStStatus}">
+            <f:selectItems value="#{bindings.allStudentStatus.items}" id="si2"/>
+          </af:selectOneChoice>
+          <af:inputText label="شماره شناسنامه" id="it9"
+                        binding="#{pageFlowScope.registerBean.stIdNum}"/>
+          <af:inputDate label="تاریخ تولد" id="id1"
+                        binding="#{pageFlowScope.registerBean.stDateOfBirthField}"/>
+          <af:inputText label="کد بایگانی" id="it12"
+                        binding="#{pageFlowScope.registerBean.stArchiveCode}"/>
+          <af:inputText label="توضیحات" id="it11"
+                        binding="#{pageFlowScope.registerBean.stDescriptionField}"/>
+          <af:inputText label="سریال شناسنامه" id="it10"
+                        binding="#{pageFlowScope.registerBean.stIdSerialField}"/>
+          <af:selectOneChoice value="#{bindings.allIdentiferChars.inputValue}"
+                              label="کاراکتر شناسنامه"
+                              required="#{bindings.allIdentiferChars.hints.mandatory}"
+                              shortDesc="#{bindings.allIdentiferChars.hints.tooltip}"
+                              id="soc3"
+                              valueChangeListener="#{pageFlowScope.registerBean.changeIdChar}"
+                              autoSubmit="true">
+            <f:selectItems value="#{bindings.allIdentiferChars.items}"
+                           id="si3"/>
+          </af:selectOneChoice>
+          <af:inputText label="شماره کاراکتر" id="it13"
+                        binding="#{pageFlowScope.registerBean.stCharNumber}"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi2">
+            <af:commandImageLink text=" ایجاد " id="cil1"
+                                 action="#{pageFlowScope.registerBean.createStudent}"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/add.png"/>
+            <af:spacer width="10" height="30" id="s1"/>
+            <af:commandImageLink text="ليست دانش آموزان" id="cil2"
+                                 icon="/Images/16 x 16 Colorful/back.png"
+                                 inlineStyle="font-size:medium;"
+                                 action="cancel"/>
+            <af:spacer width="10" height="30" id="s2"/>
+            <af:commandImageLink text="توليد كد دانش آموزي" id="cil3"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/accept.png"
+                                 actionListener="#{pageFlowScope.registerBean.generateSt_code}"
+                                 partialSubmit="true"/>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

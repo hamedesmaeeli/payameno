@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:region value="#{bindings.dynamicRegion1.regionModel}" id="r1"/>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="امروز" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text="امروز" id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:inputText label="موجودی صندوق" id="it1" readOnly="true"
+                            value="#{pageFlowScope.accountingBean.cashCurrentAmount}"/>
+              <af:inputText label="کل دریافتی" id="it3" readOnly="true"/>
+              <af:inputText label="تعداد  چک ها" id="it2" readOnly="true"/>
+              <af:inputText label="جمع چک ها" id="it5" readOnly="true"/>
+              <af:inputText label="جمع فاکتور ها" id="it4" readOnly="true"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="حسابداری" id="sdi2">
+            <af:panelFormLayout id="pfl2">
+              <f:facet name="footer"/>
+              <af:commandImageLink actionListener="#{bindings.updateSalaryForOnlineCourse.execute}"
+                                   text="اعمال شهریه آنلاین"
+                                   disabled="#{!bindings.updateSalaryForOnlineCourse.enabled}"
+                                   id="cil6"/>
+              <af:commandImageLink text="صندوق" id="cil1"
+                                   actionListener="#{pageFlowScope.accountingBean.changeAccountingToCash}"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandImageLink text="حساب های بانکی" id="cil2"
+                                   actionListener="#{pageFlowScope.accountingBean.changetoaccountingReigen}"/>
+              <af:spacer width="10" height="10" id="s2"/>
+              <af:commandImageLink text="دفتر روزنامه" id="cil3"/>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:commandImageLink text="چک ها" id="cil4"
+                                   actionListener="#{pageFlowScope.accountingBean.changeAcoutingToCheck}"/>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:commandImageLink text="ليست بدهكاران ترم" id="cil5"
+                                   actionListener="#{pageFlowScope.accountingBean.changeAcoutingToDebitrosInCurrentTerm}"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

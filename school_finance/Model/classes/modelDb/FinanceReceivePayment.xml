@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinanceReceivePayment"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="school_new.finance_receive_payment"
+  AliasName="FinanceReceivePayment"
+  BindingStyle="JDBC"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.finance_receive_payment"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EventDate"
+    ColumnName="event_date"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="DATETIME"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Amount"
+    Precision="20"
+    Scale="0"
+    ColumnName="amount"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AccountBankId"
+    Precision="20"
+    Scale="0"
+    ColumnName="account_bank_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AccountPersonId"
+    Precision="20"
+    Scale="0"
+    ColumnName="account_person_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReceivePayTypeId"
+    Precision="20"
+    Scale="0"
+    ColumnName="receive_pay_type_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="255"
+    ColumnName="description"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Code"
+    Precision="255"
+    ColumnName="code"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="school_new.finance_receive_payment">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="Primary1"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.FinanceReceivePayment.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FinanceReceivePaymentIbfk1">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="finance_receive_payment_ibfk_1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.FinanceReceivePayment.AccountBankId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FinanceReceivePaymentIbfk3">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="finance_receive_payment_ibfk_3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.FinanceReceivePayment.ReceivePayTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FinanceReceivePaymentIbfk4">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="finance_receive_payment_ibfk_4"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.FinanceReceivePayment.AccountPersonId"/>
+    </AttrArray>
+  </Key>
+</Entity>

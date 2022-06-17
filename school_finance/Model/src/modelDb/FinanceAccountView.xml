@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinanceAccountView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="FinanceAccount.id, 
+       FinanceAccount.name, 
+       FinanceAccount.phone, 
+       FinanceAccount.person_name, 
+       FinanceAccount.person_mobile, 
+       FinanceAccount.fax, 
+       FinanceAccount.create_date, 
+       FinanceAccount.address, 
+       FinanceAccount.fisrt_payable"
+  FromList="school_new.finance_account FinanceAccount"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="FinanceAccount"
+    Entity="modelDb.FinanceAccount"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="FinanceAccount"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="Name"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="FinanceAccount"
+    AliasName="name"/>
+  <ViewAttribute
+    Name="Phone"
+    PrecisionRule="true"
+    EntityAttrName="Phone"
+    EntityUsage="FinanceAccount"
+    AliasName="phone"/>
+  <ViewAttribute
+    Name="PersonName"
+    PrecisionRule="true"
+    EntityAttrName="PersonName"
+    EntityUsage="FinanceAccount"
+    AliasName="person_name"/>
+  <ViewAttribute
+    Name="PersonMobile"
+    PrecisionRule="true"
+    EntityAttrName="PersonMobile"
+    EntityUsage="FinanceAccount"
+    AliasName="person_mobile"/>
+  <ViewAttribute
+    Name="Fax"
+    PrecisionRule="true"
+    EntityAttrName="Fax"
+    EntityUsage="FinanceAccount"
+    AliasName="fax"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="FinanceAccount"
+    AliasName="create_date"/>
+  <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="FinanceAccount"
+    AliasName="address"/>
+  <ViewAttribute
+    Name="FisrtPayable"
+    PrecisionRule="true"
+    EntityAttrName="FisrtPayable"
+    EntityUsage="FinanceAccount"
+    AliasName="fisrt_payable"/>
+</ViewObject>

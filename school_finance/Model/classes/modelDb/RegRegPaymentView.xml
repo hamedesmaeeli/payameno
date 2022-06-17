@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegRegPaymentView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegRegPayment.id, 
+       RegRegPayment.create_date, 
+       RegRegPayment.reg_id, 
+       RegRegPayment.finance_id, 
+       RegRegPayment.next_payment"
+  FromList="school_new.reg_reg_payment RegRegPayment"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegRegPayment"
+    Entity="modelDb.RegRegPayment"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="RegRegPayment"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="RegRegPayment"
+    AliasName="create_date"/>
+  <ViewAttribute
+    Name="RegId"
+    PrecisionRule="true"
+    EntityAttrName="RegId"
+    EntityUsage="RegRegPayment"
+    AliasName="reg_id"/>
+  <ViewAttribute
+    Name="FinanceId"
+    PrecisionRule="true"
+    EntityAttrName="FinanceId"
+    EntityUsage="RegRegPayment"
+    AliasName="finance_id"/>
+  <ViewAttribute
+    Name="NextPayment"
+    PrecisionRule="true"
+    EntityAttrName="NextPayment"
+    EntityUsage="RegRegPayment"
+    AliasName="next_payment"/>
+</ViewObject>

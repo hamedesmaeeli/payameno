@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="فرم ايجاد دانش آموز" id="pb2" type="stretch"
+                   inlineStyle="font-size:medium;">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" rows="3" labelAlignment="top"
+                            inlineStyle="font-size:medium;">
+          <f:facet name="footer">
+            <af:group id="g1">
+              <af:panelGroupLayout id="pgl2">
+                <af:spacer width="10" height="30" id="s1"/>
+                <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                     halign="center">
+                  <af:commandButton text="ايجاد دانش آموز" id="cb1"
+                                    icon="/Images/16 x 16 Colorful/add.png"
+                                    action="#{pageFlowScope.schoolBean.registerCreateStudent}"/>
+                  <af:commandButton text="انصراف" id="cb2"
+                                    icon="/Images/16 x 16 Colorful/back.png"
+                                    action="back"/>
+                </af:panelGroupLayout>
+              </af:panelGroupLayout>
+            </af:group>
+          </f:facet>
+          <af:inputText label="كد دانش آموزي" id="it1"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.studentCode}"
+                        inlineStyle="font-size:medium;" showRequired="true"/>
+          <af:inputText label="نام" id="it2"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.firstName}"
+                        showRequired="true"/>
+          <af:inputText label="نام خانوادگي" id="it3"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.lastName}"
+                        showRequired="true"/>
+          <af:inputText label="كد ملي" id="it4"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.nactionalCode}"
+                        showRequired="true"/>
+          <af:inputText label="نام پدر" id="it5"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.fatherName}"
+                        showRequired="true"/>
+          <af:inputText label="شماره شناسنامه" id="it6"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.IDno}"
+                        showRequired="true"/>
+          <af:inputText label="محل صدور  " id="it7"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.issuePlace}"
+                        showRequired="true"/>
+          <af:inputText label="تاريخ تولد" id="it8"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.birthDate}"
+                        shortDesc="تاريخ را به صورت عدد مثل 631012 وارد كنيد"
+                        showRequired="true"/>
+          <af:inputText label="محل تولد" id="it9"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.birthPalce}"
+                        showRequired="true"/>
+          <af:selectOneChoice label="جنسيت"
+                              value="#{pageFlowScope.schoolBean.createDanaStudent.sex}"
+                              id="soc1" showRequired="true"
+                              requiredMessageDetail="يكي از گزينه هاي مذكر يا مونث را اتخاب نماييد">
+            <af:selectItem label="مذكر" value="1" id="si2"  />
+            <af:selectItem label="مونث" value="2" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputText label="تلفن" id="it11"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.telephone}"
+                        showRequired="true"/>
+          <af:inputText label="سري شناسنامه" id="it12"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.seriId}"
+                        showRequired="true"
+                        shortDesc="الف =1، ب=2 ... ،د=10 ، المثني =42"/>
+          <af:inputText label="سريال شناسنامه" id="it13"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.serialId}"
+                        shortDesc="6 رقمي" showRequired="true"/>
+          <af:inputText label="رديف شناسنامه" id="it14"
+                        value="#{pageFlowScope.schoolBean.createDanaStudent.radifId}"
+                        showRequired="true" changedDesc="2 رقم" rows="1"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+  
+</jsp:root>

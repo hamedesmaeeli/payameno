@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="School" Package="registration.data"
+          BeanClass="registration.data.School" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="dbService" Type="java.lang.String"/>
+  <Attribute Name="dbName" Type="java.lang.String"/>
+  <Attribute Name="host" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.School"
+                     BeanClass="registration.data.School" id="School"/>
+</JavaBean>

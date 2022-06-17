@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelDashboard id="pd1" columns="2" rowHeight="200px"
+                     partialTriggers="cb8">
+    <af:panelBox text="مدیریت ترم ها" id="pb1">
+      <f:facet name="toolbar">
+        <af:toolbar id="t4">
+          <af:commandToolbarButton text="افزودن ترم" id="ctb4"
+                                   partialSubmit="true">
+            <af:showPopupBehavior popupId="pc1:p1" triggerType="action"/>
+            <f:facet name="popup"/>
+          </af:commandToolbarButton>
+          <af:commandToolbarButton text="حذف ترم" id="ctb5"
+                                   actionListener="#{pageFlowScope.configPageBean.deleteTerm}"
+                                   partialSubmit="true"/>
+          <af:commandToolbarButton text="ویرایش ترم" id="ctb6"
+                                   actionListener="#{pageFlowScope.configPageBean.setCurrentTerm}">
+            <af:showPopupBehavior popupId="pc1:p2" triggerType="click"/>
+          </af:commandToolbarButton>
+          <af:commandToolbarButton text="پارامتر های شهریه" id="ctb7"
+                                   actionListener="#{pageFlowScope.configPageBean.editSalaryParam}">
+            <af:showPopupBehavior popupId="pc1:p3" triggerType="click"/>
+          </af:commandToolbarButton>
+        </af:toolbar>
+      </f:facet>
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allTerms.collectionModel}" var="row"
+                  rows="#{bindings.allTerms.rangeSize}"
+                  emptyText="#{bindings.allTerms.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allTerms.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allTerms.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allTerms.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t3" partialTriggers=":::ctb5">
+          <af:column sortProperty="id" sortable="false" headerText="شناسه"
+                     id="c3">
+            <af:outputText value="#{row.id}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="نام ترم" id="c4">
+            <af:outputText value="#{row.name}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="fromDate" sortable="false"
+                     headerText="تاریخ شروع"
+                     id="c6">
+            <af:outputText value="#{row.fromDate}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.allTerms.hints.fromDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="toDate" sortable="false"
+                     headerText="تاریخ پایان"
+                     id="c5">
+            <af:outputText value="#{row.toDate}" id="ot6">
+              <af:convertDateTime pattern="#{bindings.allTerms.hints.toDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="isCurrent" sortable="false"
+                     headerText="جاری" id="c7">
+            <af:selectBooleanCheckbox id="sbc1"
+                                      value="#{row.bindings.isCurrent.inputValue}"
+                                      readOnly="true"/>
+          </af:column>
+          <af:column sortProperty="year" sortable="false"
+                     headerText="سال" id="c16">
+            <af:outputText value="#{row.year}" id="ot15"/>
+          </af:column>
+          <af:column sortProperty="dore" sortable="false"
+                     headerText="دوره"
+                     id="c17">
+            <af:outputText value="#{row.dore}" id="ot16"/>
+          </af:column>
+        </af:table>
+        <af:popup id="p1">
+          <af:panelWindow id="pw1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer">
+                <af:panelGroupLayout id="pgl1" layout="horizontal"
+                                     halign="center">
+                  <af:commandButton text="ایجاد" id="cb1"
+                                    action="#{pageFlowScope.configPageBean.createTerm}"
+                                    partialSubmit="false"/>
+                  <af:commandButton text="انصراف" id="cb2"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <af:inputText label="نام ترم" id="it1"
+                            binding="#{pageFlowScope.configPageBean.termNameField}"/>
+              <af:inputDate label="تاریخ شروع" id="id1"
+                            binding="#{pageFlowScope.configPageBean.termStartDateField}"/>
+              <af:inputDate label="تاریخ پایان" id="id2"
+                            binding="#{pageFlowScope.configPageBean.termEndDate}"/>
+              <af:selectBooleanCheckbox label="ترم جاری" id="sbc2"
+                                        binding="#{pageFlowScope.configPageBean.termIsCurrentField}"/>
+              <af:inputText label="كد سال" id="it12"
+                            binding="#{pageFlowScope.configPageBean.termYearCode}">
+                <af:convertNumber type="number" integerOnly="true"
+                                  maxIntegerDigits="2"/>
+              </af:inputText>
+              <af:inputText label="كد دوره" id="it11"
+                            binding="#{pageFlowScope.configPageBean.termDoreCode}">
+                <af:convertNumber type="number" integerOnly="true"
+                                  maxIntegerDigits="2"/>
+              </af:inputText>
+            </af:panelFormLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="p2">
+          <af:panelWindow id="pw2" title="فرم ویرایش ترم">
+            <af:panelFormLayout id="pfl2">
+              <f:facet name="footer">
+                <af:panelGroupLayout id="pgl2" layout="horizontal"
+                                     halign="center">
+                  <af:commandButton text="ویرایش" id="cb3"
+                                    actionListener="#{pageFlowScope.configPageBean.editTerm}"/>
+                  <af:commandButton text="انصراف" id="cb4"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <af:inputText label="شناسه ترم" id="it2"
+                            value="#{pageFlowScope.configPageBean.termEditId}"
+                            readOnly="true"/>
+              <af:inputText label="نام ترم" id="it3"
+                            value="#{pageFlowScope.configPageBean.termEditTermName}"/>
+              <af:inputDate label="تاریخ شروع" id="it4"
+                            value="#{pageFlowScope.configPageBean.termEditStartDate}"/>
+              <af:inputDate label="تاریخ پایان" id="it5"
+                            value="#{pageFlowScope.configPageBean.termEditEndDate}"/>
+              <af:selectBooleanCheckbox
+                                        label="ترم جاری" id="sbc3"
+                                        selected="#{pageFlowScope.configPageBean.termEditIsCurrent}"/>
+              <af:inputText label="كد سال" id="it13"
+                            value="#{pageFlowScope.configPageBean.termEditYearCode}"/>
+              <af:inputText label="كد دوره" id="it14"
+                            value="#{pageFlowScope.configPageBean.termEditDoreCode}"/>
+            </af:panelFormLayout>
+          </af:panelWindow>
+        </af:popup>
+        <af:popup id="p3">
+          <af:panelWindow id="pw3" title="ویرایش پارمتر های شهریه">
+            <af:panelFormLayout id="pfl3">
+              <f:facet name="footer">
+                <af:panelGroupLayout id="pgl3" layout="horizontal"
+                                     halign="center">
+                  <af:commandButton text="ویرایش" id="cb5"
+                                    actionListener="#{pageFlowScope.configPageBean.editTermSalaryaram}"/>
+                  <af:commandButton text="انصراف" id="cb6"/>
+                </af:panelGroupLayout>
+              </f:facet>
+              <af:inputText label="ترم انتخابی" id="it6" readOnly="true"
+                            value="#{pageFlowScope.configPageBean.termSalaryEditSalaryParam.term.name}"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:separator id="s2"/>
+              <af:selectOneChoice value="#{bindings.allLevels1.inputValue}"
+                                  label="مقطع تحصیلی"
+                                  required="#{bindings.allLevels1.hints.mandatory}"
+                                  shortDesc="#{bindings.allLevels1.hints.tooltip}"
+                                  id="soc1"
+                                  valueChangeListener="#{pageFlowScope.configPageBean.chageLevelSalaryParam}"
+                                  autoSubmit="true">
+                <f:selectItems value="#{bindings.allLevels1.items}" id="si1"/>
+              </af:selectOneChoice>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:inputText label="شهریه ثابت" id="it7"
+                            value="#{pageFlowScope.configPageBean.termSalaryEditSalaryParam.fixSalary}"
+                            binding="#{pageFlowScope.configPageBean.fixSalaryField}"/>
+              <af:inputText label="شهریه ساعت آموزشي" id="it8"
+                            value="#{pageFlowScope.configPageBean.termSalaryEditSalaryParam.actionSalary}"
+                            binding="#{pageFlowScope.configPageBean.actionSalaryField}"/>
+              <af:inputText label="شهریه واحد" id="it9"
+                            value="#{pageFlowScope.configPageBean.termSalaryEditSalaryParam.theorySalary}"
+                            binding="#{pageFlowScope.configPageBean.thoerySalaryField}"/>
+            </af:panelFormLayout>
+          </af:panelWindow>
+        </af:popup>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="مدیریت شعب" id="pb2">
+      <f:facet name="toolbar">
+        <af:toolbar id="t2">
+          <af:commandToolbarButton text="افزودن شعبه" id="ctb1"/>
+          <af:commandToolbarButton text="حذف شعبه" id="ctb2"/>
+          <af:commandToolbarButton text="ویرایش شعبه" id="ctb3"
+                                   actionListener="#{pageFlowScope.configPageBean.editOrganizationPop}">
+            <af:showPopupBehavior triggerType="click" popupId="pc2:p4"/>
+          </af:commandToolbarButton>
+        </af:toolbar>
+      </f:facet>
+      <af:panelCollection id="pc2">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allOrganization.collectionModel}" var="row"
+                  rows="#{bindings.allOrganization.rangeSize}"
+                  emptyText="#{bindings.allOrganization.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allOrganization.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allOrganization.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allOrganization.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="id" sortable="false" headerText="شناسه"
+                     id="c1">
+            <af:outputText value="#{row.id}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false" headerText="نام"
+                     id="c2">
+            <af:outputText value="#{row.name}" id="ot2"/>
+          </af:column>
+        </af:table>
+        <af:popup id="p4">
+          <af:panelWindow id="pw4">
+            <af:panelFormLayout id="pfl4">
+              <f:facet name="footer">
+                <af:group id="g1">
+                  <af:panelGroupLayout id="pgl5">
+                    <af:commandButton text="ویرایش" id="cb9"
+                                      action="#{pageFlowScope.configPageBean.editOrganization}"/>
+                    <af:commandButton text="انصراف" id="cb10"/>
+                  </af:panelGroupLayout>
+                </af:group>
+              </f:facet>
+              <af:inputText label="نام فیلد" id="it10"
+                            value="#{pageFlowScope.configPageBean.editOrg.name}"/>
+            </af:panelFormLayout>
+          </af:panelWindow>
+        </af:popup>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="مدیریت حساب های بانکی" id="pb3">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc3">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allAccountBanks.collectionModel}" var="row"
+                  rows="#{bindings.allAccountBanks.rangeSize}"
+                  emptyText="#{bindings.allAccountBanks.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allAccountBanks.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allAccountBanks.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allAccountBanks.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t5">
+          <af:column sortProperty="id" sortable="false"
+                     headerText="#{bindings.allAccountBanks.hints.id.label}"
+                     id="c9">
+            <af:outputText value="#{row.id}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="#{bindings.allAccountBanks.hints.name.label}"
+                     id="c8">
+            <af:outputText value="#{row.name}" id="ot10"/>
+          </af:column>
+          <af:column sortProperty="firstAmount" sortable="false"
+                     headerText="#{bindings.allAccountBanks.hints.firstAmount.label}"
+                     id="c11">
+            <af:outputText value="#{row.firstAmount}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="#{bindings.allAccountBanks.hints.bank.name.label}"
+                     id="c10">
+            <af:outputText value="#{row.bank.bindings.name.inputValue}"
+                           id="ot9"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="مدیریت رشته ها" id="pb4">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc4">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allFields.collectionModel}" var="row"
+                  rows="#{bindings.allFields.rangeSize}"
+                  emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allFields.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t6">
+          <af:column sortProperty="id" sortable="false"
+                     headerText="#{bindings.allFields.hints.id.label}" id="c12">
+            <af:outputText value="#{row.id}" id="ot11"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="#{bindings.allFields.hints.name.label}"
+                     id="c13">
+            <af:outputText value="#{row.name}" id="ot12"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="مدیریت مقاطع" id="pb5">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc5">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allLevels.collectionModel}" var="row"
+                  rows="#{bindings.allLevels.rangeSize}"
+                  emptyText="#{bindings.allLevels.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allLevels.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allLevels.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allLevels.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t7">
+          <af:column sortProperty="id" sortable="false"
+                     headerText="#{bindings.allLevels.hints.id.label}" id="c15">
+            <af:outputText value="#{row.id}" id="ot14"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="#{bindings.allLevels.hints.name.label}"
+                     id="c14">
+            <af:outputText value="#{row.name}" id="ot13"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="پشتبانی و بازیابی" id="pb6">
+      <f:facet name="toolbar"/>
+      <af:panelGroupLayout id="pgl4">
+        <af:commandButton text="پشتیبانی" id="cb7">
+          <af:fileDownloadActionListener contentType="application/sql"
+                                         filename="#{pageFlowScope.configPageBean.backupFileName}"
+                                         method="#{pageFlowScope.configPageBean.backupFileDelivery}"/>
+        </af:commandButton>
+        <af:commandButton text="بازیابی" id="cb8"
+                          action="#{pageFlowScope.configPageBean.restoreDatabase}"
+                          partialSubmit="true"/>
+      </af:panelGroupLayout>
+      <af:inputFile label="انتخاب فایل بازیابی" id="if1"
+                    value="#{pageFlowScope.configPageBean.restoreUploadedFile}"/>
+    </af:panelBox>
+  </af:panelDashboard>
+</jsp:root>

@@ -1,0 +1,20 @@
+SELECT
+	
+	registration_view.field_name, 
+	registration_view.`name`, 
+	registration_view.famili, 
+	registration_view.national_code, 
+	registration_view.mobile, 
+	registration_view.archive_code, 
+	registration_view.father_name
+FROM
+	registration_view
+	LEFT JOIN
+	reg_student_image
+	ON 
+		reg_student_image.st_code = registration_view.student_code
+WHERE
+	registration_view.reg_term_is_current = 1 AND
+	reg_student_image.st_image IS NULL
+ORDER BY
+	registration_view.famili  

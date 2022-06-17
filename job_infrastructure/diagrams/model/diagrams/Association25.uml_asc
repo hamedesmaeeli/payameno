@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Association xmi:uuid='urn:uuid:b839ca36-9395-4067-af1b-a5ba2bc2be2e'
+   isAbstract='false'
+   isDerived='false'
+   isLeaf='false'
+   name='Association25'
+   visibility='public'>
+  <memberEnd href='urn:uuid:43c1c478-757c-4875-abd9-70242cb611cb'/>
+  <memberEnd href='urn:uuid:bead5eab-d676-4136-8295-893aa7c529eb'/>
+  <navigableOwnedEnd href='urn:uuid:bead5eab-d676-4136-8295-893aa7c529eb'/>
+  <ownedEnd xmi:uuid='urn:uuid:43c1c478-757c-4875-abd9-70242cb611cb'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='endدریافتنی'
+    aggregation='none'>
+   <association href='urn:uuid:b839ca36-9395-4067-af1b-a5ba2bc2be2e'/>
+   <type href='urn:uuid:595f7cbf-8330-44ba-964c-7c8fea094b32'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:d566c51d-2f62-4060-af0f-d324fd6ace84'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:07461407-1157-41c5-9909-d8a099703dfc'
+     value='1'
+     visibility='public'/>
+  </ownedEnd>
+  <ownedEnd xmi:uuid='urn:uuid:bead5eab-d676-4136-8295-893aa7c529eb'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='endمبایعه نامه دریافتنی'
+    aggregation='none'>
+   <association href='urn:uuid:b839ca36-9395-4067-af1b-a5ba2bc2be2e'/>
+   <type href='urn:uuid:ea447c48-c4fa-42e9-a1b7-d5b0c6415ff8'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:7e92537f-4681-402d-8631-95f88bfc1b6b'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:11340630-2353-4ae4-a764-3f7f43cce20e'
+     value='1'
+     visibility='public'/>
+  </ownedEnd>
+ </uml:Association>
+</xmi:XMI>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="PaymentStep" Package="registration.data"
+          BeanClass="registration.data.PaymentStep" isJavaBased="true">
+  <Attribute Name="createDate" Type="java.util.Date"/>
+  <Attribute Name="nextPayment" Type="java.util.Date"/>
+  <Attribute Name="paymentStepId" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="registration" IsCollection="false"
+                     BeanClass="registration.data.Registration"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="receivementPaymentFinance" IsCollection="false"
+                     BeanClass="finance.data.RecievementPayment"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.PaymentStep"
+                     BeanClass="registration.data.PaymentStep"
+                     id="PaymentStep"/>
+</JavaBean>

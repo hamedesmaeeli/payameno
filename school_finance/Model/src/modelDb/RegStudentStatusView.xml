@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegStudentStatusView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegStudentStatus.id, 
+       RegStudentStatus.name"
+  FromList="school_new.reg_student_status RegStudentStatus"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegStudentStatus"
+    Entity="modelDb.RegStudentStatus"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="RegStudentStatus"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="Name"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="RegStudentStatus"
+    AliasName="name"/>
+</ViewObject>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="studentsListPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="searchStudents.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.Student"
+                    id="searchStudentsIterator"/>
+    <searchRegion Binds="searchStudentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StudentQuery"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allStudentStatus" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.StudentStatus"
+                      id="allStudentStatusIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allOrganization" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.Organization"
+                      id="allOrganizationIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allFields" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Field"
+                      id="allFieldsIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allLevels" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Level"
+                      id="allLevelsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator" id="searchStudents"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="searchStudents" IsViewObjectMethod="false"
+                  DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.searchStudents_searchStudents_searchStudents_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.isRegInTermFilter}"
+                 NDType="java.lang.Boolean"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.registerBean.field}"
+                 NDType="registration.data.Field"/>
+      <NamedData NDName="p2" NDValue="#{pageFlowScope.registerBean.level}"
+                 NDType="registration.data.Level"/>
+      <NamedData NDName="p3"
+                 NDValue="#{pageFlowScope.registerBean.organization}"
+                 NDType="registration.data.Organization"/>
+      <NamedData NDName="p4"
+                 NDValue="#{pageFlowScope.registerBean.studentStatus}"
+                 NDType="registration.data.StudentStatus"/>
+    </methodAction>
+    <tree IterBinding="searchStudentsIterator" id="Student">
+      <nodeDefinition DefName="registration.data.Student" Name="Student0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="nationalId"/>
+          <Item Value="studentCode"/>
+          <Item Value="fatherName"/>
+          <Item Value="dateOfBirth"/>
+          <Item Value="description"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="archiveCode"/>
+          <Item Value="diplomMadrak"/>
+          <Item Value="pishMadrak"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="studentStatus"/>
+          <Item Value="organization"/>
+          <Item Value="lastField"/>
+          <Item Value="lastLevel"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.StudentStatus" Name="Student1">
+        <AttrNames>
+          <Item Value="statusId"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Organization" Name="Student2">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Field" Name="Student3">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Level" Name="Student4">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="allStudentStatusIterator" ListOperMode="navigation"
+          ListIter="allStudentStatusIterator" id="allStudentStatus"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allOrganizationIterator" ListOperMode="navigation"
+          ListIter="allOrganizationIterator" id="allOrganization"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allFieldsIterator" ListOperMode="navigation"
+          ListIter="allFieldsIterator" id="allFields" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <list IterBinding="allLevelsIterator" ListOperMode="navigation"
+          ListIter="allLevelsIterator" id="allLevels" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

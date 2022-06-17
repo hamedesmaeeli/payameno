@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px" topHeight="70px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.Student.collectionModel}" var="row"
+                  rows="#{bindings.Student.rangeSize}"
+                  emptyText="#{bindings.Student.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Student.rangeSize}"
+                  rowBandingInterval="0" id="t1">
+          <af:column sortProperty="name" sortable="false"
+                     headerText="#{bindings.Student.hints.name.label}" id="c4">
+            <af:outputText value="#{row.name}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="family" sortable="false"
+                     headerText="#{bindings.Student.hints.family.label}"
+                     id="c5">
+            <af:outputText value="#{row.family}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="studentCode" sortable="false"
+                     headerText="#{bindings.Student.hints.studentCode.label}"
+                     id="c1">
+            <af:outputText value="#{row.studentCode}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="fatherName" sortable="false"
+                     headerText="نام پدر"
+                     id="c2">
+            <af:outputText value="#{row.fatherName}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="mobile" sortable="false"
+                     headerText="موبايل"
+                     id="c3">
+            <af:outputText value="#{row.mobile}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="وضعيت" id="c6">
+            <af:outputText value="#{row.studentStatus.bindings.name.inputValue}"
+                           id="ot7"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="اقماري"
+                     id="c7">
+            <af:outputText value="#{row.organization.bindings.name.inputValue}"
+                           id="ot8"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="ليست مدرسه ها" id="gil1"
+                                   icon="/Images/16 x 16 Colorful/back.png"
+                                   action="back"/>
+              <af:spacer width="10" height="30" id="s1"/>
+              <af:commandImageLink text="پرينت ليست" id="gil2"
+                                   icon="/Images/16 x 16 Colorful/print.png">
+                <af:exportCollectionActionListener exportedId="pc1:t1"
+                                                   type="excelHTML"
+                                                   filename="noPicStudent.xslx"
+                                                   title="ليست دانش آموزان بدون عكس"/>
+              </af:commandImageLink>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl2" rows="1">
+          <f:facet name="footer"/>
+          <af:inputText label="نام مدرسه" id="it1"
+                        value="#{pageFlowScope.schoolBean.currentSchool.description}"/>
+          <af:outputText value="دانش آموزان غير فارغ التحصيل"
+                         id="ot5" inlineStyle="font-weight:bold;"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

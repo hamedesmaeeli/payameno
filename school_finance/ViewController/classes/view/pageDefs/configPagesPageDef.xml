@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="configPagesPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allOrganization" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.data.Organization"
+                      id="allOrganizationIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allTerms" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Term" id="allTermsIterator"
+                      Refresh="ifNeeded"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator"
+                      Binds="allAccountBanks" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.AccountBank"
+                      id="allAccountBanksIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allFields" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Field"
+                      id="allFieldsIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allLevels" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Level"
+                      id="allLevelsIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="allOrganizationIterator" id="allOrganization">
+      <nodeDefinition DefName="registration.data.Organization"
+                      Name="allOrganization0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allTermsIterator" id="allTerms">
+      <nodeDefinition DefName="registration.data.Term" Name="allTerms0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="fromDate"/>
+          <Item Value="toDate"/>
+          <Item Value="isCurrent"/>
+          <Item Value="year"/>
+          <Item Value="dore"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allAccountBanksIterator" id="allAccountBanks">
+      <nodeDefinition DefName="finance.data.AccountBank"
+                      Name="allAccountBanks0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="firstAmount"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="bank"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Bank" Name="allAccountBanks1">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allFieldsIterator" id="allFields">
+      <nodeDefinition DefName="registration.data.Field" Name="allFields0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="allTermsIterator" id="Execute"
+            InstanceName="registration.process.RegistrationManager.allTerms"
+            DataControl="schManager" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <tree IterBinding="allLevelsIterator" id="allLevels">
+      <nodeDefinition DefName="registration.data.Level" Name="allLevels0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="allLevelsIterator" ListOperMode="navigation"
+          ListIter="allLevelsIterator" id="allLevels1" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

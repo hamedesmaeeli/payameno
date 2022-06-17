@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="cashAccounting">
+    <default-activity id="__1">cashAccountingView</default-activity>
+    <managed-bean id="__5">
+      <managed-bean-name id="__4">cashAccountingBean</managed-bean-name>
+      <managed-bean-class id="__3">view.CashAccountingBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="cashAccountingView">
+      <page>/cashAccountingView.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

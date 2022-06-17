@@ -1,0 +1,323 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200" topHeight="50">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="ثبت نام " id="pb2" background="light" ramp="highlight">
+        <f:facet name="toolbar"/>
+        
+        <af:panelFormLayout id="pfl2" inlineStyle="height:262px;" rows="5"
+                            labelAlignment="top" maxColumns="3">
+          <f:facet name="footer"/>
+          
+          <af:inputText label="نام رشته" id="it18"
+                        value="#{pageFlowScope.registerBean.newRegistration.field.name}"
+                        binding="#{pageFlowScope.registerBean.newRegfieldName}"/>
+          <af:selectOneChoice value="#{bindings.allFields.inputValue}"
+                              required="#{bindings.allFields.hints.mandatory}"
+                              shortDesc="#{bindings.allFields.hints.tooltip}"
+                              id="soc1"
+                              valueChangeListener="#{pageFlowScope.registerBean.changeRegisterField}"
+                              autoSubmit="true" mode="compact" disabled="true">
+            <f:selectItems value="#{bindings.allFields.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:commandButton text="انتخاب رشته" id="cb1"
+                            icon="/Images/16 x 16 Colorful/accept.png">
+            <af:showPopupBehavior popupId="p1" triggerType="action"/>
+          </af:commandButton>
+          <af:inputText label="نام مقطع" id="it17"
+                        value="#{pageFlowScope.registerBean.newRegistration.level.name}"
+                        binding="#{pageFlowScope.registerBean.newRegistrationNameField}"/>
+          <af:selectOneChoice value="#{bindings.allLevels.inputValue}"
+                              required="#{bindings.allLevels.hints.mandatory}"
+                              shortDesc="#{bindings.allLevels.hints.tooltip}"
+                              id="soc2"
+                              valueChangeListener="#{pageFlowScope.registerBean.changeRegisterLevel}"
+                              autoSubmit="true" 
+                              simple="false" mode="compact"
+                              unselectedLabel="لطفا انتخاب نماييد"
+                              disabled="true">
+            
+            <f:selectItems value="#{bindings.allLevels.items}" id="si2"/>
+            
+          </af:selectOneChoice>
+          <af:commandButton text="انتخاب مقطع" id="cb3"
+                            icon="/Images/16 x 16 Colorful/accept.png">
+            <af:showPopupBehavior popupId="p2" triggerType="action"/>
+          </af:commandButton>
+          <af:inputText label="نام پايه" id="it24"
+                        value="#{pageFlowScope.registerBean.newRegistration.base.name}"
+                        binding="#{pageFlowScope.registerBean.newBaseFieldName}"/>
+          <af:selectOneChoice value="#{bindings.allbases.inputValue}"
+                              required="#{bindings.allbases.hints.mandatory}"
+                              shortDesc="#{bindings.allbases.hints.tooltip}"
+                              id="soc3" mode="compact"
+                              unselectedLabel="لطفا انتخاب نماييد"
+                              rendered="false">
+            <f:selectItems value="#{bindings.allbases.items}" id="si3"/>
+          </af:selectOneChoice>
+          <af:commandButton text="انتخاب پايه" id="cb5"
+                            icon="/Images/16 x 16 Colorful/accept.png">
+            <af:showPopupBehavior popupId="p4" triggerType="action"/>
+          </af:commandButton>
+          <af:inputText label="شهریه ثابت ترم" id="it3"
+                        binding="#{pageFlowScope.registerBean.fixSalaryField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.fixShahriye}" converter="javax.faces.BigDecimal"
+                        autoSubmit="true"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeFixSalary}"
+                        immediate="true"/>
+          <af:inputText label="تعداد واحد ها" id="it2"
+                        binding="#{pageFlowScope.registerBean.countOfTheoryField}"
+                        converter="javax.faces.Double" autoSubmit="true"
+                        value="#{pageFlowScope.registerBean.newRegistration.numberOfTheoryUnits}"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeCountOfTheory}"/>
+          <af:inputText label="تعداد ساعات آموزشی" id="it1"
+                        binding="#{pageFlowScope.registerBean.countOfActionalField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.numberOfActionalUnits}" converter="javax.faces.Integer"
+                        autoSubmit="true"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeNumberOfActional}"/>
+          <af:inputText label="شهریه هر ساعت آموزشی" id="it4"
+                        binding="#{pageFlowScope.registerBean.actionSalaryField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.actionalShahriye}" converter="javax.faces.BigDecimal"
+                        autoSubmit="true"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeSalaryOfActional}"/>
+          <af:inputText label="شهریه هر واحد" id="it5"
+                        binding="#{pageFlowScope.registerBean.theorySalaryField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.theoryShahriye}" converter="javax.faces.BigDecimal"
+                        autoSubmit="true"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeSalaryOfTheory}"/>
+          <af:inputText label="سایر هزینه " id="it6"
+                        binding="#{pageFlowScope.registerBean.otherPriceField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.otherShahriyAmount}" converter="javax.faces.BigDecimal"
+                        autoSubmit="true"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeOtherPrice}"/>
+          <af:inputText label="توضیح سایر هزینه " id="it7"
+                        binding="#{pageFlowScope.registerBean.otherPriceDescField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.otherSalaryComment}"
+                        autoSubmit="true"/>
+          <af:inputText label="تخفیف" id="it8"
+                        binding="#{pageFlowScope.registerBean.offField}"
+                        converter="javax.faces.BigDecimal" autoSubmit="true"
+                        value="#{pageFlowScope.registerBean.newRegistration.offAmount}"
+                        valueChangeListener="#{pageFlowScope.registerBean.changeOffAmount}"/>
+          <af:inputText label="دلیل تخفیف" id="it9"
+                        binding="#{pageFlowScope.registerBean.offReasonField}"
+                        value="#{pageFlowScope.registerBean.newRegistration.offComment}"
+                        autoSubmit="true"/>
+          <af:inputText label="شهریه ساعات آموزشی" id="it10"
+                        disabled="true"
+                        binding="#{pageFlowScope.registerBean.allActionSalaryField}"
+                        value="#{pageFlowScope.registerBean.newRegTotalActionalSalary}">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="شهریه واحد های آموزشی" id="it11"
+                        value="#{pageFlowScope.registerBean.newRegTotalTheorySalary}"
+                        disabled="true"
+                        binding="#{pageFlowScope.registerBean.allTheorySalary}"
+                        converter="javax.faces.Double">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="شهريه ثابت" id="it13" disabled="true"
+                        value="#{pageFlowScope.registerBean.newRegistration.fixShahriye}"
+                        binding="#{pageFlowScope.registerBean.fixSalaryField2}">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="ساير هزينه" id="it15" disabled="true"
+                        value="#{pageFlowScope.registerBean.newRegistration.otherShahriyAmount}"
+                        binding="#{pageFlowScope.registerBean.otherSalaryField2}">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="تخفيف" id="it14" disabled="true"
+                        value="#{pageFlowScope.registerBean.newRegistration.offAmount}"
+                        binding="#{pageFlowScope.registerBean.offField2}">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="كل شهريه " id="it16" disabled="true"
+                        value="#{pageFlowScope.registerBean.newRegTotalSalary}"
+                        binding="#{pageFlowScope.registerBean.allSalary2Field}">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:inputText label="شهريه قابل پرداخت" id="it12"
+                        value="#{pageFlowScope.registerBean.newRegistration.totalShahriye}" disabled="true"
+                        binding="#{pageFlowScope.registerBean.allSalaryField}"
+                        converter="javax.faces.Double">
+            <af:convertNumber type="currency" currencySymbol="ریال"/>
+          </af:inputText>
+          <af:popup id="p1">
+            <af:panelWindow id="pw1">
+              <af:table value="#{bindings.allFields1.collectionModel}" var="row"
+                        rows="#{bindings.allFields1.rangeSize}"
+                        emptyText="#{bindings.allFields1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.allFields1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.allFields1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.allFields1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t1" width="176"
+                        inlineStyle="height:251px;">
+                <af:column sortProperty="name" sortable="false"
+                           headerText="نام رشته"
+                           id="c1" width="156">
+                  <af:outputText value="#{row.name}" id="ot1"/>
+                </af:column>
+              </af:table>
+              <af:commandButton text="انتخاب" id="cb2"
+                                action="#{pageFlowScope.registerBean.registerStudentSelectField}"
+                                inlineStyle="text-align:center;"/>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p2">
+            <af:panelWindow id="pw2">
+              <af:table value="#{bindings.allLevels1.collectionModel}" var="row"
+                        rows="#{bindings.allLevels1.rangeSize}"
+                        emptyText="#{bindings.allLevels1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.allLevels1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.allLevels1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.allLevels1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t2" width="166"
+                        inlineStyle="height:160px;">
+                <af:column sortProperty="name" sortable="false"
+                           headerText="نام مقطع"
+                           id="c3" width="144">
+                  <af:outputText value="#{row.name}" id="ot3"/>
+                </af:column>
+              </af:table>
+              <af:commandButton text="انتخاب" id="cb4"
+                                action="#{pageFlowScope.registerBean.registerStudentSelectLevel}"/>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p3">
+            <af:panelWindow id="pw3">
+              <af:table value="#{bindings.allbases1.collectionModel}" var="row"
+                        rows="#{bindings.allbases1.rangeSize}"
+                        emptyText="#{bindings.allbases1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.allbases1.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.allbases1.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.allbases1.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t3">
+                <af:column sortProperty="id" sortable="false"
+                           headerText="#{bindings.allbases1.hints.id.label}"
+                           id="c4">
+                  <af:outputText value="#{row.id}" id="ot2"/>
+                </af:column>
+                <af:column sortProperty="name" sortable="false"
+                           headerText="#{bindings.allbases1.hints.name.label}"
+                           id="c2">
+                  <af:outputText value="#{row.name}" id="ot4"/>
+                </af:column>
+              </af:table>
+              <af:commandButton text="انتخاب" id="cb6"/>
+            </af:panelWindow>
+          </af:popup>
+          <af:popup id="p4">
+            <af:panelWindow id="pw4">
+              <af:table value="#{bindings.allbases2.collectionModel}" var="row"
+                        rows="#{bindings.allbases2.rangeSize}"
+                        emptyText="#{bindings.allbases2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.allbases2.rangeSize}"
+                        rowBandingInterval="0"
+                        selectedRowKeys="#{bindings.allbases2.collectionModel.selectedRow}"
+                        selectionListener="#{bindings.allbases2.collectionModel.makeCurrent}"
+                        rowSelection="single" id="t4">
+                <af:column sortProperty="id" sortable="false"
+                           headerText="#{bindings.allbases2.hints.id.label}"
+                           id="c5">
+                  <af:outputText value="#{row.id}" id="ot5"/>
+                </af:column>
+                <af:column sortProperty="name" sortable="false"
+                           headerText="#{bindings.allbases2.hints.name.label}"
+                           id="c6">
+                  <af:outputText value="#{row.name}" id="ot6"/>
+                </af:column>
+              </af:table>
+              <af:commandButton text="انتخاب" id="cb7"
+                                action="#{pageFlowScope.registerBean.registerStudentSelectBase}"/>
+            </af:panelWindow>
+          </af:popup>
+          
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+    <af:panelBox id="pb3" >
+    <af:panelAccordion id="pa1">
+     <af:showDetailItem text="اطلاعات ترم و دانش آموز" id="sdi1">
+        
+          <af:panelFormLayout id="pfl1" inlineStyle="height:269px;"
+                              labelAlignment="start">
+            <f:facet name="footer"/>
+            <af:commandImageLink text="ثبت ثبت نام " id="cil2"
+                                 action="#{pageFlowScope.registerBean.registerInCurrentTerm}"
+                                 disabled="#{pageFlowScope.registerBean.newRegistrationIsRegInTerm}"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/add.png"
+                                 binding="#{pageFlowScope.registerBean.registrationAddButton}"/>
+            <af:spacer width="10" height="30" id="s7"/>
+            <af:commandImageLink text="ويرايش ثبت نام" id="cil1"
+                                 action="#{pageFlowScope.registerBean.editRegisterInCurrentTerm}"
+                                 disabled="#{!pageFlowScope.registerBean.newRegistrationIsRegInTerm}"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/cut.png"/>
+            <af:spacer width="10" height="30" id="s8"/>
+            <af:commandImageLink text="حذف ثبت نام" id="cil3"
+                                 action="#{pageFlowScope.registerBean.deleteRegisterInCurrentTerm}"
+                                 disabled="#{!pageFlowScope.registerBean.newRegistrationIsRegInTerm}"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/delete.png"/>
+            <af:spacer width="10" height="30" id="s9"/>
+            <af:commandImageLink text="ليست دانش آموزان" id="cil4" action="back"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/back.png"/>
+            <af:spacer width="10" height="30" id="s12"/>
+            <af:commandImageLink text="ويرايش دانش آموز" id="cil5"
+                                 icon="/Images/16 x 16 Colorful/application-form-icon.png"
+                                 inlineStyle="font-size:medium;"
+                                 action="#{pageFlowScope.registerBean.gotoEditStudent}"/>
+            <af:spacer width="10" height="30" id="s13"/>
+            <af:commandImageLink text="انتخاب واحد" id="cil7"
+                                 icon="/Images/16 x 16 Colorful/Archive.png"
+                                 inlineStyle="font-size:medium;"
+                                 action="selectedCourse"
+                                 disabled="#{!pageFlowScope.registerBean.newRegistrationIsRegInTerm}">
+              
+            </af:commandImageLink>
+            <af:spacer width="10" height="30" id="s14"/>
+            <af:commandImageLink text="عمليات شهريه" id="cil6"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/dollar_currency_sign.png"
+                                 action="#{pageFlowScope.registerBean.gotoPayments}"
+                                 disabled="#{!pageFlowScope.registerBean.newRegistrationIsRegInTerm}"/>
+          </af:panelFormLayout>
+       
+            </af:showDetailItem>
+      </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelAccordion id="pa2">
+        <af:showDetailItem id="sdi2">
+          <af:panelGroupLayout id="pgl3" layout="horizontal">
+          
+            <af:inputText label="نام دانش آموز" id="it19"
+                          value="#{pageFlowScope.registerBean.currentStudent.name}"/>
+            <af:inputText label="نام خانوادگي" id="it20"
+                          value="#{pageFlowScope.registerBean.currentStudent.family}"/>
+            <af:inputText label="كد دانش آموزي" id="it21"
+                          value="#{pageFlowScope.registerBean.currentStudent.studentCode}"/>
+          
+          
+              <af:inputText label="نام ترم" id="it23"
+                            value="#{pageFlowScope.registerBean.currentTerm.name}"/>
+              <af:inputText label="كد ترم" id="it22"
+                            value="#{pageFlowScope.registerBean.currentTerm.id}"/>
+          
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelAccordion>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

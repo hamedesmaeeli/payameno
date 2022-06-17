@@ -1,0 +1,111 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" topHeight="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="پرينت" id="ctb1">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.RecievementPayment.collectionModel}"
+                  var="row" rows="#{bindings.RecievementPayment.rangeSize}"
+                  emptyText="#{bindings.RecievementPayment.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.RecievementPayment.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.RecievementPaymentQuery.queryDescriptor}"
+                  queryListener="#{bindings.RecievementPaymentQuery.processQuery}"
+                  filterVisible="true" varStatus="vs" id="t1">
+          <af:column sortProperty="eventDate" sortable="true"
+                     headerText="تاریخ رویداد"
+                     id="c9">
+            <af:outputText value="#{row.eventDate}" id="ot2">
+              <af:convertDateTime pattern="#{bindings.RecievementPayment.hints.eventDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="amount" sortable="true"
+                     headerText="مبلغ"
+                     id="c2">
+            <af:outputText value="#{row.amount}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false"
+                     headerText="نام  طرف حساب" id="c4">
+            <af:outputText value="#{row.account.bindings.name.inputValue}"
+                           id="ot1"/>
+          </af:column>
+          <af:column sortProperty="description"
+                     sortable="true"
+                     headerText="توضیح"
+                     id="c5">
+            <af:outputText value="#{row.description}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="code" sortable="true"
+                     headerText="کد"
+                     id="c1">
+            <af:outputText value="#{row.code}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="true"
+                     headerText="حساب بانکی"
+                     id="c3">
+            <af:outputText value="#{row.accountBank.bindings.name.inputValue}"
+                           id="ot8"/>
+          </af:column>
+          <af:column sortProperty="phone" sortable="true"
+                     headerText="تلفن طرف حساب"
+                     id="c7">
+            <af:outputText value="#{row.account.bindings.phone.inputValue}"
+                           id="ot6"/>
+          </af:column>
+          <af:column sortProperty="personMobile"
+                     sortable="true"
+                     headerText="موبایل طرف حساب"
+                     id="c6">
+            <af:outputText value="#{row.account.bindings.personMobile.inputValue}"
+                           id="ot5"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="پارامتر های جستجو" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" rows="3" maxColumns="3">
+          <f:facet name="footer"/>
+          <af:inputDate label="تاریخ شروع" id="id1"
+                        value="#{pageFlowScope.bankAccountBean.cashSearchStartDate}"
+                        autoSubmit="true"/>
+          <af:inputDate label="تاریخ پایان" id="id2"
+                        value="#{pageFlowScope.bankAccountBean.cashSearchEndDate}"
+                        autoSubmit="true"/>
+          <af:spacer width="10" height="10" id="s1"/>
+          <af:selectOneChoice value="#{bindings.allAccountBanks.inputValue}"
+                              label="حساب بانکی"
+                              required="#{bindings.allAccountBanks.hints.mandatory}"
+                              shortDesc="#{bindings.allAccountBanks.hints.tooltip}"
+                              id="soc1"
+                              valueChangeListener="#{pageFlowScope.bankAccountBean.changeAccountBank}"
+                              autoSubmit="true">
+            <f:selectItems value="#{bindings.allAccountBanks.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:commandButton actionListener="#{bindings.searchReceivementPayments.execute}"
+                            text="جستجو"
+                            disabled="#{!bindings.searchReceivementPayments.enabled}"
+                            id="cb1"/>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:inputText label="موجودی" id="it1" readOnly="true"
+                        value="#{pageFlowScope.bankAccountBean.selectedAccoutBankAllAmount}"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

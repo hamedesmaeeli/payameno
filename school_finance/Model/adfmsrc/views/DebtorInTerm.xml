@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="DebtorInTerm" Package="views" BeanClass="views.DebtorInTerm"
+          isJavaBased="true">
+  <Attribute Name="debitValue" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="student" IsCollection="false"
+                     BeanClass="registration.data.Student"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="term" IsCollection="false"
+                     BeanClass="registration.data.Term"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="registration" IsCollection="false"
+                     BeanClass="registration.data.Registration"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="field" IsCollection="false"
+                     BeanClass="registration.data.Field"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="level" IsCollection="false"
+                     BeanClass="registration.data.Level"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="organization" IsCollection="false"
+                     BeanClass="registration.data.Organization"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="views.DebtorInTerm"
+                     BeanClass="views.DebtorInTerm" id="DebtorInTerm"/>
+</JavaBean>

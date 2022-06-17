@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="examTimeDetailsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getAllExamCourseFromExamTime.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.ExamCourse"
+                    id="getAllExamCourseFromExamTimeIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allCourses" RangeSize="1000"
+                      DataControl="schManager" BeanClass="finance.data.Course"
+                      id="allCoursesIterator"/>
+    <searchRegion Binds="allCoursesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="allCoursesQuery"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllExamCourseFromExamTime" RequiresUpdateModel="true"
+                  Action="invokeMethod"
+                  MethodName="getAllExamCourseFromExamTime"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllExamCourseFromExamTime_getAllExamCourseFromExamTime_getAllExamCourseFromExamTime_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.courseBean.selectedExamTime}"
+                 NDType="registration.data.ExamTime"/>
+    </methodAction>
+    <tree IterBinding="getAllExamCourseFromExamTimeIterator" id="ExamCourse">
+      <nodeDefinition DefName="registration.data.ExamCourse" Name="ExamCourse0">
+        <AttrNames>
+          <Item Value="examCourseId"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="examtime"/>
+          <Item Value="course"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.ExamTime" Name="ExamCourse1">
+        <AttrNames>
+          <Item Value="examTimeId"/>
+          <Item Value="examDate"/>
+          <Item Value="examHour"/>
+          <Item Value="examDay"/>
+          <Item Value="examDateShamsi"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="finance.data.Course" Name="ExamCourse2">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allCoursesIterator" id="allCourses">
+      <nodeDefinition DefName="finance.data.Course" Name="allCourses0">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

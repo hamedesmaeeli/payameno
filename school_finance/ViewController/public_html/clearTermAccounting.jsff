@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="دریافت مانده حساب" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1">
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
+              <af:commandButton text="پرداخت" id="cb1"
+                                action="#{pageFlowScope.registartionHistory.payForRegistrtion}"/>
+              <af:commandButton text="انصراف" id="cb2"/>
+            </af:panelGroupLayout>
+          </f:facet>
+          <af:inputText label="نام ترم" id="it1"
+                        value="#{pageFlowScope.registartionHistory.registration.term.name}"
+                        readOnly="true"/>
+          <af:inputText label="مانده حساب ترم" id="it2"
+                        value="#{pageFlowScope.registartionHistory.registartionCurrentAccounting}"
+                        readOnly="true"/>
+          <af:inputText label="مبلغ پرداختي" id="it5"
+                        value="#{pageFlowScope.registartionHistory.payValue}">
+            <af:convertNumber/>
+          </af:inputText>
+          <af:selectBooleanCheckbox
+                                    label="کارت خوان" id="sbc1"
+                                    value="#{pageFlowScope.registartionHistory.isPos}"
+                                    autoSubmit="true"
+                                    valueChangeListener="#{pageFlowScope.registartionHistory.changeIsPos}"/>
+          <af:selectOneChoice value="#{bindings.allAccountBanks.inputValue}"
+                              label="نام حساب بانکی"
+                              required="#{bindings.allAccountBanks.hints.mandatory}"
+                              shortDesc="#{bindings.allAccountBanks.hints.tooltip}"
+                              id="soc1"
+                              binding="#{pageFlowScope.registartionHistory.bankAccountNameField}"
+                              disabled="#{not pageFlowScope.registartionHistory.isPos}">
+            <f:selectItems value="#{bindings.allAccountBanks.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputText label="توضیح" id="it3"
+                        binding="#{pageFlowScope.registartionHistory.descriptionFiled}"/>
+          <af:inputText label="کد" id="it4"
+                        binding="#{pageFlowScope.registartionHistory.codeField}"/>
+          <af:inputDate label="تاريخ پرداخت" id="id1"
+                        value="#{pageFlowScope.registartionHistory.payDate}"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

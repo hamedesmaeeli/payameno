@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="PaymentStepsView" Package="model"
+          BeanClass="model.PaymentStepsView" isJavaBased="true">
+  <Attribute Name="createDate" Type="java.util.Date"/>
+  <Attribute Name="nextPayment" Type="java.util.Date"/>
+  <Attribute Name="paymentStepId" Type="java.math.BigDecimal"/>
+  <Attribute Name="paymentFinanceId" Type="java.math.BigDecimal"/>
+  <Attribute Name="paymentfinaceDescription" Type="java.lang.String"/>
+  <Attribute Name="peymentFinnaceCode" Type="java.lang.String"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="accountBankName" Type="java.lang.String"/>
+  <Attribute Name="receivePaytypeName" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="model.PaymentStepsView"
+                     BeanClass="model.PaymentStepsView" id="PaymentStepsView"/>
+</JavaBean>

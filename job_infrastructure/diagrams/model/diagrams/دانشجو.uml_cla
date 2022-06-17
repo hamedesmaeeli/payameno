@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:07a0a841-be95-4c84-8a5f-6684794079d7'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='دانشجو'
+   visibility='public'>
+  <ownedAttribute xmi:type='uml:Port' xmi:uuid='urn:uuid:66bc504b-b556-4190-8813-9bd08de384ec'
+    isBehavior='false'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isService='true'
+    isStatic='false'
+    isUnique='true'
+    name='نام'
+    aggregation='none'>
+   <type href='mof:/string:uml:Type'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

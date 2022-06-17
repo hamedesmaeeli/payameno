@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92"
+                id="students_students_getPaymentsStepsviewPageDef"
+                Package="view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="getPaymentsStepsview" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getPaymentsStepsview"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getPaymentsStepsview_schManager_dataProvider_getPaymentsStepsview_result">
+      <NamedData NDName="registration"
+                 NDValue="#{pageFlowScope.registerBean.currentRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

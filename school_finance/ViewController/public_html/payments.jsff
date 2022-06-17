@@ -1,0 +1,337 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelStretchLayout id="psl1" startWidth="200">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelDashboard id="pd1" columns="1" rowHeight="50%">
+        <af:panelBox text="پرداختی های نقدی" id="pb4">
+          <f:facet name="toolbar">
+            <af:toolbar id="t3">
+              <af:commandToolbarButton text="پرداخت جدید" id="ctb1"
+                                       icon="/Images/16 x 16 Colorful/add.png">
+                <af:showPopupBehavior popupId="pc1:p1" triggerType="action"/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton text="حذف پرداخت" id="ctb2"
+                                       icon="/Images/16 x 16 Colorful/delete.png">
+                <f:facet name="popup"/>
+                <af:showPopupBehavior triggerType="action" popupId="pc1:p4"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.PaymentStepsView.collectionModel}"
+                      var="row" rows="#{bindings.PaymentStepsView.rangeSize}"
+                      emptyText="#{bindings.PaymentStepsView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.PaymentStepsView.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.PaymentStepsView.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.PaymentStepsView.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1" styleClass="AFStretchWidth"
+                      partialTriggers=":::cb12">
+              <af:column sortProperty="createDate" sortable="false"
+                         headerText="تاریخ ایجاد" id="c11">
+                <af:outputText value="#{row.createDate}" id="ot14">
+                  <af:convertDateTime pattern="#{bindings.PaymentStepsView.hints.createDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="nextPayment" sortable="false"
+                         headerText="پرداخت بعدی" id="c1">
+                <af:outputText value="#{row.nextPayment}" id="ot11">
+                  <af:convertDateTime pattern="#{bindings.PaymentStepsView.hints.nextPayment.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="paymentfinaceDescription"
+                         sortable="false" headerText="توضیح" id="c12">
+                <af:outputText value="#{row.paymentfinaceDescription}"
+                               id="ot12"/>
+              </af:column>
+              <af:column sortProperty="peymentFinnaceCode" sortable="false"
+                         headerText="کد" id="c13">
+                <af:outputText value="#{row.peymentFinnaceCode}" id="ot2"/>
+              </af:column>
+              <af:column sortProperty="amount" sortable="false"
+                         headerText="مبلغ" id="c2">
+                <af:outputText value="#{row.amount}" id="ot13"/>
+              </af:column>
+              <af:column sortProperty="accountBankName" sortable="false"
+                         headerText="نام حساب بانکی" id="c14">
+                <af:outputText value="#{row.accountBankName}" id="ot1"/>
+              </af:column>
+              <af:column sortProperty="receivePaytypeName" sortable="false"
+                         headerText="نوع پرداخت" id="c3">
+                <af:outputText value="#{row.receivePaytypeName}" id="ot3"/>
+              </af:column>
+            </af:table>
+            <af:popup id="p1"
+                      popupFetchListener="#{pageFlowScope.registerBean.fetchPaymentsPopup}">
+              <af:panelWindow id="pw1">
+                <af:panelBox text="پرداخت نقدی" id="pb1"
+                             inlineStyle="width:366px; height:313px;">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl2" inlineStyle="width:263px;"
+                                      labelWidth="90">
+                    <f:facet name="footer">
+                      <af:panelGroupLayout id="pgl3">
+                        <af:commandButton text="تایید" id="cb2"
+                                          action="#{pageFlowScope.registerBean.newPay}"/>
+                        <af:commandButton text="بازگشت" id="cb3"/>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <af:inputText label="مبلغ پرداختی" id="it1"
+                                  binding="#{pageFlowScope.registerBean.payNaghdAmountField}"
+                                  required="true"/>
+                    <af:spacer width="10" height="10" id="s3"/>
+                    <af:inputText label="بابت" id="it2" value="هزینه ثبت نام"
+                                  readOnly="true"/>
+                    <af:spacer width="10" height="10" id="s1"/>
+                    <af:selectBooleanCheckbox label="کارت خوان" id="sbc1"
+                                              selected="#{pageFlowScope.registerBean.isPos}"
+                                              valueChangeListener="#{pageFlowScope.registerBean.changeIsPos}"
+                                              autoSubmit="true"/>
+                    <af:spacer width="10" height="10" id="s2"/>
+                    <af:selectOneChoice value="#{bindings.allAccountBanks.inputValue}"
+                                        label="نام بانک"
+                                        required="#{bindings.allAccountBanks.hints.mandatory}"
+                                        shortDesc="#{bindings.allAccountBanks.hints.tooltip}"
+                                        id="soc1"
+                                        disabled="#{ not pageFlowScope.registerBean.isPos}"
+                                        binding="#{pageFlowScope.registerBean.payNaghtAccountBankFeild}">
+                      <f:selectItems value="#{bindings.allAccountBanks.items}"
+                                     id="si1"/>
+                    </af:selectOneChoice>
+                    <af:spacer width="10" height="10" id="s4"/>
+                    <af:spacer width="10" height="10" id="s5"/>
+                    <af:inputDate label="تاریخ پرداخت بعدی" id="id1"
+                                  binding="#{pageFlowScope.registerBean.nextPaymentDateField}"/>
+                    <af:inputText label="کد رهگیری" id="it3"
+                                  binding="#{pageFlowScope.registerBean.codeRahgiriPayField}"/>
+                    <af:inputText label="توضیحات" id="it4"
+                                  binding="#{pageFlowScope.registerBean.payDescriptionFeild}"/>
+                  </af:panelFormLayout>
+                </af:panelBox>
+              </af:panelWindow>
+            </af:popup>
+            <af:popup id="p4">
+              <af:panelWindow id="pw4">
+                <af:panelBox id="pb6" type="flow">
+                  <f:facet name="toolbar"/>
+                  <af:outputText value="كاربر گرامي با حذف پرداخت نقدي از موجودي صندوق كاسته مي شود" id="ot5"/>
+                  <af:spacer width="10" height="50" id="s9"/>
+                  <af:commandButton text="موافق" id="cb1"
+                                    action="#{pageFlowScope.registerBean.deletePaymentStep}"/>
+                  <af:commandButton text="عدم موافقت" id="cb4"/>
+                </af:panelBox>
+              </af:panelWindow>
+            </af:popup>
+          </af:panelCollection>
+        </af:panelBox>
+        <af:panelBox text="چک ها" id="pb5">
+          <f:facet name="toolbar">
+            <af:toolbar id="t5">
+              <af:commandToolbarButton text="حذف چک" id="ctb3"
+                                       icon="/Images/16 x 16 Colorful/delete.png"
+                                       action="#{pageFlowScope.registerBean.deleteCheck}"/>
+              <af:commandToolbarButton text="افزودن چک" id="ctb4"
+                                       icon="/Images/16 x 16 Colorful/add.png">
+                <af:showPopupBehavior popupId="pc2:p2" triggerType="action"/>
+              </af:commandToolbarButton>
+              <af:commandToolbarButton text="سرحساب" id="ctb5"
+                                       icon="/Images/16 x 16 Colorful/Archive.png"/>
+              <af:commandToolbarButton text="برگشت زدن" id="ctb6"
+                                       action="#{pageFlowScope.registerBean.returnCheck}"
+                                       icon="/Images/16 x 16 Colorful/back.png"/>
+              <af:commandToolbarButton text="پاس کردن" id="ctb7"
+                                       action="#{pageFlowScope.registerBean.passCheck}"
+                                       icon="/Images/16 x 16 Colorful/accept.png"/>
+            </af:toolbar>
+          </f:facet>
+          <af:panelCollection id="pc2" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.RegistrationCheckView.collectionModel}"
+                      var="row"
+                      rows="#{bindings.RegistrationCheckView.rangeSize}"
+                      emptyText="#{bindings.RegistrationCheckView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.RegistrationCheckView.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.RegistrationCheckView.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.RegistrationCheckView.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t2" styleClass="AFStretchWidth"
+                      partialTriggers=":::ctb3 :::ctb6">
+              <af:column sortProperty="createdDate" sortable="true"
+                         headerText="تاریخ ایجاد" id="c9">
+                <af:outputText value="#{row.createdDate}" id="ot6">
+                  <af:convertDateTime pattern="#{bindings.RegistrationCheckView.hints.createdDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="amount" sortable="true" headerText="مبلغ"
+                         id="c17">
+                <af:outputText value="#{row.amount}" id="ot18"/>
+              </af:column>
+              <af:column sortProperty="checkDate" sortable="true"
+                         headerText="تاریخ سررسید" id="c6">
+                <af:outputText value="#{row.checkDate}" id="ot17">
+                  <af:convertDateTime pattern="#{bindings.RegistrationCheckView.hints.checkDate.format}"/>
+                </af:outputText>
+              </af:column>
+              <af:column sortProperty="checkDescription" sortable="true"
+                         headerText="توضیح" id="c5">
+                <af:outputText value="#{row.checkDescription}" id="ot15"/>
+              </af:column>
+              <af:column sortProperty="checkforHow" sortable="true"
+                         headerText="در وجه" id="c10">
+                <af:outputText value="#{row.checkforHow}" id="ot10"/>
+              </af:column>
+              <af:column sortProperty="checkNumber" sortable="true"
+                         headerText="شماره چک" id="c16">
+                <af:outputText value="#{row.checkNumber}" id="ot9"/>
+              </af:column>
+              <af:column sortProperty="bankAccountName" sortable="true"
+                         headerText="سرحساب" id="c15">
+                <af:outputText value="#{row.bankAccountName}" id="ot16"/>
+              </af:column>
+              <af:column sortProperty="checkBankName" sortable="true"
+                         headerText="یانک چک" id="c18">
+                <af:outputText value="#{row.checkBankName}" id="ot7"/>
+              </af:column>
+              <af:column sortProperty="checkStatusName" sortable="true"
+                         headerText="وضعیت چک"
+                         id="c4">
+                <af:outputText value="#{row.checkStatusName}" id="ot4"/>
+              </af:column>
+            </af:table>
+            <af:popup id="p2"
+                      popupFetchListener="#{pageFlowScope.registerBean.fetchChecksPayments}">
+              <af:panelWindow id="pw2">
+                <af:panelBox text="ایجاد چک" id="pb2">
+                  <f:facet name="toolbar"/>
+                  <af:panelFormLayout id="pfl3">
+                    <f:facet name="footer">
+                      <af:panelGroupLayout id="pgl8" layout="horizontal">
+                        <af:commandButton text="ایجاد" id="cb10"
+                                          action="#{pageFlowScope.registerBean.newCheck}"/>
+                        <af:commandButton text="انصراف" id="cb11"/>
+                      </af:panelGroupLayout>
+                    </f:facet>
+                    <af:inputText label="شماره چک" id="it12"
+                                  binding="#{pageFlowScope.registerBean.checkNumCreate}"
+                                  showRequired="true"/>
+                    <af:inputText label="مبلغ چک" id="it13"
+                                  binding="#{pageFlowScope.registerBean.checkAmountCreate}"
+                                  showRequired="true"/>
+                    <af:selectOneChoice value="#{bindings.allBanks.inputValue}"
+                                        label="نام بانک"
+                                        required="#{bindings.allBanks.hints.mandatory}"
+                                        shortDesc="#{bindings.allBanks.hints.tooltip}"
+                                        id="soc2">
+                      <f:selectItems value="#{bindings.allBanks.items}"
+                                     id="si2"/>
+                    </af:selectOneChoice>
+                    <af:inputText label="شعبه بانک" id="it14"
+                                  binding="#{pageFlowScope.registerBean.bankBrankCheckCreate}"
+                                  showRequired="true"/>
+                    <af:inputText label="توضیحات" id="it15"
+                                  binding="#{pageFlowScope.registerBean.chechDescCreate}"/>
+                    <af:inputText label="در وجه" id="it16"
+                                  binding="#{pageFlowScope.registerBean.checkForHowCreate}"
+                                  showRequired="true"/>
+                    <af:inputDate label="سررسید" id="id3"
+                                  binding="#{pageFlowScope.registerBean.checkDateCreate}"
+                                  showRequired="true"/>
+                  </af:panelFormLayout>
+                </af:panelBox>
+              </af:panelWindow>
+            </af:popup>
+          </af:panelCollection>
+        </af:panelBox>
+      </af:panelDashboard>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb3">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text="پرداخت" id="sdi2">
+            <af:commandImageLink text="ليست دانش آموزان" id="cil1"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/back.png"
+                                 action="back"/>
+            <af:spacer width="10" height="30" id="s6"/>
+            <af:goImageLink text="پرینت ثبت نام" id="gil1"
+                            destination="#{pageFlowScope.registerBean.termPaymentReport}"
+                            targetFrame="_blank"
+                            inlineStyle="font-size:medium;"
+                            icon="/Images/16 x 16 Colorful/print.png"/>
+            <af:spacer width="10" height="30" id="s7"/>
+            <af:popup id="p3">
+              <af:panelWindow id="pw3">
+                <af:region value="#{bindings.registrationHistroy1.regionModel}"
+                           id="r1"/>
+                <af:commandButton text="تایید" id="cb12"
+                                  action="#{pageFlowScope.registerBean.refreshRegistrationAccounting}"/>
+              </af:panelWindow>
+            </af:popup>
+            <af:commandImageLink text="ويرايش ثبت نام" id="cil2"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/application-form-edit-icon.png"
+                                 action="#{pageFlowScope.registerBean.gotoRegister}"/>
+            <af:spacer width="10" height="30" id="s8"/>
+            <af:commandImageLink text="تاريخچه ثبت نام" id="cil3"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/database.png">
+              <af:showPopupBehavior popupId="p3"/>
+            </af:commandImageLink>
+            <af:spacer width="10" height="30" id="s10"/>
+              <af:goImageLink text="چاپ قرارداد" id="gil2"
+                            targetFrame="_blank"
+                            inlineStyle="font-size:medium;"
+                            icon="/Images/16 x 16 Colorful/print.png"
+                              destination="#{pageFlowScope.registerBean.termContractReport}"/>
+          </af:showDetailItem>
+          <af:showDetailItem text="اطلاعات ثبت نام" id="sdi1">
+            <af:panelFormLayout id="pfl4" labelAlignment="top"
+                                partialTriggers="ctb3 ctb6">
+              <f:facet name="footer"/>
+              <af:inputText label="شماره دانش آموزی" id="it6"
+                            value="#{pageFlowScope.registerBean.currentStudent.studentCode}"
+                            readOnly="true"/>
+              <af:inputText label="نام" id="it5" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currentStudent.name}"/>
+              <af:inputText label="نام خانوادگی" id="it11" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currentStudent.family}"/>
+              <af:inputDate label="تاریخ ثبت نام" id="id2" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currentRegistration.regDate}"/>
+              <af:inputText label="نام ترم" id="it28"
+                            value="#{pageFlowScope.registerBean.currentRegistration.term.name}"
+                            readOnly="true"/>
+              <af:inputText label="نام رشته" id="it27"
+                            value="#{pageFlowScope.registerBean.currentRegistration.field.name}"
+                            readOnly="true"/>
+              <af:inputText label="نام مقطع" id="it29"
+                            value="#{pageFlowScope.registerBean.currentRegistration.level.name}"
+                            readOnly="true"/>
+              <af:inputText label="کل شهریه" id="it26"
+                            value="#{pageFlowScope.registerBean.currentRegistration.totalShahriye}"
+                            readOnly="true"/>
+              <af:inputText label="بدهکاری این ترم" id="it17" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currebtStudentRegistrationAccounting}"/>
+              <af:inputText label="بدهکاری کل" id="it8"
+                            value="#{pageFlowScope.registerBean.currentStudentAccounting}"
+                            readOnly="true"/>
+              <af:inputText label="حساب اولیه" id="it18" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currentAccount.fisrtPayable}"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

@@ -1,0 +1,954 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="registration_contract" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="27fe6b32-ebdc-4237-abae-706f2ad8cae1">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="122"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="38d7c3cc-6fe9-4c23-a4ab-c055938fbd5a">
+		<parameter name="reg_id" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     reg_all_pays.`amount_v` AS reg_all_pays_amount_v,
+     reg_all_pays.`date_v` AS reg_all_pays_date_v,
+     reg_all_pays.`reg_id_v` AS reg_all_pays_reg_id_v,
+     reg_all_pays.`bank_v` AS reg_all_pays_bank_v,
+     reg_all_pays.`check_status_name` AS reg_all_pays_check_status_name,
+     reg_all_pays.`fish_number` AS reg_all_pays_fish_number,
+     reg_all_pays.`check_date` AS reg_all_pays_check_date,
+     reg_all_pays.`pay_type_name` AS reg_all_pays_pay_type_name
+FROM
+     `reg_all_pays` reg_all_pays
+WHERE
+     reg_all_pays.`reg_id_v` = $P{reg_id}]]>
+		</queryString>
+		<field name="reg_all_pays_amount_v" class="java.lang.Long"/>
+		<field name="reg_all_pays_date_v" class="java.sql.Timestamp"/>
+		<field name="reg_all_pays_reg_id_v" class="java.lang.Long"/>
+		<field name="reg_all_pays_bank_v" class="java.lang.String"/>
+		<field name="reg_all_pays_check_status_name" class="java.lang.String"/>
+		<field name="reg_all_pays_fish_number" class="java.lang.String"/>
+		<field name="reg_all_pays_check_date" class="java.sql.Date"/>
+		<field name="reg_all_pays_pay_type_name" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="reg_id" class="java.math.BigDecimal">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     registration_view.`reg_date` AS registration_view_reg_date,
+     registration_view.`theory_units` AS registration_view_theory_units,
+     registration_view.`actional_units` AS registration_view_actional_units,
+     registration_view.`fix_salary` AS registration_view_fix_salary,
+     registration_view.`theory_salary` AS registration_view_theory_salary,
+     registration_view.`actional_salary` AS registration_view_actional_salary,
+     registration_view.`other_salary_comment` AS registration_view_other_salary_comment,
+     registration_view.`other_salary_amount` AS registration_view_other_salary_amount,
+     registration_view.`total_salary` AS registration_view_total_salary,
+     registration_view.`off_amount` AS registration_view_off_amount,
+     registration_view.`off_comment` AS registration_view_off_comment,
+     registration_view.`term_name` AS registration_view_term_name,
+     registration_view.`field_name` AS registration_view_field_name,
+     registration_view.`name` AS registration_view_name,
+     registration_view.`famili` AS registration_view_famili,
+     registration_view.`national_code` AS registration_view_national_code,
+     registration_view.`identifier_code` AS registration_view_identifier_code,
+     registration_view.`identifier_serial` AS registration_view_identifier_serial,
+     registration_view.`identifier_char` AS registration_view_identifier_char,
+     registration_view.`student_code` AS registration_view_student_code,
+     registration_view.`father_name` AS registration_view_father_name,
+     registration_view.`date_of_birth` AS registration_view_date_of_birth,
+     registration_view.`description` AS registration_view_description,
+     registration_view.`address` AS registration_view_address,
+     registration_view.`mobile` AS registration_view_mobile,
+     registration_view.`phone` AS registration_view_phone,
+     registration_view.`archive_code` AS registration_view_archive_code,
+     registration_view.`org_name` AS registration_view_org_name,
+     registration_view.`id` AS registration_view_id,
+     registration_view.`level_name` AS registration_view_level_name
+FROM
+     `registration_view` registration_view
+WHERE
+     registration_view.`id` = $P{reg_id}]]>
+	</queryString>
+	<field name="registration_view_reg_date" class="java.sql.Timestamp"/>
+	<field name="registration_view_theory_units" class="java.lang.Double"/>
+	<field name="registration_view_actional_units" class="java.lang.Integer"/>
+	<field name="registration_view_fix_salary" class="java.lang.Long"/>
+	<field name="registration_view_theory_salary" class="java.lang.Long"/>
+	<field name="registration_view_actional_salary" class="java.lang.Long"/>
+	<field name="registration_view_other_salary_comment" class="java.lang.String"/>
+	<field name="registration_view_other_salary_amount" class="java.lang.Long"/>
+	<field name="registration_view_total_salary" class="java.lang.Long"/>
+	<field name="registration_view_off_amount" class="java.lang.Long"/>
+	<field name="registration_view_off_comment" class="java.lang.String"/>
+	<field name="registration_view_term_name" class="java.lang.String"/>
+	<field name="registration_view_field_name" class="java.lang.String"/>
+	<field name="registration_view_name" class="java.lang.String"/>
+	<field name="registration_view_famili" class="java.lang.String"/>
+	<field name="registration_view_national_code" class="java.lang.String"/>
+	<field name="registration_view_identifier_code" class="java.lang.String"/>
+	<field name="registration_view_identifier_serial" class="java.lang.String"/>
+	<field name="registration_view_identifier_char" class="java.lang.Integer"/>
+	<field name="registration_view_student_code" class="java.lang.Long"/>
+	<field name="registration_view_father_name" class="java.lang.String"/>
+	<field name="registration_view_date_of_birth" class="java.sql.Date"/>
+	<field name="registration_view_description" class="java.lang.String"/>
+	<field name="registration_view_address" class="java.lang.String"/>
+	<field name="registration_view_mobile" class="java.lang.String"/>
+	<field name="registration_view_phone" class="java.lang.String"/>
+	<field name="registration_view_archive_code" class="java.lang.String"/>
+	<field name="registration_view_org_name" class="java.lang.String"/>
+	<field name="registration_view_id" class="java.lang.Long"/>
+	<field name="registration_view_level_name" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="28f74490-a3c2-47ee-971f-d67e23db8a01" x="94" y="0" width="350" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[فرم قرارداد پرداخت شهریه ثبت نام دانش آموزان مدارس آموزش از راه دور ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="27" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="4d7c5c2e-8333-4cc9-92c9-6dae3f66b599" x="503" y="0" width="49" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[سال تحصیلی ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="f806f13f-0244-4308-9c45-fde99e631f05" x="347" y="0" width="156" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_term_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="33957d30-f290-403a-bbb1-0094e21baf78" x="290" y="0" width="57" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[دوره تحصیلی]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="61035aa8-9fc1-4cbf-91da-8d02f2859091" x="157" y="0" width="133" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_level_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="4fc26d5e-b09f-4523-98f9-cc071288b03c" x="121" y="0" width="36" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[رشته ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1dac430b-fb6a-412b-8319-026c5a0a2f4d" x="21" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_field_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="700" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="e0d3436b-4e68-429b-917c-ebbef6fc3926" x="455" y="0" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ماده1- طرفین قرارداد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ef034755-83cb-442d-b338-15ba6a7002d0" x="485" y="20" width="70" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[قرارداد زیر در تاریخ]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="33ed3acc-c4d9-4e04-a883-0fbd3fb69309" x="434" y="20" width="51" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate($F{registration_view_reg_date}).getIranianDate()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="b514d7e6-3623-4071-8f6b-8a7d95bd9931" x="374" y="20" width="60" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="false"/>
+				</textElement>
+				<text><![CDATA[بین واحد آموزشی ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9b0b63d9-fe9c-4690-99b2-8eead9240051" x="319" y="20" width="55" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مدرسه پیام نو ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="8bf46eed-d819-4e2e-8229-fb84336bf9e5" x="142" y="20" width="177" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[با ولی دانش آموز/دانش آموز جناب آقای / سرکار خانم]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="528c8b2c-e56a-449d-958a-d31b334fda2d" x="94" y="20" width="48" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="f75b6a8d-5fcc-4a88-8ae9-7944f0bbc292" x="0" y="20" width="94" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_famili}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="5ded7af9-0efb-4368-af9c-5f472822dfc3" x="323" y="40" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[منعقد می گردد . ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="adb5e9ac-1f64-4be6-a96f-a7c2fb8bd900" x="520" y="60" width="35" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[تلفن منزل:]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="572308a7-ca2e-447b-86b3-0fd2c5fb0c8a" x="434" y="60" width="86" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_phone}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ee482fdd-4eaa-4d15-9c9a-4ca45023f720" x="388" y="60" width="35" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[تلفن همراه]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="e06f545d-2930-412f-a5a8-a382a125e5ed" x="311" y="62" width="77" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_mobile}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="9813d349-1192-4715-a17c-be26a4f996cb" x="242" y="60" width="48" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[نشانی منزل:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="c0a6fb5b-e05c-4b08-8cc8-7c0a1385d530" x="10" y="60" width="232" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="f66f3dcd-c83b-47ec-9df5-70bfd5b86aec" x="444" y="82" width="111" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ماده2 - موضوع قرارداد]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="976a982c-3dee-42f1-82bb-468c3e23d9bc" x="311" y="102" width="244" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[پرداخت شهریه ثبت نام دانش آموز آموزش از راه دور]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7bfa6e7a-cfa6-4378-beb8-84b58826b418" x="374" y="122" width="181" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ماده 3 - مبلغ قرارداد به شرح زیر میباشد]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="69727baf-d76e-4974-9779-4c52e92636f4" x="269" y="142" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="59d60669-0a83-47cd-82b4-acd208e4ff6f" x="269" y="142" width="144" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[موارد]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="d9ee29dc-e9cc-4491-949d-c8f82f2961d8" x="176" y="142" width="93" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="44b46fe8-1987-441b-b814-072a86ac93bb" x="176" y="142" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تعداد / جلسه]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="7d253e28-0bc7-4f70-a763-9f324d0014a9" x="76" y="142" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8dd856bd-7800-4efc-bd74-af433a4dc155" x="76" y="142" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مبلغ به ریال]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="03fe62d9-03bb-4828-b18a-0c2c5fbb8a4d" x="413" y="142" width="58" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e49cd7dc-83a0-40e1-b8e4-277a8b74ba09" x="413" y="142" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ردیف]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="1e54791b-fbb4-4d46-b3e7-c2f70e3bf122" x="413" y="162" width="58" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="4bbc5e39-4ef4-48c8-b658-e819ed0361d7" x="413" y="162" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[1]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="177ba24b-dc27-4571-a88a-fc3a738e6f3e" x="269" y="162" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="a65c0faa-476d-463c-ace4-3c3d54e25e49" x="269" y="162" width="144" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[شهریه ثابت]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3dbf3b56-64a2-45ee-9da6-256965d9e67c" x="176" y="162" width="93" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="8aece937-b81f-4ce6-abdd-499bd04d670d" x="176" y="162" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="969f6d67-5eee-4906-81c3-370055c4a9d4" x="76" y="162" width="100" height="20"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement uuid="c11592bc-7149-445f-a420-b41ff6e6d085" x="76" y="162" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_fix_salary}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="87fc6f70-a8a7-45ac-8d71-a704074b1113" x="413" y="182" width="58" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="d14ac346-26d5-4fe3-b08e-ffd9ef525a15" x="413" y="182" width="58" height="40"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[2]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="55dfa26d-6390-41c0-b7c2-cc2393b59734" x="332" y="182" width="81" height="40"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="83591321-a56f-4e1a-ba80-ce5c8acaf641" x="332" y="182" width="81" height="40"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[واحد درسی]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="785c10f7-809c-40a2-887c-ba54f971ad83" x="269" y="182" width="63" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0d7ace2b-99a7-4f0d-9af5-e16e926af35f" x="269" y="182" width="63" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[عادی]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="dbb48432-f6fa-48ca-b44b-acf3e62b591b" x="269" y="202" width="63" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e517a641-2ee7-4e4e-b647-a7d6f9ed00cd" x="269" y="202" width="63" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[الکترونیکی]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="d8911c6f-f988-44c0-8257-aeb60333a3b3" x="176" y="182" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="0bc4c767-2083-4c9c-91d2-1e50eb698fd2" x="176" y="202" width="93" height="20"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="dc6a444e-c0e5-42c9-8413-984ba5b80c2b" x="176" y="202" width="91" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_theory_units}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="11113c54-c075-4f17-b011-9dc5912cc827" x="76" y="182" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="55fce9f4-cf7f-4b52-b42b-ad9e06c42b57" x="76" y="202" width="100" height="20"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement uuid="ca1c3fee-553b-48cb-a932-8163afac2ca5" x="76" y="202" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[($F{registration_view_theory_salary}*$F{registration_view_theory_units})
++($F{registration_view_actional_units}*$F{registration_view_actional_salary})]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="bac25c8d-a267-4982-9ce5-6cf357446a82" x="413" y="222" width="58" height="27"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="43f975b4-4e72-4162-886a-bfa92942b50a" x="413" y="222" width="58" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[3]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3976a00f-c3fe-490c-8586-0e3db46280f1" x="269" y="222" width="144" height="27"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="6b31bfe9-4eea-47d5-8a1d-5dbe5c5eeb47" x="269" y="222" width="144" height="27"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[هزینه ثبت نمرات مهارت و صدور گواهینامه دیپلم کاردانش (برای کلیه مهارتها)]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="d5a412e8-2486-4d3c-9959-2a3529edfe54" x="176" y="222" width="93" height="27"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="488d2d05-5837-461d-a11a-b23cc15d97b3" x="76" y="222" width="100" height="27"/>
+			</rectangle>
+			<textField>
+				<reportElement uuid="1c4c526b-d1de-4a39-9655-65a38b036fbf" x="76" y="222" width="100" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_other_salary_amount}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="c0637dbe-f1ee-4cce-a117-5bdd59d4d3f7" x="413" y="249" width="58" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="ab9ba799-8834-405b-b0e5-2c52f76f7a8f" x="413" y="249" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[4]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="3500060c-b692-4967-8bc3-4bac48d8bedf" x="269" y="249" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0bd3026b-5ad0-4ae9-b17e-070efda78125" x="269" y="249" width="144" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[هزینه کلاس  اضافه به ازای هر جلسه]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="5c658f58-7a6d-4f8a-be5e-9bf6537df631" x="176" y="249" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="09612de4-83b3-4f9e-b394-4ff2ad23150c" x="76" y="249" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="5e7412b3-dcc3-4c06-9230-5075cff00e53" x="413" y="269" width="58" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="0eacecea-4c22-4ffb-839f-080126f97beb" x="413" y="269" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[5]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="8d0e7231-a5e6-45c2-929a-a091a635ef93" x="269" y="269" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="51cb07b7-9b78-4412-b4cf-e6935aca189e" x="269" y="269" width="144" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[هزینه کتاب و سی دی های آموزشی]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="5f4c8745-84c8-4705-a185-f38156698009" x="176" y="269" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="efa41168-0358-49cf-be61-284548d81128" x="76" y="269" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="897d1fea-f624-4335-983b-0685c5b91070" x="413" y="289" width="58" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="1792090e-ed0a-49df-a2d3-dbdfd8f7988c" x="413" y="289" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[6]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="33a9a8da-3617-4da3-9841-a8ce7621f045" x="269" y="289" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="e1fab352-154b-4511-8deb-2077a85d8b55" x="269" y="289" width="144" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[هزینه ارائه خذمات آموزش الکترونیکی]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="5b230654-8d93-4ff8-ae1e-07924aea760c" x="176" y="289" width="93" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="8fc3281e-ea0c-4615-821a-6c1687544bf6" x="76" y="289" width="100" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="6778ff81-d4e6-4343-a75f-9d63854b40b1" x="413" y="309" width="58" height="20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement uuid="2fed96a3-6a4c-48ba-9287-975384a3a1e1" x="76" y="309" width="100" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="583d8bcf-2fda-477d-837c-644429e92ca6" x="413" y="309" width="58" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[7]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="1468ce4c-bd6a-4dfe-852e-fbfd06d5ed24" x="269" y="309" width="144" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="f2097045-b41f-4be7-80a0-ae9cdc9f8b19" x="269" y="309" width="144" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[تخفیف]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="192346ef-b62a-4cf1-bf75-d4e8960258cb" x="176" y="309" width="93" height="20"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement uuid="88844c4f-ca66-4b5a-8f0c-323b2c3c2319" x="76" y="309" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_off_amount}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement uuid="1b4d24ca-55be-4248-91c4-08f7dbc8134e" x="176" y="329" width="295" height="20"/>
+			</rectangle>
+			<staticText>
+				<reportElement uuid="40ec89f2-6994-4ce8-8579-6d6c94974a12" x="176" y="329" width="295" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[جمع کل]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement uuid="01501f98-c937-4239-a4af-b0e4100afbad" x="76" y="329" width="100" height="20"/>
+			</rectangle>
+			<textField pattern="#,##0">
+				<reportElement uuid="9772026e-c0e5-476f-b769-12f2aa7cd410" x="76" y="329" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_total_salary}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="fa0cad7f-415d-4987-baac-12cddefdda7a" x="455" y="349" width="100" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تبصره :]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement uuid="0a8925f2-3b8b-4faf-961f-13f4cc2a263f" x="176" y="309" width="93" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_off_comment}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a43004a8-7580-466f-8043-9c91ffe6743a" x="485" y="40" width="70" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[با کد دانش آموزی]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="bd9656ed-574f-4a0c-b6e5-c04bb7d6ec23" x="423" y="40" width="62" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_student_code}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="c9f54f0e-9d5c-4376-8615-1adde55de5db" x="0" y="369" width="555" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[دانش آموزانی که پس از ثبت نام قطعی از ادامه  تحصیل  در واحد آموزشی در اوایل شروع نیم سال / دوره تابستانی منصرف شود معادل 10% شهریه، یک ماه پس از]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="982d2968-c6cb-4d8d-93be-ae52df91f163" x="10" y="389" width="545" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[شروع نیم سال / دوره تابستانی 40% شهریه و یک ماه قبل از شروع امتحانات پایانی 100% شهریه  باید پرداخت نماید]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="3be6276a-7901-4300-8c75-82ce16394f3b" x="434" y="409" width="121" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ماده 4 - تعهدات پرداخت]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="96770483-8ea2-4081-b344-0cbac21beb8a" x="402" y="429" width="153" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[ولی دانش آموز/ دانش آموز متعهد به پرداخت مبلغ]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="08893f59-7252-4c72-a842-9ebadeabbe01" x="332" y="429" width="70" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{registration_view_total_salary}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="62c2b4d5-31b4-40a8-8030-f17328d66001" x="63" y="429" width="269" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[ریال مطابق با جدول زیر در وجه مدرسه آموزش از راه دور پیام نو به شماره حساب]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c5be1fd5-657e-4f9d-a034-aca5d3ef1612" x="10" y="429" width="50" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[021689936200]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="20f02e31-c979-4580-98d9-4314a75644cf" x="503" y="449" width="44" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[بانک ملی]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fe1becc1-bf21-45ef-907a-1de99f4f2114" x="434" y="449" width="70" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[شعبه صمدیه می باشد]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement uuid="93738207-b2ac-41d2-bda4-53673fddd56d" key="table" style="table" x="21" y="469" width="529" height="104"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="Table Dataset 1" uuid="62a0d866-0fe1-4e84-9a75-cd886f295b2e">
+						<datasetParameter name="reg_id">
+							<datasetParameterExpression><![CDATA[$P{reg_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="7bd94ee4-fd61-405a-aef6-c1a81c502cc1" width="62">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="e70d4b3e-c944-4fef-b4f3-a60b1aa48e7a" x="0" y="0" width="62" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نوع پرداخت]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="b141342b-d558-4af2-bf0f-c7434ad18855" x="0" y="0" width="62" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_pay_type_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="dd3e58a7-699b-4af0-9ba5-ebc4daf6fba1" width="62">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="3871799a-2064-423e-9a07-4658cb8f8a15" x="0" y="0" width="62" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[تاریخ چک]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="f4f11b8e-e4d2-49c7-bfbd-ee15f78d71b6" x="0" y="0" width="61" height="19"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_check_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="b7963355-964a-440d-97c1-e8027dd0b729" width="87">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="09ebfb41-f373-450b-b0ca-7341a519f367" x="0" y="0" width="87" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[وضعیت چک]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="3ccf9fcb-6ec7-4c49-956d-ede5d79cf947" x="0" y="0" width="87" height="18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_check_status_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="ed12da6e-cc2b-477f-9772-434235e79092" width="59">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="176f058a-bea2-4b0b-a0fe-32408742352f" x="0" y="0" width="59" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[بانک]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="5820882b-f287-4161-aea7-e285f4b31b1e" x="0" y="0" width="59" height="18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_bank_v}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="4e4f3b3e-1397-4b83-bf2d-0a0897148b2e" width="70">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="94cc01b8-255b-4838-b6b2-24fdbde53cd0" x="0" y="0" width="70" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[شماره فیش/چک]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="3110ef4a-ad2f-46b1-9ffe-7435e08fdc5a" x="0" y="0" width="70" height="18"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_fish_number}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="e15bad5d-ecaf-459b-8893-656a46d5e2e9" width="62">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="9037bb61-38d7-4178-ae3e-34e4785f2436" x="0" y="0" width="62" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[مبلغ پرداختی]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField pattern="#,##0" isBlankWhenNull="true">
+								<reportElement uuid="218905df-cea9-4c6e-a62f-5422d5d137d6" x="0" y="0" width="62" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{reg_all_pays_amount_v}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="f3df9def-4f7f-4049-8638-7eb6de761b21" width="95">
+						<jr:columnHeader style="table_CH" height="30" rowSpan="1">
+							<staticText>
+								<reportElement uuid="315325e3-5d79-488b-8a96-0901b5bc3813" x="0" y="0" width="95" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[تاریخ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:columnFooter style="table_CH" height="30" rowSpan="1"/>
+						<jr:detailCell style="table_TD" height="20" rowSpan="1">
+							<textField isBlankWhenNull="true">
+								<reportElement uuid="eeb74efe-90f9-4277-87b8-d081cb9eb678" x="0" y="0" width="95" height="20"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate($F{reg_all_pays_date_v}).getIranianDate()]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="74ed0cfd-7f8f-4dab-bd4b-399a061bc873" x="44" y="601" width="511" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[این قرارداد در دونسخه تنظیم گردید. (نسخه اول نگهداری در پرونده دانش آموز - نسخه دوم تحویل به دانش آموز)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="fbb2520b-455c-4b7b-acf6-d63d1ad2309f" x="423" y="632" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[نام و نام خانوادگی]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="6dbb08fe-b1bf-41c6-ac46-67892fc8bacd" x="94" y="632" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[نام و نام خانوادگی]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7a06ca3e-df89-4cfc-8f50-3e8528d09ae0" x="423" y="652" width="100" height="20"/>
+				<textElement textAlignment="Center">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ولی دانش آموز/دانش آموز]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="2d88e7e8-1f38-4119-99b1-6004bdcda81a" x="94" y="652" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مدیر مدرسه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ee5f90c4-ae44-43b8-be3e-1906fe54d9b7" x="423" y="672" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[امضاء و تاریخ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="ceb46806-be10-4da6-bdcf-4c55c4c885d2" x="94" y="672" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مهر،امضاء و تاریخ]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="e3632a62-e50d-4a9e-8b16-6ee0038a1768" x="80" y="581" width="77" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new registration.process.RegistrationManager().getStudentAccoutingInRegistration($F{registration_view_id})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="38f7a59e-463a-4f54-ba4e-2543f05b363a" x="157" y="581" width="72" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[مانده بدهکاری]]></text>
+			</staticText>
+			<textField pattern="#,##0">
+				<reportElement uuid="d9789208-5341-4409-9899-c3d82be751bb" x="313" y="581" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new registration.process.RegistrationManager().getCurrentAccounting($F{registration_view_student_code})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7d3365cf-8b09-4d09-be44-5f14ec740e45" x="413" y="581" width="100" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[بدهکاری کل]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="44" splitType="Stretch"/>
+	</pageFooter>
+</jasperReport>

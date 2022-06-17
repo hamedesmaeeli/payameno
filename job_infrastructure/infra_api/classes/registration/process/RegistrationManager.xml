@@ -1,0 +1,415 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="RegistrationManager" Package="registration.process"
+          BeanClass="registration.process.RegistrationManager"
+          isJavaBased="true">
+  <Attribute Name="countOfTodayRegistrations" IsUpdateable="0"
+             Type="java.math.BigDecimal"/>
+  <Attribute Name="countOfCurrentTermRegistrations" IsUpdateable="0"
+             Type="java.math.BigDecimal"/>
+  <Attribute Name="countOfActiveStudents" IsUpdateable="0"
+             Type="java.math.BigDecimal"/>
+  <Attribute Name="countOfAllStudents" IsUpdateable="0"
+             Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="allStudentStatus" IsCollection="true"
+                     BeanClass="registration.data.StudentStatus"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allOrganization" IsCollection="true"
+                     BeanClass="registration.data.Organization"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allIdentiferChars" IsCollection="true"
+                     BeanClass="registration.data.IdentifierChar"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allFields" IsCollection="true"
+                     BeanClass="registration.data.Field"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allLevels" IsCollection="true"
+                     BeanClass="registration.data.Level"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allTerms" IsCollection="true"
+                     BeanClass="registration.data.Term"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="currentTerm" IsCollection="false"
+                     BeanClass="registration.data.Term"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="allSchool" IsCollection="true"
+                     BeanClass="registration.data.School"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allbases" IsCollection="true"
+                     BeanClass="registration.data.Base"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <AccessorAttribute id="allCourses" IsCollection="true"
+                     BeanClass="finance.data.Course"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="false" Type="void" id="createNewStudent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="generateStudentCode" ReturnNodeName="Return">
+    <ParameterInfo id="serial" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="identifierChar" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isStudentCodeExists"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="st_code" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean"
+                  id="isStudentNatinalCodeExist" ReturnNodeName="Return">
+    <ParameterInfo id="natinalCode" Type="int" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean"
+                  id="isStudentNatinalCodeExist" ReturnNodeName="Return">
+    <ParameterInfo id="natinalCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="editStudent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Registration"
+                  BeanClass="registration.data.Registration"
+                  id="getAllStudentRegistrations" ReturnNodeName="Registration"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Registration"
+                  BeanClass="registration.data.Registration"
+                  id="getRegistrationFromStudentAndTerm"
+                  ReturnNodeName="Registration">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="deleteStudent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Student"
+                  BeanClass="registration.data.Student" id="searchStudents"
+                  ReturnNodeName="Student"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="isRegInCurrentTerm" Type="java.lang.Boolean"
+                   isStructured="false"/>
+    <ParameterInfo id="field" Type="registration.data.Field"
+                   isStructured="true"/>
+    <ParameterInfo id="level" Type="registration.data.Level"
+                   isStructured="true"/>
+    <ParameterInfo id="organization" Type="registration.data.Organization"
+                   isStructured="true"/>
+    <ParameterInfo id="studentStatus" Type="registration.data.StudentStatus"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getCurrentAccounting" ReturnNodeName="Return">
+    <ParameterInfo id="stId" Type="java.math.BigDecimal" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getCurrentAccounting" ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setPayForStudent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="paymentStep" Type="registration.data.PaymentStep"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deletePaymentStep"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="paymentStep" Type="registration.data.PaymentStep"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Registration"
+                  BeanClass="registration.data.Registration"
+                  id="registerStudent" ReturnNodeName="Registration">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Registration"
+                  BeanClass="registration.data.Registration"
+                  id="editRegisterStudent" ReturnNodeName="Registration">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.Factor"
+                  BeanClass="finance.data.Factor"
+                  id="getFactorFromRegistrations" ReturnNodeName="Factor">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.SalaryParam"
+                  BeanClass="registration.data.SalaryParam" id="getSalaryParam"
+                  ReturnNodeName="SalaryParam">
+    <ParameterInfo id="salaryParam" Type="registration.data.SalaryParam"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setSalaryParam"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="salaryParam" Type="registration.data.SalaryParam"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="calculateRegistrationPrice" ReturnNodeName="Return">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false"
+                  Type="registration.data.RegistrationCheck"
+                  BeanClass="registration.data.RegistrationCheck"
+                  id="createRegistrationCheck"
+                  ReturnNodeName="RegistrationCheck">
+    <ParameterInfo id="registrationCheck"
+                   Type="registration.data.RegistrationCheck"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deleteRegistrationCheck"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="registrationCheck"
+                   Type="registration.data.RegistrationCheck"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.RegistrationCheck"
+                  BeanClass="registration.data.RegistrationCheck"
+                  id="getRegistrationChecks" ReturnNodeName="RegistrationCheck"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.PaymentStep"
+                  BeanClass="registration.data.PaymentStep"
+                  id="getRegistrationPaymentSteps" ReturnNodeName="PaymentStep"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deleteRegistration"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="registraion" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Student"
+                  BeanClass="registration.data.Student"
+                  id="getStudentfromStCode" ReturnNodeName="Student">
+    <ParameterInfo id="stCode" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Field"
+                  BeanClass="registration.data.Field" id="getFieldFromFieldId"
+                  ReturnNodeName="Field">
+    <ParameterInfo id="fieldId" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Term"
+                  BeanClass="registration.data.Term" id="getTermFromTermId"
+                  ReturnNodeName="Term">
+    <ParameterInfo id="termId" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Level"
+                  BeanClass="registration.data.Level" id="getLevelFromLevelId"
+                  ReturnNodeName="Level">
+    <ParameterInfo id="levelId" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="finance.data.Account"
+                  BeanClass="finance.data.Account" id="getAccountFromStudent"
+                  ReturnNodeName="Account">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="boolean" id="isStudentRegister"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getStudentAccoutingInRegistration"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="regId" Type="java.math.BigDecimal" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getStudentAccoutingInRegistration"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getStudentPaymentsInRegistration" ReturnNodeName="Return">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getCountOfTermRegistrations" ReturnNodeName="Return">
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Term"
+                  BeanClass="registration.data.Term" id="createTerm"
+                  ReturnNodeName="Term">
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Term"
+                  BeanClass="registration.data.Term" id="updateTerm"
+                  ReturnNodeName="Term">
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="delete"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="editOrganization"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="organization" Type="registration.data.Organization"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Organization"
+                  BeanClass="registration.data.Organization"
+                  id="createOrganization" ReturnNodeName="Organization">
+    <ParameterInfo id="organization" Type="registration.data.Organization"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="setArray"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="students" Type="java.util.ArrayList"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="testObject"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="field" Type="registration.data.Field"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeToLog"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="stream" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Student"
+                  BeanClass="registration.data.Student"
+                  id="getStudentfromNationalCode" ReturnNodeName="Student">
+    <ParameterInfo id="nationalCode" Type="java.lang.String"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.School"
+                  BeanClass="registration.data.School" id="createSchool"
+                  ReturnNodeName="School">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="deleteSchool"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.School"
+                  BeanClass="registration.data.School" id="updateSchool"
+                  ReturnNodeName="School">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Student"
+                  BeanClass="registration.data.Student" id="getNoPicsStudents"
+                  ReturnNodeName="Student"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="int" id="createDanaStudent"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="danaStudent" Type="registration.data.DanaStudent"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true"
+                  Type="registration.data.DanaRegisterStudent"
+                  BeanClass="registration.data.DanaRegisterStudent"
+                  id="getDanaRegisteredStudents"
+                  ReturnNodeName="DanaRegisterStudent"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.DanaRegUnit"
+                  BeanClass="registration.data.DanaRegUnit" id="getDanaRegUnits"
+                  ReturnNodeName="DanaRegUnit"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Student"
+                  BeanClass="registration.data.Student"
+                  id="getDanaUnGraguatedStudents" ReturnNodeName="Student"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.DanaCourseExam"
+                  BeanClass="registration.data.DanaCourseExam"
+                  id="getDanaExamCourse" ReturnNodeName="DanaCourseExam"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="downloadPicsStudents"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+    <ParameterInfo id="path" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="writeToFile"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="blob" Type="java.sql.Blob" isStructured="false"/>
+    <ParameterInfo id="name" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="folder" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.DanaCourseStudent"
+                  BeanClass="registration.data.DanaCourseStudent"
+                  id="getStudentsInCourses" ReturnNodeName="DanaCourseStudent"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="registration.data.Base"
+                  BeanClass="registration.data.Base" id="getBaseFromBaseId"
+                  ReturnNodeName="Base">
+    <ParameterInfo id="baseId" Type="java.math.BigDecimal"
+                   isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.lang.Boolean"
+                  id="isStudentHasPicInSchool" ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+    <ParameterInfo id="school" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="copyStudentPicFromSchoolToSchool" ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+    <ParameterInfo id="sourceSchool" Type="registration.data.School"
+                   isStructured="true"/>
+    <ParameterInfo id="destinationSchool" Type="registration.data.School"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Registration"
+                  BeanClass="registration.data.Registration"
+                  id="findStudentsRegisteredInCourse"
+                  ReturnNodeName="Registration"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="course" Type="finance.data.Course" isStructured="true"/>
+    <ParameterInfo id="term" Type="registration.data.Term" isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="registration.process.RegistrationManager"
+                     BeanClass="registration.process.RegistrationManager"
+                     id="RegistrationManager"/>
+</JavaBean>

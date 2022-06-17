@@ -1,0 +1,117 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:panelStretchLayout id="psl1" bottomHeight="150px">
+    <f:facet name="bottom">
+      <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+        <f:facet name="menus">
+          <af:menu text="منو" id="m1"
+                   icon="/Images/16 x 16 Colorful/print.png">
+            <af:commandMenuItem text="پرينت جدول" id="cmi1">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"/>
+            </af:commandMenuItem>
+          </af:menu>
+        </f:facet>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.AllTermDetailsView1_22.collectionModel}"
+                  var="row" rows="#{bindings.AllTermDetailsView1_22.rangeSize}"
+                  emptyText="#{bindings.AllTermDetailsView1_22.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.AllTermDetailsView1_22.rangeSize}"
+                  rowBandingInterval="0" id="t1" styleClass="AFStretchWidth"
+                  filterVisible="true">
+          <af:column sortProperty="TermName" sortable="false"
+                     headerText="نام ترم" id="c2">
+            <af:inputText value="#{row.bindings.TermName.inputValue}"
+                          label="#{bindings.AllTermDetailsView1_22.hints.TermName.label}"
+                          required="#{bindings.AllTermDetailsView1_22.hints.TermName.mandatory}"
+                          columns="#{bindings.AllTermDetailsView1_22.hints.TermName.displayWidth}"
+                          maximumLength="#{bindings.AllTermDetailsView1_22.hints.TermName.precision}"
+                          shortDesc="#{bindings.AllTermDetailsView1_22.hints.TermName.tooltip}"
+                          id="it3">
+              <f:validator binding="#{row.bindings.TermName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="SumTheoryUints" sortable="false"
+                     headerText="تعداد واحد هاي اخذ شده" id="c6">
+            <af:inputText value="#{row.bindings.SumTheoryUints.inputValue}"
+                          label="#{bindings.AllTermDetailsView1_22.hints.SumTheoryUints.label}"
+                          required="#{bindings.AllTermDetailsView1_22.hints.SumTheoryUints.mandatory}"
+                          columns="#{bindings.AllTermDetailsView1_22.hints.SumTheoryUints.displayWidth}"
+                          maximumLength="#{bindings.AllTermDetailsView1_22.hints.SumTheoryUints.precision}"
+                          shortDesc="#{bindings.AllTermDetailsView1_22.hints.SumTheoryUints.tooltip}"
+                          id="it1">
+              <f:validator binding="#{row.bindings.SumTheoryUints.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="SumRegistrations" sortable="false"
+                     headerText="تعداد ثبت نام ها" id="c3">
+            <af:inputText value="#{row.bindings.SumRegistrations.inputValue}"
+                          label="#{bindings.AllTermDetailsView1_22.hints.SumRegistrations.label}"
+                          required="#{bindings.AllTermDetailsView1_22.hints.SumRegistrations.mandatory}"
+                          columns="#{bindings.AllTermDetailsView1_22.hints.SumRegistrations.displayWidth}"
+                          maximumLength="#{bindings.AllTermDetailsView1_22.hints.SumRegistrations.precision}"
+                          shortDesc="#{bindings.AllTermDetailsView1_22.hints.SumRegistrations.tooltip}"
+                          id="it5">
+              <f:validator binding="#{row.bindings.SumRegistrations.validator}"/>
+            </af:inputText>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelDashboard id="pd1" columns="2" rowHeight="100%">
+        <af:panelBox id="pb1" styleClass="AFStretchWidth"
+                     text="واحد هاي ثبت نامي در ترم">
+          <f:facet name="toolbar"/>
+          <dvt:barGraph id="barGraph1"
+                        value="#{bindings.AllTermDetailsView1_2.graphModel}"
+                        subType="BAR_VERT_CLUST"
+                        shortDesc="گزارش آماري تعداد واحد هاي ثبت نام در ترم هاي مختلف">
+            <dvt:background>
+              <dvt:specialEffects/>
+            </dvt:background>
+            <dvt:graphPlotArea/>
+            <dvt:seriesSet>
+              <dvt:series/>
+            </dvt:seriesSet>
+            <dvt:o1Axis/>
+            <dvt:y1Axis/>
+            <dvt:legendArea automaticPlacement="AP_NEVER"/>
+            <dvt:graphTitle/>
+            <dvt:o1Title/>
+            <dvt:y1Title/>
+          </dvt:barGraph>
+        </af:panelBox>
+        <af:panelBox id="pb2" text="ثبت نام ها در ترم">
+          <f:facet name="toolbar"/>
+          <dvt:barGraph id="barGraph2"
+                        value="#{bindings.AllTermDetailsView1_21.graphModel}"
+                        subType="BAR_VERT_CLUST"
+                        shortDesc="تعداد دانش آموزان در ترم">
+            <dvt:background>
+              <dvt:specialEffects/>
+            </dvt:background>
+            <dvt:graphPlotArea/>
+            <dvt:seriesSet>
+              <dvt:series/>
+            </dvt:seriesSet>
+            <dvt:o1Axis/>
+            <dvt:y1Axis/>
+            <dvt:legendArea automaticPlacement="AP_NEVER"/>
+          </dvt:barGraph>
+        </af:panelBox>
+      </af:panelDashboard>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl1">
+        <af:commandButton text="بازگشت به صفحه اصلی" id="cb1" action="back"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

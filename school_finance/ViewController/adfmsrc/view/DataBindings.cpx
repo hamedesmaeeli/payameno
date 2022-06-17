@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.61.92" id="DataBindings" SeparateXMLFiles="false"
+             Package="view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+    <factory nameSpace="http://xmlns.oracle.com/adfm/dvt"
+             className="oracle.adfinternal.view.faces.dvt.model.binding.FacesBindingFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/students.jspx" usageId="view_studentsPageDef"/>
+    <page path="/studentsList.jsff" usageId="view_studentsListPageDef"/>
+    <page path="/editStudent.jsff" usageId="view_editStudentPageDef"/>
+    <page path="/newStudent.jsff" usageId="view_newStudentPageDef"/>
+    <page path="/registerStudent.jsff" usageId="view_registerStudentPageDef"/>
+    <page path="/payments.jsff" usageId="view_paymentsPageDef"/>
+    <page path="/WEB-INF/students.xml#students@getPaymentsStepsview"
+          usageId="view_students_students_getPaymentsStepsviewPageDef"/>
+    <page path="/WEB-INF/students.xml#students@getRegistrationChecksView"
+          usageId="view_students_students_getRegistrationChecksViewPageDef"/>
+    <page path="/WEB-INF/students.xml#students@getStudentCurrentAccounting"
+          usageId="view_students_students_getStudentCurrentAccountingPageDef"/>
+    <page path="/config.jspx" usageId="view_configPageDef"/>
+    <page path="/configPages.jsff" usageId="view_configPagesPageDef"/>
+    <page path="/accountingFirst.jsff" usageId="view_accountingFirstPageDef"/>
+    <page path="/accounting.jspx" usageId="view_accountingPageDef"/>
+    <page path="/cashAccountingView.jsff"
+          usageId="view_cashAccountingViewPageDef"/>
+    <page path="/bankAccountAccountingPage.jsff"
+          usageId="view_bankAccountAccountingPagePageDef"/>
+    <page path="/checksAccountingView.jsff"
+          usageId="view_checksAccountingViewPageDef"/>
+    <page path="/help.jspx" usageId="view_helpPageDef"/>
+    <page path="/registrationList.jsff" usageId="view_registrationListPageDef"/>
+    <page path="/clearTermAccounting.jsff"
+          usageId="view_clearTermAccountingPageDef"/>
+    <page path="/WEB-INF/students.xml#students@Execute"
+          usageId="view_students_students_ExecutePageDef"/>
+    <page path="/debitorsInCurrentTerm.jsff"
+          usageId="view_debitorsInCurrentTermPageDef"/>
+    <page path="/schoolManage.jsff" usageId="view_schoolManagePageDef"/>
+    <page path="/school.jspx" usageId="view_schoolPageDef"/>
+    <page path="/withoutPicsSchools.jsff"
+          usageId="view_withoutPicsSchoolsPageDef"/>
+    <page path="/registeredStudents.jsff"
+          usageId="view_registeredStudentsPageDef"/>
+    <page path="/report1_page.jsff" usageId="view_report1_pagePageDef"/>
+    <page path="/reportsListPage.jsff" usageId="view_reportsListPagePageDef"/>
+    <page path="/reports.jspx" usageId="view_reportsPageDef"/>
+    <page path="/ungraguatedStudents.jsff"
+          usageId="view_ungraguatedStudentsPageDef"/>
+    <page path="/selectCourse.jsff" usageId="view_selectCoursePageDef"/>
+    <page path="/showList.jsff" usageId="view_showListPageDef"/>
+    <page path="/report2_page.jsff" usageId="view_report2_pagePageDef"/>
+    <page path="/listOfOtherSchoolsHasPic.jsff"
+          usageId="view_listOfOtherSchoolsHasPicPageDef"/>
+    <page path="/WEB-INF/school.xml#school@Execute"
+          usageId="view_school_school_ExecutePageDef"/>
+    <page path="/WEB-INF/school.xml#school@getNoPicsStudents"
+          usageId="view_school_school_getNoPicsStudentsPageDef"/>
+    <page path="/govahi_elam_vaziat.jsff"
+          usageId="view_govahi_elam_vaziatPageDef"/>
+    <page path="/WEB-INF/govahi_vaziat_tahsili.xml#govahi_vaziat_tahsili@CreateInsert"
+          usageId="view_govahi_vaziat_tahsili_govahi_vaziat_tahsili_CreateInsertPageDef"/>
+    <page path="/courses.jspx" usageId="view_coursesPageDef"/>
+    <page path="/courses.jsff" usageId="view_coursesPageDef1"/>
+    <page path="/StudentsInCourse.jsff" usageId="view_StudentsInCoursePageDef"/>
+    <page path="/studentCourse.jsff" usageId="view_studentCoursePageDef"/>
+    <page path="/SelectedCoures.jsff" usageId="view_SelectedCouresPageDef"/>
+    <page path="/WEB-INF/students.xml#students@findCoursesNotRegistered"
+          usageId="view_students_students_findCoursesNotRegisteredPageDef"/>
+    <page path="/WEB-INF/students.xml#students@findCoursesRegistered"
+          usageId="view_students_students_findCoursesRegisteredPageDef"/>
+    <page path="/WEB-INF/students.xml#students@findCoursesRegistered1"
+          usageId="view_students_students_findCoursesRegistered1PageDef"/>
+    <page path="/courses_kart.jsff" usageId="view_courses_kartPageDef"/>
+    <page path="/courseFields.jsff" usageId="view_courseFieldsPageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@Execute"
+          usageId="view_coursesFlow_coursesFlow_ExecutePageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllAvailableFieldsForCourse"
+          usageId="view_coursesFlow_coursesFlow_getAllAvailableFieldsForCoursePageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getFieldsFromCourse"
+          usageId="view_coursesFlow_coursesFlow_getFieldsFromCoursePageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getFieldsFromCourse1"
+          usageId="view_coursesFlow_coursesFlow_getFieldsFromCourse1PageDef"/>
+    <page path="/WEB-INF/students.xml#students@findCoursesNotRegistered1"
+          usageId="view_students_students_findCoursesNotRegistered1PageDef"/>
+    <page path="/exam.jsff" usageId="view_examPageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllTermExamTimes"
+          usageId="view_coursesFlow_coursesFlow_getAllTermExamTimesPageDef"/>
+    <page path="/examCourse.jsff" usageId="view_examCoursePageDef"/>
+    <page path="/examTimeDetails.jsff" usageId="view_examTimeDetailsPageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllExamCourseFromExamTime"
+          usageId="view_coursesFlow_coursesFlow_getAllExamCourseFromExamTimePageDef"/>
+    <page path="/report3_page.jsff" usageId="view_report3_pagePageDef"/>
+    <page path="/report4_page.jsff" usageId="view_report4_pagePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="view_studentsPageDef" path="view.pageDefs.studentsPageDef"/>
+    <page id="view_studentsListPageDef"
+          path="view.pageDefs.studentsListPageDef"/>
+    <page id="view_editStudentPageDef" path="view.pageDefs.editStudentPageDef"/>
+    <page id="view_newStudentPageDef" path="view.pageDefs.newStudentPageDef"/>
+    <page id="view_registerStudentPageDef"
+          path="view.pageDefs.registerStudentPageDef"/>
+    <page id="view_paymentsPageDef" path="view.pageDefs.paymentsPageDef"/>
+    <page id="view_students_students_getPaymentsStepsviewPageDef"
+          path="view.pageDefs.students_students_getPaymentsStepsviewPageDef"/>
+    <page id="view_students_students_getRegistrationChecksViewPageDef"
+          path="view.pageDefs.students_students_getRegistrationChecksViewPageDef"/>
+    <page id="view_students_students_getStudentCurrentAccountingPageDef"
+          path="view.pageDefs.students_students_getStudentCurrentAccountingPageDef"/>
+    <page id="view_configPageDef" path="view.pageDefs.configPageDef"/>
+    <page id="view_configPagesPageDef" path="view.pageDefs.configPagesPageDef"/>
+    <page id="view_accountingFirstPageDef"
+          path="view.pageDefs.accountingFirstPageDef"/>
+    <page id="view_accountingPageDef" path="view.pageDefs.accountingPageDef"/>
+    <page id="view_cashAccountingViewPageDef"
+          path="view.pageDefs.cashAccountingViewPageDef"/>
+    <page id="view_bankAccountAccountingPagePageDef"
+          path="view.pageDefs.bankAccountAccountingPagePageDef"/>
+    <page id="view_checksAccountingViewPageDef"
+          path="view.pageDefs.checksAccountingViewPageDef"/>
+    <page id="view_helpPageDef" path="view.pageDefs.helpPageDef"/>
+    <page id="view_registrationListPageDef"
+          path="view.pageDefs.registrationListPageDef"/>
+    <page id="view_clearTermAccountingPageDef"
+          path="view.pageDefs.clearTermAccountingPageDef"/>
+    <page id="view_students_students_ExecutePageDef"
+          path="view.pageDefs.students_students_ExecutePageDef"/>
+    <page id="view_debitorsInCurrentTermPageDef"
+          path="view.pageDefs.debitorsInCurrentTermPageDef"/>
+    <page id="view_schoolManagePageDef"
+          path="view.pageDefs.schoolManagePageDef"/>
+    <page id="view_schoolPageDef" path="view.pageDefs.schoolPageDef"/>
+    <page id="view_withoutPicsSchoolsPageDef"
+          path="view.pageDefs.withoutPicsSchoolsPageDef"/>
+    <page id="view_registeredStudentsPageDef"
+          path="view.pageDefs.registeredStudentsPageDef"/>
+    <page id="view_report1_pagePageDef"
+          path="view.pageDefs.report1_pagePageDef"/>
+    <page id="view_reportsListPagePageDef"
+          path="view.pageDefs.reportsListPagePageDef"/>
+    <page id="view_reportsPageDef" path="view.pageDefs.reportsPageDef"/>
+    <page id="view_ungraguatedStudentsPageDef"
+          path="view.pageDefs.ungraguatedStudentsPageDef"/>
+    <page id="view_selectCoursePageDef"
+          path="view.pageDefs.selectCoursePageDef"/>
+    <page id="view_showListPageDef" path="view.pageDefs.showListPageDef"/>
+    <page id="view_report2_pagePageDef"
+          path="view.pageDefs.report2_pagePageDef"/>
+    <page id="view_listOfOtherSchoolsHasPicPageDef"
+          path="view.pageDefs.listOfOtherSchoolsHasPicPageDef"/>
+    <page id="view_school_school_ExecutePageDef"
+          path="view.pageDefs.school_school_ExecutePageDef"/>
+    <page id="view_school_school_getNoPicsStudentsPageDef"
+          path="view.pageDefs.school_school_getNoPicsStudentsPageDef"/>
+    <page id="view_govahi_elam_vaziatPageDef"
+          path="view.pageDefs.govahi_elam_vaziatPageDef"/>
+    <page id="view_govahi_vaziat_tahsili_govahi_vaziat_tahsili_CreateInsertPageDef"
+          path="view.pageDefs.govahi_vaziat_tahsili_govahi_vaziat_tahsili_CreateInsertPageDef"/>
+    <page id="view_coursesPageDef" path="view.pageDefs.coursesPageDef"/>
+    <page id="view_coursesPageDef1" path="view.pageDefs.coursesPageDef1"/>
+    <page id="view_StudentsInCoursePageDef"
+          path="view.pageDefs.StudentsInCoursePageDef"/>
+    <page id="view_studentCoursePageDef"
+          path="view.pageDefs.studentCoursePageDef"/>
+    <page id="view_SelectedCouresPageDef"
+          path="view.pageDefs.SelectedCouresPageDef"/>
+    <page id="view_students_students_findCoursesNotRegisteredPageDef"
+          path="view.pageDefs.students_students_findCoursesNotRegisteredPageDef"/>
+    <page id="view_students_students_findCoursesRegisteredPageDef"
+          path="view.pageDefs.students_students_findCoursesRegisteredPageDef"/>
+    <page id="view_students_students_findCoursesRegistered1PageDef"
+          path="view.pageDefs.students_students_findCoursesRegistered1PageDef"/>
+    <page id="view_courses_kartPageDef"
+          path="view.pageDefs.courses_kartPageDef"/>
+    <page id="view_courseFieldsPageDef"
+          path="view.pageDefs.courseFieldsPageDef"/>
+    <page id="view_coursesFlow_coursesFlow_ExecutePageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_ExecutePageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getAllAvailableFieldsForCoursePageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getAllAvailableFieldsForCoursePageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getFieldsFromCoursePageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getFieldsFromCoursePageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getFieldsFromCourse1PageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getFieldsFromCourse1PageDef"/>
+    <page id="view_students_students_findCoursesNotRegistered1PageDef"
+          path="view.pageDefs.students_students_findCoursesNotRegistered1PageDef"/>
+    <page id="view_examPageDef" path="view.pageDefs.examPageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getAllTermExamTimesPageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getAllTermExamTimesPageDef"/>
+    <page id="view_examCoursePageDef" path="view.pageDefs.examCoursePageDef"/>
+    <page id="view_examTimeDetailsPageDef"
+          path="view.pageDefs.examTimeDetailsPageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getAllExamCourseFromExamTimePageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getAllExamCourseFromExamTimePageDef"/>
+    <page id="view_report3_pagePageDef"
+          path="view.pageDefs.report3_pagePageDef"/>
+    <page id="view_report4_pagePageDef"
+          path="view.pageDefs.report4_pagePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="schManager" path="model.schManager"/>
+    <BC4JDataControl id="AppModuleDataControl" Package="modelDb"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl"
+                     SupportsTransactions="true" SupportsFindMode="true"
+                     SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true"
+                     Configuration="AppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

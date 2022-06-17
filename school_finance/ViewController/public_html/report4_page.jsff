@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="تعداد ثبت نام های در هر درس" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelCollection id="pc1">
+          <f:facet name="menus">
+            <af:menu text="دریافت اکسل" id="m1"
+                     icon="/Images/16 x 16 Colorful/download.png">
+              <af:commandMenuItem text="دانلود اکسل" id="cmi1">
+                <af:exportCollectionActionListener type="excelHTML"
+                                                   exportedId="t1"
+                                                   filename="register_in_courses_cont.xsl"
+                                                   title="تعداد ثبت نامی ها در هر درس"/>
+              </af:commandMenuItem>
+            </af:menu>
+          </f:facet>
+          <f:facet name="toolbar"/>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.StudentsInCoursesViewView2_1.collectionModel}"
+                    var="row"
+                    rows="#{bindings.StudentsInCoursesViewView2_1.rangeSize}"
+                    emptyText="#{bindings.StudentsInCoursesViewView2_1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.StudentsInCoursesViewView2_1.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.StudentsInCoursesViewView2_1Query.queryDescriptor}"
+                    queryListener="#{bindings.StudentsInCoursesViewView2_1Query.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.StudentsInCoursesViewView2_1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.StudentsInCoursesViewView2_1.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t1">
+            <af:column sortProperty="Code"
+                       headerText="کد درس" id="c1">
+              <af:outputText value="#{row.Code}" id="ot3"/>
+            </af:column>
+            <af:column sortProperty="DisplayName" headerText="نام درس" id="c2">
+              <af:outputText value="#{row.DisplayName}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="Count1"
+                       headerText="تعداد ثبت نام" id="c3">
+              <af:outputText value="#{row.Count1}" id="ot2"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl1">
+        <af:commandButton text="بازگشت به لیست" id="cb1" action="back"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

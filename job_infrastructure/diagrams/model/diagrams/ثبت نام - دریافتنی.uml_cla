@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:678ff345-9d0f-4c38-9bc5-cec52c22827d'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='ثبت نام - دریافتنی'
+   visibility='public'/>
+</xmi:XMI>

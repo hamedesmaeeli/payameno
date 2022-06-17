@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegStudentAccountView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegStudentAccount.st_id, 
+       RegStudentAccount.acc_id, 
+       RegStudentAccount.create_date"
+  FromList="school_new.reg_student_account RegStudentAccount"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegStudentAccount"
+    Entity="modelDb.RegStudentAccount"/>
+  <ViewAttribute
+    Name="StId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="StId"
+    EntityUsage="RegStudentAccount"
+    AliasName="st_id"/>
+  <ViewAttribute
+    Name="AccId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="AccId"
+    EntityUsage="RegStudentAccount"
+    AliasName="acc_id"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="RegStudentAccount"
+    AliasName="create_date"/>
+</ViewObject>

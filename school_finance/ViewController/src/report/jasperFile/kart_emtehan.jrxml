@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="kart_emtehan" language="groovy" printOrder="Horizontal" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7ee6e52d-b789-434a-903f-e394d32d0b3a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="63"/>
+	<style name="style1"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="course_list" uuid="97104c75-a51f-4ad6-aaa3-f6cc6c940f5e">
+		<parameter name="reg_id" class="java.math.BigDecimal">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     reg_registerd_course_view.`reg_id` AS reg_registerd_course_view_reg_id,
+     reg_registerd_course_view.`reg_date` AS reg_registerd_course_view_reg_date,
+     reg_registerd_course_view.`st_id` AS reg_registerd_course_view_st_id,
+     reg_registerd_course_view.`field_id` AS reg_registerd_course_view_field_id,
+     reg_registerd_course_view.`term_id` AS reg_registerd_course_view_term_id,
+     reg_registerd_course_view.`level_id` AS reg_registerd_course_view_level_id,
+     reg_registerd_course_view.`theory_units` AS reg_registerd_course_view_theory_units,
+     reg_registerd_course_view.`actional_units` AS reg_registerd_course_view_actional_units,
+     reg_registerd_course_view.`fix_salary` AS reg_registerd_course_view_fix_salary,
+     reg_registerd_course_view.`actional_salary` AS reg_registerd_course_view_actional_salary,
+     reg_registerd_course_view.`theory_salary` AS reg_registerd_course_view_theory_salary,
+     reg_registerd_course_view.`other_salary_comment` AS reg_registerd_course_view_other_salary_comment,
+     reg_registerd_course_view.`other_salary_amount` AS reg_registerd_course_view_other_salary_amount,
+     reg_registerd_course_view.`total_salary` AS reg_registerd_course_view_total_salary,
+     reg_registerd_course_view.`off_amount` AS reg_registerd_course_view_off_amount,
+     reg_registerd_course_view.`off_comment` AS reg_registerd_course_view_off_comment,
+     reg_registerd_course_view.`base_id` AS reg_registerd_course_view_base_id,
+     reg_registerd_course_view.`first_name` AS reg_registerd_course_view_first_name,
+     reg_registerd_course_view.`famili` AS reg_registerd_course_view_famili,
+     reg_registerd_course_view.`national_code` AS reg_registerd_course_view_national_code,
+     reg_registerd_course_view.`father_name` AS reg_registerd_course_view_father_name,
+     reg_registerd_course_view.`date_of_birth` AS reg_registerd_course_view_date_of_birth,
+     reg_registerd_course_view.`st_description` AS reg_registerd_course_view_st_description,
+     reg_registerd_course_view.`status_id` AS reg_registerd_course_view_status_id,
+     reg_registerd_course_view.`org_unit_id` AS reg_registerd_course_view_org_unit_id,
+     reg_registerd_course_view.`created_date` AS reg_registerd_course_view_created_date,
+     reg_registerd_course_view.`last_modified` AS reg_registerd_course_view_last_modified,
+     reg_registerd_course_view.`address` AS reg_registerd_course_view_address,
+     reg_registerd_course_view.`mobile` AS reg_registerd_course_view_mobile,
+     reg_registerd_course_view.`archive_code` AS reg_registerd_course_view_archive_code,
+     reg_registerd_course_view.`pish_madrak` AS reg_registerd_course_view_pish_madrak,
+     reg_registerd_course_view.`diplom_madrak` AS reg_registerd_course_view_diplom_madrak,
+     reg_registerd_course_view.`course_id` AS reg_registerd_course_view_course_id,
+     reg_registerd_course_view.`course_code` AS reg_registerd_course_view_course_code,
+     reg_registerd_course_view.`course_name` AS reg_registerd_course_view_course_name,
+     reg_registerd_course_view.`course_unit` AS reg_registerd_course_view_course_unit,
+     reg_registerd_course_view.`course_is_final` AS reg_registerd_course_view_course_is_final,
+     reg_registerd_course_view.`course_dispaly_name` AS reg_registerd_course_view_course_dispaly_name,
+     reg_registerd_course_view.`course_description` AS reg_registerd_course_view_course_description
+FROM
+     `reg_registerd_course_view` reg_registerd_course_view
+where reg_registerd_course_view.`reg_id` =  $P{reg_id}]]>
+		</queryString>
+		<field name="reg_registerd_course_view_reg_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_reg_date" class="java.sql.Timestamp"/>
+		<field name="reg_registerd_course_view_st_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_field_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_term_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_level_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_theory_units" class="java.lang.Double"/>
+		<field name="reg_registerd_course_view_actional_units" class="java.lang.Integer"/>
+		<field name="reg_registerd_course_view_fix_salary" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_actional_salary" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_theory_salary" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_other_salary_comment" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_other_salary_amount" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_total_salary" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_off_amount" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_off_comment" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_base_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_first_name" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_famili" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_national_code" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_father_name" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_date_of_birth" class="java.sql.Date"/>
+		<field name="reg_registerd_course_view_st_description" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_status_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_org_unit_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_created_date" class="java.sql.Timestamp"/>
+		<field name="reg_registerd_course_view_last_modified" class="java.sql.Timestamp"/>
+		<field name="reg_registerd_course_view_address" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_mobile" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_archive_code" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_pish_madrak" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_diplom_madrak" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_course_id" class="java.lang.Long"/>
+		<field name="reg_registerd_course_view_course_code" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_course_name" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_course_unit" class="java.lang.Integer"/>
+		<field name="reg_registerd_course_view_course_is_final" class="java.lang.Boolean"/>
+		<field name="reg_registerd_course_view_course_dispaly_name" class="java.lang.String"/>
+		<field name="reg_registerd_course_view_course_description" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT
+     registration_view.`reg_date` AS registration_view_reg_date,
+     registration_view.`theory_units` AS registration_view_theory_units,
+     registration_view.`actional_units` AS registration_view_actional_units,
+     registration_view.`fix_salary` AS registration_view_fix_salary,
+     registration_view.`theory_salary` AS registration_view_theory_salary,
+     registration_view.`actional_salary` AS registration_view_actional_salary,
+     registration_view.`other_salary_comment` AS registration_view_other_salary_comment,
+     registration_view.`other_salary_amount` AS registration_view_other_salary_amount,
+     registration_view.`total_salary` AS registration_view_total_salary,
+     registration_view.`off_amount` AS registration_view_off_amount,
+     registration_view.`off_comment` AS registration_view_off_comment,
+     registration_view.`term_name` AS registration_view_term_name,
+     registration_view.`field_name` AS registration_view_field_name,
+     registration_view.`name` AS registration_view_name,
+     registration_view.`famili` AS registration_view_famili,
+     registration_view.`national_code` AS registration_view_national_code,
+     registration_view.`identifier_code` AS registration_view_identifier_code,
+     registration_view.`identifier_serial` AS registration_view_identifier_serial,
+     registration_view.`identifier_char` AS registration_view_identifier_char,
+     registration_view.`student_code` AS registration_view_student_code,
+     registration_view.`father_name` AS registration_view_father_name,
+     registration_view.`date_of_birth` AS registration_view_date_of_birth,
+     registration_view.`description` AS registration_view_description,
+     registration_view.`address` AS registration_view_address,
+     registration_view.`mobile` AS registration_view_mobile,
+     registration_view.`phone` AS registration_view_phone,
+     registration_view.`archive_code` AS registration_view_archive_code,
+     registration_view.`org_name` AS registration_view_org_name,
+     registration_view.`id` AS registration_view_id,
+     registration_view.`status_name` AS registration_view_status_name,
+     registration_view.`status_id` AS registration_view_status_id,
+     registration_view.`st_org_id` AS registration_view_st_org_id,
+     registration_view.`field_id` AS registration_view_field_id,
+     registration_view.`reg_term_is_current` AS registration_view_reg_term_is_current,
+     registration_view.`reg_term_id` AS registration_view_reg_term_id,
+     registration_view.`org_unit_id` AS registration_view_org_unit_id,
+     registration_view.`level_id` AS registration_view_level_id,
+     registration_view.`level_name` AS registration_view_level_name,
+     registration_view.`created_date` AS registration_view_created_date,
+     registration_view.`last_modified` AS registration_view_last_modified,
+     registration_view.`from_date` AS registration_view_from_date,
+     registration_view.`pish_madrak` AS registration_view_pish_madrak,
+     registration_view.`diplom_madrak` AS registration_view_diplom_madrak
+FROM
+     `registration_view` registration_view
+
+WHERE
+     registration_view.reg_term_id = 9320
+order by registration_view.famili ]]>
+	</queryString>
+	<field name="registration_view_reg_date" class="java.sql.Timestamp"/>
+	<field name="registration_view_theory_units" class="java.lang.Double"/>
+	<field name="registration_view_actional_units" class="java.lang.Integer"/>
+	<field name="registration_view_fix_salary" class="java.lang.Long"/>
+	<field name="registration_view_theory_salary" class="java.lang.Long"/>
+	<field name="registration_view_actional_salary" class="java.lang.Long"/>
+	<field name="registration_view_other_salary_comment" class="java.lang.String"/>
+	<field name="registration_view_other_salary_amount" class="java.lang.Long"/>
+	<field name="registration_view_total_salary" class="java.lang.Long"/>
+	<field name="registration_view_off_amount" class="java.lang.Long"/>
+	<field name="registration_view_off_comment" class="java.lang.String"/>
+	<field name="registration_view_term_name" class="java.lang.String"/>
+	<field name="registration_view_field_name" class="java.lang.String"/>
+	<field name="registration_view_name" class="java.lang.String"/>
+	<field name="registration_view_famili" class="java.lang.String"/>
+	<field name="registration_view_national_code" class="java.lang.String"/>
+	<field name="registration_view_identifier_code" class="java.lang.String"/>
+	<field name="registration_view_identifier_serial" class="java.lang.String"/>
+	<field name="registration_view_identifier_char" class="java.lang.Integer"/>
+	<field name="registration_view_student_code" class="java.lang.Long"/>
+	<field name="registration_view_father_name" class="java.lang.String"/>
+	<field name="registration_view_date_of_birth" class="java.sql.Date"/>
+	<field name="registration_view_description" class="java.lang.String"/>
+	<field name="registration_view_address" class="java.lang.String"/>
+	<field name="registration_view_mobile" class="java.lang.String"/>
+	<field name="registration_view_phone" class="java.lang.String"/>
+	<field name="registration_view_archive_code" class="java.lang.String"/>
+	<field name="registration_view_org_name" class="java.lang.String"/>
+	<field name="registration_view_id" class="java.lang.Long"/>
+	<field name="registration_view_status_name" class="java.lang.String"/>
+	<field name="registration_view_status_id" class="java.lang.Long"/>
+	<field name="registration_view_st_org_id" class="java.lang.Long"/>
+	<field name="registration_view_field_id" class="java.lang.Long"/>
+	<field name="registration_view_reg_term_is_current" class="java.lang.Boolean"/>
+	<field name="registration_view_reg_term_id" class="java.lang.Long"/>
+	<field name="registration_view_org_unit_id" class="java.lang.Long"/>
+	<field name="registration_view_level_id" class="java.lang.Long"/>
+	<field name="registration_view_level_name" class="java.lang.String"/>
+	<field name="registration_view_created_date" class="java.sql.Timestamp"/>
+	<field name="registration_view_last_modified" class="java.sql.Timestamp"/>
+	<field name="registration_view_from_date" class="java.sql.Date"/>
+	<field name="registration_view_pish_madrak" class="java.lang.String"/>
+	<field name="registration_view_diplom_madrak" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="31714183-df15-475c-9c56-6b865b14dbe3" x="96" y="17" width="219" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[لیست دانش آموزان ثبت نامی در ترم ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="51" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="138b33f1-f0e8-40d8-9ea2-e95cfd070c20" x="6" y="0" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[registration_view_name]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="1752ebd5-f11a-4864-a89b-0e63eee3d63d" x="6" y="26" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{registration_view_name}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="7f438c34-61e3-438c-91c7-c43c908694f0" x="74" y="0" width="68" height="20"/>
+				<textElement/>
+				<text><![CDATA[registration_view_famili]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="9f5eeae9-54e2-43a7-bb6c-1f91f480fba8" x="74" y="26" width="68" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{registration_view_famili}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="2947bab3-59e5-42c7-9902-3de8bba90b21" x="142" y="0" width="73" height="20"/>
+				<textElement/>
+				<text><![CDATA[registration_view_father_name]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="23a8d4b5-9cb6-4746-bc92-4360290edf11" x="142" y="26" width="73" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{registration_view_father_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="34" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="53" splitType="Stretch">
+			<componentElement>
+				<reportElement uuid="66adc09a-87ce-47d1-b37e-2e60f917e225" key="table" style="table" x="131" y="0" width="360" height="27"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="course_list" uuid="5bf22227-3ddb-4876-b812-f004f1455b1d">
+						<datasetParameter name="reg_id">
+							<datasetParameterExpression><![CDATA[$F{registration_view_id}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="4276732e-9da6-4b0b-a0e9-545f4e7370c7" width="90">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="7b0fc752-55ac-4e7b-8062-d36bd8b7b9e4" x="0" y="0" width="74" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{reg_registerd_course_view_course_code}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="c60bea43-3569-4032-a1ee-d3c919c64ea4" width="90">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20">
+							<textField>
+								<reportElement uuid="72e1d208-fbf4-41b4-8ad4-e26c79b9da84" x="0" y="0" width="90" height="20"/>
+								<textElement/>
+								<textFieldExpression><![CDATA[$F{reg_registerd_course_view_course_unit}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="949f8100-79d8-4e48-bc6f-25547a2bfde2" width="90">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+					<jr:column uuid="bd978233-7fd5-4f97-828e-f768d52d5e08" width="90">
+						<jr:tableHeader style="table_TH" height="30"/>
+						<jr:tableFooter style="table_TH" height="30"/>
+						<jr:columnHeader style="table_CH" height="30"/>
+						<jr:columnFooter style="table_CH" height="30"/>
+						<jr:detailCell style="table_TD" height="20"/>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="18" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement uuid="51f259fa-24fd-4e44-8946-ea4ea5562a66" x="6" y="22" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="cf62705e-65e8-4f1c-9d24-c38af026393b" x="293" y="22" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

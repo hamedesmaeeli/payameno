@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Level" Package="registration.data"
+          BeanClass="registration.data.Level" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.Level"
+                     BeanClass="registration.data.Level" id="Level">
+    <ParameterInfo id="id" Type="java.math.BigDecimal" isStructured="false"/>
+    <ParameterInfo id="name" Type="java.lang.String" isStructured="false"/>
+  </ConstructorMethod>
+  <ConstructorMethod IsCollection="true" Type="registration.data.Level"
+                     BeanClass="registration.data.Level" id="Level"/>
+</JavaBean>

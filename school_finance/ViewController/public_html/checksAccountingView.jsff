@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" topHeight="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.Check.collectionModel}" var="row"
+                  rows="#{bindings.Check.rangeSize}"
+                  emptyText="#{bindings.Check.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Check.rangeSize}" rowBandingInterval="0"
+                  filterModel="#{bindings.CheckQuery.queryDescriptor}"
+                  queryListener="#{bindings.CheckQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.Check.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.Check.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="createdDate" filterable="true"
+                     sortable="true" headerText="تاریخ ایجاد" id="c10">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.createdDate}" id="id4"/>
+            </f:facet>
+            <af:outputText value="#{row.createdDate}" id="ot11">
+              <af:convertDateTime pattern="#{bindings.Check.hints.createdDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="number" filterable="true" sortable="true"
+                     headerText="شماره چک" id="c13">
+            <af:outputText value="#{row.number}" id="ot12"/>
+          </af:column>
+          <af:column sortProperty="amount" filterable="true" sortable="true"
+                     headerText="مبلغ چک" id="c12">
+            <af:outputText value="#{row.amount}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="forHow" filterable="true" sortable="true"
+                     headerText="در وجه" id="c7">
+            <af:outputText value="#{row.forHow}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="checkDate" filterable="true" sortable="true"
+                     headerText="سر رسید چک" id="c4">
+            <f:facet name="filter">
+              <af:inputDate value="#{vs.filterCriteria.checkDate}" id="id3"/>
+            </f:facet>
+            <af:outputText value="#{row.checkDate}" id="ot1">
+              <af:convertDateTime pattern="#{bindings.Check.hints.checkDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="نام بانک" id="c6">
+            <af:outputText value="#{row.bank.bindings.name.inputValue}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="bankBranch" filterable="true" sortable="true"
+                     headerText="شعبه بانک" id="c2">
+            <af:outputText value="#{row.bankBranch}" id="ot13"/>
+          </af:column>
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="وضعیت چک" id="c1">
+            <af:outputText value="#{row.checkStatus.bindings.name.inputValue}"
+                           id="ot6"/>
+          </af:column>
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="طرف حساب" id="c11">
+            <af:outputText value="#{row.account.bindings.name.inputValue}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="description" filterable="true"
+                     sortable="true" headerText="توضیح" id="c3">
+            <af:outputText value="#{row.description}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="phone" filterable="true" sortable="true"
+                     headerText="تلفن طرف حساب" id="c9">
+            <af:outputText value="#{row.account.bindings.phone.inputValue}"
+                           id="ot10"/>
+          </af:column>
+          <af:column sortProperty="personMobile" filterable="true"
+                     sortable="true" headerText="موبایل طرف حساب" id="c8">
+            <af:outputText value="#{row.account.bindings.personMobile.inputValue}"
+                           id="ot5"/>
+          </af:column>
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="حساب بانکی" id="c5">
+            <af:outputText value="#{row.accountBank.bindings.name.inputValue}"
+                           id="ot7"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="پارامتر های جستجو" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1" rows="2">
+          <f:facet name="footer"/>
+          <af:inputDate label="تاریخ شروع" id="id1"
+                        value="#{pageFlowScope.checksAccountingBean.expireStartDate}"/>
+          <af:inputDate label="تاریخ پایان" id="id2"
+                        value="#{pageFlowScope.checksAccountingBean.expireEndDate}"/>
+          <af:selectOneChoice value="#{bindings.allCheckStatus.inputValue}"
+                              label="وضعیت چک"
+                              required="#{bindings.allCheckStatus.hints.mandatory}"
+                              shortDesc="#{bindings.allCheckStatus.hints.tooltip}"
+                              id="soc1" autoSubmit="true"
+                              valueChangeListener="#{pageFlowScope.checksAccountingBean.changeStatusCheck}"
+                              immediate="true" unselectedLabel="ALL">
+            <f:selectItems value="#{bindings.allCheckStatus.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:commandButton actionListener="#{bindings.searchChecks.execute}"
+                            text="جستجو"
+                            disabled="#{!bindings.searchChecks.enabled}"
+                            id="cb1"/>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

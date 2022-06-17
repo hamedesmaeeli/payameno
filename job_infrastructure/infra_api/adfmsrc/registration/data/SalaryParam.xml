@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="SalaryParam" Package="registration.data"
+          BeanClass="registration.data.SalaryParam" isJavaBased="true">
+  <Attribute Name="fixSalary" Type="java.math.BigDecimal"/>
+  <Attribute Name="theorySalary" Type="java.math.BigDecimal"/>
+  <Attribute Name="actionSalary" Type="java.math.BigDecimal"/>
+  <Attribute Name="unitRate" Type="int"/>
+  <AccessorAttribute id="term" IsCollection="false"
+                     BeanClass="registration.data.Term"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="level" IsCollection="false"
+                     BeanClass="registration.data.Level"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.SalaryParam"
+                     BeanClass="registration.data.SalaryParam"
+                     id="SalaryParam"/>
+</JavaBean>

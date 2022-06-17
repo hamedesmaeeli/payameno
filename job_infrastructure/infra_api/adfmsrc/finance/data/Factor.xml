@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Factor" Package="finance.data" BeanClass="finance.data.Factor"
+          isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="createDate" Type="java.util.Date"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <AccessorAttribute id="account" IsCollection="false"
+                     BeanClass="finance.data.Account"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="factorType" IsCollection="false"
+                     BeanClass="finance.data.FactorType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Factor"
+                     BeanClass="finance.data.Factor" id="Factor"/>
+</JavaBean>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="SelectedCouresPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="findCoursesRegistered.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="finance.data.Course"
+                    id="findCoursesRegisteredIterator"/>
+    <searchRegion Binds="findCoursesRegisteredIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CourseQuery"/>
+    <methodIterator Binds="findCoursesNotRegistered.result"
+                    DataControl="schManager" RangeSize="1000"
+                    BeanClass="finance.data.Course"
+                    id="findCoursesNotRegisteredIterator"/>
+    <searchRegion Binds="findCoursesNotRegisteredIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="Course1Query"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="findCoursesRegistered" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCoursesRegistered"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.findCoursesRegistered_findCoursesRegistered_findCoursesRegistered_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.newRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <tree IterBinding="findCoursesRegisteredIterator" id="Course">
+      <nodeDefinition DefName="finance.data.Course" Name="Course0">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="findCoursesNotRegistered" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="findCoursesNotRegistered"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.findCoursesNotRegistered_findCoursesNotRegistered_findCoursesNotRegistered_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.newRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <tree IterBinding="findCoursesNotRegisteredIterator" id="Course1">
+      <nodeDefinition DefName="finance.data.Course" Name="Course10">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

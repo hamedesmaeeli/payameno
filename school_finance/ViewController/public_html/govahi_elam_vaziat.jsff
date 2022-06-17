@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="PanelBox2" id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelFormLayout id="pfl1">
+          <af:inputText value="#{bindings.Id.inputValue}"
+                        label="#{bindings.Id.hints.label}"
+                        required="#{bindings.Id.hints.mandatory}"
+                        columns="#{bindings.Id.hints.displayWidth}"
+                        maximumLength="#{bindings.Id.hints.precision}"
+                        shortDesc="#{bindings.Id.hints.tooltip}" id="it2">
+            <f:validator binding="#{bindings.Id.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.StId.inputValue}"
+                        label="#{bindings.StId.hints.label}"
+                        required="#{bindings.StId.hints.mandatory}"
+                        columns="#{bindings.StId.hints.displayWidth}"
+                        maximumLength="#{bindings.StId.hints.precision}"
+                        shortDesc="#{bindings.StId.hints.tooltip}" id="it3">
+            <f:validator binding="#{bindings.StId.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.GovahiLetterNum.inputValue}"
+                        label="#{bindings.GovahiLetterNum.hints.label}"
+                        required="#{bindings.GovahiLetterNum.hints.mandatory}"
+                        columns="#{bindings.GovahiLetterNum.hints.displayWidth}"
+                        maximumLength="#{bindings.GovahiLetterNum.hints.precision}"
+                        shortDesc="#{bindings.GovahiLetterNum.hints.tooltip}"
+                        id="it4">
+            <f:validator binding="#{bindings.GovahiLetterNum.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.GovahiLetterDate.inputValue}"
+                        label="#{bindings.GovahiLetterDate.hints.label}"
+                        required="#{bindings.GovahiLetterDate.hints.mandatory}"
+                        shortDesc="#{bindings.GovahiLetterDate.hints.tooltip}"
+                        id="id1">
+            <f:validator binding="#{bindings.GovahiLetterDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.GovahiLetterDate.format}"/>
+          </af:inputDate>
+          <af:selectOneChoice value="#{bindings.GovahiBase.inputValue}"
+                              label="#{bindings.GovahiBase.label}"
+                              required="#{bindings.GovahiBase.hints.mandatory}"
+                              shortDesc="#{bindings.GovahiBase.hints.tooltip}"
+                              id="soc2">
+            <f:selectItems value="#{bindings.GovahiBase.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:selectOneChoice value="#{bindings.GovahiLevel.inputValue}"
+                              label="#{bindings.GovahiLevel.label}"
+                              required="#{bindings.GovahiLevel.hints.mandatory}"
+                              shortDesc="#{bindings.GovahiLevel.hints.tooltip}"
+                              id="soc1">
+            <f:selectItems value="#{bindings.GovahiLevel.items}" id="si2"/>
+          </af:selectOneChoice>
+          <af:inputDate value="#{bindings.GovahiLastDate.inputValue}"
+                        label="#{bindings.GovahiLastDate.hints.label}"
+                        required="#{bindings.GovahiLastDate.hints.mandatory}"
+                        shortDesc="#{bindings.GovahiLastDate.hints.tooltip}"
+                        id="id2">
+            <f:validator binding="#{bindings.GovahiLastDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.GovahiLastDate.format}"/>
+          </af:inputDate>
+          <af:inputText value="#{bindings.GovahiLastStatus.inputValue}"
+                        label="#{bindings.GovahiLastStatus.hints.label}"
+                        required="#{bindings.GovahiLastStatus.hints.mandatory}"
+                        columns="#{bindings.GovahiLastStatus.hints.displayWidth}"
+                        maximumLength="#{bindings.GovahiLastStatus.hints.precision}"
+                        shortDesc="#{bindings.GovahiLastStatus.hints.tooltip}"
+                        id="it1">
+            <f:validator binding="#{bindings.GovahiLastStatus.validator}"/>
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.GovahiLastStatus.format}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.GovahiLastMadrak.inputValue}"
+                        label="#{bindings.GovahiLastMadrak.hints.label}"
+                        required="#{bindings.GovahiLastMadrak.hints.mandatory}"
+                        columns="#{bindings.GovahiLastMadrak.hints.displayWidth}"
+                        maximumLength="#{bindings.GovahiLastMadrak.hints.precision}"
+                        shortDesc="#{bindings.GovahiLastMadrak.hints.tooltip}"
+                        id="it5">
+            <f:validator binding="#{bindings.GovahiLastMadrak.validator}"/>
+          </af:inputText>
+          <af:inputDate value="#{bindings.GovahiEditDate.inputValue}"
+                        label="#{bindings.GovahiEditDate.hints.label}"
+                        required="#{bindings.GovahiEditDate.hints.mandatory}"
+                        shortDesc="#{bindings.GovahiEditDate.hints.tooltip}"
+                        id="id3">
+            <f:validator binding="#{bindings.GovahiEditDate.validator}"/>
+            <af:convertDateTime pattern="#{bindings.GovahiEditDate.format}"/>
+          </af:inputDate>
+        </af:panelFormLayout>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="PanelBox1" id="pb1">
+        <f:facet name="toolbar"/>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

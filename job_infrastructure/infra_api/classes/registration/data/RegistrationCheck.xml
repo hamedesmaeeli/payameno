@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="RegistrationCheck" Package="registration.data"
+          BeanClass="registration.data.RegistrationCheck" isJavaBased="true">
+  <Attribute Name="createDate" Type="java.util.Date"/>
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <AccessorAttribute id="check" IsCollection="false"
+                     BeanClass="finance.data.Check"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="registartion" IsCollection="false"
+                     BeanClass="registration.data.Registration"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true"
+                     Type="registration.data.RegistrationCheck"
+                     BeanClass="registration.data.RegistrationCheck"
+                     id="RegistrationCheck"/>
+</JavaBean>

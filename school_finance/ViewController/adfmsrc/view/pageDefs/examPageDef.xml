@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="examPageDef" Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getAllTermExamTimes.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.ExamTime"
+                    id="getAllTermExamTimesIterator"/>
+    <searchRegion Binds="getAllTermExamTimesIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ExamTimeQuery"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allExamHours" RangeSize="25"
+                      DataControl="schManager" BeanClass="java.lang.String"
+                      id="allExamHoursIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllTermExamTimes" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getAllTermExamTimes"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllTermExamTimes_getAllTermExamTimes_getAllTermExamTimes_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.courseBean.selectedTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+    <tree IterBinding="getAllTermExamTimesIterator" id="ExamTime">
+      <nodeDefinition DefName="registration.data.ExamTime" Name="ExamTime0">
+        <AttrNames>
+          <Item Value="examTimeId"/>
+          <Item Value="examDate"/>
+          <Item Value="examHour"/>
+          <Item Value="examDay"/>
+          <Item Value="examDateShamsi"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="term"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Term" Name="ExamTime1">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="fromDate"/>
+          <Item Value="toDate"/>
+          <Item Value="isCurrent"/>
+          <Item Value="dore"/>
+          <Item Value="year"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="allExamHoursIterator" ListOperMode="navigation"
+          ListIter="allExamHoursIterator" id="allExamHours"
+          DTSupportsMRU="false">
+      <AttrNames>
+        <Item Value="element"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

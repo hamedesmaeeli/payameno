@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="StGovahiVaziat"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="school_new.st_govahi_vaziat"
+  AliasName="StGovahiVaziat"
+  BindingStyle="JDBC"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="Id"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.st_govahi_vaziat"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StId"
+    Precision="20"
+    Scale="0"
+    ColumnName="st_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLetterNum"
+    Precision="255"
+    ColumnName="govahi_letter_num"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLetterDate"
+    ColumnName="govahi_letter_date"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="DATETIME"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiBase"
+    Precision="20"
+    Scale="0"
+    ColumnName="govahi_base"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLevel"
+    Precision="20"
+    Scale="0"
+    ColumnName="govahi_level"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLastDate"
+    ColumnName="govahi_last_date"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="DATETIME"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLastStatus"
+    IsNotNull="true"
+    Precision="11"
+    Scale="0"
+    ColumnName="govahi_last_status"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INT"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiLastMadrak"
+    Precision="255"
+    ColumnName="govahi_last_madrak"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="255"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="GovahiEditDate"
+    ColumnName="govahi_edit_date"
+    SQLType="TIMESTAMP"
+    Type="java.sql.Timestamp"
+    ColumnType="DATETIME"
+    TableName="school_new.st_govahi_vaziat">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="19"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="Primary1"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.StGovahiVaziat.Id"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StGovahiVaziatIbfk1">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="st_govahi_vaziat_ibfk_1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.StGovahiVaziat.StId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StGovahiVaziatIbfk2">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="st_govahi_vaziat_ibfk_2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.StGovahiVaziat.GovahiBase"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="StGovahiVaziatIbfk3">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="st_govahi_vaziat_ibfk_3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.StGovahiVaziat.GovahiLevel"/>
+    </AttrArray>
+  </Key>
+</Entity>

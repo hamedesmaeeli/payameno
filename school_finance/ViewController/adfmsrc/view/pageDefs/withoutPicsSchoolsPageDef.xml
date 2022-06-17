@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="withoutPicsSchoolsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getNoPicsStudents.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.Student"
+                    id="getNoPicsStudentsIterator"/>
+    <searchRegion Binds="getNoPicsStudentsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="StudentQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="getSchoolsHasPicForStudent" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getSchoolsHasPicForStudent"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getSchoolsHasPicForStudent_schManager_dataProvider_getSchoolsHasPicForStudent_result">
+      <NamedData NDName="student"
+                 NDValue="#{pageFlowScope.schoolBean.noPicStudent}"
+                 NDType="registration.data.Student"/>
+    </methodAction>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getNoPicsStudents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getNoPicsStudents"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getNoPicsStudents_getNoPicsStudents_getNoPicsStudents_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.schoolBean.currentSchool}"
+                 NDType="registration.data.School"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.schoolBean.currentTerm}"
+                 NDType="registration.data.Term"/>
+    </methodAction>
+    <tree IterBinding="getNoPicsStudentsIterator" id="Student">
+      <nodeDefinition DefName="registration.data.Student" Name="Student0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="mobile"/>
+          <Item Value="studentCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:836dfe67-7d05-4d4c-bf12-a4ce1aadb91c'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='طرف حساب - دانشجو'
+   visibility='public'>
+  <ownedAttribute xmi:uuid='urn:uuid:f6767264-e796-4c4f-af7c-d15d62e7a326'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه دانشجو'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/BigInteger:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:e20db2ab-d644-4ca8-b0f3-67bba0b66add'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:ef30b2e6-075e-4ed5-9298-acf92c7c64c2'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:d35064d1-94bc-4765-9cca-e6e29c30594a'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه طرف حساب'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/BigInteger:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:92b20f7c-e8bf-4797-825c-1a0a8363e0b2'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:8798fda1-5a72-4408-8679-b9cc64d74646'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

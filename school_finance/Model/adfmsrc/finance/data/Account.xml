@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="Account" Package="finance.data" BeanClass="finance.data.Account"
+          isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="phone" Type="java.lang.String"/>
+  <Attribute Name="personName" Type="java.lang.String"/>
+  <Attribute Name="personMobile" Type="java.lang.String"/>
+  <Attribute Name="fax" Type="java.lang.String"/>
+  <Attribute Name="create_date" Type="java.util.Date"/>
+  <Attribute Name="address" Type="java.lang.String"/>
+  <Attribute Name="fisrtPayable" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.Account"
+                     BeanClass="finance.data.Account" id="Account"/>
+</JavaBean>

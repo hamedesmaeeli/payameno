@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200" topHeight="60">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+       
+        <af:panelBox text="دروس انتخاب شده" id="pb1" immediate="true">
+       <af:table value="#{bindings.Course.collectionModel}" var="row"
+                  rows="#{bindings.Course.rangeSize}"
+                  emptyText="#{bindings.Course.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.Course.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.CourseQuery.queryDescriptor}"
+                  queryListener="#{bindings.CourseQuery.processQuery}"
+                  varStatus="vs" id="t1" rowSelection="single"
+                  binding="#{pageFlowScope.registerBean.registerCourseTable}"
+                  selectionListener="#{bindings.Course.collectionModel.makeCurrent}" contentDelivery="immediate">
+          <af:column sortProperty="displayName" sortable="true"
+                     headerText="نام نمایشی" id="c4">
+            <af:outputText value="#{row.displayName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="courseCode" sortable="true"
+                     headerText="کد درس" id="c6">
+            <af:outputText value="#{row.courseCode}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="courseId" sortable="true"
+                     headerText="شناسه درس" id="c2">
+            <af:outputText value="#{row.courseId}" id="ot3"/>
+          </af:column>
+          <af:column sortProperty="courseName" sortable="true"
+                     headerText="نام درس" id="c1">
+            <af:outputText value="#{row.courseName}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="courseUnits" sortable="true"
+                     headerText="تعداد واحد" id="c7">
+            <af:outputText value="#{row.courseUnits}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="description" sortable="true"
+                     headerText="توضیحات" id="c5">
+            <af:outputText value="#{row.description}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="isFinal" sortable="true" headerText="نهایی"
+                     id="c3">
+            <af:outputText value="#{row.isFinal}" id="ot6"/>
+          </af:column>
+        </af:table>
+          <f:facet name="toolbar"/>
+        </af:panelBox>
+      
+    </f:facet>
+    <f:facet name="start">
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text="عملیات انتخاب واحد" id="sdi1">
+          <af:commandImageLink text="بازگشت به ثبت نام" id="cl1" action="back"
+                          inlineStyle="font-size:medium;"
+                               icon="/Images/16 x 16 Colorful/back.png"/>
+       <af:spacer width="10" height="30" id="s7"/>
+        <af:commandImageLink text="افزودن درس چدید" id="cl2"
+                        inlineStyle="font-size:medium;"
+                             icon="/Images/16 x 16 Colorful/add.png">
+          <af:showPopupBehavior popupId="p1" triggerType="action"/>
+        </af:commandImageLink>
+        <af:spacer width="10" height="30" id="s1"/>
+        <af:commandImageLink text="حذف درس " id="cl3"
+                        action="#{pageFlowScope.registerBean.deleteCourseFromRegister}"
+                        inlineStyle="font-size:medium;"
+                             icon="/Images/16 x 16 Colorful/delete.png"/>
+          <af:popup id="p1">
+            <af:panelWindow id="pw1" title="لیست دروس قابل انتخاب"
+                            contentWidth="600">
+                            
+              <af:table value="#{bindings.Course1.collectionModel}" var="row"
+                        rows="#{bindings.Course1.rangeSize}"
+                        emptyText="#{bindings.Course1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                        fetchSize="#{bindings.Course1.rangeSize}"
+                        rowBandingInterval="0"
+                        filterModel="#{bindings.Course1Query.queryDescriptor}"
+                        queryListener="#{bindings.Course1Query.processQuery}"
+                        filterVisible="true" varStatus="vs"
+                        selectionListener="#{bindings.Course1.collectionModel.makeCurrent}"
+                        rowSelection="multiple" id="t2"
+                        styleClass="AFStretchWidth"
+                        binding="#{pageFlowScope.registerBean.notRegisterdCoursesTable}">
+                <af:column sortProperty="displayName" sortable="true"
+                           headerText="نام نمایشی" id="c9" filterable="true">
+                  <af:outputText value="#{row.displayName}" id="ot12"/>
+                </af:column>
+                <af:column sortProperty="courseCode"
+                           headerText="کد د رس"
+                           id="c14" filterable="true" sortable="true">
+                  <af:outputText value="#{row.courseCode}" id="ot13"/>
+                </af:column>
+                <af:column sortProperty="courseName"
+                           sortable="true"
+                           headerText="نام درس"
+                           id="c8" filterable="true">
+                  <af:outputText value="#{row.courseName}" id="ot11"/>
+                </af:column>
+                <af:column sortProperty="courseUnits"
+                           sortable="true"
+                           headerText="تعداد واحدها"
+                           id="c10">
+                  <af:outputText value="#{row.courseUnits}" id="ot9"/>
+                </af:column>
+                <af:column sortProperty="description"
+                           sortable="true"
+                           headerText="توضیحات"
+                           id="c13" filterable="true">
+                  <af:outputText value="#{row.description}" id="ot10"/>
+                </af:column>
+                <af:column sortProperty="isFinal" sortable="false"
+                           headerText="نهایی"
+                           id="c11">
+                  <af:inputText value="#{row.bindings.isFinal.inputValue}"
+                                label="#{bindings.Course1.hints.isFinal.label}"
+                                required="#{bindings.Course1.hints.isFinal.mandatory}"
+                                columns="#{bindings.Course1.hints.isFinal.displayWidth}"
+                                maximumLength="#{bindings.Course1.hints.isFinal.precision}"
+                                shortDesc="#{bindings.Course1.hints.isFinal.tooltip}"
+                                id="it5">
+                    <f:validator binding="#{row.bindings.isFinal.validator}"/>
+                  </af:inputText>
+                </af:column>
+              </af:table>
+              <af:commandButton text="انتخاب درس ها" id="cb1"
+                                action="#{pageFlowScope.registerBean.registerSelectedCourses}"
+                                partialSubmit="false" immediate="true"/>
+              <af:commandButton text="انصراف" id="cb2"/>
+            </af:panelWindow>
+          </af:popup>
+        </af:showDetailItem>
+        </af:panelAccordion>
+      
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox text="انتخاب واحد دانش آموز" id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:inputText label="نام" id="it1"
+                        value="#{pageFlowScope.registerBean.newRegistration.student.name}"/>
+          <af:inputText label="نام خانوداگی" id="it2"
+                        value="#{pageFlowScope.registerBean.newRegistration.student.family}"/>
+          <af:inputText label="کد دانش آموزی" id="it3"
+                        value="#{pageFlowScope.registerBean.newRegistration.student.studentCode}"/>
+          <af:inputText label=" نام ترم" id="it4"
+                        value="#{pageFlowScope.registerBean.newRegistration.term.name}"/>
+         
+          
+        </af:panelGroupLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

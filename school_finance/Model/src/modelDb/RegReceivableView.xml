@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegReceivableView"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  SelectList="RegReceivable.id, 
+       RegReceivable.finance_factor_id, 
+       RegReceivable.create_date, 
+       RegReceivable.reg_id"
+  FromList="school_new.reg_receivable RegReceivable"
+  BindingStyle="JDBC"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="RegReceivable"
+    Entity="modelDb.RegReceivable"/>
+  <ViewAttribute
+    Name="Id"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Id"
+    EntityUsage="RegReceivable"
+    AliasName="id"/>
+  <ViewAttribute
+    Name="FinanceFactorId"
+    PrecisionRule="true"
+    EntityAttrName="FinanceFactorId"
+    EntityUsage="RegReceivable"
+    AliasName="finance_factor_id"/>
+  <ViewAttribute
+    Name="CreateDate"
+    PrecisionRule="true"
+    EntityAttrName="CreateDate"
+    EntityUsage="RegReceivable"
+    AliasName="create_date"/>
+  <ViewAttribute
+    Name="RegId"
+    PrecisionRule="true"
+    EntityAttrName="RegId"
+    EntityUsage="RegReceivable"
+    AliasName="reg_id"/>
+</ViewObject>

@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:panelStretchLayout id="psl1" startWidth="200" topHeight="100">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="لیست دانش آموزان" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar">
+            <af:toolbar id="t2">
+              <af:commandToolbarButton text="اکسل" id="ctb1">
+                <af:exportCollectionActionListener type="excelHTML"
+                                                   exportedId="t1"
+                                                   filename="studentList.xls"
+                                                   title="لیست دانش آموزان"/>
+              </af:commandToolbarButton>
+            </af:toolbar>
+          </f:facet>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.Student.collectionModel}" var="row"
+                    rows="#{bindings.Student.rangeSize}"
+                    emptyText="#{bindings.Student.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.Student.rangeSize}"
+                    rowBandingInterval="0"
+                    filterModel="#{bindings.StudentQuery.queryDescriptor}"
+                    queryListener="#{bindings.StudentQuery.processQuery}"
+                    filterVisible="true" varStatus="vs"
+                    selectedRowKeys="#{bindings.Student.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.Student.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t1" styleClass="AFStretchWidth"
+                    inlineStyle="font-family:'B Nazanin'; font-size:x-large;"
+                    binding="#{pageFlowScope.registerBean.studentListTables}">
+            <af:column sortProperty="name" sortable="true" headerText="نام"
+                       id="c5" filterable="true" align="center"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.name}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="family" sortable="true"
+                       headerText="نام خانوادگی" id="c11" filterable="true"
+                       align="center"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.family}" id="ot7"/>
+            </af:column>
+            <af:column sortProperty="studentCode" sortable="true"
+                       headerText="کد دانش آموزی" id="c13" filterable="true"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.studentCode}" id="ot15"/>
+            </af:column>
+            <af:column sortProperty="nationalId" sortable="true"
+                       headerText="کد ملی" id="c12" filterable="true"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.nationalId}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="archiveCode" sortable="true"
+                       headerText="کد بایگانی" id="c6"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';"
+                       filterable="true">
+              <af:outputText value="#{row.archiveCode}" id="ot13"/>
+            </af:column>
+            <af:column sortProperty="fatherName" sortable="true"
+                       headerText="نام پدر" id="c14"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';"
+                       filterable="true">
+              <af:outputText value="#{row.fatherName}" id="ot12"/>
+            </af:column>
+            <af:column sortProperty="mobile" sortable="true" headerText="موبایل"
+                       id="c2"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';"
+                       filterable="true">
+              <af:outputText value="#{row.mobile}" id="ot8"/>
+            </af:column>
+            <af:column sortProperty="dateOfBirth" sortable="true"
+                       headerText="تاریخ تولد" id="c3"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.dateOfBirth}" id="ot9">
+                <af:convertDateTime pattern="#{bindings.Student.hints.dateOfBirth.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="description" sortable="true"
+                       headerText="توضیح" id="c15"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.description}" id="ot14"/>
+            </af:column>
+            <af:column sortProperty="phone" sortable="true" headerText="تلفن"
+                       id="c7"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.phone}" id="ot10"/>
+            </af:column>
+            <af:column sortProperty="name" sortable="true"
+                       headerText="وضعیت دانش  آموز" id="c9"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.studentStatus.bindings.name.inputValue}"
+                             id="ot2"/>
+            </af:column>
+            <af:column sortProperty="name" sortable="true" headerText="اقماري "
+                       id="c10"
+                       inlineStyle="font-size:large; font-family:'B Nazanin';">
+              <af:outputText value="#{row.organization.bindings.name.inputValue}"
+                             id="ot3"/>
+            </af:column>
+            <af:column sortProperty="diplomMadrak" sortable="false"
+                       headerText="كد ديپلم"
+                       id="c1">
+              <af:outputText value="#{row.diplomMadrak}" id="ot5"/>
+            </af:column>
+            <af:column sortProperty="pishMadrak" sortable="false"
+                       headerText="كد پيش دانشگاهي"
+                       id="c4">
+              <af:outputText value="#{row.pishMadrak}" id="ot6"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb2">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem text="ثبت نام" id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:inputText label="ترم جاری" id="it5"
+                            value="#{pageFlowScope.registerBean.currentTerm.name}"
+                            readOnly="true" rendered="false"/>
+              <af:spacer width="10" height="10" id="s6"/>
+              <af:spacer width="10" height="10" id="s7"/>
+              <af:commandImageLink text="ویرایش دانش آموز" id="cil1"
+                                   action="#{pageFlowScope.registerBean.editStudent}"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/box.png"/>
+              <af:spacer width="10" height="30" id="s3"/>
+              <af:commandImageLink text="ایجاد دانش آموز" id="cil2"
+                                   action="back"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/add.png"/>
+              <af:spacer width="10" height="30" id="s4"/>
+              <af:commandImageLink text="ثبت نام دانش آموز" id="cil3"
+                                   action="#{pageFlowScope.registerBean.registerStudent}"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/Archive.png"/>
+              <af:spacer width="10" height="30" id="s5"/>
+              <af:commandImageLink text="عملیات شهریه" id="cil4"
+                                   action="#{pageFlowScope.registerBean.salaryWork}"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/dollar_currency_sign.png"/>
+              <af:spacer width="10" height="10" id="s2"/>
+                                
+            </af:panelFormLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="امروز" id="sdi2">
+            <af:panelFormLayout id="pfl2">
+              <f:facet name="footer"/>
+              <af:inputText label="تعداد ثبت نام امروز" id="it1"
+                            readOnly="true"
+                            value="#{pageFlowScope.registerBean.countOfTodayRegistrations}"/>
+              <af:inputText label="تعداد ثبت نام های ترم" id="it2"
+                            readOnly="true"
+                            value="#{pageFlowScope.registerBean.countOfCurrentTermRegistrations}"/>
+              <af:inputText label="تعداد دانش آموزان فعال" id="it6"
+                            readOnly="true"
+                            value="#{pageFlowScope.registerBean.countOfActiveStudents}"/>
+              <af:inputText label="تعداد کل دانش آموزان" id="it3"
+                            readOnly="true"
+                            value="#{pageFlowScope.registerBean.countOfAllStudents}"/>
+              <af:inputText label="ترم جاری" id="it4" readOnly="true"
+                            value="#{pageFlowScope.registerBean.currentTerm.name}"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelAccordion id="pa2">
+        <af:showDetailItem id="sdi3">
+          <af:panelGroupLayout id="pgl1" layout="horizontal" halign="center">
+            <af:panelGroupLayout id="pgl6"
+                                 inlineStyle="border-style:solid; border-color:ActiveBorder; border-width:medium; margin:10.0px;"
+                                 halign="center" layout="vertical">
+              <af:selectBooleanCheckbox label="ثبت نام شده در ترم جاری"
+                                        id="sbc1"
+                                        value="#{pageFlowScope.registerBean.isRegInTermFilter}"
+                                        autoSubmit="true" immediate="true"
+                                        valueChangeListener="#{pageFlowScope.registerBean.changeIsRegInTer}"/>
+              <af:inputText label="ترم جاري" id="it9"
+                            value="#{pageFlowScope.registerBean.currentTerm.name}"
+                            columns="20" rows="1"/>
+              <af:inputText label="تعداد " id="it7" readOnly="true"
+                            value="#{pageFlowScope.registerBean.studentListTables.rowCount}"
+                            binding="#{pageFlowScope.registerBean.studentListCount}"
+                            rendered="false"/>
+              <af:spacer width="10" height="10" id="s8"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl2"
+                                 inlineStyle="border-style:solid; border-color:ActiveBorder; border-width:medium;"
+                                 layout="vertical">
+              <af:inputText label="وضعيت دانش آموز" id="it8"
+                            value="#{pageFlowScope.registerBean.studentStatus.name}"
+                            columns="10"
+                            binding="#{pageFlowScope.registerBean.statusFieldText}"/>
+              <af:selectOneChoice value="#{bindings.allStudentStatus.inputValue}"
+                                  label="وضعیت دانش آموز"
+                                  required="#{bindings.allStudentStatus.hints.mandatory}"
+                                  shortDesc="#{bindings.allStudentStatus.hints.tooltip}"
+                                  id="soc1"
+                                  valueChangeListener="#{pageFlowScope.registerBean.changeStudentStatus}"
+                                  autoSubmit="true" simple="false"
+                                  immediate="true" mode="compact">
+                <f:selectItems value="#{bindings.allStudentStatus.items}"
+                               id="si1"/>
+              </af:selectOneChoice>
+              <af:selectBooleanCheckbox label="همه" id="sbc2"
+                                        value="#{pageFlowScope.registerBean.isShowAllStatus}"
+                                        valueChangeListener="#{pageFlowScope.registerBean.changeShowAllStatuses}"
+                                        autoSubmit="true"
+                                        binding="#{pageFlowScope.registerBean.statusSelectedCheckBox}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl3" layout="vertical"
+                                 inlineStyle="border-style:solid; border-color:ActiveBorder; border-width:medium; margin:10.0px;">
+              <af:inputText label="كلاس اقماري" id="it10"
+                            value="#{pageFlowScope.registerBean.organization.name}"
+                            columns="10"
+                            binding="#{pageFlowScope.registerBean.organizationFieldText}"/>
+              <af:selectOneChoice value="#{bindings.allOrganization.inputValue}"
+                                  label="كلاس اقماري"
+                                  required="#{bindings.allOrganization.hints.mandatory}"
+                                  shortDesc="#{bindings.allOrganization.hints.tooltip}"
+                                  id="soc2"
+                                  valueChangeListener="#{pageFlowScope.registerBean.changeOrganization}"
+                                  autoSubmit="true" immediate="true"
+                                  mode="compact">
+                <f:selectItems value="#{bindings.allOrganization.items}"
+                               id="si2"/>
+              </af:selectOneChoice>
+              <af:selectBooleanCheckbox text=" " label="همه" id="sbc3"
+                                        value="#{pageFlowScope.registerBean.isShowAllOrg}"
+                                        autoSubmit="true"
+                                        valueChangeListener="#{pageFlowScope.registerBean.changeAllOrg}"
+                                        binding="#{pageFlowScope.registerBean.organizationSelectedCheckBox}"
+                                        immediate="true"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl4"
+                                 inlineStyle="border-style:solid; border-color:ActiveBorder; border-width:medium;"
+                                 layout="vertical">
+              <af:inputText id="it11" label="رشته"
+                            value="#{pageFlowScope.registerBean.field.name}"
+                            binding="#{pageFlowScope.registerBean.fieldForSearch}"
+                            disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                            columns="10"/>
+              <af:selectOneChoice value="#{bindings.allFields.inputValue}"
+                                  label="رشته ها"
+                                  required="#{bindings.allFields.hints.mandatory}"
+                                  shortDesc="#{bindings.allFields.hints.tooltip}"
+                                  id="soc3"
+                                  valueChangeListener="#{pageFlowScope.registerBean.changeFeildList}"
+                                  autoSubmit="true"
+                                  disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                                  binding="#{pageFlowScope.registerBean.fieldListSelectOneChoice}"
+                                  mode="compact">
+                <f:selectItems value="#{bindings.allFields.items}" id="si3"/>
+              </af:selectOneChoice>
+              <af:selectBooleanCheckbox label="همه" id="sbc4"
+                                        value="#{pageFlowScope.registerBean.isShowAllField}"
+                                        autoSubmit="true"
+                                        valueChangeListener="#{pageFlowScope.registerBean.chageShowAllField}"
+                                        disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                                        binding="#{pageFlowScope.registerBean.fieldSelectedCheckBox}"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl5"
+                                 binding="#{pageFlowScope.registerBean.levelGroupLayout}"
+                                 inlineStyle="border-style:solid; border-color:ActiveBorder; border-width:medium; margin:10.0px;"
+                                 layout="vertical">
+              <af:inputText label="مقطع" id="it12"
+                            value="#{pageFlowScope.registerBean.level.name}"
+                            binding="#{pageFlowScope.registerBean.levelFieldForSearch}"
+                            valueChangeListener="#{pageFlowScope.registerBean.changeShowAllLevels}"
+                            disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                            columns="10"/>
+              <af:selectOneChoice value="#{bindings.allLevels.inputValue}"
+                                  label="مقطع ها"
+                                  required="#{bindings.allLevels.hints.mandatory}"
+                                  shortDesc="#{bindings.allLevels.hints.tooltip}"
+                                  id="soc4"
+                                  valueChangeListener="#{pageFlowScope.registerBean.changeLevel}"
+                                  autoSubmit="true"
+                                  binding="#{pageFlowScope.registerBean.levelListOneChoice}"
+                                  disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                                  mode="compact">
+                <f:selectItems value="#{bindings.allLevels.items}" id="si4"/>
+              </af:selectOneChoice>
+              <af:selectBooleanCheckbox text=" " label="همه" id="sbc5"
+                                        value="#{pageFlowScope.registerBean.isShowAllLevel}"
+                                        autoSubmit="true"
+                                        binding="#{pageFlowScope.registerBean.levelIsSelectedCheckBox}"
+                                        disabled="#{!pageFlowScope.registerBean.isRegInTermFilter}"
+                                        valueChangeListener="#{pageFlowScope.registerBean.changeLevelCheckBox}"/>
+            </af:panelGroupLayout>
+          </af:panelGroupLayout>
+        </af:showDetailItem>
+      </af:panelAccordion>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

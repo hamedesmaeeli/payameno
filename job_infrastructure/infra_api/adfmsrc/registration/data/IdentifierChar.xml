@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="IdentifierChar" Package="registration.data"
+          BeanClass="registration.data.IdentifierChar" isJavaBased="true">
+  <Attribute Name="id" Type="int"/>
+  <Attribute Name="name" Type="java.lang.String"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.IdentifierChar"
+                     BeanClass="registration.data.IdentifierChar"
+                     id="IdentifierChar"/>
+</JavaBean>

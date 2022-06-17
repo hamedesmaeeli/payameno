@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="200px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.SchoolStudentPic.collectionModel}" var="row"
+                  rows="#{bindings.SchoolStudentPic.rangeSize}"
+                  emptyText="#{bindings.SchoolStudentPic.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.SchoolStudentPic.rangeSize}"
+                  rowBandingInterval="0"
+                  filterModel="#{bindings.SchoolStudentPicQuery.queryDescriptor}"
+                  queryListener="#{bindings.SchoolStudentPicQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
+                  selectedRowKeys="#{bindings.SchoolStudentPic.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.SchoolStudentPic.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1">
+          <af:column sortProperty="studentCode" sortable="false"
+                     headerText="كد دانش آموزي" id="c4">
+            <af:outputText value="#{row.student.bindings.studentCode.inputValue}"
+                           id="ot8"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false" headerText="نام"
+                     id="c1">
+            <af:outputText value="#{row.student.bindings.name.inputValue}"
+                           id="ot2"/>
+          </af:column>
+          <af:column sortProperty="family" filterable="true" sortable="false"
+                     headerText="نام خانوداگي" id="c2">
+            <af:outputText value="#{row.student.bindings.family.inputValue}"
+                           id="ot1"/>
+          </af:column>
+          <af:column sortProperty="nationalId" filterable="true"
+                     sortable="false" headerText="كد ملي" id="c3">
+            <af:outputText value="#{row.student.bindings.nationalId.inputValue}"
+                           id="ot4"/>
+          </af:column>
+          <af:column sortProperty="fatherName" filterable="true"
+                     sortable="false" headerText="نام پدر" id="c8">
+            <af:outputText value="#{row.student.bindings.fatherName.inputValue}"
+                           id="ot5"/>
+          </af:column>
+          <af:column sortProperty="description" filterable="true"
+                     sortable="false" headerText="نام مدرسه" id="c6">
+            <af:outputText value="#{row.school.bindings.description.inputValue}"
+                           id="ot3"/>
+          </af:column>
+          <af:column sortProperty="id" filterable="true" sortable="false"
+                     headerText="شناسه مدرسه" id="c7">
+            <af:outputText value="#{row.school.bindings.id.inputValue}"
+                           id="ot6"/>
+          </af:column>
+          
+          <af:column sortProperty="hasPic" filterable="true" sortable="false"
+                     headerText="وضعيت عكس" id="c11">
+           
+            <af:switcher id="s2"
+                         facetName="#{row.hasPic==true?'true_facet':'false_facet'}">
+              <f:facet name="true_facet">
+                <af:image source="/Images/16 x 16 Colorful/accept.png" id="i1"/>
+              </f:facet>
+              <f:facet name="false_facet">
+                <af:image source="/Images/16 x 16 Colorful/delete.png" id="i2"/>
+              </f:facet>
+            </af:switcher>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelAccordion id="pa1">
+          <af:showDetailItem id="sdi1">
+            <af:panelFormLayout id="pfl1">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="ليست مدرسه ها" id="gil1"
+                                   icon="/Images/16 x 16 Colorful/back.png"
+                                   action="back"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandImageLink text="پرينت ليست" id="gil2"
+                                   icon="/Images/16 x 16 Colorful/print.png">
+                <af:exportCollectionActionListener exportedId="pc1:t1"
+                                                   type="excelHTML"
+                                                   filename="noPicStudent.xslx"
+                                                   title="ليست دانش آموزان بدون عكس"/>
+              </af:commandImageLink>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:commandImageLink text="جايگزيني عكس" id="cil1"
+                                   icon="/Images/16 x 16 Colorful/users.png"
+                                   action="#{pageFlowScope.schoolBean.exchangePicFromSchoolToSchool}"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+        </af:panelAccordion>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

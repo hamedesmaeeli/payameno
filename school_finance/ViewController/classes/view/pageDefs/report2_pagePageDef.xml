@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="report2_pagePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ExamCourseViewView1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="ExamCourseViewView1Iterator"/>
+    <searchRegion Binds="ExamCourseViewView1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="ExamCourseViewView1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="ExamCourseViewView1Iterator" id="ExamCourseViewView1">
+      <nodeDefinition DefName="modelDb.ExamCourseViewView"
+                      Name="ExamCourseViewView10">
+        <AttrNames>
+          <Item Value="CourseCode"/>
+          <Item Value="CourseName"/>
+          <Item Value="CourseDisplayName"/>
+          <Item Value="CourseDescription"/>
+          <Item Value="ExamCourseId"/>
+          <Item Value="ExamTimeId"/>
+          <Item Value="CourseId"/>
+          <Item Value="TermId"/>
+          <Item Value="ExamDate"/>
+          <Item Value="ExamHour"/>
+          <Item Value="TermName"/>
+          <Item Value="TermIsCurrent"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

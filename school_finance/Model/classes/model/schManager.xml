@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="schManager" Package="model" BeanClass="model.schManager"
+          isJavaBased="true">
+  <AccessorAttribute id="registrationManager" IsCollection="false"
+                     BeanClass="registration.process.RegistrationManager"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="accountManager" IsCollection="false"
+                     BeanClass="finance.process.AccountManager"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="debtorInCurrentTermList" IsCollection="true"
+                     BeanClass="views.DebtorInTerm"
+                     CollectionBeanClass="UpdateableCollection"/>
+  <MethodAccessor IsCollection="true" Type="model.PaymentStepsView"
+                  BeanClass="model.PaymentStepsView" id="getPaymentsStepsview"
+                  ReturnNodeName="PaymentStepsView"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="model.RegistrationCheckView"
+                  BeanClass="model.RegistrationCheckView"
+                  id="getRegistrationChecksView"
+                  ReturnNodeName="RegistrationCheckView"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="registration" Type="registration.data.Registration"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="java.math.BigDecimal"
+                  id="getStudentCurrentAccounting" ReturnNodeName="Return">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="model.SchoolStudentPic"
+                  BeanClass="model.SchoolStudentPic"
+                  id="getSchoolsHasPicForStudent"
+                  ReturnNodeName="SchoolStudentPic"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="student" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true" Type="model.schManager"
+                     BeanClass="model.schManager" id="schManager"/>
+</JavaBean>

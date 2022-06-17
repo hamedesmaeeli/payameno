@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+     
+        <af:panelBox text="لیست امتحانهای دروس" id="pb1">
+          <f:facet name="toolbar"/>
+          <af:panelCollection id="pc1">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.ExamCourseViewView1.collectionModel}"
+                      var="row" rows="#{bindings.ExamCourseViewView1.rangeSize}"
+                      emptyText="#{bindings.ExamCourseViewView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.ExamCourseViewView1.rangeSize}"
+                      rowBandingInterval="0"
+                      filterModel="#{bindings.ExamCourseViewView1Query.queryDescriptor}"
+                      queryListener="#{bindings.ExamCourseViewView1Query.processQuery}"
+                      filterVisible="true" varStatus="vs"
+                      selectedRowKeys="#{bindings.ExamCourseViewView1.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.ExamCourseViewView1.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1">
+              <af:column sortProperty="CourseCode" sortable="true"
+                         headerText="کد درس" id="c12" filterable="true">
+                <af:outputText value="#{row.CourseCode}" id="ot11"/>
+              </af:column>
+              <af:column sortProperty="CourseDisplayName" sortable="true"
+                         headerText="عنوان درس" id="c7" filterable="true">
+                <af:outputText value="#{row.CourseDisplayName}" id="ot5"/>
+              </af:column>
+              <af:column sortProperty="CourseDescription" sortable="true"
+                         headerText="توضیح درس" id="c6">
+                <af:outputText value="#{row.CourseDescription}" id="ot6"/>
+              </af:column>
+              <af:column sortProperty="ExamDate" sortable="true"
+                         headerText="تاریخ امتحان" id="c5">
+                <af:inputDate id="id1" value="#{row.ExamDate}"/>
+              </af:column>
+              <af:column sortProperty="ExamHour" sortable="true"
+                         headerText="ساعت امتحان" id="c4">
+                <af:outputText value="#{row.ExamHour}" id="ot8"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
+        </af:panelBox>
+      
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl1">
+        <af:commandButton text="بازگشت به لیست " id="cb1" action="back"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

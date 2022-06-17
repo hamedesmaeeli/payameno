@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="SchoolStudentPic" Package="model"
+          BeanClass="model.SchoolStudentPic" isJavaBased="true">
+  <Attribute Name="hasPic" Type="java.lang.Boolean"/>
+  <AccessorAttribute id="student" IsCollection="false"
+                     BeanClass="registration.data.Student"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="school" IsCollection="false"
+                     BeanClass="registration.data.School"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="model.SchoolStudentPic"
+                     BeanClass="model.SchoolStudentPic" id="SchoolStudentPic"/>
+</JavaBean>

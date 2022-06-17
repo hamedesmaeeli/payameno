@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="RecievementPayment" Package="finance.data"
+          BeanClass="finance.data.RecievementPayment" isJavaBased="true">
+  <Attribute Name="id" Type="java.math.BigDecimal"/>
+  <Attribute Name="eventDate" Type="java.util.Date"/>
+  <Attribute Name="amount" Type="java.math.BigDecimal"/>
+  <Attribute Name="description" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.lang.String"/>
+  <AccessorAttribute id="accountBank" IsCollection="false"
+                     BeanClass="finance.data.AccountBank"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="account" IsCollection="false"
+                     BeanClass="finance.data.Account"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="recievePayType" IsCollection="false"
+                     BeanClass="finance.data.RecievePayType"
+                     CollectionBeanClass="UpdateableSingleValue"/>
+  <ConstructorMethod IsCollection="true" Type="finance.data.RecievementPayment"
+                     BeanClass="finance.data.RecievementPayment"
+                     id="RecievementPayment"/>
+</JavaBean>

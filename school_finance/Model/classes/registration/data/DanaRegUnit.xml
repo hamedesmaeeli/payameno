@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.61.92"
+          id="DanaRegUnit" Package="registration.data"
+          BeanClass="registration.data.DanaRegUnit" isJavaBased="true">
+  <Attribute Name="stCod" Type="java.math.BigDecimal"/>
+  <Attribute Name="courseCode" Type="java.math.BigDecimal"/>
+  <Attribute Name="year" Type="int"/>
+  <Attribute Name="term" Type="int"/>
+  <Attribute Name="schoolCode" Type="java.math.BigDecimal"/>
+  <ConstructorMethod IsCollection="true" Type="registration.data.DanaRegUnit"
+                     BeanClass="registration.data.DanaRegUnit"
+                     id="DanaRegUnit"/>
+</JavaBean>

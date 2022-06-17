@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="listOfOtherSchoolsHasPicPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getSchoolsHasPicForStudent.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="model.SchoolStudentPic"
+                    id="getSchoolsHasPicForStudentIterator"/>
+    <searchRegion Binds="getSchoolsHasPicForStudentIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SchoolStudentPicQuery"/>
+  </executables>
+  <bindings>
+    <methodAction id="getSchoolsHasPicForStudent" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getSchoolsHasPicForStudent"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getSchoolsHasPicForStudent_schManager_dataProvider_getSchoolsHasPicForStudent_result">
+      <NamedData NDName="student"
+                 NDValue="#{pageFlowScope.schoolBean.noPicStudent}"
+                 NDType="registration.data.Student"/>
+    </methodAction>
+    <tree IterBinding="getSchoolsHasPicForStudentIterator"
+          id="SchoolStudentPic">
+      <nodeDefinition DefName="model.SchoolStudentPic" Name="SchoolStudentPic0">
+        <AttrNames>
+          <Item Value="hasPic"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="school"/>
+          <Item Value="student"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.School"
+                      Name="SchoolStudentPic1">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="description"/>
+          <Item Value="dbService"/>
+          <Item Value="dbName"/>
+          <Item Value="host"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Student"
+                      Name="SchoolStudentPic2">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="nationalId"/>
+          <Item Value="identifierCode"/>
+          <Item Value="identifierSerial"/>
+          <Item Value="studentCode"/>
+          <Item Value="fatherName"/>
+          <Item Value="dateOfBirth"/>
+          <Item Value="description"/>
+          <Item Value="created_date"/>
+          <Item Value="lastModified"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="identifierChar"/>
+          <Item Value="archiveCode"/>
+          <Item Value="pishMadrak"/>
+          <Item Value="diplomMadrak"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

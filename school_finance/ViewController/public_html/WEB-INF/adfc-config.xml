@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="students">
+    <page>/students.jspx</page>
+  </view>
+  <view id="accounting">
+    <page>/accounting.jspx</page>
+  </view>
+  <view id="reports">
+    <page>/reports.jspx</page>
+  </view>
+  <view id="config">
+    <page>/config.jspx</page>
+  </view>
+  <view id="help">
+    <page>/help.jspx</page>
+  </view>
+  <view id="school">
+    <page>/school.jspx</page>
+  </view>
+  <view id="courses">
+    <page>/courses.jspx</page>
+  </view>
+  <control-flow-rule id="__1">
+    <from-activity-id id="__2">*</from-activity-id>
+    <control-flow-case id="__3">
+      <from-outcome id="__4">adfMenu_students</from-outcome>
+      <to-activity-id id="__5">students</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__6">
+      <from-outcome id="__7">adfMenu_accounting</from-outcome>
+      <to-activity-id id="__8">accounting</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__9">
+      <from-outcome id="__10">adfMenu_reports</from-outcome>
+      <to-activity-id id="__11">reports</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__12">
+      <from-outcome id="__13">adfMenu_config</from-outcome>
+      <to-activity-id id="__14">config</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__15">
+      <from-outcome id="__16">adfMenu_help</from-outcome>
+      <to-activity-id id="__17">help</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__33">
+      <from-outcome id="__34">adfMenu_school</from-outcome>
+      <to-activity-id id="__35">school</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__37">
+      <from-outcome id="__38">adfMenu_courses</from-outcome>
+      <to-activity-id id="__36">courses</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__18">
+    <description id="__20">Menu Model Managed Bean</description>
+    <managed-bean-name id="__19">root_menu</managed-bean-name>
+    <managed-bean-class>oracle.adf.view.rich.model.MDSMenuModel</managed-bean-class>
+    <managed-bean-scope id="__21">request</managed-bean-scope>
+    <managed-property id="__24">
+      <property-name id="__22">createHiddenNodes</property-name>
+      <value id="__23">false</value>
+    </managed-property>
+    <managed-property id="__25">
+      <property-name id="__26">source</property-name>
+      <property-class id="__28">java.lang.String</property-class>
+      <value id="__27">/WEB-INF/root_menu.xml</value>
+    </managed-property>
+  </managed-bean>
+  <managed-bean id="__30">
+    <managed-bean-name id="__31">general_bean</managed-bean-name>
+    <managed-bean-class id="__29">view.GeneralBean</managed-bean-class>
+    <managed-bean-scope id="__32">session</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

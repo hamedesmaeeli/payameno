@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='yes'?>
+<xmi:XMI xmi:version='2.1' xmlns:xmi='http://schema.omg.org/spec/XMI/2.1' xmlns:uml='http://schema.omg.org/spec/UML/2.1.1/uml.xml'>
+ <documentation exporter='Oracle JDeveloper' exporterVersion='11.1.1.6.0'/>
+ <uml:Class xmi:uuid='urn:uuid:f0e3d525-2ef0-40b0-ae2d-67288a4abfff'
+   isAbstract='false'
+   isActive='false'
+   isLeaf='false'
+   name='طرف حساب'
+   visibility='public'>
+  <ownedAttribute xmi:uuid='urn:uuid:7cef87d5-5dda-4b72-a988-0ac6053abc65'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='شناسه'
+    aggregation='none'
+    visibility='package'>
+   <type href='mof:/String:uml:Type'/>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:649a6e31-2ec3-47e7-8008-bbded489df87'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:017fcd48-6cdd-4d71-8600-f207766e985a'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:41e336b8-d23a-4f7b-abcb-61eabc2642b5'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='نام'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:b1b226b4-7529-461e-8293-b82ceabb1dba'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:def49f5c-cc51-4adc-8de1-b664f1b60979'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:bdd58cac-4993-4abb-8ee6-d2699bc6e6b0'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='موبایل'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:e10770fd-372e-44f5-9ff3-ebd68b06d486'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:cb8d605e-8caf-4a91-99b8-677b1cf399f0'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:32207386-c152-4936-b31a-6c1874b17926'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='تلفن'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:ef1165f5-2a05-4d25-9e07-1adae1a9761d'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:66b0e720-9300-44ed-968c-c58031416f93'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:05fd04f5-7e94-4cc9-ba37-1956e4ec5a4a'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='فکس'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:3837d9f5-3683-4564-9cd3-70d564f59ae0'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:52035d41-768c-44e9-8984-3905c0a81242'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:88dd8bf2-46cf-4227-967f-23ae756c5ca0'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='آدرس'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:6fc4b7b6-0da4-4b29-adfa-23ee2622a6b3'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:83f921b1-69e8-4985-a1c9-265b73a6bcb2'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:72c5cc8b-2b78-4e32-91c4-0145c409791a'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='بدهکاری اولیه'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:f8229bc3-3377-49d8-9939-802d71f42fab'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:dd8ff211-34e8-43df-8e70-7293736a29d1'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:572af5b1-a868-4b3b-98da-1709f6de072e'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='نام پرسنل'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:226e35f4-1cee-42d6-be28-46dfbe6e24ef'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:e6e24cd5-f111-46d1-bd4e-93b2ad7de9b3'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+  <ownedAttribute xmi:uuid='urn:uuid:ff866790-58c2-4012-b3ef-7fdd988a443b'
+    isDerived='false'
+    isDerivedUnion='false'
+    isLeaf='false'
+    isOrdered='false'
+    isReadOnly='false'
+    isStatic='false'
+    isUnique='true'
+    name='زمان ایجاد'
+    aggregation='none'
+    visibility='package'>
+   <lowerValue xmi:type='uml:LiteralInteger' xmi:uuid='urn:uuid:e00d9430-dae3-46bf-ba16-ce5d6a198c56'
+     value='1'
+     visibility='public'/>
+   <upperValue xmi:type='uml:LiteralUnlimitedNatural' xmi:uuid='urn:uuid:541da298-7444-4811-b243-942562ffd7b9'
+     value='1'
+     visibility='public'/>
+  </ownedAttribute>
+ </uml:Class>
+</xmi:XMI>

@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report21" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f6fc88de-c6f1-439c-9034-6d4156d617d6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#FAEBD7">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#FFE4BF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<queryString>
+		<![CDATA[SELECT
+all_terms_salary.totalSalary ,
+all_terms_salary.totalOf,
+all_terms_salary.term_name,
+all_terms_salary.countOfRegistrations,
+all_terms_salary.term_id,
+IFNULL(all_terms_naghd_payments.totalTermPayments,0)as totalTermPayments,
+IFNULL(all_terms_checks_payments.total_check_amout,0)as total_check_amout
+
+FROM
+all_terms_salary
+Left Join all_terms_naghd_payments ON (all_terms_salary.term_id = all_terms_naghd_payments.term_id)
+Left Join all_terms_checks_payments ON (all_terms_salary.term_id =all_terms_checks_payments.id)]]>
+	</queryString>
+	<field name="totalSalary" class="java.math.BigDecimal"/>
+	<field name="totalOf" class="java.math.BigDecimal"/>
+	<field name="term_name" class="java.lang.String"/>
+	<field name="countOfRegistrations" class="java.lang.Long"/>
+	<field name="term_id" class="java.lang.Long"/>
+	<field name="totalTermPayments" class="java.math.BigDecimal"/>
+	<field name="total_check_amout" class="java.math.BigDecimal"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="b3e76342-9397-4c5a-9386-7c6455a013c5" x="108" y="11" width="357" height="27"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[گزارش خلاصه وضعيت مالي مركز آموزش از راه دور پيام نو]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="4b085464-5952-46d7-9717-964f8a68ce1b" x="476" y="59" width="65" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<text><![CDATA[تاريخ گزارش:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement uuid="77c6886b-89bd-4689-aa85-6f8efc9181bd" x="376" y="59" width="100" height="20"/>
+				<textElement textAlignment="Right">
+					<font fontName="B Zar" size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate(new java.util.Date()).getIranianDate()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="42" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="28" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2c694caa-b862-4a29-8429-69e9672312ae" x="465" y="8" width="90" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[نام ترم]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="7970b9a8-2c8e-43bb-b70b-2fdc9b78547c" x="386" y="8" width="79" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[تعداد ثبت نام]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9fafb7b7-52b2-44ea-83af-26a4f25f3c40" x="305" y="8" width="81" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كل شهريه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="9f5e0704-4ef8-4f63-9590-7d6dc10298a7" x="222" y="8" width="83" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كل تخفيف]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="038ab718-7e15-4a0d-bc16-100029c32aed" x="137" y="8" width="85" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كل پرداخت نقدي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="c6e5f5f1-a0f4-4d3e-8a75-2cd45af08a43" x="61" y="8" width="76" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كل پرداخت چك]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="04e05f86-eef1-4a3f-bf4e-3896d8d2c3ea" x="0" y="8" width="61" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مانده]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="de0fa98c-abe6-456d-844f-15ea6b06d99e" x="465" y="0" width="90" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{term_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c96bf09e-753f-486e-8951-aadff8f1f055" x="386" y="0" width="79" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{countOfRegistrations}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="4ef32f18-8880-485f-ae23-5475c7dedae5" x="305" y="0" width="81" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalSalary}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="c36cecdd-bf5c-435b-8423-00720005fd4d" x="222" y="0" width="83" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalOf}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="da1403a3-91d6-4f14-ad98-f35ead1097f3" x="137" y="0" width="85" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalTermPayments}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="99753797-0524-4687-9ba6-7a5da6c75745" x="61" y="1" width="76" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{total_check_amout}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0">
+				<reportElement uuid="c7754679-93b8-4e4c-b69b-e2476afc72e3" x="0" y="1" width="61" height="20"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{totalSalary}-$F{totalTermPayments}-$F{total_check_amout}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="c5334dcf-4b3e-486a-a89c-895b77e9544f" x="36" y="34" width="121" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="B Zar" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[مهر و امضاي امور مالي]]></text>
+			</staticText>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

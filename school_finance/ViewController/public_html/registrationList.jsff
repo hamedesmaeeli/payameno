@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" bottomHeight="50px" topHeight="51px"
+                         startWidth="100px" endWidth="100px">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelBox text="لیست ثبت نام ها" id="pb1">
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="تسویه حساب ترم" id="ctb1"
+                                     action="#{pageFlowScope.registartionHistory.clearRegistration}"
+                                     icon="/Images/16 x 16 Colorful/dollar_currency_sign.png"/>
+            <af:commandToolbarButton text="پرينت ثبت نام" id="ctb2"
+                                     icon="/Images/16 x 16 Colorful/print.png">
+              <af:fileDownloadActionListener method="#{pageFlowScope.registartionHistory.printRegistration}"
+                                             filename="registrationPrint.pdf"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="خلاصه وضعيت مالي" id="ctb3"
+                                     icon="/Images/16 x 16 Colorful/dollar_currency_sign.png">
+              <af:fileDownloadActionListener method="#{pageFlowScope.registartionHistory.printHistoryFinanace}"
+                                             filename="historyFinance.pdf"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="پرینت قرارداد" id="ctb4"
+                                     icon="/Images/16 x 16 Colorful/green_flag.png">
+              <af:fileDownloadActionListener filename="contractPrint.pdf"
+                                             method="#{pageFlowScope.registartionHistory.printContract}"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.Registration.collectionModel}" var="row"
+                    rows="#{bindings.Registration.rangeSize}"
+                    emptyText="#{bindings.Registration.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.Registration.rangeSize}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.Registration.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.Registration.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t1" styleClass="AFStretchWidth">
+            <af:column sortProperty="name" sortable="false" headerText="نام ترم"
+                       id="c3" width="104">
+              <af:outputText value="#{row.term.bindings.name.inputValue}"
+                             id="ot3"/>
+            </af:column>
+            <af:column sortProperty="totalShahriye" sortable="false"
+                       headerText="کل شهریه" id="c4">
+              <af:outputText value="#{row.totalShahriye}" id="ot1"/>
+            </af:column>
+            <af:column sortProperty="totalPayments" sortable="false"
+                       headerText="کل پرداختی" id="c17">
+              <af:outputText value="#{row.totalPayments}" id="ot17"/>
+            </af:column>
+            <af:column sortProperty="currentAccounting" sortable="false"
+                       headerText="مانده حساب"
+                       id="c16">
+              <af:outputText value="#{row.currentAccounting}" id="ot16"/>
+            </af:column>
+            <af:column sortProperty="name" sortable="false"
+                       headerText="نام مقطع" id="c9" width="83">
+              <af:outputText value="#{row.level.bindings.name.inputValue}"
+                             id="ot4"/>
+            </af:column>
+            <af:column sortProperty="name" sortable="false"
+                       headerText="نام رشته" id="c12">
+              <af:outputText value="#{row.field.bindings.name.inputValue}"
+                             id="ot2"/>
+            </af:column>
+            <af:column sortProperty="offAmount" sortable="false"
+                       headerText="مبلغ تخفیف" id="c5">
+              <af:outputText value="#{row.offAmount}" id="ot15"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

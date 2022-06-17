@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="ungraguatedStudentsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getDanaUnGraguatedStudents.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.Student"
+                    id="getDanaUnGraguatedStudentsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getDanaUnGraguatedStudents" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getDanaUnGraguatedStudents"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getDanaUnGraguatedStudents_getDanaUnGraguatedStudents_getDanaUnGraguatedStudents_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.schoolBean.currentSchool}"
+                 NDType="registration.data.School"/>
+    </methodAction>
+    <tree IterBinding="getDanaUnGraguatedStudentsIterator" id="Student">
+      <nodeDefinition DefName="registration.data.Student" Name="Student0">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="studentCode"/>
+          <Item Value="fatherName"/>
+          <Item Value="mobile"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="studentStatus"/>
+          <Item Value="organization"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.StudentStatus" Name="Student1">
+        <AttrNames>
+          <Item Value="statusId"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Organization" Name="Student2">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

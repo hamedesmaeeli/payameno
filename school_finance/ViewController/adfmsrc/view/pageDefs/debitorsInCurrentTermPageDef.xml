@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="debitorsInCurrentTermPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="debtorInCurrentTermList" RangeSize="25"
+                      DataControl="schManager" BeanClass="views.DebtorInTerm"
+                      id="debtorInCurrentTermListIterator"/>
+    <searchRegion Binds="debtorInCurrentTermListIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="debtorInCurrentTermListQuery"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="debtorInCurrentTermListIterator"
+          id="debtorInCurrentTermList">
+      <nodeDefinition DefName="views.DebtorInTerm"
+                      Name="debtorInCurrentTermList0">
+        <AttrNames>
+          <Item Value="debitValue"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="student"/>
+          <Item Value="term"/>
+          <Item Value="field"/>
+          <Item Value="level"/>
+          <Item Value="organization"/>
+          <Item Value="registration"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Student"
+                      Name="debtorInCurrentTermList1">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="family"/>
+          <Item Value="nationalId"/>
+          <Item Value="identifierCode"/>
+          <Item Value="identifierSerial"/>
+          <Item Value="studentCode"/>
+          <Item Value="fatherName"/>
+          <Item Value="dateOfBirth"/>
+          <Item Value="description"/>
+          <Item Value="created_date"/>
+          <Item Value="lastModified"/>
+          <Item Value="mobile"/>
+          <Item Value="phone"/>
+          <Item Value="address"/>
+          <Item Value="identifierChar"/>
+          <Item Value="archiveCode"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Term"
+                      Name="debtorInCurrentTermList2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="fromDate"/>
+          <Item Value="toDate"/>
+          <Item Value="isCurrent"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Field"
+                      Name="debtorInCurrentTermList3">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Level"
+                      Name="debtorInCurrentTermList4">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Organization"
+                      Name="debtorInCurrentTermList5">
+        <AttrNames>
+          <Item Value="name"/>
+          <Item Value="id"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Registration"
+                      Name="debtorInCurrentTermList6">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="regDate"/>
+          <Item Value="numberOfTheoryUnits"/>
+          <Item Value="numberOfActionalUnits"/>
+          <Item Value="fixShahriye"/>
+          <Item Value="theoryShahriye"/>
+          <Item Value="actionalShahriye"/>
+          <Item Value="otherShahriyAmount"/>
+          <Item Value="otherSalaryComment"/>
+          <Item Value="totalShahriye"/>
+          <Item Value="offAmount"/>
+          <Item Value="offComment"/>
+          <Item Value="currentAccounting"/>
+          <Item Value="totalPayments"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

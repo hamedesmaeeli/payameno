@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RegSalaryParam"
+  Version="11.1.1.61.92"
+  InheritPersonalization="true"
+  DBObjectType="table"
+  DBObjectName="school_new.reg_salary_param"
+  AliasName="RegSalaryParam"
+  BindingStyle="JDBC"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+  </DesignTime>
+  <Attribute
+    Name="TermId"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="term_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.reg_salary_param">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LevelId"
+    IsNotNull="true"
+    Precision="20"
+    Scale="0"
+    ColumnName="level_id"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.reg_salary_param"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FixSalary"
+    Precision="20"
+    Scale="0"
+    ColumnName="fix_salary"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.reg_salary_param">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActionSalary"
+    Precision="20"
+    Scale="0"
+    ColumnName="action_salary"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.reg_salary_param">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TheorySalary"
+    Precision="20"
+    Scale="0"
+    ColumnName="theory_salary"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="BIGINT"
+    TableName="school_new.reg_salary_param">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AcThRate"
+    Precision="11"
+    Scale="0"
+    ColumnName="ac_th_rate"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INT"
+    TableName="school_new.reg_salary_param">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="11"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="Primary1">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PRIMARY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.RegSalaryParam.TermId"/>
+      <Item Value="modelDb.RegSalaryParam.LevelId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="RegSalaryParamIbfk1">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="reg_salary_param_ibfk_1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.RegSalaryParam.TermId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="RegSalaryParamIbfk2">
+    <DesignTime>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="reg_salary_param_ibfk_2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="modelDb.RegSalaryParam.LevelId"/>
+    </AttrArray>
+  </Key>
+</Entity>

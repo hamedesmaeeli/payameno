@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="paymentsPageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <iterator Binds="root" RangeSize="25" DataControl="schManager"
+              id="schManagerIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator"
+                      Binds="registrationManager" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="registration.process.RegistrationManager"
+                      id="registrationManagerIterator"/>
+    <methodIterator Binds="getRegistrationPaymentSteps.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="registration.data.PaymentStep"
+                    id="getRegistrationPaymentStepsIterator"/>
+    <accessorIterator MasterBinding="schManagerIterator" Binds="accountManager"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.process.AccountManager"
+                      id="accountManagerIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator"
+                      Binds="allAccountBanks" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.AccountBank"
+                      id="allAccountBanksIterator"/>
+    <accessorIterator MasterBinding="getRegistrationPaymentStepsIterator"
+                      Binds="receivementPaymentFinance" RangeSize="25"
+                      DataControl="schManager"
+                      BeanClass="finance.data.RecievementPayment"
+                      id="receivementPaymentFinanceIterator"/>
+    <methodIterator Binds="getPaymentsStepsview.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="model.PaymentStepsView"
+                    id="getPaymentsStepsviewIterator" Sortable="true"/>
+    <methodIterator Binds="getRegistrationChecksView.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="model.RegistrationCheckView"
+                    id="getRegistrationChecksViewIterator"/>
+    <accessorIterator MasterBinding="accountManagerIterator" Binds="allBanks"
+                      RangeSize="25" DataControl="schManager"
+                      BeanClass="finance.data.Bank" id="allBanksIterator"/>
+    <taskFlow id="registrationHistroy1"
+              taskFlowId="/WEB-INF/registrationHistroy.xml#registrationHistroy"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="student_code"
+                   value="#{pageFlowScope.registerBean.currentStudent.studentCode}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getRegistrationPaymentSteps" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getRegistrationPaymentSteps"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getRegistrationPaymentSteps_getRegistrationPaymentSteps_getRegistrationPaymentSteps_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.currentRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getRegistrationChecks" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getRegistrationChecks"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getRegistrationChecks_getRegistrationChecks_getRegistrationChecks_result">
+      <NamedData NDName="p0"
+                 NDValue="#{pageFlowScope.registerBean.currentRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <list IterBinding="allAccountBanksIterator" ListOperMode="navigation"
+          ListIter="allAccountBanksIterator" id="allAccountBanks"
+          DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+    <methodAction id="getPaymentsStepsview" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getPaymentsStepsview"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getPaymentsStepsview_schManager_dataProvider_getPaymentsStepsview_result">
+      <NamedData NDName="registration"
+                 NDValue="#{pageFlowScope.registerBean.currentRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <tree IterBinding="getPaymentsStepsviewIterator" id="PaymentStepsView">
+      <nodeDefinition DefName="model.PaymentStepsView" Name="PaymentStepsView0">
+        <AttrNames>
+          <Item Value="createDate"/>
+          <Item Value="nextPayment"/>
+          <Item Value="paymentfinaceDescription"/>
+          <Item Value="peymentFinnaceCode"/>
+          <Item Value="amount"/>
+          <Item Value="accountBankName"/>
+          <Item Value="receivePaytypeName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="getRegistrationChecksView" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getRegistrationChecksView"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="schManager.dataProvider"
+                  ReturnName="data.schManager.methodResults.getRegistrationChecksView_schManager_dataProvider_getRegistrationChecksView_result">
+      <NamedData NDName="registration"
+                 NDValue="#{pageFlowScope.registerBean.currentRegistration}"
+                 NDType="registration.data.Registration"/>
+    </methodAction>
+    <tree IterBinding="getRegistrationChecksViewIterator"
+          id="RegistrationCheckView">
+      <nodeDefinition DefName="model.RegistrationCheckView"
+                      Name="RegistrationCheckView0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="createdDate"/>
+          <Item Value="amount"/>
+          <Item Value="checkDate"/>
+          <Item Value="checkDescription"/>
+          <Item Value="checkforHow"/>
+          <Item Value="checkId"/>
+          <Item Value="checkNumber"/>
+          <Item Value="bankAccountName"/>
+          <Item Value="checkBankName"/>
+          <Item Value="checkStatusName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="allBanksIterator" ListOperMode="navigation"
+          ListIter="allBanksIterator" id="allBanks" DTSupportsMRU="true">
+      <AttrNames>
+        <Item Value="name"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>
