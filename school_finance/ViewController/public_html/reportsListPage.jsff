@@ -20,7 +20,9 @@
       <af:spacer width="10" height="10" id="s3"/>
         <af:commandImageLink text="تعداد ثبت نامی ها در هر درس" id="cil4"
                              action="report4"/>
-      
+        <af:spacer width="10" height="10" id="s4"/>
+        <af:commandImageLink text="دانش آموزان بدون انتخاب واحد" id="cil5"
+                             action="report5"/>
       </af:panelBox>
     </f:facet>
     <f:facet name="end"/>

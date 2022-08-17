@@ -112,4 +112,7 @@
   <ViewUsage
     Name="StudentsInCoursesViewView2_1"
     ViewObjectName="modelDb.StudentsInCoursesViewView2"/>
+  <ViewUsage
+    Name="RegNotRegisterdCourseViewView1_1"
+    ViewObjectName="modelDb.RegNotRegisterdCourseViewView1"/>
 </AppModule>

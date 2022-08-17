@@ -1,22 +1,22 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <task-flow-registry xmlns="http://xmlns.oracle.com/adf/controller/rc">
-   <task-flow-descriptor path="WEB-INF/report2.xml" id="report2" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/accountingFlow.xml" id="accountingFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/configFlowTask.xml" id="configFlowTask" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
    <task-flow-descriptor path="WEB-INF/debitorsInCurrentTermFlow.xml" id="debitorsInCurrentTermFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/school.xml" id="school" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/checksAccounting.xml" id="checksAccounting" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/cashAccounting.xml" id="cashAccounting" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/students.xml" id="students" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/reportsList.xml" id="reportsList" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
    <task-flow-descriptor path="WEB-INF/registrationHistroy.xml" id="registrationHistroy" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
       <input-parameter name="student_code"/>
    </task-flow-descriptor>
-   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/report1.xml" id="report1" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
-   <task-flow-descriptor path="WEB-INF/coursesFlow.xml" id="coursesFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/checksAccounting.xml" id="checksAccounting" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/cashAccounting.xml" id="cashAccounting" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/configFlowTask.xml" id="configFlowTask" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
    <task-flow-descriptor path="WEB-INF/govahi_vaziat_tahsili.xml" id="govahi_vaziat_tahsili" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false">
       <input-parameter name="st_code"/>
    </task-flow-descriptor>
    <task-flow-descriptor path="WEB-INF/banksAccountAccounting.xml" id="banksAccountAccounting" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/coursesFlow.xml" id="coursesFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="META-INF/adfc-config.xml" id="" type="" uses-page-fragments="false" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/report1.xml" id="report1" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/students.xml" id="students" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/accountingFlow.xml" id="accountingFlow" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/reportsList.xml" id="reportsList" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/school.xml" id="school" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
+   <task-flow-descriptor path="WEB-INF/report2.xml" id="report2" type="task-flow-definition" uses-page-fragments="true" library-internal="false" train="false"/>
 </task-flow-registry>

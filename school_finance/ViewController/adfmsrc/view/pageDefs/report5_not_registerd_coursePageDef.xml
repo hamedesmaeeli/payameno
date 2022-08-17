@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.61.92" id="report5_not_registerd_coursePageDef"
+                Package="view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="RegNotRegisterdCourseViewView1_1" RangeSize="25"
+              DataControl="AppModuleDataControl"
+              id="RegNotRegisterdCourseViewView1_1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="RegNotRegisterdCourseViewView1_1Iterator"
+          id="RegNotRegisterdCourseViewView1_1">
+      <nodeDefinition DefName="modelDb.RegNotRegisterdCourseViewView1"
+                      Name="RegNotRegisterdCourseViewView1_10">
+        <AttrNames>
+          <Item Value="RegDate"/>
+          <Item Value="StudentCode"/>
+          <Item Value="Name"/>
+          <Item Value="Famili"/>
+          <Item Value="FatherName"/>
+          <Item Value="NationalCode"/>
+          <Item Value="TermName"/>
+          <Item Value="FieldName"/>
+          <Item Value="LevelName"/>
+          <Item Value="DateOfBirth"/>
+          <Item Value="Mobile"/>
+          <Item Value="ArchiveCode"/>
+          <Item Value="OrgName"/>
+          <Item Value="StatusName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

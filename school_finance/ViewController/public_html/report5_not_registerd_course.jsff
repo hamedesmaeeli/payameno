@@ -1,0 +1,107 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="bottom"/>
+    <f:facet name="center">
+      <af:panelCollection id="pc1">
+        <f:facet name="menus">
+          <af:menu text="دریافت اکسل" id="m1"
+                   icon="/Images/16 x 16 Colorful/accept.png">
+            <af:commandMenuItem text="دانلود اکسل" id="cmi1">
+              <af:exportCollectionActionListener type="excelHTML"
+                                                 exportedId="t1"/>
+            </af:commandMenuItem>
+          </af:menu>
+        </f:facet>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.RegNotRegisterdCourseViewView1_1.collectionModel}"
+                  var="row"
+                  rows="#{bindings.RegNotRegisterdCourseViewView1_1.rangeSize}"
+                  emptyText="#{bindings.RegNotRegisterdCourseViewView1_1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.RegNotRegisterdCourseViewView1_1.rangeSize}"
+                  rowBandingInterval="0" id="t1">
+          <af:column sortProperty="RegDate" sortable="false"
+                     headerText="تاریخ ثبت نام"
+                     id="c4">
+            <af:outputText value="#{row.RegDate}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.RegNotRegisterdCourseViewView1_1.hints.RegDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="StudentCode" sortable="false"
+                     headerText="کد دانش آموزی"
+                     id="c7">
+            <af:outputText value="#{row.StudentCode}" id="ot14"/>
+          </af:column>
+          <af:column sortProperty="Name" sortable="false"
+                     headerText="نام"
+                     id="c14">
+            <af:outputText value="#{row.Name}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="Famili" sortable="false"
+                     headerText="نام خانوادگی"
+                     id="c3">
+            <af:outputText value="#{row.Famili}" id="ot13"/>
+          </af:column>
+          <af:column sortProperty="FatherName" sortable="false"
+                     headerText="نام پدر"
+                     id="c5">
+            <af:outputText value="#{row.FatherName}" id="ot5"/>
+          </af:column>
+          <af:column sortProperty="NationalCode" sortable="false"
+                     headerText="کد ملی"
+                     id="c11">
+            <af:outputText value="#{row.NationalCode}" id="ot10"/>
+          </af:column>
+          <af:column sortProperty="TermName" sortable="false"
+                     headerText="ترم"
+                     id="c6">
+            <af:outputText value="#{row.TermName}" id="ot9"/>
+          </af:column>
+          <af:column sortProperty="FieldName" sortable="false"
+                     headerText="رشته"
+                     id="c9">
+            <af:outputText value="#{row.FieldName}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="LevelName" sortable="false"
+                     headerText="مقطع"
+                     id="c12">
+            <af:outputText value="#{row.LevelName}" id="ot12"/>
+          </af:column>
+          <af:column sortProperty="Mobile" sortable="false"
+                     headerText="موبایل"
+                     id="c2">
+            <af:outputText value="#{row.Mobile}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="ArchiveCode" sortable="false"
+                     headerText="بایگانی"
+                     id="c1">
+            <af:outputText value="#{row.ArchiveCode}" id="ot11"/>
+          </af:column>
+          <af:column sortProperty="OrgName" sortable="false"
+                     headerText="اقماری"
+                     id="c13">
+            <af:outputText value="#{row.OrgName}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="StatusName" sortable="false"
+                     headerText="وضعیت"
+                     id="c8">
+            <af:outputText value="#{row.StatusName}" id="ot4"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </f:facet>
+    <f:facet name="start"/>
+    <f:facet name="end"/>
+    <f:facet name="top">
+      <af:panelBox id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelGroupLayout id="pgl1">
+          <af:commandButton text="commandButton 1" id="cb1" action="back"/>
+        </af:panelGroupLayout>
+      </af:panelBox>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

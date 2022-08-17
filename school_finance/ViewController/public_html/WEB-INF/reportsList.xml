@@ -22,6 +22,9 @@
     <view id="report4_page">
       <page>/report4_page.jsff</page>
     </view>
+    <view id="report5_not_registerd_course">
+      <page>/report5_not_registerd_course.jsff</page>
+    </view>
     <control-flow-rule id="__6">
       <from-activity-id id="__7">reportsListPage</from-activity-id>
       <control-flow-case id="__9">
@@ -39,6 +42,10 @@
       <control-flow-case id="__33">
         <from-outcome id="__34">report4</from-outcome>
         <to-activity-id id="__32">report4_page</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__47">
+        <from-outcome id="__49">report5</from-outcome>
+        <to-activity-id id="__48">report5_not_registerd_course</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__14">
@@ -67,6 +74,13 @@
       <control-flow-case id="__38">
         <from-outcome id="__39">back</from-outcome>
         <to-activity-id id="__37">reportsListPage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__42">
+      <from-activity-id id="__43">report5_not_registerd_course</from-activity-id>
+      <control-flow-case id="__45">
+        <from-outcome id="__46">back</from-outcome>
+        <to-activity-id id="__44">reportsListPage</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>
