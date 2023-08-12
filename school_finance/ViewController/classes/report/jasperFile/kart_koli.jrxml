@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnDirection="RTL" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9afa7c9c-1221-42e7-9539-d1b33a143134">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="40"/>
+	<property name="ireport.y" value="84"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -81,6 +81,7 @@ order by exam_kart_view_exam_date]]>
 	reg_registerd_course_view.first_name AS `name`,
 	reg_registerd_course_view.famili,
 	reg_registerd_course_view.father_name,
+          reg_registerd_course_view.mobile,
 	course_field_view.field_name,
 	reg_student_image.st_image,
 	exam_course_view.term_name,
@@ -116,6 +117,7 @@ WHERE
 	<field name="name" class="java.lang.String"/>
 	<field name="famili" class="java.lang.String"/>
 	<field name="father_name" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
 	<field name="field_name" class="java.lang.String"/>
 	<field name="st_image" class="java.io.InputStream"/>
 	<field name="term_name" class="java.lang.String"/>
@@ -435,6 +437,13 @@ WHERE
 			<line>
 				<reportElement uuid="29724488-aa27-4ab3-ad72-3586ce3f403b" x="7" y="166" width="1" height="39"/>
 			</line>
+			<textField>
+				<reportElement uuid="8ada55fa-47ab-479c-8fb1-f83d2887e21f" x="7" y="235" width="61" height="17"/>
+				<textElement>
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

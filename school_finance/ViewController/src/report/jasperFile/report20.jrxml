@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report20" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="37814725-138b-4bf3-8938-637db3fbf914">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="145"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="st_code" class="java.math.BigDecimal">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -256,13 +256,6 @@ where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_
 				<text><![CDATA[در پايه]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="fd77f564-8505-415c-ae60-c57d0a758739" x="153" y="76" width="130" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font fontName="B Zar" size="14" isBold="false"/>
-				</textElement>
-				<text><![CDATA[دهم/يازدهم/دوازدهم]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="d396f6bc-1f8d-40ec-bf02-b34be3722678" x="127" y="76" width="26" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="B Zar" size="14"/>
@@ -351,7 +344,7 @@ where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_
 				<textElement textAlignment="Center">
 					<font fontName="B Zar" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[سيد محسن معنوي]]></text>
+				<text><![CDATA[امیرحسین عابدین نژاد]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="9dd8e1f5-db5f-4941-a184-d5f9748a0179" x="555" y="0" width="1" height="567"/>
