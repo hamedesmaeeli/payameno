@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnDirection="RTL" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9afa7c9c-1221-42e7-9539-d1b33a143134">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="84"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="courses" uuid="db78e7c2-65b9-4483-8013-8c77fc7fbe8c">
+		<parameter name="st_code" class="java.lang.Long">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT
+     exam_kart_view.`term_id` AS exam_kart_view_term_id,
+     exam_kart_view.`first_name` AS exam_kart_view_first_name,
+     exam_kart_view.`famili` AS exam_kart_view_famili,
+     exam_kart_view.`course_display_name` AS exam_kart_view_course_display_name,
+     exam_kart_view.`course_code` AS exam_kart_view_course_code,
+     exam_kart_view.`exam_date` AS exam_kart_view_exam_date,
+     exam_kart_view.`exam_farsi_date` AS exam_kart_view_exam_farsi_date,
+     exam_kart_view.`exam_week_day` AS exam_kart_view_exam_week_day,
+     exam_kart_view.`exam_month_name` AS exam_kart_view_exam_month_name,
+     exam_kart_view.`exam_hour` AS exam_kart_view_exam_hour,
+     exam_kart_view.`exam_time_id` AS exam_kart_view_exam_time_id,
+     exam_kart_view.`father_name` AS exam_kart_view_father_name,
+     exam_kart_view.`field_name` AS exam_kart_view_field_name,
+     exam_kart_view.`st_image` AS exam_kart_view_st_image,
+     exam_kart_view.`term_name` AS exam_kart_view_term_name,
+     exam_kart_view.`manager_name` AS exam_kart_view_manager_name,
+     exam_kart_view.`school_name` AS exam_kart_view_school_name,
+     exam_kart_view.`exam_location` AS exam_kart_view_exam_location,
+     exam_kart_view.`st_id` AS exam_kart_view_st_id,
+     exam_kart_view.`national_code` AS exam_kart_view_national_code
+FROM
+     `exam_kart_view` exam_kart_view
+where exam_kart_view.`st_id`=$P{st_code}
+order by exam_kart_view_exam_date]]>
+		</queryString>
+		<field name="exam_kart_view_term_id" class="java.lang.Long"/>
+		<field name="exam_kart_view_first_name" class="java.lang.String"/>
+		<field name="exam_kart_view_famili" class="java.lang.String"/>
+		<field name="exam_kart_view_course_display_name" class="java.lang.String"/>
+		<field name="exam_kart_view_course_code" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_date" class="java.sql.Timestamp"/>
+		<field name="exam_kart_view_exam_farsi_date" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_week_day" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_month_name" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_hour" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_time_id" class="java.lang.Long"/>
+		<field name="exam_kart_view_father_name" class="java.lang.String"/>
+		<field name="exam_kart_view_field_name" class="java.lang.String"/>
+		<field name="exam_kart_view_st_image" class="java.lang.Object"/>
+		<field name="exam_kart_view_term_name" class="java.lang.String"/>
+		<field name="exam_kart_view_manager_name" class="java.lang.String"/>
+		<field name="exam_kart_view_school_name" class="java.lang.String"/>
+		<field name="exam_kart_view_exam_location" class="java.lang.String"/>
+		<field name="exam_kart_view_st_id" class="java.lang.Long"/>
+		<field name="exam_kart_view_national_code" class="java.lang.String"/>
+	</subDataset>
+	<queryString>
+		<![CDATA[SELECT DISTINCT
+	exam_course_view.term_id,
+	reg_registerd_course_view.first_name AS `name`,
+	reg_registerd_course_view.famili,
+	reg_registerd_course_view.father_name,
+          reg_registerd_course_view.mobile,
+	course_field_view.field_name,
+	reg_student_image.st_image,
+	exam_course_view.term_name,
+	reg_exam_kart_config.manager_name,
+	reg_exam_kart_config.school_name,
+	reg_exam_kart_config.exam_location,
+	reg_registerd_course_view.st_id AS student_code,
+	reg_registerd_course_view.national_code,
+	reg_registerd_course_view.reg_id AS id,
+	course_field_view.field_id,
+	exam_course_view.term_is_current AS is_current
+FROM
+	exam_course_view
+	INNER JOIN
+	reg_registerd_course_view
+	ON
+		exam_course_view.term_id = reg_registerd_course_view.term_id AND
+		exam_course_view.course_id = reg_registerd_course_view.course_id
+	INNER JOIN
+	course_field_view
+	ON
+		reg_registerd_course_view.course_id = course_field_view.course_id AND
+		reg_registerd_course_view.field_id = course_field_view.field_id
+	LEFT JOIN
+	reg_student_image
+	ON
+		reg_registerd_course_view.st_id = reg_student_image.st_code,
+	reg_exam_kart_config
+WHERE
+	course_field_view.is_final = 0 and exam_course_view.term_is_current = 1]]>
+	</queryString>
+	<field name="term_id" class="java.lang.Long"/>
+	<field name="name" class="java.lang.String"/>
+	<field name="famili" class="java.lang.String"/>
+	<field name="father_name" class="java.lang.String"/>
+	<field name="mobile" class="java.lang.String"/>
+	<field name="field_name" class="java.lang.String"/>
+	<field name="st_image" class="java.io.InputStream"/>
+	<field name="term_name" class="java.lang.String"/>
+	<field name="manager_name" class="java.lang.String"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="exam_location" class="java.lang.String"/>
+	<field name="student_code" class="java.lang.Long"/>
+	<field name="national_code" class="java.lang.String"/>
+	<field name="id" class="java.lang.Long"/>
+	<field name="field_id" class="java.lang.Long"/>
+	<field name="is_current" class="java.lang.Boolean"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="266" splitType="Stretch">
+			<textField>
+				<reportElement uuid="c8857b8e-705e-4ffe-bc40-fbfaeb77f72a" x="88" y="156" width="104" height="20" forecolor="#CC0000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="5f31fb9f-bcbb-4473-8bd5-8ea70d473f13" x="7" y="114" width="62" height="15"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{manager_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="9ddd5b7b-c470-49ae-ac89-ed032b0cea84" x="95" y="176" width="97" height="20" forecolor="#00CC00"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{term_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e9edd321-2ea6-426a-95df-d0586ea8a903" x="95" y="114" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{father_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="d9b21e61-a31f-4721-8b57-0ed4ae0b4e0d" x="95" y="54" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{student_code}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="0067e854-42ed-4dea-802a-8f63c97fe08a" x="8" y="167" width="79" height="37"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{exam_location}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="66819af4-cd23-4ed1-813d-322abacbca53" x="95" y="94" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{famili}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="e56f50ec-8a7f-48a4-aba0-9cb52c6806ec" x="95" y="74" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{name}]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement uuid="4b0f8872-7648-4762-8a98-4020c802952d" key="table" style="table" x="249" y="4" width="282" height="231"/>
+				<jr:table xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" whenNoDataType="AllSectionsNoDetail">
+					<datasetRun subDataset="courses" uuid="2c2dad31-2d00-4b50-a88b-7b6f616564ae">
+						<datasetParameter name="st_code">
+							<datasetParameterExpression><![CDATA[$F{student_code}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:column uuid="8abb9b4b-0c80-4ba6-83c7-415a42e0b97d" width="92">
+						<jr:columnHeader style="table_TH" height="31" rowSpan="1">
+							<staticText>
+								<reportElement uuid="64e7476d-af2e-4b3b-ab18-abf72977a62f" x="0" y="0" width="92" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نام درس]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="dd351236-e0f6-432d-a427-30833d47d582" x="0" y="0" width="92" height="16"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{exam_kart_view_course_display_name}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="77970e6e-a930-4231-a4ce-962138620bb2" width="52">
+						<jr:columnHeader style="table_TH" height="31" rowSpan="1">
+							<staticText>
+								<reportElement uuid="f26fe726-3429-439a-beb9-473096e5b451" x="0" y="0" width="52" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[شماره درس]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="2debcb34-41c5-4859-b88c-f79940bd70b3" x="0" y="0" width="52" height="15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{exam_kart_view_course_code}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="fede31c2-f1e0-4b63-b0dc-05d830d46d3c" width="55">
+						<jr:columnHeader style="table_TH" height="31" rowSpan="1">
+							<staticText>
+								<reportElement uuid="1fddce95-7009-48ad-aee6-44b3f92d5ef2" x="0" y="0" width="55" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[تاریخ ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="c5827000-d97d-4cf3-9ec2-2c1c45064280" x="0" y="0" width="55" height="16"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{exam_kart_view_exam_farsi_date}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="5d6c6e3f-5bcb-482a-b111-09fc167bf66c" width="47">
+						<jr:columnHeader style="table_TH" height="31" rowSpan="1">
+							<staticText>
+								<reportElement uuid="87ee8b66-1750-4f93-bd9f-5bfb4995ee0c" x="0" y="0" width="47" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[روز هفته]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="3e51cac5-e8f1-4814-bf99-097cecfbecdb" x="0" y="0" width="47" height="15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{exam_kart_view_exam_week_day}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="123d01a9-d29b-41d4-9748-30cb9934e997" width="46">
+						<jr:columnHeader style="table_TH" height="31" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="43" height="30"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10" isBold="true"/>
+								</textElement>
+								<text><![CDATA[ساعت ]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell style="table_TD" height="16" rowSpan="1">
+							<textField>
+								<reportElement uuid="45f101df-91be-4ebc-9055-3fdd3b721454" x="0" y="0" width="43" height="16"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" size="10"/>
+								</textElement>
+								<textFieldExpression><![CDATA[$F{exam_kart_view_exam_hour}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+				</jr:table>
+			</componentElement>
+			<staticText>
+				<reportElement uuid="91e07d67-8280-41db-b040-433afe34d5e4" x="100" y="0" width="60" height="29" forecolor="#FF3333"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="7"/>
+				</textElement>
+				<text><![CDATA[جمهوري اسلامي ايران
+وزارت آموزش و پرورش
+اداره آموزش و پرورش ناحيه5]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="df9951ee-5277-4198-9215-368d732f6eca" x="88" y="29" width="138" height="15" forecolor="#FF0033"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[كارت ورود به جلسه امتحانات داخلي]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a266eca8-6645-41ee-b4be-604027308908" x="175" y="54" width="58" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[کد دانش آموزی :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="b98402f6-b4cb-4463-b237-aa47b1d9c661" x="174" y="74" width="59" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[نام :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1fc54dcd-aee0-4d46-8d4d-fc8702d7bfa0" x="175" y="94" width="58" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[نام خانوادگی :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="e031af93-a318-432e-a4c5-1196a9def808" x="175" y="114" width="58" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[نام پدر :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="bedb2b91-90f3-4422-b61a-2880f00654e7" x="192" y="136" width="44" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[رشته :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="166892a6-6294-4b4d-a219-7a76995464c7" x="192" y="156" width="44" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[آموزشگاه :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="a9cc0231-0252-44ec-998a-d5f1bc453bc5" x="192" y="176" width="44" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<text><![CDATA[سال و دوره  :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="60f85dd3-d251-4e4e-a996-f0645a16f23c" x="7" y="94" width="62" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="8"/>
+				</textElement>
+				<text><![CDATA[مهر و امضاء آموزشگاه]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="14f47ca2-1f6a-4fc5-bf30-d678db1ee1bc" x="8" y="146" width="80" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<text><![CDATA[حوزه امتحانی:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="95849be1-4a45-4460-a369-0aefb0f30153" x="0" y="208" width="236" height="46"/>
+				<textElement textAlignment="Right">
+					<font fontName="B Zar" size="7"/>
+				</textElement>
+				<text><![CDATA[1- داشتن اين كارت در هنگام ورود به جلسه  امتحان الزامي مي باشد
+2- از آوردن گوشي تلفن همراه،كتاب،جزوه و .... جدا خودداري فرماييد. در صورت مشاهده از امتحان مربوطه محروم خواهيد شد.
+3- نيم ساعت قبل از شروع امتحان در محل حوزه امتحاني حضور داشته باشيد
+4- داشتن ماسک الزامی است]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="2d4ff50f-30f4-4bc2-95fe-918bf14d7132" x="88" y="136" width="104" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{field_name}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement uuid="7058bc55-e306-45f8-a5eb-20d7ce614e42" x="248" y="0" width="1" height="264"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<line>
+				<reportElement uuid="34b67852-42fc-48a8-b215-55adc471467b" x="0" y="264" width="555" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dashed"/>
+				</graphicElement>
+			</line>
+			<image>
+				<reportElement uuid="4dd8ae9f-01f7-4415-8d4b-2f81e9f6272a" x="0" y="9" width="88" height="85"/>
+				<imageExpression><![CDATA[$F{st_image}]]></imageExpression>
+			</image>
+			<line>
+				<reportElement uuid="16810266-5142-436d-8faa-0d468bd264e4" x="95" y="50" width="141" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="d0b7b703-0719-4171-86ef-77c010c9a08b" x="95" y="133" width="141" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="3e80aa27-b7b9-4874-8dfe-dda4a85c9bcd" x="235" y="50" width="1" height="83"/>
+			</line>
+			<line>
+				<reportElement uuid="a41f9804-0c5d-4811-9428-70a15f596994" x="94" y="50" width="1" height="83"/>
+			</line>
+			<line>
+				<reportElement uuid="49f63ea0-b014-4191-9bfa-13f454a3b5cd" x="8" y="166" width="79" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="3114c0cf-144b-434c-83c5-c58bcfa97cb4" x="8" y="204" width="79" height="1"/>
+			</line>
+			<line>
+				<reportElement uuid="aea6ed37-baa0-47e3-b6fb-37a55b8b269a" x="87" y="166" width="1" height="39"/>
+			</line>
+			<line>
+				<reportElement uuid="29724488-aa27-4ab3-ad72-3586ce3f403b" x="7" y="166" width="1" height="39"/>
+			</line>
+			<textField>
+				<reportElement uuid="8ada55fa-47ab-479c-8fb1-f83d2887e21f" x="7" y="235" width="61" height="17"/>
+				<textElement>
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

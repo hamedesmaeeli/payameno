@@ -2705,4 +2705,32 @@ new Bank((BigDecimal)row.getAttribute(0), (String)row.getAttribute(1));
                        e.printStackTrace();
                    } 
     }
+
+    public void printKartEmtehan(FacesContext facesContext,
+                                 OutputStream outputStream) {
+        // Add event code here...
+        ReportManagment rm = new ReportManagment();
+        String prtinUrl= rm.runrReportKartWithCode(this.currentStudent.getStudentCode());
+        System.out.println("print url" + prtinUrl);
+        URL url;
+                   InputStream is;
+                   try {
+                       url = new URL(prtinUrl);
+                       is = url.openStream();
+                       
+                       // initialize  
+                       byte[] buffer = new byte[4096]; // tweaking this number may increase performance  
+                       int len;  
+                       while ((len = is.read(buffer)) != -1)  
+                       {  
+                           outputStream.write(buffer, 0, len);  
+                       }  
+                       is.close();  
+                   } catch (FileNotFoundException e) {
+                       e.printStackTrace();
+                   } catch (IOException e) {
+                       e.printStackTrace();
+                   } 
+        
+    }
 }

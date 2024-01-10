@@ -185,6 +185,27 @@ public class ReportManagment {
           System.out.println("getReportFilePath() === "+ getReportFilePath());
             url = reportBuilder.getReport(getJasperIS("kart.jasper"),ht,reportBuilder.PDF);
             url = getURL() + url;
+            System.out.println("kartEmtehan with stcoode "+url);
+        } catch (ReportException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+    
+    public String runrReportKartWithCode(BigDecimal studentCode)
+    {
+        
+        Hashtable ht = new Hashtable();
+        if(studentCode!=null)
+          ht.put("st_id",studentCode); 
+
+        
+      String url = null; 
+        try {
+
+          System.out.println("getReportFilePath() === "+ getReportFilePath());
+            url = reportBuilder.getReport(getJasperIS("kart_taki.jasper"),ht,reportBuilder.PDF);
+            url = getURL() + url;
             System.out.println("kartEmtehan with field "+url);
         } catch (ReportException e) {
             e.printStackTrace();

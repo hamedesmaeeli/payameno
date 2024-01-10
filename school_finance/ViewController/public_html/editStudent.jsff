@@ -183,7 +183,7 @@
                               action="#{pageFlowScope.registerBean.editStudentPic}"/>
             <af:commandButton text="دانلود عکس" id="cb9">
               <af:fileDownloadActionListener method="#{pageFlowScope.registerBean.downloadStudentImage}"
-                                             filename="#{pageFlowScope.registerBean.currentStudent.studentCode}.jpg"/>
+                                             filename="#{pageFlowScope.registerBean.currentStudent.name} #{pageFlowScope.registerBean.currentStudent.family} #{pageFlowScope.registerBean.currentStudent.studentCode}.jpg"/>
             </af:commandButton>
           </af:panelGroupLayout>
         </af:panelBox> 
@@ -220,23 +220,23 @@
                                  icon="/Images/16 x 16 Colorful/calendar.png">
               <af:showPopupBehavior popupId="p4"/>
             </af:commandImageLink>
-            <af:spacer width="10" height="30" id="s4"/>
+            <af:spacer width="10" height="20" id="s4"/>
             <af:goImageLink text="گزارش پرداختی ها" id="gil1"
                             targetFrame="_blank"
                             destination="#{pageFlowScope.registerBean.totalFinanceReport}"
                             inlineStyle="font-size:medium;"
                             icon="/Images/16 x 16 Colorful/print.png"/>
-            <af:spacer width="10" height="30" id="s5"/>
+            <af:spacer width="10" height="20" id="s5"/>
             <af:commandImageLink text="ويرايش اطلاعات" id="cil5"
                                  inlineStyle="font-size:medium;"
                                  icon="/Images/16 x 16 Colorful/accept.png"
                                  action="#{pageFlowScope.registerBean.editStudentMethod}"/>
-            <af:spacer width="10" height="30" id="s6"/>
+            <af:spacer width="10" height="20" id="s6"/>
             <af:commandImageLink text="ليست دانش آموزان" id="cil6"
                                  inlineStyle="font-size:medium;"
                                  icon="/Images/16 x 16 Colorful/back.png"
                                  action="back"/>
-            <af:spacer width="10" height="30" id="s7"/>
+            <af:spacer width="10" height="20" id="s7"/>
             <af:commandImageLink text="ثبت نام در ترم جاري" id="cil7"
                                  inlineStyle="font-size:medium;"
                                  icon="/Images/16 x 16 Colorful/application-form-icon.png"
@@ -248,8 +248,10 @@
               <af:fileDownloadActionListener filename="nazam_vazifeh.pdf"
                                              method="#{pageFlowScope.registerBean.printNezamVazifeh}"/>
             </af:commandImageLink>
-            <af:commandImageLink text="گواهي وضعيت تحصيلي" id="cil9">
-              <af:showPopupBehavior popupId="p5"/>
+            <af:commandImageLink text="کارت ورود به جلسه" id="cil9"
+                                 icon="/Images/16 x 16 Colorful/key.png">
+              <af:fileDownloadActionListener filename="kart_emtehan.pdf"
+                                             method="#{pageFlowScope.registerBean.printKartEmtehan}"/>
             </af:commandImageLink>
           </af:showDetailItem>
         </af:panelAccordion>

@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnDirection="RTL" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9afa7c9c-1221-42e7-9539-d1b33a143134">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="36"/>
+	<property name="ireport.y" value="124"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -48,7 +48,8 @@
      exam_kart_view.`school_name` AS exam_kart_view_school_name,
      exam_kart_view.`exam_location` AS exam_kart_view_exam_location,
      exam_kart_view.`st_id` AS exam_kart_view_st_id,
-     exam_kart_view.`national_code` AS exam_kart_view_national_code
+     exam_kart_view.`national_code` AS exam_kart_view_national_code,
+     exam_kart_view.is_final as exam_view_is_final
 FROM
      `exam_kart_view` exam_kart_view
 where exam_kart_view.`st_id`=$P{st_code}
@@ -67,13 +68,14 @@ order by exam_kart_view_exam_date]]>
 		<field name="exam_kart_view_exam_time_id" class="java.lang.Long"/>
 		<field name="exam_kart_view_father_name" class="java.lang.String"/>
 		<field name="exam_kart_view_field_name" class="java.lang.String"/>
-		<field name="exam_kart_view_st_image" class="java.io.InputStream"/>
+		<field name="exam_kart_view_st_image" class="java.lang.Object"/>
 		<field name="exam_kart_view_term_name" class="java.lang.String"/>
 		<field name="exam_kart_view_manager_name" class="java.lang.String"/>
 		<field name="exam_kart_view_school_name" class="java.lang.String"/>
 		<field name="exam_kart_view_exam_location" class="java.lang.String"/>
 		<field name="exam_kart_view_st_id" class="java.lang.Long"/>
 		<field name="exam_kart_view_national_code" class="java.lang.String"/>
+		<field name="exam_view_is_final" class="java.lang.Boolean"/>
 	</subDataset>
 	<parameter name="field_id" class="java.math.BigDecimal">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
@@ -114,7 +116,7 @@ FROM
 		reg_registerd_course_view.st_id = reg_student_image.st_code,
 	reg_exam_kart_config
 WHERE
-	course_field_view.is_final = 0 and  course_field_view.field_id=$P{field_id} and exam_course_view.term_is_current = 1]]>
+	  course_field_view.field_id=$P{field_id} and exam_course_view.term_is_current = 1]]>
 	</queryString>
 	<field name="term_id" class="java.lang.Long"/>
 	<field name="name" class="java.lang.String"/>
@@ -202,10 +204,10 @@ WHERE
 						</datasetParameter>
 						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 					</datasetRun>
-					<jr:column uuid="8abb9b4b-0c80-4ba6-83c7-415a42e0b97d" width="89">
-						<jr:columnHeader style="table_TH" height="24" rowSpan="1">
+					<jr:column uuid="8abb9b4b-0c80-4ba6-83c7-415a42e0b97d" width="71">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="64e7476d-af2e-4b3b-ab18-abf72977a62f" x="0" y="0" width="89" height="21"/>
+								<reportElement uuid="64e7476d-af2e-4b3b-ab18-abf72977a62f" x="0" y="0" width="71" height="21"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10" isBold="true"/>
 								</textElement>
@@ -214,7 +216,7 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="dd351236-e0f6-432d-a427-30833d47d582" x="0" y="0" width="89" height="15"/>
+								<reportElement uuid="dd351236-e0f6-432d-a427-30833d47d582" x="0" y="0" width="71" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10"/>
 								</textElement>
@@ -223,7 +225,7 @@ WHERE
 						</jr:detailCell>
 					</jr:column>
 					<jr:column uuid="77970e6e-a930-4231-a4ce-962138620bb2" width="49">
-						<jr:columnHeader style="table_TH" height="24" rowSpan="1">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
 								<reportElement uuid="f26fe726-3429-439a-beb9-473096e5b451" x="0" y="0" width="49" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -242,10 +244,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="fede31c2-f1e0-4b63-b0dc-05d830d46d3c" width="55">
-						<jr:columnHeader style="table_TH" height="24" rowSpan="1">
+					<jr:column uuid="fede31c2-f1e0-4b63-b0dc-05d830d46d3c" width="43">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="1fddce95-7009-48ad-aee6-44b3f92d5ef2" x="0" y="0" width="55" height="22"/>
+								<reportElement uuid="1fddce95-7009-48ad-aee6-44b3f92d5ef2" x="0" y="0" width="41" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10" isBold="true"/>
 								</textElement>
@@ -254,7 +256,7 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="c5827000-d97d-4cf3-9ec2-2c1c45064280" x="0" y="0" width="55" height="15"/>
+								<reportElement uuid="c5827000-d97d-4cf3-9ec2-2c1c45064280" x="0" y="0" width="41" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10"/>
 								</textElement>
@@ -262,10 +264,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="5d6c6e3f-5bcb-482a-b111-09fc167bf66c" width="47">
-						<jr:columnHeader style="table_TH" height="24" rowSpan="1">
+					<jr:column uuid="5d6c6e3f-5bcb-482a-b111-09fc167bf66c" width="35">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="87ee8b66-1750-4f93-bd9f-5bfb4995ee0c" x="0" y="0" width="47" height="22"/>
+								<reportElement uuid="87ee8b66-1750-4f93-bd9f-5bfb4995ee0c" x="0" y="0" width="35" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10" isBold="true"/>
 								</textElement>
@@ -274,7 +276,7 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="3e51cac5-e8f1-4814-bf99-097cecfbecdb" x="0" y="0" width="47" height="15"/>
+								<reportElement uuid="3e51cac5-e8f1-4814-bf99-097cecfbecdb" x="0" y="0" width="35" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10"/>
 								</textElement>
@@ -282,10 +284,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="123d01a9-d29b-41d4-9748-30cb9934e997" width="50">
-						<jr:columnHeader style="table_TH" height="24" rowSpan="1">
+					<jr:column uuid="123d01a9-d29b-41d4-9748-30cb9934e997" width="37">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="49" height="22"/>
+								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="34" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10" isBold="true"/>
 								</textElement>
@@ -294,11 +296,31 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="45f101df-91be-4ebc-9055-3fdd3b721454" x="0" y="0" width="50" height="15"/>
+								<reportElement uuid="45f101df-91be-4ebc-9055-3fdd3b721454" x="0" y="0" width="34" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10"/>
 								</textElement>
 								<textFieldExpression><![CDATA[$F{exam_kart_view_exam_hour}]]></textFieldExpression>
+							</textField>
+						</jr:detailCell>
+					</jr:column>
+					<jr:column uuid="847b3b8d-637d-4f49-be49-e426ac4091ae" width="37">
+						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
+							<staticText>
+								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="37" height="23"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar" isBold="true"/>
+								</textElement>
+								<text><![CDATA[نهایی]]></text>
+							</staticText>
+						</jr:columnHeader>
+						<jr:detailCell height="15" rowSpan="1">
+							<textField>
+								<reportElement uuid="caeed814-2b9c-43c5-a8c4-5b1c2cab97be" style="table_TD" x="0" y="0" width="37" height="15"/>
+								<textElement textAlignment="Center" verticalAlignment="Middle">
+									<font fontName="B Zar"/>
+								</textElement>
+								<textFieldExpression><![CDATA[($F{exam_view_is_final} == true) ? "بلی" : (($F{exam_view_is_final} == false)? "خیر" : "Cancelled");]]></textFieldExpression>
 							</textField>
 						</jr:detailCell>
 					</jr:column>
@@ -384,14 +406,14 @@ WHERE
 				<text><![CDATA[حوزه امتحانی:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="95849be1-4a45-4460-a369-0aefb0f30153" x="0" y="208" width="236" height="46"/>
+				<reportElement uuid="95849be1-4a45-4460-a369-0aefb0f30153" x="0" y="204" width="236" height="46"/>
 				<textElement textAlignment="Right">
 					<font fontName="B Zar" size="7"/>
 				</textElement>
 				<text><![CDATA[1- داشتن اين كارت در هنگام ورود به جلسه  امتحان الزامي مي باشد
 2- از آوردن گوشي تلفن همراه،كتاب،جزوه و .... جدا خودداري فرماييد. در صورت مشاهده از امتحان مربوطه محروم خواهيد شد.
 3- نيم ساعت قبل از شروع امتحان در محل حوزه امتحاني حضور داشته باشيد
-4- داشتن ماسک الزامی است]]></text>
+4-دروس نهایی در حوزه ای که از طرف آموزش و پرورش اعلام میشود،برگزار می گردد]]></text>
 			</staticText>
 			<textField>
 				<reportElement uuid="2d4ff50f-30f4-4bc2-95fe-918bf14d7132" x="88" y="136" width="104" height="20"/>
@@ -442,7 +464,7 @@ WHERE
 			</line>
 			<textField>
 				<reportElement uuid="b6fe219a-20e4-4869-aab1-6de56c7906fa" x="8" y="237" width="79" height="17"/>
-				<textElement>
+				<textElement verticalAlignment="Middle">
 					<font fontName="B Zar" isBold="true"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{mobile}]]></textFieldExpression>

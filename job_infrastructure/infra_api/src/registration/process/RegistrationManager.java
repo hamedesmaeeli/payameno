@@ -440,6 +440,22 @@ public class RegistrationManager {
     
     public boolean deleteStudent(Student student) {
         //to do
+        AccountManager am = new AccountManager();                                         
+                                                 
+        Connection connection = TransactionManagement.getInstance().getConnection();
+        Statement statement;
+        int result=0;
+        try {
+         statement = connection.createStatement();
+         statement.executeUpdate("delete from reg_student_account where st_id = "+student.getStudentCode());
+         statement.executeUpdate("delete from reg_student where student_code = "+student.getStudentCode());
+               
+         //am.deletePayForAccount(paymentStep.getReceivementPaymentFinance());
+          result =1; 
+        } catch (SQLException e) {
+                e.printStackTrace();
+        }
+                
         return false;
     }
     public ArrayList<Student> searchStudents(Boolean  isRegInCurrentTerm,Field field,Level level,Organization organization,StudentStatus studentStatus) {
@@ -447,7 +463,6 @@ public class RegistrationManager {
         //if field ,level, organization,studentStatus is null returned all
         
         ArrayList<String> whereStrings = new ArrayList<String>();
-        
         String whereClouse ="";
         if(field.getId().compareTo(new BigDecimal(-1))!=0 ) {
             if(isRegInCurrentTerm)
