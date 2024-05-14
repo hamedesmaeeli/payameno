@@ -219,6 +219,10 @@
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
          <hash>
+            <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
             <value n="id" v="JSP Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -367,10 +371,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Commons-lang-2.6.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -420,6 +420,10 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BTitr.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -553,15 +557,6 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../lib/mysql-connector-java-5.1.22-bin.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Mysql-connector-java-5.1.22-bin.jar"/>
-               <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
                   <url path="../lib/access/commons-lang-2.6.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
@@ -605,9 +600,31 @@
                <value n="id" v="Ucanaccess-3.0.2.jar"/>
                <value n="locked" v="true"/>
             </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../job_infrastructure/lib/mysql-connector-java-5.1.49-bin.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Mysql-connector-java-5.1.49-bin.jar"/>
+               <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../lib/jasper/BTitr.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="BTitr.jar"/>
+               <value n="id" v="BTitr.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
          </list>
       </hash>
       <list n="libraryReferences">
+         <hash>
+            <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
          <hash>
             <value n="id" v="JSP Runtime"/>
             <value n="isJDK" v="false"/>
@@ -757,10 +774,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Commons-lang-2.6.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -810,6 +823,10 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="BTitr.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

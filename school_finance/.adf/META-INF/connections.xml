@@ -3,25 +3,19 @@
    <Reference name="mySql" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="mySql" xmlns="">
       <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
       <RefAddresses>
-         <StringRefAddr addrType="subtype">
-            <Contents>MYSQL</Contents>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
          </StringRefAddr>
          <StringRefAddr addrType="user">
             <Contents>root</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="hostname">
-            <Contents>server</Contents>
+         <StringRefAddr addrType="subtype">
+            <Contents>MYSQL</Contents>
          </StringRefAddr>
-         <StringRefAddr addrType="port">
-            <Contents>3306</Contents>
+         <StringRefAddr addrType="customUrl">
+            <Contents>jdbc:mysql://localhost:3306/school_new?useUnicode=yes&amp;characterEncoding=UTF-8&amp;useSSL=false</Contents>
          </StringRefAddr>
          <SecureRefAddr addrType="password"/>
-         <StringRefAddr addrType="DeployPassword">
-            <Contents>true</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="dataSourceName">
-            <Contents>school_new</Contents>
-         </StringRefAddr>
          <StringRefAddr addrType="driver">
             <Contents>com.mysql.jdbc.Driver</Contents>
          </StringRefAddr>

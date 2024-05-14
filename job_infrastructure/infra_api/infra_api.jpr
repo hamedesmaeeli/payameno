@@ -157,10 +157,6 @@
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
          <hash>
-            <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Oracle JDBC"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -180,18 +176,13 @@
             <value n="id" v="IranianDate.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
-            <hash>
-               <list n="classPath">
-                  <url path="../lib/mysql-connector-java-5.1.22-bin.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Mysql-connector-java-5.1.22-bin.jar"/>
-               <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
             <hash>
                <list n="classPath">
                   <url path="../../school_finance920616/school_finance/lib/sqljdbc4.jar" jar-entry=""/>
@@ -210,13 +201,18 @@
                <value n="id" v="IranianDate.jar"/>
                <value n="locked" v="true"/>
             </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../lib/mysql-connector-java-5.1.49-bin.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Mysql-connector-java-5.1.49-bin.jar"/>
+               <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
          </list>
       </hash>
       <list n="libraryReferences">
-         <hash>
-            <value n="id" v="Mysql-connector-java-5.1.22-bin.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
          <hash>
             <value n="id" v="Oracle JDBC"/>
             <value n="isJDK" v="false"/>
@@ -235,6 +231,10 @@
          </hash>
          <hash>
             <value n="id" v="IranianDate.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

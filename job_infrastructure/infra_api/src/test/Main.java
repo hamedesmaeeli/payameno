@@ -97,10 +97,7 @@ public class Main {
         */
        RegistrationManager rm = new RegistrationManager();
   //   ArrayList<ExamTime> examTimes = rm.getAllTermExamTimes(new Term(new BigDecimal(9320),"",new Date(),new Date(),100,2));
-  
-      Student st = new Student();
-        st.setStudentCode(new BigDecimal(4907111));
-    System.out.println(    rm.getStudentImageStream(st));
+      System.out.println(rm.getCurrentTerm().getId()+" "+rm.getCurrentTerm().getName()); 
         
  // ExamTime examTime = new ExamTime();
  // examTime.setExamTimeId(new BigDecimal("11"));
