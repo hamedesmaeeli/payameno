@@ -45,7 +45,7 @@ public class TransferOldDatabase {
         try {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             Connection conn = DriverManager.getConnection(
-                  "jdbc:mysql://localhost:3306/test5?useUnicode=yes&characterEncoding=UTF-8", "root", "root");   
+                  "jdbc:mysql://localhost:3306/school_temp?useUnicode=yes&characterEncoding=UTF-8&useSSL=false", "root", "root");   
         return conn;
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
@@ -85,7 +85,7 @@ public class TransferOldDatabase {
         Statement st;
         try {
             st = this.getConnection().createStatement();
-            ResultSet result = st.executeQuery("select * from tblstudent");
+            ResultSet result = st.executeQuery("select * from temp_old_student");
             Student student;
             while(result.next()) {
 //                System.out.println(result.getInt(1));
@@ -94,21 +94,21 @@ public class TransferOldDatabase {
                 student.setCreated_date(new Date());
          
          
-               student.setDateOfBirth(this.convertPersionToMiladi(result.getString("xBDate")));
+             //  student.setDateOfBirth(this.convertPersionToMiladi(result.getString("xBDate")));
               
-                student.setDescription(result.getString("xComment"));
-                student.setFamily(result.getString("xFamily"));
-                student.setFatherName(result.getString("xFather"));
+                student.setDescription(result.getString("desc"));
+                student.setFamily(result.getString("last_name"));
+                student.setFatherName(result.getString("father_name"));
                 student.setLastModified(new Date());
-                student.setMobile(result.getString("xTell"));
-                student.setName(result.getString("xName"));
-                if(result.getString("xMelli")!= null)
-                student.setNationalId(result.getString("xMelli"));
+              //  student.setMobile(result.getString("xTell"));
+                student.setName(result.getString("first_name"));
+                if(result.getString("melli_code")!= null)
+                student.setNationalId(result.getString("melli_code"));
                // student.setNationalId(Integer.valueOf(result.getString("xMelli")));
                 student.setOrganization(new Organization(new BigDecimal(1),""));
-                student.setPhone(result.getString("xTell"));
-                student.setStudentCode(new BigDecimal (result.getDouble("xCode_PK")));
-                student.setStudentStatus(new StudentStatus( this.getStudentStatusFromName(result.getString("xStatus_FK")),""));
+               // student.setPhone(result.getString("xTell"));
+                student.setStudentCode(new BigDecimal (result.getString("melli_code")));
+                student.setStudentStatus(new StudentStatus(new BigDecimal(1),"") );
                 
                rm.createNewStudent(student);
             }
@@ -118,19 +118,19 @@ public class TransferOldDatabase {
     }
     public BigDecimal getStudentStatusFromName(String name) {
         BigDecimal returned = new BigDecimal(-1); 
-        if(name.compareTo("انتقال رفته")==0) {
+        if(name.compareTo("انتقال ر�?ته")==0) {
             returned = new BigDecimal(2);
         }
-        else if(name.compareTo("بلاتکليف")==0) {
+        else if(name.compareTo("بلاتکلي�?")==0) {
             returned = new BigDecimal(3);
         }
         else if(name.compareTo("ترک تحصيل")==0) {
             returned = new BigDecimal(4);
         }
-        else if(name.compareTo("فارغ التحصيل")==0 ) {
+        else if(name.compareTo("�?ارغ التحصيل")==0 ) {
             returned = new BigDecimal(5);
         }
-        else if(name.compareTo("فعال")==0) {
+        else if(name.compareTo("�?عال")==0) {
             returned = new BigDecimal(1);
         }
         return returned;
@@ -278,9 +278,9 @@ public class TransferOldDatabase {
     public static void main(String args[]) {
         TransferOldDatabase td = new TransferOldDatabase();
       //  td.transferTerms();
-    //  System.out.println(Integer.decode("621998268"));
-    // td.transferStudents();
-        td.transferRegistrations();
+      System.out.println(Integer.decode("621998268"));
+     td.transferStudents();
+      //  td.transferRegistrations();
        
    //     registration =   rm.registerStudent(registration);
     }

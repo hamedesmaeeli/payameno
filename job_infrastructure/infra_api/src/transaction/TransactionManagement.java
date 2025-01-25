@@ -22,7 +22,7 @@ public class TransactionManagement {
             Class.forName("com.mysql.jdbc.Driver").newInstance();
             
             Connection connection = DriverManager.getConnection(
-                  "jdbc:mysql://localhost:3306/school_new?useUnicode=yes&characterEncoding=UTF-8&useSSL=false", "root", "root");   
+                  "jdbc:mysql://localhost:3306/school_temp?useUnicode=yes&characterEncoding=UTF-8&useSSL=false", "root", "root");   
        // System.out.println("new conn1");
              
         return connection;

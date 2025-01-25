@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report14" language="groovy" columnDirection="RTL" pageWidth="419" pageHeight="595" columnWidth="379" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="72196fe8-242d-4d97-929b-1d1d1904dd50">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="126"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -328,7 +328,7 @@ WHERE
 				<textElement textAlignment="Center">
 					<font fontName="B Zar" isBold="true"/>
 				</textElement>
-				<text><![CDATA[مرکز آموزش از راه  دور پیام نو]]></text>
+				<text><![CDATA[مدرسه راه دور همای سعادت]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="03c7b95b-dc76-47ad-a0c4-d9686d134cb9" x="320" y="0" width="49" height="20"/>
@@ -683,7 +683,7 @@ WHERE
 			<staticText>
 				<reportElement uuid="a531876e-d40c-4273-80fa-82ac391b565c" x="27" y="0" width="100" height="20"/>
 				<textElement textAlignment="Center">
-					<font fontName="B Titr" size="10" isBold="true"/>
+					<font fontName="B Zar" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[پرداخت های نقدی]]></text>
 			</staticText>
@@ -806,7 +806,7 @@ WHERE
 			<staticText>
 				<reportElement uuid="fb680ede-cef9-44c5-9ae2-00cb0c4424da" x="243" y="0" width="100" height="20"/>
 				<textElement>
-					<font fontName="B Titr" size="10" isBold="true"/>
+					<font fontName="B Zar" size="10" isBold="true"/>
 				</textElement>
 				<text><![CDATA[پرداخت های چکی]]></text>
 			</staticText>
@@ -841,13 +841,6 @@ WHERE
 				<text><![CDATA[در محيط آموزشگاه و كلاس ها ،دستگاه تلفن خود را خاموش فرماييد.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="3b9f0176-95e2-4dd9-b18c-4d7a1bfb8167" x="161" y="74" width="214" height="10"/>
-				<textElement textAlignment="Right">
-					<font fontName="B Zar" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[از آوردن موتور سيكلت به داخل مدرسه جدا خوداري فرماييد]]></text>
-			</staticText>
-			<staticText>
 				<reportElement uuid="dfcfa715-90fe-400e-b561-ab9c01e9b1cf" x="77" y="84" width="298" height="11"/>
 				<textElement textAlignment="Right">
 					<font fontName="B Zar" size="8" isBold="true"/>
@@ -860,34 +853,6 @@ WHERE
 					<font fontName="B Zar" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[ساعات كار مركز هر روز هفته از ساعت  2:30 تا 7:30 بعد از ظهرمي باشد]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1ab4deab-c3e9-4e33-a858-ae19628a04ff" x="83" y="106" width="292" height="12"/>
-				<textElement textAlignment="Right">
-					<font fontName="Arial_IReport_Pdf_Arabic" size="8" isBold="false"/>
-				</textElement>
-				<text><![CDATA[براي دريافت برنامه كلاس ها و امتحانات و اطلاعيه هاي جاري مركز  با آدرس  payameno.ir استفاده كنيد]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="da8c4643-653a-4fba-9599-7bb5c0403cb2" x="92" y="118" width="283" height="11"/>
-				<textElement textAlignment="Right">
-					<font fontName="B Zar" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[شماره تلفن مركز :33362121  - شماره تلفن مستقيم مشاور : 33386460   ]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="076e025e-f2ae-4634-98a3-dd9107bef432" x="45" y="129" width="331" height="13"/>
-				<textElement textAlignment="Right">
-					<font fontName="B Zar" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ شماره حساب متمركز  در بانك ملي ايران به نام مركز آموزش از راه دور پيام نو : 0216899362004]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="7f2f604f-c5bf-4c70-947e-2e9c61a7a772" x="135" y="142" width="240" height="10"/>
-				<textElement textAlignment="Right">
-					<font fontName="B Zar" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ پيامك هاي ارسالي از طرف مركز با شماره 09136985183  به شما ارسال مي شود]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="6e1f5bd2-d514-43a8-a0c7-fec5589c5528" x="5" y="0" width="377" height="2"/>

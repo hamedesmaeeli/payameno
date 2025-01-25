@@ -18,7 +18,7 @@
                                    xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                                    id="pt_pgl1" styleClass="AFStretchWidth">
                 <af:spacer width="10" height="10" id="pt_s2"/>
-                <af:outputText value="سیستم شهریه پیام نو" id="pt_ot1"
+                <af:outputText value="سیستم شهریه" id="pt_ot1"
                                inlineStyle="font-family:'B Homa'; font-size:x-large; font-weight:bolder; color:Red;"/>
                 <af:navigationPane id="pt_np1" hint="buttons"
                                    value="#{root_menu}" var="menuInfo"
