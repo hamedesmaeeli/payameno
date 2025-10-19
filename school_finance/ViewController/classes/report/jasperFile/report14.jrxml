@@ -272,9 +272,11 @@ where reg_check_v.`reg_id`=$P{reg_id}]]>
      registration_view.`archive_code` AS registration_view_archive_code,
      registration_view.`org_name` AS registration_view_org_name,
      registration_view.`id` AS registration_view_id,
-     registration_view.`level_name` AS registration_view_level_name
+     registration_view.`level_name` AS registration_view_level_name,
+     reg_exam_kart_config.school_name,
+     reg_exam_kart_config.manager_name
 FROM
-     `registration_view` registration_view
+     `registration_view` registration_view,reg_exam_kart_config
 WHERE
      registration_view.`id` = $P{reg_id}]]>
 	</queryString>
@@ -297,7 +299,7 @@ WHERE
 	<field name="registration_view_identifier_code" class="java.lang.String"/>
 	<field name="registration_view_identifier_serial" class="java.lang.String"/>
 	<field name="registration_view_identifier_char" class="java.lang.Integer"/>
-	<field name="registration_view_student_code" class="java.math.BigDecimal"/>
+	<field name="registration_view_student_code" class="java.lang.Long"/>
 	<field name="registration_view_father_name" class="java.lang.String"/>
 	<field name="registration_view_date_of_birth" class="java.sql.Date"/>
 	<field name="registration_view_description" class="java.lang.String"/>
@@ -308,6 +310,8 @@ WHERE
 	<field name="registration_view_org_name" class="java.lang.String"/>
 	<field name="registration_view_id" class="java.lang.Long"/>
 	<field name="registration_view_level_name" class="java.lang.String"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="manager_name" class="java.lang.String"/>
 	<variable name="reg_pay_rec_v_amount_1" class="java.math.BigDecimal" resetType="Page" calculation="Sum">
 		<variableExpression><![CDATA[]]></variableExpression>
 	</variable>
@@ -322,13 +326,6 @@ WHERE
 					<font fontName="B Zar" size="13" isBold="true" pdfEncoding="Cp1252"/>
 				</textElement>
 				<text><![CDATA[گزارش پرداختی های ثبت نام]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="ae47d4b0-dceb-49ac-8e3a-5135f6b05416" x="2" y="0" width="113" height="18"/>
-				<textElement textAlignment="Center">
-					<font fontName="B Zar" isBold="true"/>
-				</textElement>
-				<text><![CDATA[مدرسه راه دور همای سعادت]]></text>
 			</staticText>
 			<staticText>
 				<reportElement uuid="03c7b95b-dc76-47ad-a0c4-d9686d134cb9" x="320" y="0" width="49" height="20"/>
@@ -361,6 +358,13 @@ WHERE
 				</textElement>
 				<text><![CDATA[نام ترم]]></text>
 			</staticText>
+			<textField>
+				<reportElement uuid="db50d6ac-0db9-45cb-a6b6-4615e257f6bf" x="4" y="0" width="100" height="18"/>
+				<textElement>
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>
@@ -846,13 +850,6 @@ WHERE
 					<font fontName="B Zar" size="8" isBold="true"/>
 				</textElement>
 				<text><![CDATA[رعايت موارد تعهد نامه اخلاقي، انضباطي كه آنرا هنگام ثبت نام تكميل و امضا كرده ايد،الزامي مي باشد]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="1d3a9848-72f4-4f83-ad02-c39f62179e91" x="84" y="95" width="292" height="11"/>
-				<textElement textAlignment="Right">
-					<font fontName="B Zar" size="8" isBold="true"/>
-				</textElement>
-				<text><![CDATA[ساعات كار مركز هر روز هفته از ساعت  2:30 تا 7:30 بعد از ظهرمي باشد]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="6e1f5bd2-d514-43a8-a0c7-fec5589c5528" x="5" y="0" width="377" height="2"/>

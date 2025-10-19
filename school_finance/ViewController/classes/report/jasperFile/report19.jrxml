@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report19" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0896e29f-36c7-440b-8e13-f2bac77dedc6">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="44"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -92,9 +92,11 @@ where  registration_view.`student_code`=$P{st_code}]]>
      reg_student.`address` AS reg_student_address,
      reg_student.`mobile` AS reg_student_mobile,
      reg_student.`phone` AS reg_student_phone,
-     reg_student.`archive_code` AS reg_student_archive_code
+     reg_student.`archive_code` AS reg_student_archive_code,
+     reg_exam_kart_config.school_name as school_name,
+     reg_exam_kart_config.manager_name as manager_name
 FROM
-     `reg_student` reg_student
+     `reg_student` reg_student , reg_exam_kart_config
 where  reg_student.`student_code`=$P{st_code}]]>
 	</queryString>
 	<field name="reg_student_name" class="java.lang.String"/>
@@ -117,6 +119,8 @@ where  reg_student.`student_code`=$P{st_code}]]>
 	<field name="reg_student_mobile" class="java.lang.String"/>
 	<field name="reg_student_phone" class="java.lang.String"/>
 	<field name="reg_student_archive_code" class="java.lang.String"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="manager_name" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -125,7 +129,7 @@ where  reg_student.`student_code`=$P{st_code}]]>
 			<staticText>
 				<reportElement uuid="d14de635-9400-4e45-adf8-3240d96920d9" x="155" y="0" width="206" height="27"/>
 				<textElement textAlignment="Center">
-					<font fontName="B Titr" size="18" isBold="true"/>
+					<font fontName="B Zar" size="18" isBold="true"/>
 				</textElement>
 				<text><![CDATA[گزارش خلاصه وضعيت شهريه]]></text>
 			</staticText>
@@ -143,16 +147,16 @@ where  reg_student.`student_code`=$P{st_code}]]>
 				</textElement>
 				<textFieldExpression><![CDATA[new  org.basa.tejarat.ftms.core.datatime.IranianDate(new java.util.Date()).getIranianDate()]]></textFieldExpression>
 			</textField>
-			<staticText>
-				<reportElement uuid="c4afdc29-ae0f-434b-9baa-2cb4b2a56267" x="141" y="28" width="231" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="B Zar" size="18" isBold="true"/>
-				</textElement>
-				<text><![CDATA[مدرسه آموزش از راه دور پيام نو]]></text>
-			</staticText>
 			<line>
 				<reportElement uuid="aa79c950-8051-419a-8f89-6c30dcb42a37" x="1" y="60" width="554" height="1"/>
 			</line>
+			<textField>
+				<reportElement uuid="e1df3f64-fc21-4bdc-b2ae-c105c90bde16" x="155" y="28" width="206" height="19"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="18" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
 		</band>
 	</title>
 	<pageHeader>

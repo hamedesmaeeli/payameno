@@ -28,7 +28,7 @@
                                               id="pt_cni1"
                                               destination="#{menuInfo.destination}"
                                               action="#{menuInfo.doAction}"
-                                              inlineStyle="font-family:'2  Titr'; font-size:large;"
+                                              inlineStyle="font-family:'B Nazanin'; font-size:large;"
                                               disabled="#{menuInfo.disabled}"/>
                   </f:facet>
                 </af:navigationPane>
