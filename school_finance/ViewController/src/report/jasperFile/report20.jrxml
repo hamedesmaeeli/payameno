@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report20" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="37814725-138b-4bf3-8938-637db3fbf914">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="0"/>
+	<property name="ireport.y" value="395"/>
 	<parameter name="st_code" class="java.math.BigDecimal">
 		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
 	</parameter>
@@ -48,9 +48,11 @@
      registration_view.`level_name` AS registration_view_level_name,
      registration_view.`created_date` AS registration_view_created_date,
      registration_view.`last_modified` AS registration_view_last_modified,
-     registration_view.`from_date` AS registration_view_term_start
+     registration_view.`from_date` AS registration_view_term_start ,
+	     reg_exam_kart_config.school_name ,
+     reg_exam_kart_config.manager_name
 FROM
-     `registration_view` registration_view
+     `registration_view` registration_view, reg_exam_kart_config
 where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_term_is_current`=1]]>
 	</queryString>
 	<field name="registration_view_reg_date" class="java.sql.Timestamp"/>
@@ -94,6 +96,8 @@ where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_
 	<field name="registration_view_created_date" class="java.sql.Timestamp"/>
 	<field name="registration_view_last_modified" class="java.sql.Timestamp"/>
 	<field name="registration_view_term_start" class="java.sql.Date"/>
+	<field name="school_name" class="java.lang.String"/>
+	<field name="manager_name" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -333,18 +337,11 @@ where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_
 				<text><![CDATA[انصراف ، اخراج يا ترك تحصيل نموده باشند.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="8f5c71ec-dcc5-420e-aa49-b5da3bc764a9" x="43" y="446" width="212" height="20"/>
+				<reportElement uuid="8f5c71ec-dcc5-420e-aa49-b5da3bc764a9" x="223" y="446" width="32" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="B Zar" size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[مدير مدرسه آموزش از راه دور پيام نو]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="4326609d-31e5-4aaf-8a15-4314d5255ea8" x="79" y="495" width="123" height="20"/>
-				<textElement textAlignment="Center">
-					<font fontName="B Zar" size="14" isBold="true"/>
-				</textElement>
-				<text><![CDATA[امیرحسین عابدین نژاد]]></text>
+				<text><![CDATA[مدير ]]></text>
 			</staticText>
 			<line>
 				<reportElement uuid="9dd8e1f5-db5f-4941-a184-d5f9748a0179" x="555" y="0" width="1" height="567"/>
@@ -389,6 +386,30 @@ where registration_view.`student_code`=$P{st_code} and   registration_view.`reg_
 					<font fontName="B Zar" size="12"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{registration_view_mobile}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="a3e267e9-df59-420e-93e3-4948acc94213" x="103" y="360" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[school_name]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="b58ddf32-06ae-4bd7-ac50-9fc39adca3a9" x="203" y="360" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="a9f132c9-aef9-4eb0-a13b-5de143abc445" x="99" y="446" width="124" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="B Zar" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{school_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="c0e1b2d2-5038-4ce2-81f6-f0c518042de9" x="109" y="476" width="114" height="22"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="B Zar" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{manager_name}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

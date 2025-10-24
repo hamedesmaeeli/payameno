@@ -2,7 +2,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelStretchLayout id="psl1" startWidth="157px">
+  <af:panelStretchLayout id="psl1" startWidth="200px">
     <f:facet name="bottom"/>
     <f:facet name="center">
       <af:table value="#{bindings.allCourses.collectionModel}" var="row"
@@ -15,7 +15,7 @@
                 filterVisible="true" varStatus="vs"
                 selectedRowKeys="#{bindings.allCourses.collectionModel.selectedRow}"
                 selectionListener="#{bindings.allCourses.collectionModel.makeCurrent}"
-                rowSelection="single" id="t1">
+                rowSelection="single" id="t1" columnStretching="last">
         <af:column sortProperty="courseId" filterable="true" sortable="true"
                    headerText="شناسه " id="c3">
           <af:outputText value="#{row.courseId}" id="ot4"/>
@@ -50,27 +50,40 @@
       <af:panelBox id="pb1">
         <f:facet name="toolbar"/>
         <af:panelAccordion id="pa1">
-          <af:showDetailItem text="منو" id="sdi1">
+          <af:showDetailItem text="دروس" id="sdi1">
             <af:panelFormLayout id="pfl1">
               <f:facet name="footer"/>
-              <af:commandLink text="افرودن درس جدید" id="cl1"/>
-              <af:commandLink text="افزودن لیست دانش آموزان از طریق فایل" id="cl2"/>
-              <af:commandLink text="لیست دانش آموزان" id="cl3"
-                              action="#{pageFlowScope.courseBean.studentListInCourse}"/>
-              <af:commandLink text="کارت ورود به جلسه" id="cl4"
-                              action="printkart"/>
-              <af:commandLink text="رشته های درس" id="cl5"
-                              action="#{pageFlowScope.courseBean.courseFields}"/>
-              <af:commandLink text="امتحان" id="cl6"
-                              action="#{pageFlowScope.courseBean.goToExam}"/>
+              <af:commandLink text="افرودن درس جدید" id="cl1" rendered="false"/>
+              <af:spacer width="10" height="10" id="s1"/>
+              <af:commandImageLink text="رشته های درس" id="cil1"
+                                   icon="/Images/16 x 16 Colorful/Archive.png"
+                                   inlineStyle="font-size:medium;"
+                                   action="#{pageFlowScope.courseBean.courseFields}"/>
+              <af:spacer width="10" height="30" id="s2"/>
+              <af:commandImageLink text="دانش آموزان درس" id="cil2"
+                                   icon="/Images/16 x 16 Colorful/empty_calendar.png"
+                                   action="#{pageFlowScope.courseBean.studentListInCourse}"
+                                   inlineStyle="font-size:medium;"/>
+            </af:panelFormLayout>
+          </af:showDetailItem>
+          <af:showDetailItem text="امتحان" id="sdi2">
+            <af:panelFormLayout id="pfl2">
+              <f:facet name="footer"/>
+              <af:commandImageLink text="امتحانات" id="cil3"
+                                   action="exam"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/application-form-icon.png"/>
+              <af:spacer width="10" height="30" id="s3"/>
+              <af:commandImageLink text="کارت ورود به جلسه" id="cil4"
+                                   action="printkart"
+                                   icon="/Images/16 x 16 Colorful/find.png"
+                                   inlineStyle="font-size:medium;"/>
             </af:panelFormLayout>
           </af:showDetailItem>
         </af:panelAccordion>
       </af:panelBox>
     </f:facet>
     <f:facet name="end"/>
-    <f:facet name="top">
-      <af:inputText label="نام ترم " id="it2"/>
-    </f:facet>
+    <f:facet name="top"/>
   </af:panelStretchLayout>
 </jsp:root>

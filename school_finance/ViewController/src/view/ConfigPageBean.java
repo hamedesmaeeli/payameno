@@ -17,10 +17,13 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
 import javax.faces.event.ValueChangeEvent;
+
+import javax.servlet.ServletContext;
 
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.bean.DCDataRow;
@@ -412,6 +415,8 @@ public class ConfigPageBean {
     public UploadedFile getRestoreUploadedFile() {
         return restoreUploadedFile;
     }
+    
+   
     public String restoreDatabase() {
         // Add event code here...
         if(restoreUploadedFile != null) {
@@ -420,6 +425,11 @@ public class ConfigPageBean {
         System.out.println("created File for  restore is "+file.getPath());
         FileOutputStream outputStream ;
         RestoreBackup restoreBackup = new RestoreBackup();
+        File tableStuctureFile = restoreBackup.getRestoreFileIS("school_new_structure_tables");
+        File functionStructureFile = restoreBackup.getRestoreFileIS("school_structure_functions");
+        File viewStructureFile = restoreBackup.getRestoreFileIS("school_strycure_views");
+            
+        
         InputStream is;
             try {
                 outputStream = new FileOutputStream(file); 
@@ -433,7 +443,15 @@ public class ConfigPageBean {
                 }  
                 is.close(); 
                 outputStream .close();
+               // restoreBackup.restore(tableStuctureFile);
+                System.out.println("tableStructureFile restored");
+               // restoreBackup.restore(functionStructureFile);
+                System.out.println("functionStructureFile restored");
+               // restoreBackup.restore(viewStructureFile);
+                System.out.println("viewStructureFile restored");
+                
                 restoreBackup.restore(file);
+                System.out.println("dataFile restored");
             
             } catch (FileNotFoundException e) {
                 e.printStackTrace();

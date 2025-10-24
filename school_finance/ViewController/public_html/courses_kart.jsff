@@ -2,28 +2,34 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelStretchLayout id="psl1" startWidth="100px">
+  <af:panelStretchLayout id="psl1" startWidth="200">
     <f:facet name="bottom"/>
     <f:facet name="center">
       <af:panelAccordion id="pa1">
         <af:showDetailItem text="رشته های قابل انتخاب" id="sdi1">
-          <af:table value="#{bindings.allFields.collectionModel}" var="row"
-                    rows="#{bindings.allFields.rangeSize}"
-                    emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
-                    fetchSize="#{bindings.allFields.rangeSize}"
-                    rowBandingInterval="0"
-                    selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
-                    selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
-                    rowSelection="single" id="t1">
-            <af:column sortProperty="id" sortable="true" headerText="شناسه"
-                       id="c1">
-              <af:outputText value="#{row.id}" id="ot9"/>
-            </af:column>
-            <af:column sortProperty="name" sortable="true"
-                       headerText="نام رشته" id="c2">
-              <af:outputText value="#{row.name}" id="ot8"/>
-            </af:column>
-          </af:table>
+          <af:panelCollection id="pc1" styleClass="AFStretchWidth">
+            <f:facet name="menus"/>
+            <f:facet name="toolbar"/>
+            <f:facet name="statusbar"/>
+            <af:table value="#{bindings.allFields.collectionModel}" var="row"
+                      rows="#{bindings.allFields.rangeSize}"
+                      emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      fetchSize="#{bindings.allFields.rangeSize}"
+                      rowBandingInterval="0"
+                      selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
+                      selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
+                      rowSelection="single" id="t1"
+                      columnStretching="column:c2">
+              <af:column sortProperty="id" sortable="true" headerText="شناسه"
+                         id="c1">
+                <af:outputText value="#{row.id}" id="ot9"/>
+              </af:column>
+              <af:column sortProperty="name" sortable="true"
+                         headerText="نام رشته" id="c2">
+                <af:outputText value="#{row.name}" id="ot8"/>
+              </af:column>
+            </af:table>
+          </af:panelCollection>
         </af:showDetailItem>
       </af:panelAccordion>
     </f:facet>
@@ -31,61 +37,32 @@
       <af:panelAccordion id="pa2">
         <af:showDetailItem text="منو" id="sdi2">
           <af:commandButton text="دانلود کارت اکسس" id="cb1"
-                            icon="/Images/16 x 16 Colorful/download.png">
+                            icon="/Images/16 x 16 Colorful/download.png"
+                            rendered="false">
             <af:fileDownloadActionListener filename="kart.zip"
                                            method="#{pageFlowScope.courseBean.downloadKart}"/>
           </af:commandButton>
-          <af:commandLink text="دانلود کارت -همه" id="cl1">
+          <af:commandImageLink text="دانلود کارت -کل رشته ها" id="cil1"
+                               icon="/Images/16 x 16 Colorful/download.png"
+                               inlineStyle="font-size:medium;">
             <af:fileDownloadActionListener filename="kartKoli.pdf"
                                            method="#{pageFlowScope.courseBean.printKartKoli}"/>
-          </af:commandLink>
-          <af:commandLink text="بازگشت" id="cl2" action="back"/>
-          <af:commandLink text="دانلود کارت رشته " id="cl3">
+          </af:commandImageLink>
+          <af:spacer width="10" height="30" id="s1"/>
+          <af:commandImageLink text="دانلود کارت هر رشته " id="cil2"
+                               icon="/Images/16 x 16 Colorful/down.png"
+                               inlineStyle="font-size:medium;">
             <af:fileDownloadActionListener filename="kart_reshteh.pdf"
                                            method="#{pageFlowScope.courseBean.printKartField}"/>
-          </af:commandLink>
+          </af:commandImageLink>
+          <af:spacer width="10" height="30" id="s2"/>
+          <af:commandImageLink text="بازگشت" id="cil3" action="back"
+                               icon="/Images/16 x 16 Colorful/back.png"
+                               inlineStyle="font-size:medium;"/>
         </af:showDetailItem>
       </af:panelAccordion>
     </f:facet>
     <f:facet name="end"/>
-    <f:facet name="top">
-      <af:panelBox text="اطلاعات ترم" id="pb1">
-        <f:facet name="toolbar"/>
-        <af:panelFormLayout id="pfl1">
-          <af:panelLabelAndMessage label="#{bindings.id.hints.label}"
-                                   id="plam5">
-            <af:outputText value="#{bindings.id.inputValue}" id="ot5"/>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.name.hints.label}"
-                                   id="plam7">
-            <af:outputText value="#{bindings.name.inputValue}" id="ot1"/>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.fromDate.hints.label}"
-                                   id="plam6">
-            <af:outputText value="#{bindings.fromDate.inputValue}" id="ot6">
-              <af:convertDateTime pattern="#{bindings.fromDate.format}"/>
-            </af:outputText>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.toDate.hints.label}"
-                                   id="plam3">
-            <af:outputText value="#{bindings.toDate.inputValue}" id="ot3">
-              <af:convertDateTime pattern="#{bindings.toDate.format}"/>
-            </af:outputText>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.isCurrent.hints.label}"
-                                   id="plam2">
-            <af:outputText value="#{bindings.isCurrent.inputValue}" id="ot7"/>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.dore.hints.label}"
-                                   id="plam4">
-            <af:outputText value="#{bindings.dore.inputValue}" id="ot2"/>
-          </af:panelLabelAndMessage>
-          <af:panelLabelAndMessage label="#{bindings.year.hints.label}"
-                                   id="plam1">
-            <af:outputText value="#{bindings.year.inputValue}" id="ot4"/>
-          </af:panelLabelAndMessage>
-        </af:panelFormLayout>
-      </af:panelBox>
-    </f:facet>
+    <f:facet name="top"/>
   </af:panelStretchLayout>
 </jsp:root>

@@ -13,51 +13,11 @@
                       BeanClass="registration.process.RegistrationManager"
                       id="registrationManagerIterator"/>
     <accessorIterator MasterBinding="registrationManagerIterator"
-                      Binds="currentTerm" RangeSize="25"
-                      DataControl="schManager"
-                      BeanClass="registration.data.Term"
-                      id="currentTermIterator"/>
-    <accessorIterator MasterBinding="registrationManagerIterator"
                       Binds="allFields" RangeSize="25" DataControl="schManager"
                       BeanClass="registration.data.Field"
                       id="allFieldsIterator"/>
   </executables>
   <bindings>
-    <attributeValues IterBinding="currentTermIterator" id="id">
-      <AttrNames>
-        <Item Value="id"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="name">
-      <AttrNames>
-        <Item Value="name"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="fromDate">
-      <AttrNames>
-        <Item Value="fromDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="toDate">
-      <AttrNames>
-        <Item Value="toDate"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="isCurrent">
-      <AttrNames>
-        <Item Value="isCurrent"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="dore">
-      <AttrNames>
-        <Item Value="dore"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="currentTermIterator" id="year">
-      <AttrNames>
-        <Item Value="year"/>
-      </AttrNames>
-    </attributeValues>
     <tree IterBinding="allFieldsIterator" id="allFields">
       <nodeDefinition DefName="registration.data.Field" Name="allFields0">
         <AttrNames>

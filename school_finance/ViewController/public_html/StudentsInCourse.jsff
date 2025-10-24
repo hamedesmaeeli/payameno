@@ -2,7 +2,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelStretchLayout id="psl1" startWidth="120px">
+  <af:panelStretchLayout id="psl1" startWidth="200">
     <f:facet name="bottom"/>
     <f:facet name="center">
         
@@ -17,7 +17,7 @@
                   filterVisible="true" varStatus="vs"
                   selectedRowKeys="#{bindings.Registration.collectionModel.selectedRow}"
                   selectionListener="#{bindings.Registration.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t1">
+                  rowSelection="single" id="t1" columnStretching="blank">
           <af:column sortProperty="nationalId" sortable="true"
                      headerText="کد دانش آموزی" id="c23" filterable="true">
             <af:outputText value="#{row.student.bindings.nationalId.inputValue}"
@@ -72,8 +72,12 @@
     <f:facet name="start">
       <af:panelBox text="منو" id="pb1">
         <f:facet name="toolbar"/>
-        <af:commandLink text="بازگشت به لیست" id="cl1" action="back"/>
-        <af:commandLink text="دانلود لیست" id="cl2">
+        <af:commandImageLink text="بازگشت به لیست دروس" id="cil1"
+                             icon="/Images/16 x 16 Colorful/back.png"
+                             inlineStyle="font-size:medium;" action="back"/>
+        <af:spacer width="10" height="30" id="s1"/>
+        <af:commandLink text="دانلود لیست" id="cl2"
+                        inlineStyle="font-size:medium;">
           <af:exportCollectionActionListener type="excelHTML" exportedId="t1"
                                              filename="sttudentInCourseList.xls"
                                              title="لیست دروس"/>

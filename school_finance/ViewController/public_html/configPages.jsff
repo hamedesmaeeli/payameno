@@ -2,8 +2,8 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelDashboard id="pd1" columns="2" rowHeight="200px"
-                     partialTriggers="cb8">
+  <af:panelDashboard id="pd1" columns="3"
+                     partialTriggers="cb8" rowHeight="300px">
     <af:panelBox text="مدیریت ترم ها" id="pb1">
       <f:facet name="toolbar">
         <af:toolbar id="t4">
@@ -177,6 +177,57 @@
         </af:popup>
       </af:panelCollection>
     </af:panelBox>
+    <af:panelBox text="مدیریت رشته ها" id="pb4">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc4">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allFields.collectionModel}" var="row"
+                  rows="#{bindings.allFields.rangeSize}"
+                  emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allFields.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t6" columnStretching="last"
+                  filterVisible="true">
+          <af:column sortProperty="id" sortable="false" headerText="شناسه"
+                     id="c12">
+            <af:outputText value="#{row.id}" id="ot11"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="true" headerText="نام رشته"
+                     id="c13" filterable="true">
+            <af:outputText value="#{row.name}" id="ot12"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
+    <af:panelBox text="مدیریت مقاطع" id="pb5">
+      <f:facet name="toolbar"/>
+      <af:panelCollection id="pc5">
+        <f:facet name="menus"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="statusbar"/>
+        <af:table value="#{bindings.allLevels.collectionModel}" var="row"
+                  rows="#{bindings.allLevels.rangeSize}"
+                  emptyText="#{bindings.allLevels.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.allLevels.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.allLevels.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.allLevels.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t7" columnStretching="last">
+          <af:column sortProperty="id" sortable="false" headerText="شناسه"
+                     id="c15">
+            <af:outputText value="#{row.id}" id="ot14"/>
+          </af:column>
+          <af:column sortProperty="name" sortable="false" headerText="نام مقطع"
+                     id="c14">
+            <af:outputText value="#{row.name}" id="ot13"/>
+          </af:column>
+        </af:table>
+      </af:panelCollection>
+    </af:panelBox>
     <af:panelBox text="مدیریت شعب" id="pb2">
       <f:facet name="toolbar">
         <af:toolbar id="t2">
@@ -199,12 +250,12 @@
                   rowBandingInterval="0"
                   selectedRowKeys="#{bindings.allOrganization.collectionModel.selectedRow}"
                   selectionListener="#{bindings.allOrganization.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t1">
+                  rowSelection="single" id="t1" columnStretching="last">
           <af:column sortProperty="id" sortable="false" headerText="شناسه"
                      id="c1">
             <af:outputText value="#{row.id}" id="ot1"/>
           </af:column>
-          <af:column sortProperty="name" sortable="false" headerText="نام"
+          <af:column sortProperty="name" sortable="false" headerText="نام شعبه"
                      id="c2">
             <af:outputText value="#{row.name}" id="ot2"/>
           </af:column>
@@ -241,79 +292,27 @@
                   rowBandingInterval="0"
                   selectedRowKeys="#{bindings.allAccountBanks.collectionModel.selectedRow}"
                   selectionListener="#{bindings.allAccountBanks.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t5">
+                  rowSelection="single" id="t5" columnStretching="last">
           <af:column sortProperty="id" sortable="false"
-                     headerText="#{bindings.allAccountBanks.hints.id.label}"
+                     headerText="شناسه"
                      id="c9">
             <af:outputText value="#{row.id}" id="ot8"/>
           </af:column>
           <af:column sortProperty="name" sortable="false"
-                     headerText="#{bindings.allAccountBanks.hints.name.label}"
+                     headerText="نام حساب"
                      id="c8">
             <af:outputText value="#{row.name}" id="ot10"/>
           </af:column>
           <af:column sortProperty="firstAmount" sortable="false"
-                     headerText="#{bindings.allAccountBanks.hints.firstAmount.label}"
+                     headerText="حساب اولیه"
                      id="c11">
             <af:outputText value="#{row.firstAmount}" id="ot7"/>
           </af:column>
           <af:column sortProperty="name" sortable="false"
-                     headerText="#{bindings.allAccountBanks.hints.bank.name.label}"
+                     headerText="نام بانک"
                      id="c10">
             <af:outputText value="#{row.bank.bindings.name.inputValue}"
                            id="ot9"/>
-          </af:column>
-        </af:table>
-      </af:panelCollection>
-    </af:panelBox>
-    <af:panelBox text="مدیریت رشته ها" id="pb4">
-      <f:facet name="toolbar"/>
-      <af:panelCollection id="pc4">
-        <f:facet name="menus"/>
-        <f:facet name="toolbar"/>
-        <f:facet name="statusbar"/>
-        <af:table value="#{bindings.allFields.collectionModel}" var="row"
-                  rows="#{bindings.allFields.rangeSize}"
-                  emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
-                  fetchSize="#{bindings.allFields.rangeSize}"
-                  rowBandingInterval="0"
-                  selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t6">
-          <af:column sortProperty="id" sortable="false"
-                     headerText="#{bindings.allFields.hints.id.label}" id="c12">
-            <af:outputText value="#{row.id}" id="ot11"/>
-          </af:column>
-          <af:column sortProperty="name" sortable="false"
-                     headerText="#{bindings.allFields.hints.name.label}"
-                     id="c13">
-            <af:outputText value="#{row.name}" id="ot12"/>
-          </af:column>
-        </af:table>
-      </af:panelCollection>
-    </af:panelBox>
-    <af:panelBox text="مدیریت مقاطع" id="pb5">
-      <f:facet name="toolbar"/>
-      <af:panelCollection id="pc5">
-        <f:facet name="menus"/>
-        <f:facet name="toolbar"/>
-        <f:facet name="statusbar"/>
-        <af:table value="#{bindings.allLevels.collectionModel}" var="row"
-                  rows="#{bindings.allLevels.rangeSize}"
-                  emptyText="#{bindings.allLevels.viewable ? 'No data to display.' : 'Access Denied.'}"
-                  fetchSize="#{bindings.allLevels.rangeSize}"
-                  rowBandingInterval="0"
-                  selectedRowKeys="#{bindings.allLevels.collectionModel.selectedRow}"
-                  selectionListener="#{bindings.allLevels.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t7">
-          <af:column sortProperty="id" sortable="false"
-                     headerText="#{bindings.allLevels.hints.id.label}" id="c15">
-            <af:outputText value="#{row.id}" id="ot14"/>
-          </af:column>
-          <af:column sortProperty="name" sortable="false"
-                     headerText="#{bindings.allLevels.hints.name.label}"
-                     id="c14">
-            <af:outputText value="#{row.name}" id="ot13"/>
           </af:column>
         </af:table>
       </af:panelCollection>

@@ -2,7 +2,7 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:panelStretchLayout id="psl1" startWidth="100px">
+  <af:panelStretchLayout id="psl1" startWidth="200">
     <f:facet name="bottom"/>
     <f:facet name="center">
       <af:panelBox text="لیست تاریخ های امتحان در ترم جاری" id="pb2">
@@ -36,10 +36,10 @@
                                                autoSubmit="true"/>
                       </af:panelGroupLayout>
                       <af:selectOneListbox value="#{bindings.allExamHours.inputValue}"
-                                           label="#{bindings.allExamHours.label}"
+                                           label="ساعت"
                                            required="#{bindings.allExamHours.hints.mandatory}"
                                            shortDesc="#{bindings.allExamHours.hints.tooltip}"
-                                           id="sol1" size="3">
+                                           id="sol1" size="10">
                         <f:selectItems value="#{bindings.allExamHours.items}"
                                        id="si1"/>
                       </af:selectOneListbox>
@@ -68,7 +68,8 @@
                   selectedRowKeys="#{bindings.ExamTime.collectionModel.selectedRow}"
                   selectionListener="#{bindings.ExamTime.collectionModel.makeCurrent}"
                   rowSelection="single" id="t1"
-                  binding="#{pageFlowScope.courseBean.examTimesInTermTable}">
+                  binding="#{pageFlowScope.courseBean.examTimesInTermTable}"
+                  columnStretching="blank">
           <af:column sortProperty="examDateShamsi"
                      sortable="true"
                      headerText="تاریخ امتحان"
@@ -96,9 +97,14 @@
     <f:facet name="start">
       <af:panelBox text="منو" id="pb1">
         <f:facet name="toolbar"/>
-        <af:commandLink text="بازگشت" id="cl1" action="back"/>
-        <af:commandLink text="درس های امتحان" id="cl2"
-                        action="#{pageFlowScope.courseBean.examTimeCourses}"/>
+        <af:commandImageLink text="درس های امتحان" id="cil2"
+                             icon="/Images/16 x 16 Colorful/books.png"
+                             inlineStyle="font-size:medium;"
+                             action="#{pageFlowScope.courseBean.examTimeCourses}"/>
+        <af:spacer width="10" height="30" id="s1"/>
+        <af:commandImageLink text="بازگشت" id="cil1" action="back"
+                             icon="/Images/16 x 16 Colorful/back.png"
+                             inlineStyle="font-size:medium;"/>
       </af:panelBox>
     </f:facet>
     <f:facet name="end"/>

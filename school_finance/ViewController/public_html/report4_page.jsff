@@ -14,7 +14,7 @@
               <af:commandMenuItem text="دانلود اکسل" id="cmi1">
                 <af:exportCollectionActionListener type="excelHTML"
                                                    exportedId="t1"
-                                                   filename="register_in_courses_cont.xsl"
+                                                   filename="register_in_courses_cont.xls"
                                                    title="تعداد ثبت نامی ها در هر درس"/>
               </af:commandMenuItem>
             </af:menu>

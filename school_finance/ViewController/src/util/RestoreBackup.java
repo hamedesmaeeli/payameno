@@ -2,14 +2,22 @@ package util;
 
 import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+
+import java.io.InputStream;
 
 import java.sql.Connection;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+
+import javax.servlet.ServletContext;
 
 import transaction.TransactionManagement;
 
@@ -33,7 +41,7 @@ public class RestoreBackup {
         /***********************************************************/
         String executeCmd = "";
         executeCmd =
-                "mysqldump -u " + dbUser + " -p" + dbPass + " " + dbName + " -r " +
+                "mysqldump -u " + dbUser + " -p" + dbPass + " " +"--default-character-set=utf8  --no-create-info " +dbName + " -r " +
                 backupFileName;
 
         Process runtimeProcess;
@@ -59,12 +67,33 @@ public class RestoreBackup {
         }
         return backupFilePath;
     }
-
+    public String getBackupFilePath(){
+        ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext(); 
+        ServletContext context =(ServletContext)ectx.getContext();  
+        
+        System.out.println("........2........"+context.getRealPath(File.separator)+"backup");
+        
+    //        getJasperFileIS("Incoming_letter_status.jasper");
+        File file=new File(context.getRealPath(File.separator)+File.separator+"backup");
+        if(!file.exists())
+            file.mkdirs();
+        
+        return context.getRealPath(File.separator+"backup");
+    }
+    public File getRestoreFileIS(String restoreFileName){
+        ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext(); 
+        ServletContext context =(ServletContext)ectx.getContext();  
+        String fileName = context.getRealPath(File.separator+"backup");
+        fileName =  fileName+""+restoreFileName;
+        System.out.println("file name = "+restoreFileName);
+        File file = new File(fileName);
+        return file;
+    }
+    
     public void restore(File file) {
         /******************************************************/
         //Database Properties
         /******************************************************/
-
 
         /***********************************************************/
         // Execute Shell Command
@@ -74,9 +103,10 @@ public class RestoreBackup {
      // String  executeCmd = "mysql -u " + dbUser + " -p" + dbPass + " " + dbName + " < " +file.getPath();
      // System.out.println("cmd = "+ executeCmd );
      // System.out.println("cmd path = "+ file.getParent() );
-   //    executeCmd = new String[]{ "mysql -u " + dbUser+ " -p"+dbPass+" " + dbName+ " < "+file.getName() ,"/bin/sh", "-c",};
+     // executeCmd = new String[]{ "mysql -u " + dbUser+ " -p"+dbPass+" " + dbName+ " < "+file.getName() ,"/bin/sh", "-c",};
         System.out.println("restored file path :"+file.getPath());
         executeCmd = new String[]{"mysql", dbName, "-u" + dbUser, "-p" + dbPass, "-e", " source "+file.getName()};
+        System.out.println("exceute cmd : "+ executeCmd.toString());
         Process runtimeProcess;
         try {
            runtimeProcess = Runtime.getRuntime().exec(executeCmd, null, new File(file.getParent()));

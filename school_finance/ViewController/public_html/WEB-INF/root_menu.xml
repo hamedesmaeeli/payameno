@@ -3,7 +3,7 @@
   <itemNode id="itemNode_students" label="دانش آموزان"
             action="adfMenu_students" focusViewId="/students"
             icon="../Images/myProfile.png"/>
-  <itemNode id="itemNode_courses" label="دروس"
+  <itemNode id="itemNode_courses" label="دروس و امتحانات"
             action="adfMenu_courses" focusViewId="/courses"/>        
   <itemNode id="itemNode_accounting" label="حسابداری"
             action="adfMenu_accounting" focusViewId="/accounting"
@@ -14,8 +14,9 @@
             focusViewId="/config"
             disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"/>
   <itemNode id="itemNode_help" label="کمک رسانی" action="adfMenu_help"
-            focusViewId="/help"/>
+            focusViewId="/help" rendered="false"/>
   <itemNode id="itemNode_school" label="گزارش هاي مديريتي" action="adfMenu_school"
             focusViewId="/school"
-            disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"/>
+            disabled="#{!securityContext.regionViewable['view.pageDefs.accountingPageDef']}"
+            rendered="false"/>
 </menu>
