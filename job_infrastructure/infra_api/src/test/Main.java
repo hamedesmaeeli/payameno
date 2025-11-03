@@ -153,7 +153,9 @@ public class Main {
     //   adm.deleteFile() ;
 //           
 //           
-//           rm.createDanaStudent(school, danaStudent);   
-    System.out.println("test ends");
+//           rm.createDanaStudent(school, danaStudent);
+      RegistrationManager rm1 = new RegistrationManager();
+     
+    System.out.println( rm1.getAllFields().get(2).getCode());
     }
 }

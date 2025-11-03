@@ -146,25 +146,41 @@
             <af:convertNumber type="currency" currencySymbol="ریال"/>
           </af:inputText>
           <af:popup id="p1">
-            <af:panelWindow id="pw1">
-              <af:table value="#{bindings.allFields1.collectionModel}" var="row"
-                        rows="#{bindings.allFields1.rangeSize}"
-                        emptyText="#{bindings.allFields1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                        fetchSize="#{bindings.allFields1.rangeSize}"
-                        rowBandingInterval="0"
-                        selectedRowKeys="#{bindings.allFields1.collectionModel.selectedRow}"
-                        selectionListener="#{bindings.allFields1.collectionModel.makeCurrent}"
-                        rowSelection="single" id="t1" width="176"
-                        inlineStyle="height:251px;">
-                <af:column sortProperty="name" sortable="false"
-                           headerText="نام رشته"
-                           id="c1" width="156">
-                  <af:outputText value="#{row.name}" id="ot1"/>
-                </af:column>
-              </af:table>
-              <af:commandButton text="انتخاب" id="cb2"
-                                action="#{pageFlowScope.registerBean.registerStudentSelectField}"
-                                inlineStyle="text-align:center;"/>
+            <af:panelWindow id="pw1" stretchChildren="first" contentWidth="600"
+                            styleClass="AFStretchWidth">
+              <af:panelBox id="pb1" text="انتخاب رشته">
+                <f:facet name="toolbar">
+                  <af:commandButton text="انتخاب" id="cb2"
+                                    action="#{pageFlowScope.registerBean.registerStudentSelectField}"
+                                    inlineStyle="text-align:center;"
+                                    icon="/Images/16 x 16 Colorful/accept.png"/>
+                </f:facet>
+                <af:table value="#{bindings.allFields1.collectionModel}"
+                          var="row" rows="#{bindings.allFields1.rangeSize}"
+                          emptyText="#{bindings.allFields1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                          fetchSize="#{bindings.allFields1.rangeSize}"
+                          rowBandingInterval="0"
+                          filterModel="#{bindings.allFields1Query.queryDescriptor}"
+                          queryListener="#{bindings.allFields1Query.processQuery}"
+                          filterVisible="true" varStatus="vs"
+                          selectedRowKeys="#{bindings.allFields1.collectionModel.selectedRow}"
+                          selectionListener="#{bindings.allFields1.collectionModel.makeCurrent}"
+                          rowSelection="single" id="t1"
+                          columnStretching="column:c1">
+                  <af:column sortProperty="id" filterable="true" sortable="true"
+                             headerText="شناسه" id="c8">
+                    <af:outputText value="#{row.id}" id="ot7"/>
+                  </af:column>
+                  <af:column sortProperty="name" filterable="true"
+                             sortable="true" headerText="نام" id="c1">
+                    <af:outputText value="#{row.name}" id="ot1"/>
+                  </af:column>
+                  <af:column sortProperty="code" filterable="true"
+                             sortable="true" headerText="کد " id="c7">
+                    <af:outputText value="#{row.code}" id="ot8"/>
+                  </af:column>
+                </af:table>
+              </af:panelBox>
             </af:panelWindow>
           </af:popup>
           <af:popup id="p2">

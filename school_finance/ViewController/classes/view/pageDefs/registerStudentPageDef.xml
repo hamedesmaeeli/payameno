@@ -13,7 +13,7 @@
                       BeanClass="registration.process.RegistrationManager"
                       id="registrationManagerIterator"/>
     <accessorIterator MasterBinding="registrationManagerIterator"
-                      Binds="allFields" RangeSize="20" DataControl="schManager"
+                      Binds="allFields" RangeSize="100" DataControl="schManager"
                       BeanClass="registration.data.Field"
                       id="allFieldsIterator" Refresh="always"/>
     <accessorIterator MasterBinding="registrationManagerIterator"
@@ -23,6 +23,9 @@
     <accessorIterator MasterBinding="registrationManagerIterator"
                       Binds="allbases" RangeSize="25" DataControl="schManager"
                       BeanClass="registration.data.Base" id="allbasesIterator"/>
+    <searchRegion Binds="allFieldsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="allFields1Query"/>
   </executables>
   <bindings>
     <list IterBinding="allFieldsIterator" ListOperMode="navigation"
@@ -37,14 +40,6 @@
         <Item Value="name"/>
       </AttrNames>
     </list>
-    <tree IterBinding="allFieldsIterator" id="allFields1">
-      <nodeDefinition DefName="registration.data.Field" Name="allFields10">
-        <AttrNames>
-          <Item Value="id"/>
-          <Item Value="name"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
     <tree IterBinding="allLevelsIterator" id="allLevels1">
       <nodeDefinition DefName="registration.data.Level" Name="allLevels10">
         <AttrNames>
@@ -72,6 +67,15 @@
         <AttrNames>
           <Item Value="id"/>
           <Item Value="name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="allFieldsIterator" id="allFields1">
+      <nodeDefinition DefName="registration.data.Field" Name="allFields10">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

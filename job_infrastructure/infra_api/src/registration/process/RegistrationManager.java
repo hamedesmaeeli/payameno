@@ -730,12 +730,14 @@ public class RegistrationManager {
 
         try {
             statement = connection.createStatement();
-          ResultSet result=  statement.executeQuery("select * from reg_field");
+          ResultSet result=  statement.executeQuery("select * from reg_field where is_active=1");
           Field filed;
           while(result.next()) {
               filed= new Field();
               filed.setId(result.getBigDecimal(1));
               filed.setName(result.getString(2));
+              filed.setIsActive(result.getBoolean(3));
+              filed.setCode(result.getString(4));
               fields.add(filed);
            //   System.out.println(result.getString(2));
           }

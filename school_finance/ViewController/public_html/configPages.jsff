@@ -188,17 +188,27 @@
                   emptyText="#{bindings.allFields.viewable ? 'No data to display.' : 'Access Denied.'}"
                   fetchSize="#{bindings.allFields.rangeSize}"
                   rowBandingInterval="0"
+                  filterModel="#{bindings.allFieldsQuery.queryDescriptor}"
+                  queryListener="#{bindings.allFieldsQuery.processQuery}"
+                  filterVisible="true" varStatus="vs"
                   selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
                   selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
-                  rowSelection="single" id="t6" columnStretching="last"
-                  filterVisible="true">
-          <af:column sortProperty="id" sortable="false" headerText="شناسه"
-                     id="c12">
+                  rowSelection="single" id="t6">
+          <af:column sortProperty="id" filterable="true" sortable="true"
+                     headerText="شناسه" id="c13">
             <af:outputText value="#{row.id}" id="ot11"/>
           </af:column>
-          <af:column sortProperty="name" sortable="true" headerText="نام رشته"
-                     id="c13" filterable="true">
+          <af:column sortProperty="name" filterable="true" sortable="true"
+                     headerText="نام رشته" id="c12">
             <af:outputText value="#{row.name}" id="ot12"/>
+          </af:column>
+          <af:column sortProperty="code" filterable="true" sortable="true"
+                     headerText="کد رشته" id="c19">
+            <af:outputText value="#{row.code}" id="ot17"/>
+          </af:column>
+          <af:column sortProperty="isActive" filterable="true" sortable="true"
+                     headerText="فعال" id="c18">
+            <af:outputText value="#{row.isActive}" id="ot18"/>
           </af:column>
         </af:table>
       </af:panelCollection>

@@ -507,6 +507,12 @@
   </MethodAccessor>
   <MethodAccessor IsCollection="false" Type="void"
                   id="updateSalaryForOnlineCourse" ReturnNodeName="Return"/>
+  <MethodAccessor IsCollection="false" Type="java.io.InputStream"
+                  BeanClass="java.io.InputStream" id="getStudentImageStream"
+                  ReturnNodeName="InputStream">
+    <ParameterInfo id="p0" Type="registration.data.Student"
+                   isStructured="true"/>
+  </MethodAccessor>
   <ConstructorMethod IsCollection="true"
                      Type="registration.process.RegistrationManager"
                      BeanClass="registration.process.RegistrationManager"

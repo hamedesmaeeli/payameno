@@ -31,13 +31,16 @@
                       BeanClass="finance.data.AccountBank"
                       id="allAccountBanksIterator"/>
     <accessorIterator MasterBinding="registrationManagerIterator"
-                      Binds="allFields" RangeSize="25" DataControl="schManager"
-                      BeanClass="registration.data.Field"
-                      id="allFieldsIterator"/>
-    <accessorIterator MasterBinding="registrationManagerIterator"
                       Binds="allLevels" RangeSize="25" DataControl="schManager"
                       BeanClass="registration.data.Level"
                       id="allLevelsIterator"/>
+    <accessorIterator MasterBinding="registrationManagerIterator"
+                      Binds="allFields" RangeSize="25" DataControl="schManager"
+                      BeanClass="registration.data.Field"
+                      id="allFieldsIterator"/>
+    <searchRegion Binds="allFieldsIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="allFieldsQuery"/>
   </executables>
   <bindings>
     <tree IterBinding="allOrganizationIterator" id="allOrganization">
@@ -81,14 +84,6 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <tree IterBinding="allFieldsIterator" id="allFields">
-      <nodeDefinition DefName="registration.data.Field" Name="allFields0">
-        <AttrNames>
-          <Item Value="id"/>
-          <Item Value="name"/>
-        </AttrNames>
-      </nodeDefinition>
-    </tree>
     <action IterBinding="allTermsIterator" id="Execute"
             InstanceName="registration.process.RegistrationManager.allTerms"
             DataControl="schManager" RequiresUpdateModel="true"
@@ -107,5 +102,15 @@
         <Item Value="name"/>
       </AttrNames>
     </list>
+    <tree IterBinding="allFieldsIterator" id="allFields">
+      <nodeDefinition DefName="registration.data.Field" Name="allFields0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
+          <Item Value="isActive"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

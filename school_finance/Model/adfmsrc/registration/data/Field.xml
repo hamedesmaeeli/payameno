@@ -4,6 +4,8 @@
           BeanClass="registration.data.Field" isJavaBased="true">
   <Attribute Name="id" Type="java.math.BigDecimal"/>
   <Attribute Name="name" Type="java.lang.String"/>
+  <Attribute Name="code" Type="java.lang.String"/>
+  <Attribute Name="isActive" Type="boolean"/>
   <ConstructorMethod IsCollection="true" Type="registration.data.Field"
                      BeanClass="registration.data.Field" id="Field">
     <ParameterInfo id="p0" Type="java.math.BigDecimal" isStructured="false"/>
