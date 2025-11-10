@@ -2576,6 +2576,9 @@ public class RegistrationManager {
         }
         return coursesFields;
     }
+    
+    
+    
     public ArrayList <Field> getAllAvailableFieldsForCourse(Course course) {
         ArrayList<Field> fields = new ArrayList<Field>();
         Connection connection = TransactionManagement.getInstance().getConnection();
@@ -2609,6 +2612,36 @@ public class RegistrationManager {
         }
         return fields;
     }
+    public ArrayList <Course> getAllCoursesForField(Field field) {
+        ArrayList<Course> courses = new ArrayList<Course>();
+        Connection connection = TransactionManagement.getInstance().getConnection();
+        Statement statement;
+
+        try {
+            statement = connection.createStatement();
+          ResultSet result=  statement.executeQuery("select * from course_field_view where field_id  ="+field.getId()+"");
+          Course course;  
+          while(result.next()) {
+              course = new Course();
+              course.setCourseName(result.getString("course_name"));
+              course.setCourseId(result.getBigDecimal("course_id"));
+              course.setDescription(result.getString("course_description"));
+              course.setDisplayName(result.getString("course_display_name"));
+              course.setIsFinal(result.getBoolean("is_final"));
+              course.setCourseUnits(result.getInt("unit_count"));
+              
+              
+              courses.add(course);
+        //      System.out.println(result.getString(2));
+          }
+            connection.close();
+            return courses;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return courses;
+    }
+    
     public CourseField addFieldToCourse(CourseField courseField) {
         Connection con =  TransactionManagement.getInstance().getConnection();
         PreparedStatement pre;

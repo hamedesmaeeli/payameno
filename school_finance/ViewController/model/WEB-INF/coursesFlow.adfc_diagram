@@ -17,9 +17,9 @@
       <property
          name="y">165.59766</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">189.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <View
       id="View3">
@@ -34,9 +34,9 @@
       <property
          name="y">164.14355</property>
       <property
-         name="x">402.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">402.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -71,9 +71,9 @@
       <property
          name="y">361.7412</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">67.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -108,9 +108,9 @@
       <property
          name="y">348.04004</property>
       <property
-         name="x">420.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">420.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -234,9 +234,9 @@
       <property
          name="y">570.59766</property>
       <property
-         name="x">330.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">330.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -304,9 +304,9 @@
       <property
          name="y">649.1953</property>
       <property
-         name="x">584.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">584.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -380,5 +380,42 @@
          name="fromOutcome">deleteExamTime</property>
       <property
          name="sdm:polyPoints">B39,323.0,624.2471,161.67676,695.9503,T39</property>
+   </ControlFlowCase>
+   <View
+      id="View39">
+      <property
+         name="activityId">fields</property>
+      <property
+         name="page">/fields.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>fields&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">182.59766</property>
+      <property
+         name="x">-16.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase40"
+      from="View2"
+      to="View39">
+      <property
+         name="fromOutcome">fields</property>
+      <property
+         name="sdm:polyPoints">L46,147.51855,161.74707,25.0,178.74707,R46</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase41"
+      from="View39"
+      to="View2">
+      <property
+         name="fromOutcome">back</property>
+      <property
+         name="sdm:polyPoints">R54,25.482388,185.74707,148.0,168.74707,L54</property>
    </ControlFlowCase>
 </SDM>

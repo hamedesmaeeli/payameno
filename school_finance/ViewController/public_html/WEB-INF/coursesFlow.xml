@@ -55,6 +55,9 @@
         <fixed-outcome>getAllExamCourseFromExamTime</fixed-outcome>
       </outcome>
     </method-call>
+    <view id="fields">
+      <page>/fields.jsff</page>
+    </view>
     <control-flow-rule id="__2">
       <from-activity-id id="__3">courses</from-activity-id>
       <control-flow-case id="__4">
@@ -72,6 +75,10 @@
       <control-flow-case id="__59">
         <from-outcome id="__60">exam</from-outcome>
         <to-activity-id id="__61">exam</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__57">
+        <from-outcome id="__75">fields</from-outcome>
+        <to-activity-id id="__56">fields</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__11">
@@ -170,6 +177,13 @@
       <control-flow-case id="__95">
         <from-outcome id="__94">getAllExamCourseFromExamTime</from-outcome>
         <to-activity-id id="__96">examDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__79">
+      <from-activity-id id="__80">fields</from-activity-id>
+      <control-flow-case id="__82">
+        <from-outcome id="__103">back</from-outcome>
+        <to-activity-id id="__81">courses</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

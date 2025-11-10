@@ -155,7 +155,8 @@ public class Main {
 //           
 //           rm.createDanaStudent(school, danaStudent);
       RegistrationManager rm1 = new RegistrationManager();
-     
-    System.out.println( rm1.getAllFields().get(2).getCode());
+    Field field = new Field(new BigDecimal("1"),"name1");
+    ArrayList<Course> courses = rm1.getAllCoursesForField(field);
+    System.out.println( rm1.getAllCoursesForField(field).get(0).getCourseId());
     }
 }

@@ -98,6 +98,7 @@
     <page path="/report4_page.jsff" usageId="view_report4_pagePageDef"/>
     <page path="/report5_not_registerd_course.jsff"
           usageId="view_report5_not_registerd_coursePageDef"/>
+    <page path="/fields.jsff" usageId="view_fieldsPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_studentsPageDef" path="view.pageDefs.studentsPageDef"/>
@@ -205,6 +206,7 @@
           path="view.pageDefs.report4_pagePageDef"/>
     <page id="view_report5_not_registerd_coursePageDef"
           path="view.pageDefs.report5_not_registerd_coursePageDef"/>
+    <page id="view_fieldsPageDef" path="view.pageDefs.fieldsPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="schManager" path="model.schManager"/>

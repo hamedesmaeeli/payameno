@@ -80,6 +80,12 @@
                                    inlineStyle="font-size:medium;"/>
             </af:panelFormLayout>
           </af:showDetailItem>
+          <af:showDetailItem text="رشته ها" id="sdi3">
+            <af:commandImageLink text="رشته ها" id="cil5"
+                                 inlineStyle="font-size:medium;"
+                                 icon="/Images/16 x 16 Colorful/Archive.png"
+                                 action="fields"/>
+          </af:showDetailItem>
         </af:panelAccordion>
       </af:panelBox>
     </f:facet>
