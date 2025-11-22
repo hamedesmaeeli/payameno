@@ -1,12 +1,139 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-          xmlns:f="http://java.sun.com/jsf/core">
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
   <af:panelStretchLayout id="psl1" startWidth="200">
     <f:facet name="bottom"/>
     <f:facet name="center">
       <af:panelBox text="لیست رشته ها" id="pb2">
-        <f:facet name="toolbar"/>
+        <f:facet name="toolbar">
+          <af:toolbar id="t2">
+            <af:commandToolbarButton text="درس های رشته" id="ctb1"
+                                     actionListener="#{pageFlowScope.courseBean.fieldCoursesL}"
+                                     action="#{pageFlowScope.courseBean.fieldCourses}"
+                                     immediate="true">
+              <f:facet name="popup">
+                <af:popup id="p1">
+                  <af:panelWindow id="pw1">
+                    <af:outputText value="#{pageFlowScope.courseBean.selectedField.name}"
+                                   id="ot12"
+                                   inlineStyle="font-size:medium; font-weight:bold;"/>
+                    <af:panelCollection id="pc2">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.Course.collectionModel}"
+                                var="row" rows="#{bindings.Course.rangeSize}"
+                                emptyText="#{bindings.Course.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Course.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.CourseQuery.queryDescriptor}"
+                                queryListener="#{bindings.CourseQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Course.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Course.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t3"
+                                columnStretching="column:c6">
+                        <af:column sortProperty="courseId" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.courseId.label}"
+                                   id="c5">
+                          <af:outputText value="#{row.courseId}" id="ot9"/>
+                        </af:column>
+                        <af:column sortProperty="courseName" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.courseName.label}"
+                                   id="c8">
+                          <af:outputText value="#{row.courseName}" id="ot5"/>
+                        </af:column>
+                        <af:column sortProperty="courseUnits" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.courseUnits.label}"
+                                   id="c11">
+                          <af:outputText value="#{row.courseUnits}" id="ot10"/>
+                        </af:column>
+                        <af:column sortProperty="displayName" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.displayName.label}"
+                                   id="c6">
+                          <af:outputText value="#{row.displayName}" id="ot8"/>
+                        </af:column>
+                        <af:column sortProperty="courseCode" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.courseCode.label}"
+                                   id="c9">
+                          <af:outputText value="#{row.courseCode}" id="ot11"/>
+                        </af:column>
+                        <af:column sortProperty="isFinal" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.isFinal.label}"
+                                   id="c7">
+                          <af:outputText value="#{row.isFinal}" id="ot6"/>
+                        </af:column>
+                        <af:column sortProperty="description" filterable="true"
+                                   sortable="true"
+                                   headerText="#{bindings.Course.hints.description.label}"
+                                   id="c10">
+                          <af:outputText value="#{row.description}" id="ot7"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <h:commandButton value="تایید" id="cb1"/>
+                  </af:panelWindow>
+                </af:popup>
+              </f:facet>
+              <af:showPopupBehavior popupId="p1" triggerType="click"/>
+            </af:commandToolbarButton>
+            <af:commandToolbarButton text="انتقال درس از رشته" id="ctb2"
+                                     actionListener="#{pageFlowScope.courseBean.fieldCoursesL}">
+              <f:facet name="popup">
+                <af:popup id="p2">
+                  <af:panelWindow id="pw2">
+                    <af:outputText value="انتخاب رشته جهت دریافت دروس #{pageFlowScope.courseBean.selectedField.name}" id="ot16"
+                                   inlineStyle="font-size:medium;"/>
+                    <af:panelCollection id="pc3">
+                      <f:facet name="menus"/>
+                      <f:facet name="toolbar"/>
+                      <f:facet name="statusbar"/>
+                      <af:table value="#{bindings.Field.collectionModel}"
+                                var="row" rows="#{bindings.Field.rangeSize}"
+                                emptyText="#{bindings.Field.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                fetchSize="#{bindings.Field.rangeSize}"
+                                rowBandingInterval="0"
+                                filterModel="#{bindings.FieldQuery.queryDescriptor}"
+                                queryListener="#{bindings.FieldQuery.processQuery}"
+                                filterVisible="true" varStatus="vs"
+                                selectedRowKeys="#{bindings.Field.collectionModel.selectedRow}"
+                                selectionListener="#{bindings.Field.collectionModel.makeCurrent}"
+                                rowSelection="single" id="t4">
+                        <af:column sortProperty="id" filterable="true"
+                                   sortable="true" headerText="شناسه" id="c12">
+                          <af:outputText value="#{row.id}" id="ot15"/>
+                        </af:column>
+                        <af:column sortProperty="name" filterable="true"
+                                   sortable="true" headerText="نام رشته"
+                                   id="c13">
+                          <af:outputText value="#{row.name}" id="ot13"/>
+                        </af:column>
+                        <af:column sortProperty="code" filterable="true"
+                                   sortable="true" headerText="کد رشته"
+                                   id="c14">
+                          <af:outputText value="#{row.code}" id="ot14"/>
+                        </af:column>
+                      </af:table>
+                    </af:panelCollection>
+                    <af:commandButton text="انتقال" id="cb2"
+                                      action="#{pageFlowScope.courseBean.fieldCourseTransferA}"
+                                      partialSubmit="true"/>
+                    <af:commandButton text="تایید" id="cb3"/>
+                  </af:panelWindow>
+                </af:popup>
+              </f:facet>
+              <af:showPopupBehavior popupId="p2" triggerType="click"/>
+            </af:commandToolbarButton>
+          </af:toolbar>
+        </f:facet>
         <af:panelCollection id="pc1">
           <f:facet name="menus"/>
           <f:facet name="toolbar"/>
@@ -21,7 +148,10 @@
                     filterVisible="true" varStatus="vs"
                     selectedRowKeys="#{bindings.allFields.collectionModel.selectedRow}"
                     selectionListener="#{bindings.allFields.collectionModel.makeCurrent}"
-                    rowSelection="single" id="t1">
+                    rowSelection="single" id="t1" columnStretching="column:c3"
+                    immediate="true"
+                    binding="#{pageFlowScope.courseBean.fieldsTable}"
+                    contentDelivery="immediate" partialTriggers=":::cb2">
             <af:column sortProperty="id" filterable="true" sortable="true"
                        headerText="شناسه" id="c4">
               <af:outputText value="#{row.id}" id="ot4"/>

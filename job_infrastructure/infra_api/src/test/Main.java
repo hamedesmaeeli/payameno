@@ -154,9 +154,12 @@ public class Main {
 //           
 //           
 //           rm.createDanaStudent(school, danaStudent);
-      RegistrationManager rm1 = new RegistrationManager();
-    Field field = new Field(new BigDecimal("1"),"name1");
-    ArrayList<Course> courses = rm1.getAllCoursesForField(field);
-    System.out.println( rm1.getAllCoursesForField(field).get(0).getCourseId());
+    RegistrationManager rm1 = new RegistrationManager();
+    Field sourcefield = new Field(new BigDecimal("20"),"name1");
+    Field destinationfield = new Field(new BigDecimal("21"),"name1");
+    //   ArrayList<Course> courses = rm1.getAllCoursesForField(field);
+   //   System.out.println( rm1.getFieldsForTransfor(field).get(0).getId());
+   //rm1.deleteAllCoursesFromField(destinationfield);
+   rm1.tansferCourseFromFieldToField(sourcefield,destinationfield);
     }
 }

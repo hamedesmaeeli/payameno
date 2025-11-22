@@ -748,6 +748,31 @@ public class RegistrationManager {
         }
         return fields;
     }
+    public ArrayList<Field> getFieldsForTransfor(Field field) {
+        ArrayList<Field> fields = new ArrayList<Field>();
+        Connection connection = TransactionManagement.getInstance().getConnection();
+        Statement statement;
+
+        try {
+            statement = connection.createStatement();
+          ResultSet result=  statement.executeQuery("select * from reg_field where is_active=1 and id <> "+field.getId());
+          Field filed;
+          while(result.next()) {
+              filed= new Field();
+              filed.setId(result.getBigDecimal(1));
+              filed.setName(result.getString(2));
+              filed.setIsActive(result.getBoolean(3));
+              filed.setCode(result.getString(4));
+              fields.add(filed);
+           //   System.out.println(result.getString(2));
+          }
+            connection.close();
+            return fields;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return fields;
+    }
     public ArrayList<Level> getAllLevels() {
         ArrayList<Level> levels = new ArrayList<Level>();
         Connection connection = TransactionManagement.getInstance().getConnection();
@@ -2674,7 +2699,30 @@ public class RegistrationManager {
          } catch (SQLException e) {
              e.printStackTrace();
          }    
-        }   
+        }
+    public void deleteAllCoursesFromField(Field field) {
+        Connection con =  TransactionManagement.getInstance().getConnection();
+        Statement statement ;
+         try {
+             statement = con.createStatement();
+             statement.executeUpdate("delete from reg_course_field where field_id = "+field.getId());
+         } catch (SQLException e) {
+             e.printStackTrace();
+         }    
+    }
+    public void tansferCourseFromFieldToField(Field sourceField,Field destinationField) {
+        
+            this.deleteAllCoursesFromField(destinationField);
+            ArrayList<Course> sourceCourses= this.getAllCoursesForField(sourceField);
+            Course course;
+            CourseField courseField = new CourseField();
+            for (int i =0 ;i<sourceCourses.size();i++) {
+                course = sourceCourses.get(i);
+                courseField.setCourse(course);
+                courseField.setField(destinationField);
+                this.addFieldToCourse(courseField);
+            }
+        }  
     public ArrayList<ExamTime> getAllTermExamTimes(Term term) {
         ArrayList<ExamTime> examTimes= new ArrayList<ExamTime>();
         Connection connection = TransactionManagement.getInstance().getConnection();

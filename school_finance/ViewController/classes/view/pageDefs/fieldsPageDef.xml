@@ -19,6 +19,19 @@
     <searchRegion Binds="allFieldsIterator" Criteria=""
                   Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
                   id="allFieldsQuery"/>
+    <methodIterator Binds="getAllCoursesForField.result"
+                    DataControl="schManager" RangeSize="25"
+                    BeanClass="finance.data.Course"
+                    id="getAllCoursesForFieldIterator"/>
+    <searchRegion Binds="getAllCoursesForFieldIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="CourseQuery"/>
+    <methodIterator Binds="getFieldsForTransfor.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.Field"
+                    id="getFieldsForTransforIterator"/>
+    <searchRegion Binds="getFieldsForTransforIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="FieldQuery"/>
   </executables>
   <bindings>
     <tree IterBinding="allFieldsIterator" id="allFields">
@@ -28,6 +41,48 @@
           <Item Value="name"/>
           <Item Value="code"/>
           <Item Value="isActive"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getAllCoursesForField" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getAllCoursesForField"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getAllCoursesForField_getAllCoursesForField_getAllCoursesForField_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.courseBean.selectedField}"
+                 NDType="registration.data.Field"/>
+    </methodAction>
+    <tree IterBinding="getAllCoursesForFieldIterator" id="Course">
+      <nodeDefinition DefName="finance.data.Course" Name="Course0">
+        <AttrNames>
+          <Item Value="courseId"/>
+          <Item Value="courseName"/>
+          <Item Value="courseUnits"/>
+          <Item Value="displayName"/>
+          <Item Value="courseCode"/>
+          <Item Value="isFinal"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="registrationManagerIterator"
+                  id="getFieldsForTransfor" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="getFieldsForTransfor"
+                  IsViewObjectMethod="false" DataControl="schManager"
+                  InstanceName="bindings.registrationManagerIterator.currentRow.dataProvider"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.schManager.methodResults.getFieldsForTransfor_getFieldsForTransfor_getFieldsForTransfor_result">
+      <NamedData NDName="p0" NDValue="#{pageFlowScope.courseBean.selectedField}"
+                 NDType="registration.data.Field"/>
+    </methodAction>
+    <tree IterBinding="getFieldsForTransforIterator" id="Field">
+      <nodeDefinition DefName="registration.data.Field" Name="Field0">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
+          <Item Value="code"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

@@ -91,6 +91,7 @@ public class CourseBean {
     private RichTable coursesForExamTimeTable;
     private RichTable coursesExamTimeTable;
     private RichTable examTimesInTermTable;
+    private RichTable fieldsTable;
 
 
     public CourseBean() {
@@ -102,10 +103,14 @@ public class CourseBean {
         newExamTimeMonth = fc.getIranianMonth();
         newExamTimeDay = fc.getIranianDay();
         calculatedMaxDay = this.calculateMaxMonthDay();
+        selectedField = new Field();
+        selectedField.setId(new BigDecimal(1));
+        selectedField.setName("Riazi");
     }
     private Term selectedTerm ;
     private Course selectedCourse;
-
+    private Field selectedField;
+    private Field selectedFieldForTransfer;
     public void setSelectedTerm(Term selectedTerm) {
         this.selectedTerm = selectedTerm;
     }
@@ -360,6 +365,26 @@ public class CourseBean {
             
         } else {
             Utility.showFacesMessage("please select a course", FacesMessage.SEVERITY_INFO);   
+        }
+        return returned;
+    }
+    public String fieldCourses() {
+        // Add event code here...
+        System.out.print("***** in the fieldCourses");
+        String returned = "";
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("allFieldsIterator");
+
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            this.selectedField = (Field)((DCDataRow)row).getDataProvider();
+         //   System.out.println("father name :" +           this.currentStudent.getFatherName());
+            returned = "CourseFields";
+            
+        } else {
+            Utility.showFacesMessage("please select a field", FacesMessage.SEVERITY_INFO);   
         }
         return returned;
     }
@@ -794,5 +819,104 @@ public class CourseBean {
         
         
         
+    }
+
+    public void setSelectedField(Field selectedField) {
+        this.selectedField = selectedField;
+    }
+
+    public Field getSelectedField() {
+        return selectedField;
+    }
+
+    public void fieldCoursesL(ActionEvent actionEvent) {
+        // Add event code here...
+        System.out.print("***** in the fieldCoursesL");
+        String returned = "";
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("allFieldsIterator");
+
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            this.selectedField = (Field)((DCDataRow)row).getDataProvider();
+         //   System.out.println("father name :" +           this.currentStudent.getFatherName());
+            returned = "CourseFields";
+            
+        } else {
+            Utility.showFacesMessage("please select a field", FacesMessage.SEVERITY_INFO);   
+        }
+        
+    }
+
+    public void setSelectedFieldForTransfer(Field selectedFieldForTransfer) {
+        this.selectedFieldForTransfer = selectedFieldForTransfer;
+    }
+
+    public Field getSelectedFieldForTransfer() {
+        return selectedFieldForTransfer;
+    }
+
+    public void fieldCourseTransfer(ActionEvent actionEvent) {
+        // Add event code here...
+        System.out.print("***** in the fieldCourse Transfer");
+        String returned = "";
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("getFieldsForTransforIterator");
+        
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            this.selectedFieldForTransfer = (Field)((DCDataRow)row).getDataProvider();
+         //   System.out.println("father name :" +           this.currentStudent.getFatherName());
+            returned = "CourseFieldTransfer";
+            
+            System.out.println("Selected Field "+ this.selectedFieldForTransfer.getId());
+            RegistrationManager rm = new RegistrationManager();
+            rm.tansferCourseFromFieldToField(this.selectedFieldForTransfer,this.selectedField);
+            
+            Utility.showFacesMessage("Tranforation is done", FacesMessage.SEVERITY_INFO);
+            Utility.refreshComponent(this.fieldsTable);
+        } else {
+            Utility.showFacesMessage("please select a field for Transfer", FacesMessage.SEVERITY_INFO);   
+        }
+        
+    }
+
+    public void setFieldsTable(RichTable fieldsTable) {
+        this.fieldsTable = fieldsTable;
+    }
+
+    public RichTable getFieldsTable() {
+        return fieldsTable;
+    }
+
+    public String fieldCourseTransferA() {
+        // Add event code here...
+        System.out.print("***** in the fieldCourse Transfer");
+        String returned = "";
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("getFieldsForTransforIterator");
+        
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            this.selectedFieldForTransfer = (Field)((DCDataRow)row).getDataProvider();
+         //   System.out.println("father name :" +           this.currentStudent.getFatherName());
+            returned = "CourseFieldTransfer";
+            
+            System.out.println("Selected Field "+ this.selectedFieldForTransfer.getId());
+            RegistrationManager rm = new RegistrationManager();
+            rm.tansferCourseFromFieldToField(this.selectedFieldForTransfer,this.selectedField);
+            
+            Utility.showFacesMessage("Tranforation is done", FacesMessage.SEVERITY_INFO);
+            Utility.refreshComponent(this.fieldsTable);
+        } else {
+            Utility.showFacesMessage("please select a field for Transfer", FacesMessage.SEVERITY_INFO);   
+        }
+        return returned;
     }
 }

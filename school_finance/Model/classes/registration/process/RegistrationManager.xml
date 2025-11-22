@@ -513,6 +513,18 @@
     <ParameterInfo id="p0" Type="registration.data.Student"
                    isStructured="true"/>
   </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="finance.data.Course"
+                  BeanClass="finance.data.Course" id="getAllCoursesForField"
+                  ReturnNodeName="Course"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="registration.data.Field" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.Field"
+                  BeanClass="registration.data.Field" id="getFieldsForTransfor"
+                  ReturnNodeName="Field"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="registration.data.Field" isStructured="true"/>
+  </MethodAccessor>
   <ConstructorMethod IsCollection="true"
                      Type="registration.process.RegistrationManager"
                      BeanClass="registration.process.RegistrationManager"
