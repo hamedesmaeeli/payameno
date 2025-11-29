@@ -121,8 +121,7 @@ public class RegistrationManager {
             pre.setString(19, student.getDiplomMadrak());
             pre.setString(20, student.getPishMadrak());
             pre.executeUpdate();
-           
-           
+            
            
             //create Account 
             Account account = new Account();
@@ -143,6 +142,8 @@ public class RegistrationManager {
              pre.setDate(3, Utilty.convertDateUtilToSQL(new java.util. Date()));
              pre.executeUpdate();
              
+             
+             pre.close();
              connection.close();
        
         } catch (SQLException e) {

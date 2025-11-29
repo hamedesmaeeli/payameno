@@ -14,6 +14,8 @@ public class Field  {
     public Field(BigDecimal id,String name) {
         this.id =id;
         this.name =name;
+        this.isActive = true;
+        this.Code = "";
     }
     public void setId(BigDecimal id) {
         this.id = id;

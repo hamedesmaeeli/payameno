@@ -422,13 +422,13 @@ public class ConfigPageBean {
         if(restoreUploadedFile != null) {
         System.out.println("uploaded file name = "+restoreUploadedFile.getFilename());
         File file  =  new File(ConfigPageBean.class.getClassLoader().getResource("").getFile(),restoreUploadedFile.getFilename());
-        System.out.println("created File for  restore is "+file.getPath());
+        System.out.println("created File for  restore is "+file.getPath()+restoreUploadedFile);
         FileOutputStream outputStream ;
+        FileOutputStream outputStreamTableStructure;
         RestoreBackup restoreBackup = new RestoreBackup();
-        File tableStuctureFile = restoreBackup.getRestoreFileIS("school_new_structure_tables");
-        File functionStructureFile = restoreBackup.getRestoreFileIS("school_structure_functions");
-        File viewStructureFile = restoreBackup.getRestoreFileIS("school_strycure_views");
-            
+        InputStream tableStuctureIS= restoreBackup.getRestoreFileIS("school_new_structure_tables.sql");
+        File tableStuctureFile = new File(ConfigPageBean.class.getClassLoader().getResource("").getFile(),"school_new_structure_tables.sql");
+        //System.out.println("created File for  restore is "+file.getPath()+restoreUploadedFile);
         
         InputStream is;
             try {
@@ -443,16 +443,30 @@ public class ConfigPageBean {
                 }  
                 is.close(); 
                 outputStream .close();
+                
                // restoreBackup.restore(tableStuctureFile);
+                
+                outputStreamTableStructure = new FileOutputStream(tableStuctureFile);
+                // initialize  
+                byte[] buffer1 = new byte[4048]; // tweaking this number may increase performance  
+                
+               // System.out.println("tableStructureFile len size :  "+ tableStuctureIS.read(buffer1));
+                while ((len = tableStuctureIS.read(buffer1)) != -1)  
+                {  
+                    outputStreamTableStructure.write(buffer1, 0, len);  
+                }  
+                tableStuctureIS.close(); 
+                outputStreamTableStructure .close(); 
+                restoreBackup.restore(tableStuctureFile);
                 System.out.println("tableStructureFile restored");
                // restoreBackup.restore(functionStructureFile);
-                System.out.println("functionStructureFile restored");
+               // System.out.println("functionStructureFile restored");
                // restoreBackup.restore(viewStructureFile);
-                System.out.println("viewStructureFile restored");
+               // System.out.println("viewStructureFile restored");
                 
                 restoreBackup.restore(file);
                 System.out.println("dataFile restored");
-            
+                
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {

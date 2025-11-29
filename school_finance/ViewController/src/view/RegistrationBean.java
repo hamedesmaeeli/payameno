@@ -1965,7 +1965,9 @@ new Bank((BigDecimal)row.getAttribute(0), (String)row.getAttribute(1));
         createdNewStudent.setStudentStatus(this.studentStatusNew);
         if(this.getStNameField().getValue()==null
            || this.getStFamilyField().getValue()==null
-           || this.getStCodefield().getValue() == null )
+           || this.getStCodefield().getValue() == null
+           || this.getStIdentityCodeField().getValue() == null 
+           )
         {
            // this.ShowMessage("please insert some value for any of these fields: name , st_code ");
             this.ShowMessage("\u0644\u0637\u0641\u0627 \u0628\u0631\u0627\u06CC \u0641\u06CC\u0644\u062F \u0647\u0627\u06CC \u0646\u0627\u0645 \u060C\u0646\u0627\u0645 \u062E\u0627\u0646\u0648\u062F\u0627\u06AF\u06CC \u0648 \u06A9\u062F \u062F\u0627\u0646\u0634 \u0622\u0645\u0648\u0632\u06CC \u0645\u0642\u062F\u0627\u0631 \u0648\u0627\u0631\u062F \u06A9\u0646\u06CC\u062F");
@@ -2184,7 +2186,6 @@ new Bank((BigDecimal)row.getAttribute(0), (String)row.getAttribute(1));
         }
     
     }
-
     public void setLevelFieldForSearch(RichInputText levelFieldForSearch) {
         this.levelFieldForSearch = levelFieldForSearch;
     }

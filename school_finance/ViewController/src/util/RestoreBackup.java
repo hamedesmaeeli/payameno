@@ -12,7 +12,11 @@ import java.io.InputStream;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+
+import java.sql.Statement;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -43,6 +47,9 @@ public class RestoreBackup {
         executeCmd =
                 "mysqldump -u " + dbUser + " -p" + dbPass + " " +"--default-character-set=utf8  --no-create-info " +dbName + " -r " +
                 backupFileName;
+        //executeCmd =
+          //      "mysqldump -u " + dbUser + " -p" + dbPass + " " +"--default-character-set=utf8  --tables " +dbName + " -r " +
+            //    backupFileName;
 
         Process runtimeProcess;
         try {
@@ -80,17 +87,24 @@ public class RestoreBackup {
         
         return context.getRealPath(File.separator+"backup");
     }
-    public File getRestoreFileIS(String restoreFileName){
+    public InputStream getRestoreFileIS(String restoreFileName){
         ExternalContext ectx = FacesContext.getCurrentInstance().getExternalContext(); 
         ServletContext context =(ServletContext)ectx.getContext();  
         String fileName = context.getRealPath(File.separator+"backup");
+        System.out.println(" .......  backup path ---"+this.getBackupFilePath());
+        System.out.println("...............backup..............."+RestoreBackup.class.getClassLoader().getResource("backup/"+restoreFileName));
         fileName =  fileName+""+restoreFileName;
-        System.out.println("file name = "+restoreFileName);
-        File file = new File(fileName);
-        return file;
+        System.out.println("********* file name = "+restoreFileName);
+        
+       // InputStream is = getClass().getClassLoader().getResourceAsStream("backup/"+fileName);
+      // InputStream is = getClass().getClassLoader().getResourceAsStream("report/jasperFile/"+"kart_koli.jasper");
+       //InputStream is = getClass().getClassLoader().getResourceAsStream("backup/"+"school_new_structure_table.sql"); 
+       InputStream is = getClass().getClassLoader().getResourceAsStream("backup/"+"school_new_structure_tables.sql");
+        return is;
     }
     
     public void restore(File file) {
+        this.killSleepConnection();
         /******************************************************/
         //Database Properties
         /******************************************************/
@@ -104,8 +118,9 @@ public class RestoreBackup {
      // System.out.println("cmd = "+ executeCmd );
      // System.out.println("cmd path = "+ file.getParent() );
      // executeCmd = new String[]{ "mysql -u " + dbUser+ " -p"+dbPass+" " + dbName+ " < "+file.getName() ,"/bin/sh", "-c",};
-        System.out.println("restored file path :"+file.getPath());
+        System.out.println("restored file path :"+file.getPath()+" "+file.getName());
         executeCmd = new String[]{"mysql", dbName, "-u" + dbUser, "-p" + dbPass, "-e", " source "+file.getName()};
+        
         System.out.println("exceute cmd : "+ executeCmd.toString());
         Process runtimeProcess;
         try {
@@ -163,6 +178,7 @@ public class RestoreBackup {
         return null;
     }
     public boolean restoreDB(File file) {
+        //this.killSleepConnection();
            String path = file.getPath();
            if (!path.contains(".sql")) {
                file = new File(path + ".sql");
@@ -188,10 +204,37 @@ public class RestoreBackup {
 
            return false;
        }
+    
+    public void killSleepConnection() {
+        System.out.print("in the killSleepConnection");
+               try  {
+                   Connection conn = TransactionManagement.getInstance().getConnection();
+                    Statement stmt = conn.createStatement();
+                    PreparedStatement killStmt = conn.prepareStatement("");
+                   // گرفتن لیست پروسه‌ها
+                   ResultSet rs = stmt.executeQuery("SELECT id, command FROM information_schema.processlist");
+
+                   while (rs.next()) {
+                          int id = rs.getInt("id");
+                          String command = rs.getString("command");
+
+                          if ("Sleep".equalsIgnoreCase(command)) {
+                              String killQuery = "KILL " + id;
+                              System.out.println("Executing: " + killQuery);
+                              killStmt.execute(killQuery); // استفاده از Statement جدا
+                          }
+                      }
+
+               } catch (Exception e) {
+                   e.printStackTrace();
+               }
+    }
+   
     public static void main(String[] args) {
         RestoreBackup rb = new RestoreBackup();
        // rb.backup();
         File testFile = new File("C:\\MyTest\\backup.sql");
-        rb.restore(testFile);
+        //rb.restore(testFile);
+        rb.killSleepConnection();
     }
 }

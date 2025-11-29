@@ -270,6 +270,8 @@ DROP TABLE IF EXISTS `reg_field`;
 CREATE TABLE `reg_field`  (
   `id` bigint(20) NOT NULL DEFAULT 0,
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `is_active` bit(1) NULL DEFAULT b'1',
+  `code` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`id`) USING BTREE
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Compact;
 

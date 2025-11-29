@@ -33,9 +33,11 @@
                           label="شماره شناسنامه" readOnly="false"/>
             <af:inputText id="ot12"
                           value="#{pageFlowScope.registerBean.currentStudent.identifierSerial}"
-                          label="سریال شناسنامه" readOnly="false"/>
+                          label="سریال شناسنامه" readOnly="false"
+                          rendered="false"/>
             <af:inputText value="#{pageFlowScope.registerBean.currentStudent.identifierCode}"
-                          id="ot13" label="کاراکتر شناسنامه" readOnly="false"/>
+                          id="ot13" label="کاراکتر شناسنامه" readOnly="false"
+                          rendered="false"/>
             <af:inputText label="موبایل" id="it6"
                           value="#{pageFlowScope.registerBean.currentStudent.mobile}"
                           autoSubmit="true"/>
@@ -225,8 +227,9 @@
                             targetFrame="_blank"
                             destination="#{pageFlowScope.registerBean.totalFinanceReport}"
                             inlineStyle="font-size:medium;"
-                            icon="/Images/16 x 16 Colorful/print.png"/>
-            <af:spacer width="10" height="20" id="s5"/>
+                            icon="/Images/16 x 16 Colorful/print.png"
+                            rendered="false"/>
+            <af:spacer width="10" height="20" id="s5" rendered="false"/>
             <af:commandImageLink text="ويرايش اطلاعات" id="cil5"
                                  inlineStyle="font-size:medium;"
                                  icon="/Images/16 x 16 Colorful/accept.png"

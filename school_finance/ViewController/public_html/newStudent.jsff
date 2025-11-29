@@ -11,8 +11,15 @@
                    background="light" ramp="highlight">
         <f:facet name="toolbar"/>
         <af:panelFormLayout id="pfl1" rows="7" maxColumns="2"
-                            inlineStyle="font-size:medium; ">
-          <f:facet name="footer"/>
+                            inlineStyle="font-size:large;">
+          <f:facet name="footer">
+            <af:panelGroupLayout id="pgl1" halign="center" layout="horizontal">
+              <af:commandImageLink text=" ایجاد دانش آموز" id="cil1"
+                                   action="#{pageFlowScope.registerBean.createStudent}"
+                                   inlineStyle="font-size:medium;"
+                                   icon="/Images/16 x 16 Colorful/add.png"/>
+            </af:panelGroupLayout>
+          </f:facet>
           <af:inputText label="نام *" id="it1"
                         binding="#{pageFlowScope.registerBean.stNameField}"
                         required="false" inlineStyle="font-size:medium;"/>
@@ -58,19 +65,21 @@
           <af:inputText label="توضیحات" id="it11"
                         binding="#{pageFlowScope.registerBean.stDescriptionField}"/>
           <af:inputText label="سریال شناسنامه" id="it10"
-                        binding="#{pageFlowScope.registerBean.stIdSerialField}"/>
+                        binding="#{pageFlowScope.registerBean.stIdSerialField}"
+                        rendered="false"/>
           <af:selectOneChoice value="#{bindings.allIdentiferChars.inputValue}"
                               label="کاراکتر شناسنامه"
                               required="#{bindings.allIdentiferChars.hints.mandatory}"
                               shortDesc="#{bindings.allIdentiferChars.hints.tooltip}"
                               id="soc3"
                               valueChangeListener="#{pageFlowScope.registerBean.changeIdChar}"
-                              autoSubmit="true">
+                              autoSubmit="true" rendered="false">
             <f:selectItems value="#{bindings.allIdentiferChars.items}"
                            id="si3"/>
           </af:selectOneChoice>
           <af:inputText label="شماره کاراکتر" id="it13"
-                        binding="#{pageFlowScope.registerBean.stCharNumber}"/>
+                        binding="#{pageFlowScope.registerBean.stCharNumber}"
+                        rendered="false"/>
         </af:panelFormLayout>
       </af:panelBox>
     </f:facet>
@@ -79,11 +88,6 @@
         <f:facet name="toolbar"/>
         <af:panelAccordion id="pa1">
           <af:showDetailItem id="sdi2">
-            <af:commandImageLink text=" ایجاد " id="cil1"
-                                 action="#{pageFlowScope.registerBean.createStudent}"
-                                 inlineStyle="font-size:medium;"
-                                 icon="/Images/16 x 16 Colorful/add.png"/>
-            <af:spacer width="10" height="30" id="s1"/>
             <af:commandImageLink text="ليست دانش آموزان" id="cil2"
                                  icon="/Images/16 x 16 Colorful/back.png"
                                  inlineStyle="font-size:medium;"
@@ -93,7 +97,7 @@
                                  inlineStyle="font-size:medium;"
                                  icon="/Images/16 x 16 Colorful/accept.png"
                                  actionListener="#{pageFlowScope.registerBean.generateSt_code}"
-                                 partialSubmit="true"/>
+                                 partialSubmit="true" rendered="false"/>
           </af:showDetailItem>
         </af:panelAccordion>
       </af:panelBox>

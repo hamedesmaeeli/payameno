@@ -66,6 +66,26 @@
    <hash n="oracle.adfdtinternal.model.ide.security.SecurityPolicies">
       <value n="grantOption" v="none"/>
    </hash>
+   <hash n="oracle.adfdtinternal.model.ide.settings.ADFMSettings">
+      <hash n="adfmContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="adfmsrc/"/>
+         </list>
+      </hash>
+   </hash>
+   <hash n="oracle.bm.commonIde.data.project.ModelerProjectSettings">
+      <hash n="modelersContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="model/"/>
+         </list>
+      </hash>
+   </hash>
    <hash n="oracle.ide.model.DependencyConfiguration">
       <list n="dependencyList">
          <hash>
@@ -109,6 +129,7 @@
          <string v=".jasper"/>
          <string v=".jrxml"/>
          <string v=".accdb"/>
+         <string v=".sql"/>
       </list>
       <value n="internalEncoding" v="UTF8"/>
       <list n="Javac.commandline.optionlist">
@@ -833,6 +854,11 @@
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">
       <url n="outputDirectory" path="classes/"/>
+   </hash>
+   <hash n="oracle.jdevimpl.sqlj.config.SqljConfiguration">
+      <hash n="contextConnectionMap">
+         <value n="&lt;none>" v="mySql"/>
+      </hash>
    </hash>
    <hash n="oracle.jdevimpl.webapp.jsp.libraries.model.ProjectTagLibraries">
       <list n="tag-libraries">
