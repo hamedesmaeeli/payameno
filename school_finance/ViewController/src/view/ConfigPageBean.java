@@ -39,6 +39,8 @@ import oracle.jbo.Row;
 
 import org.apache.myfaces.trinidad.model.UploadedFile;
 
+import org.basa.tejarat.ftms.core.datatime.IranianDate;
+
 import registration.data.Level;
 import registration.data.Organization;
 import registration.data.Registration;
@@ -68,7 +70,9 @@ public class ConfigPageBean {
     private RichInputText actionSalaryField;
     private RichInputText thoerySalaryField;
     private UploadedFile restoreUploadedFile;
-    private String backupFileName = String.valueOf(new Date().getTime())+".sql";
+   // private String backupFileName = String.valueOf(new Date().getTime())+".sql";
+   private String backupFileName = String.valueOf(new IranianDate(new Date()).getIranianDate())+".sql";
+    
     private Organization editOrg;
     private RichInputText termYearCode;
     private RichInputText termDoreCode;
@@ -387,7 +391,9 @@ public class ConfigPageBean {
     public void backupFileDelivery(FacesContext facesContext,
                                    OutputStream outputStream) {
         // Add event code here...
-        this.backupFileName = String.valueOf(new Date().getTime())+".sql";
+        IranianDate irandate = new IranianDate(new Date());
+       // this.backupFileName = String.valueOf(new Date().getTime())+".sql";
+        this.backupFileName = String.valueOf(irandate.getIranianDate())+".sql";
         RestoreBackup rb = new RestoreBackup();
         FileInputStream is;
         try {
