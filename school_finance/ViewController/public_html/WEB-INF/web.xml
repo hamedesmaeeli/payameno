@@ -23,7 +23,7 @@
   </context-param>
   <context-param>
     <param-name>org.apache.myfaces.trinidad.UPLOAD_MAX_DISK_SPACE</param-name>
-    <param-value>20971520</param-value>
+    <param-value>104857600</param-value>
   </context-param>
   <filter>
     <filter-name>JpsFilter</filter-name>

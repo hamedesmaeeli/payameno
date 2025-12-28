@@ -29,6 +29,7 @@
           <Item Value="ArchiveCode"/>
           <Item Value="OrgName"/>
           <Item Value="StatusName"/>
+          <Item Value="Id"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

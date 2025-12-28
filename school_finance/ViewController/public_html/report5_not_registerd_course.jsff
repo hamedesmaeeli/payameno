@@ -92,6 +92,11 @@
                      id="c8">
             <af:outputText value="#{row.StatusName}" id="ot4"/>
           </af:column>
+          <af:column sortProperty="Id" sortable="false"
+                     headerText="کد ثبت نام"
+                     id="c10">
+            <af:outputText value="#{row.Id}" id="ot7"/>
+          </af:column>
         </af:table>
       </af:panelCollection>
     </f:facet>

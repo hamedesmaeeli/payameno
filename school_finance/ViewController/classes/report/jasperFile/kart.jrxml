@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" columnDirection="RTL" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="9afa7c9c-1221-42e7-9539-d1b33a143134">
 	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="124"/>
+	<property name="ireport.y" value="0"/>
 	<style name="table">
 		<box>
 			<pen lineWidth="1.0" lineColor="#000000"/>
@@ -244,10 +244,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="fede31c2-f1e0-4b63-b0dc-05d830d46d3c" width="43">
+					<jr:column uuid="fede31c2-f1e0-4b63-b0dc-05d830d46d3c" width="45">
 						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="1fddce95-7009-48ad-aee6-44b3f92d5ef2" x="0" y="0" width="41" height="22"/>
+								<reportElement uuid="1fddce95-7009-48ad-aee6-44b3f92d5ef2" x="0" y="0" width="45" height="22"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10" isBold="true"/>
 								</textElement>
@@ -256,7 +256,7 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell style="table_TD" height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="c5827000-d97d-4cf3-9ec2-2c1c45064280" x="0" y="0" width="41" height="15"/>
+								<reportElement uuid="c5827000-d97d-4cf3-9ec2-2c1c45064280" x="0" y="0" width="45" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" size="10"/>
 								</textElement>
@@ -304,10 +304,10 @@ WHERE
 							</textField>
 						</jr:detailCell>
 					</jr:column>
-					<jr:column uuid="847b3b8d-637d-4f49-be49-e426ac4091ae" width="37">
+					<jr:column uuid="847b3b8d-637d-4f49-be49-e426ac4091ae" width="28">
 						<jr:columnHeader style="table_TH" height="23" rowSpan="1">
 							<staticText>
-								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="37" height="23"/>
+								<reportElement uuid="b0c94c5d-13fa-430a-9cab-ec6e1981cc78" x="0" y="0" width="27" height="23"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar" isBold="true"/>
 								</textElement>
@@ -316,7 +316,7 @@ WHERE
 						</jr:columnHeader>
 						<jr:detailCell height="15" rowSpan="1">
 							<textField>
-								<reportElement uuid="caeed814-2b9c-43c5-a8c4-5b1c2cab97be" style="table_TD" x="0" y="0" width="37" height="15"/>
+								<reportElement uuid="caeed814-2b9c-43c5-a8c4-5b1c2cab97be" style="table_TD" x="0" y="0" width="28" height="15"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="B Zar"/>
 								</textElement>

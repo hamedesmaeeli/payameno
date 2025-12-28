@@ -180,6 +180,10 @@
             <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="Poi-5.5.1.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
@@ -210,6 +214,15 @@
                <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
                <value n="locked" v="true"/>
             </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../lib/poi-5.5.1.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Poi-5.5.1.jar"/>
+               <value n="id" v="Poi-5.5.1.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
          </list>
       </hash>
       <list n="libraryReferences">
@@ -235,6 +248,10 @@
          </hash>
          <hash>
             <value n="id" v="Mysql-connector-java-5.1.49-bin.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Poi-5.5.1.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
