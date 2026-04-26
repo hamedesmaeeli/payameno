@@ -461,12 +461,6 @@
     <ParameterInfo id="p0" Type="registration.data.CourseField"
                    isStructured="true"/>
   </MethodAccessor>
-  <MethodAccessor IsCollection="true" Type="registration.data.ExamTime"
-                  BeanClass="registration.data.ExamTime"
-                  id="getAllTermExamTimes" ReturnNodeName="ExamTime"
-                  CollectionBeanClass="UpdateableCollection">
-    <ParameterInfo id="p0" Type="registration.data.Term" isStructured="true"/>
-  </MethodAccessor>
   <MethodAccessor IsCollection="false" Type="java.lang.String"
                   id="getWeekDayFromNum" ReturnNodeName="Return">
     <ParameterInfo id="p0" Type="int" isStructured="false"/>
@@ -524,6 +518,22 @@
                   ReturnNodeName="Field"
                   CollectionBeanClass="UpdateableCollection">
     <ParameterInfo id="p0" Type="registration.data.Field" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="deleteAllCoursesFromField" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="registration.data.Field" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void"
+                  id="tansferCourseFromFieldToField" ReturnNodeName="Return">
+    <ParameterInfo id="p0" Type="registration.data.Field" isStructured="true"/>
+    <ParameterInfo id="p1" Type="registration.data.Field" isStructured="true"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="true" Type="registration.data.ExamTime"
+                  BeanClass="registration.data.ExamTime"
+                  id="getAllTermExamTimes" ReturnNodeName="ExamTime"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="p0" Type="registration.data.Term" isStructured="true"/>
+    <ParameterInfo id="p1" Type="registration.data.Level" isStructured="true"/>
   </MethodAccessor>
   <ConstructorMethod IsCollection="true"
                      Type="registration.process.RegistrationManager"

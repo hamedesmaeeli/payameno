@@ -111,6 +111,7 @@ public class CourseBean {
     private Course selectedCourse;
     private Field selectedField;
     private Field selectedFieldForTransfer;
+    private Level selectedLevel;
     public void setSelectedTerm(Term selectedTerm) {
         this.selectedTerm = selectedTerm;
     }
@@ -550,6 +551,7 @@ public class CourseBean {
         RegistrationManager rm = new RegistrationManager();
         ExamTime examTime =  new ExamTime();
         examTime.setTerm(this.selectedTerm);
+        examTime.setLevel(this.selectedLevel);
         try {
             examTime.setExamDate(sdf.parse(fc.getGregorianDate()));
         } catch (ParseException e) {
@@ -918,5 +920,76 @@ public class CourseBean {
             Utility.showFacesMessage("please select a field for Transfer", FacesMessage.SEVERITY_INFO);   
         }
         return returned;
+    }
+
+    public String manageExamLevel() {
+        // Add event code here...
+        // Add event code here...
+        
+        String returned = "";
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("allLevelsIterator");
+
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            this.selectedLevel = (Level)((DCDataRow)row).getDataProvider();
+         //   System.out.println("father name :" +           this.currentStudent.getFatherName());
+            returned = "exam";
+            
+        } else {
+            Utility.showFacesMessage("please select a level", FacesMessage.SEVERITY_INFO);   
+        }
+        return returned;
+    }
+
+    public void setSelectedLevel(Level selectedLevel) {
+        this.selectedLevel = selectedLevel;
+    }
+
+    public Level getSelectedLevel() {
+        return selectedLevel;
+    }
+
+    public void print_kart_level(FacesContext facesContext,
+                                 OutputStream outputStream) {
+        DCBindingContainer bindings =
+            (DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+        DCIteratorBinding iter =
+            (DCIteratorBinding)bindings.findIteratorBinding("allLevelsIterator");
+        Row row = iter.getCurrentRow();
+        if (row != null) {
+            Level level=  (Level)((DCDataRow)row).getDataProvider();
+            ReportManagment rm = new ReportManagment();
+            String prtinUrl= rm.runrReportKartWithLevel(level.getId());
+            System.out.println("print url" + prtinUrl);
+            URL url;
+                       InputStream is;
+                       try {
+                           url = new URL(prtinUrl);
+                           is = url.openStream();
+                           
+                           // initialize  
+                           byte[] buffer = new byte[4096]; // tweaking this number may increase performance  
+                           int len;  
+                           while ((len = is.read(buffer)) != -1)  
+                           {  
+                               outputStream.write(buffer, 0, len);  
+                           }  
+                           is.close();  
+                       } catch (FileNotFoundException e) {
+                           e.printStackTrace();
+                       } catch (IOException e) {
+                           e.printStackTrace();
+                       } 
+        }
+        else{
+            Utility.showFacesMessage("please select a Level",FacesMessage.SEVERITY_INFO  );
+        }
+        
+        
+    
+        
     }
 }

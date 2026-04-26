@@ -17,9 +17,9 @@
       <property
          name="y">165.59766</property>
       <property
-         name="x">189.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">189.0</property>
    </View>
    <View
       id="View3">
@@ -34,9 +34,9 @@
       <property
          name="y">164.14355</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">402.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -71,9 +71,9 @@
       <property
          name="y">361.7412</property>
       <property
-         name="x">67.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">67.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -83,7 +83,7 @@
       <property
          name="fromOutcome">printkart</property>
       <property
-         name="sdm:polyPoints">B21,171.5,219.24707,63.5,304.02786,T44</property>
+         name="sdm:polyPoints">B27,175.0,219.24707,63.5,303.96,T44</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -93,7 +93,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T56,70.5,307.39062,178.5,222.56946,B33</property>
+         name="sdm:polyPoints">T56,70.5,307.39062,182.0,222.63649,B39</property>
    </ControlFlowCase>
    <View
       id="View9">
@@ -108,9 +108,9 @@
       <property
          name="y">348.04004</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">420.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -120,7 +120,7 @@
       <property
          name="fromOutcome">CourseFields</property>
       <property
-         name="sdm:polyPoints">B67,199.5,222.92212,376.8464,344.18945,L46</property>
+         name="sdm:polyPoints">B61,196.0,222.96318,376.8816,344.18945,L46</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
@@ -130,7 +130,7 @@
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">L38,379.0,337.18945,206.5,219.24707,B79</property>
+         name="sdm:polyPoints">L38,379.0,337.18945,203.0,219.24707,B73</property>
    </ControlFlowCase>
    <MethodCall
       id="MethodCall13">
@@ -234,62 +234,49 @@
       <property
          name="y">570.59766</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">330.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase22"
       from="View2"
-      to="View21">
+      to="View42">
       <property
          name="fromOutcome">exam</property>
       <property
-         name="sdm:polyPoints">B44,185.5,227.1162,326.5,516.2471,T44</property>
+         name="sdm:polyPoints">B50,189.0,224.50566,181.0,299.29297,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase23"
       from="View21"
-      to="View2">
+      to="View42">
       <property
          name="fromOutcome">back</property>
       <property
-         name="sdm:polyPoints">T56,333.5,514.63513,192.5,225.53894,B56</property>
+         name="sdm:polyPoints">T56,333.5,512.6939,184.5,407.29297,B56</property>
    </ControlFlowCase>
-   <MethodCall
-      id="MethodCall25">
-      <property
-         name="activityId">getAllTermExamTimes</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>getAllTermExamTimes&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">759.1709</property>
-      <property
-         name="x">168.67676</property>
-   </MethodCall>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase26"
       from="View21"
-      to="MethodCall25">
+      to="MethodCall44">
       <property
          name="fromOutcome">newExamTime</property>
       <property
-         name="sdm:polyPoints">B50,330.0,628.57544,168.67676,700.33154,T50</property>
+         name="sdm:polyPoints">B50,330.0,624.2991,332.01367,759.7468,T50</property>
    </ControlFlowCase>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase27"
-      from="MethodCall25"
+      from="MethodCall44"
       to="View21">
       <property
          name="fromOutcome">getAllTermExamTimes</property>
       <property
-         name="sdm:polyPoints">T61,175.67676,704.8203,337.0,632.9038,B61</property>
+         name="sdm:polyPoints">T61,339.01367,759.6948,337.0,624.2471,B61</property>
    </ControlFlowCase>
    <View
       id="View30">
@@ -304,9 +291,9 @@
       <property
          name="y">649.1953</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">584.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -375,11 +362,11 @@
       islink="true"
       id="ControlFlowCase38"
       from="View21"
-      to="MethodCall25">
+      to="MethodCall44">
       <property
          name="fromOutcome">deleteExamTime</property>
       <property
-         name="sdm:polyPoints">B39,323.0,624.2471,161.67676,695.9503,T39</property>
+         name="sdm:polyPoints">B39,323.0,624.3511,325.01367,759.7988,T39</property>
    </ControlFlowCase>
    <View
       id="View39">
@@ -394,9 +381,9 @@
       <property
          name="y">182.59766</property>
       <property
-         name="x">-16.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">-16.0</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -418,4 +405,44 @@
       <property
          name="sdm:polyPoints">R54,25.482388,185.74707,148.0,168.74707,L54</property>
    </ControlFlowCase>
+   <View
+      id="View42">
+      <property
+         name="activityId">selectLevelExam</property>
+      <property
+         name="page">/selectLevelExam.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>selectLevelExam&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">353.64355</property>
+      <property
+         name="x">181.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase43"
+      from="View42"
+      to="View21">
+      <property
+         name="fromOutcome">exam</property>
+      <property
+         name="sdm:polyPoints">B44,177.5,410.88086,326.5,516.2471,T44</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall44">
+      <property
+         name="activityId">getAllTermExamTimes1</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>getAllTermExamTimes1&lt;/b>&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">814.1494</property>
+      <property
+         name="x">332.01367</property>
+   </MethodCall>
 </SDM>

@@ -10,6 +10,9 @@
   <AccessorAttribute id="term" IsCollection="false"
                      BeanClass="registration.data.Term"
                      CollectionBeanClass="UpdateableSingleValue"/>
+  <AccessorAttribute id="level" IsCollection="false"
+                     BeanClass="registration.data.Level"
+                     CollectionBeanClass="UpdateableSingleValue"/>
   <ConstructorMethod IsCollection="true" Type="registration.data.ExamTime"
                      BeanClass="registration.data.ExamTime" id="ExamTime"/>
 </JavaBean>

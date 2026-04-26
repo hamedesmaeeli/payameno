@@ -88,8 +88,6 @@
     <page path="/WEB-INF/students.xml#students@findCoursesNotRegistered1"
           usageId="view_students_students_findCoursesNotRegistered1PageDef"/>
     <page path="/exam.jsff" usageId="view_examPageDef"/>
-    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllTermExamTimes"
-          usageId="view_coursesFlow_coursesFlow_getAllTermExamTimesPageDef"/>
     <page path="/examCourse.jsff" usageId="view_examCoursePageDef"/>
     <page path="/examTimeDetails.jsff" usageId="view_examTimeDetailsPageDef"/>
     <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllExamCourseFromExamTime"
@@ -99,6 +97,9 @@
     <page path="/report5_not_registerd_course.jsff"
           usageId="view_report5_not_registerd_coursePageDef"/>
     <page path="/fields.jsff" usageId="view_fieldsPageDef"/>
+    <page path="/selectLevelExam.jsff" usageId="view_selectLevelExamPageDef"/>
+    <page path="/WEB-INF/coursesFlow.xml#coursesFlow@getAllTermExamTimes1"
+          usageId="view_coursesFlow_coursesFlow_getAllTermExamTimes1PageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="view_studentsPageDef" path="view.pageDefs.studentsPageDef"/>
@@ -193,8 +194,6 @@
     <page id="view_students_students_findCoursesNotRegistered1PageDef"
           path="view.pageDefs.students_students_findCoursesNotRegistered1PageDef"/>
     <page id="view_examPageDef" path="view.pageDefs.examPageDef"/>
-    <page id="view_coursesFlow_coursesFlow_getAllTermExamTimesPageDef"
-          path="view.pageDefs.coursesFlow_coursesFlow_getAllTermExamTimesPageDef"/>
     <page id="view_examCoursePageDef" path="view.pageDefs.examCoursePageDef"/>
     <page id="view_examTimeDetailsPageDef"
           path="view.pageDefs.examTimeDetailsPageDef"/>
@@ -207,6 +206,10 @@
     <page id="view_report5_not_registerd_coursePageDef"
           path="view.pageDefs.report5_not_registerd_coursePageDef"/>
     <page id="view_fieldsPageDef" path="view.pageDefs.fieldsPageDef"/>
+    <page id="view_selectLevelExamPageDef"
+          path="view.pageDefs.selectLevelExamPageDef"/>
+    <page id="view_coursesFlow_coursesFlow_getAllTermExamTimes1PageDef"
+          path="view.pageDefs.coursesFlow_coursesFlow_getAllTermExamTimes1PageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="schManager" path="model.schManager"/>

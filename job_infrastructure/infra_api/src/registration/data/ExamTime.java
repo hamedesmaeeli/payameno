@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class ExamTime {
     Term term;
+    Level level;
     BigDecimal examTimeId;
     Date examDate;
     String examHour;
@@ -61,5 +62,13 @@ public class ExamTime {
 
     public String getExamDateShamsi() {
         return ExamDateShamsi;
+    }
+
+    public void setLevel(Level level) {
+        this.level = level;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }

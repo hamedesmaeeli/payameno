@@ -2724,7 +2724,7 @@ public class RegistrationManager {
                 this.addFieldToCourse(courseField);
             }
         }  
-    public ArrayList<ExamTime> getAllTermExamTimes(Term term) {
+    public ArrayList<ExamTime> getAllTermExamTimes(Term term,Level level) {
         ArrayList<ExamTime> examTimes= new ArrayList<ExamTime>();
         Connection connection = TransactionManagement.getInstance().getConnection();
         FarsiCalendarConversion fcc;
@@ -2732,7 +2732,7 @@ public class RegistrationManager {
         try {
             statement = connection.createStatement();
         //    ResultSet result=  statement.executeQuery("select * from reg_course where reg_course.ID not in (select reg_reg_course.course_id from reg_reg_course where reg_reg_course.reg_id = "+registration.getId()+" )");
-        ResultSet result=  statement.executeQuery("select * from reg_exam_time where term_id ="+term.getId());
+        ResultSet result=  statement.executeQuery("select * from reg_exam_time where term_id ="+term.getId()+" and level_id = "+level.getId());
         ExamTime examTime;
         while(result.next()) {
               examTime = new ExamTime();
@@ -2781,10 +2781,11 @@ public class RegistrationManager {
         Connection con =  TransactionManagement.getInstance().getConnection();
         PreparedStatement pre;
          try {
-             pre = con.prepareStatement("insert into reg_exam_time(term_id,exam_date,hour) values(?,?,?)",Statement.RETURN_GENERATED_KEYS);
+             pre = con.prepareStatement("insert into reg_exam_time(term_id,exam_date,hour,level_id) values(?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
              pre.setBigDecimal(1,examTime.getTerm().getId());
              pre.setDate(2,Utilty.convertDateUtilToSQL(examTime.getExamDate()));
              pre.setString(3, examTime.getExamHour());
+             pre.setBigDecimal(4, examTime.getLevel().getId());
            //  pre.setInt(4,courseField.getUnitCount() );
              pre.executeUpdate();
              ResultSet rs = pre.getGeneratedKeys();

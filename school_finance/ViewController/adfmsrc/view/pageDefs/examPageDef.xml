@@ -11,16 +11,13 @@
                       DataControl="schManager"
                       BeanClass="registration.process.RegistrationManager"
                       id="registrationManagerIterator"/>
-    <methodIterator Binds="getAllTermExamTimes.result" DataControl="schManager"
-                    RangeSize="25" BeanClass="registration.data.ExamTime"
-                    id="getAllTermExamTimesIterator"/>
-    <searchRegion Binds="getAllTermExamTimesIterator" Criteria=""
-                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
-                  id="ExamTimeQuery"/>
     <accessorIterator MasterBinding="registrationManagerIterator"
                       Binds="allExamHours" RangeSize="25"
                       DataControl="schManager" BeanClass="java.lang.String"
                       id="allExamHoursIterator"/>
+    <methodIterator Binds="getAllTermExamTimes.result" DataControl="schManager"
+                    RangeSize="25" BeanClass="registration.data.ExamTime"
+                    id="getAllTermExamTimesIterator"/>
   </executables>
   <bindings>
     <methodAction IterBinding="registrationManagerIterator"
@@ -32,6 +29,8 @@
                   ReturnName="data.schManager.methodResults.getAllTermExamTimes_getAllTermExamTimes_getAllTermExamTimes_result">
       <NamedData NDName="p0" NDValue="#{pageFlowScope.courseBean.selectedTerm}"
                  NDType="registration.data.Term"/>
+      <NamedData NDName="p1" NDValue="#{pageFlowScope.courseBean.selectedLevel}"
+                 NDType="registration.data.Level"/>
     </methodAction>
     <tree IterBinding="getAllTermExamTimesIterator" id="ExamTime">
       <nodeDefinition DefName="registration.data.ExamTime" Name="ExamTime0">
@@ -44,6 +43,7 @@
         </AttrNames>
         <Accessors>
           <Item Value="term"/>
+          <Item Value="level"/>
         </Accessors>
       </nodeDefinition>
       <nodeDefinition DefName="registration.data.Term" Name="ExamTime1">
@@ -55,6 +55,12 @@
           <Item Value="isCurrent"/>
           <Item Value="dore"/>
           <Item Value="year"/>
+        </AttrNames>
+      </nodeDefinition>
+      <nodeDefinition DefName="registration.data.Level" Name="ExamTime2">
+        <AttrNames>
+          <Item Value="id"/>
+          <Item Value="name"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

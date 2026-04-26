@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" startWidth="100px" topHeight="100px">
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl1">
+        <af:commandImageLink id="cil1"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelBox text="انتخاب مقطع" id="pb1">
+        <f:facet name="toolbar"/>
+        <af:panelCollection id="pc1">
+          <f:facet name="menus"/>
+          <f:facet name="toolbar"/>
+          <f:facet name="statusbar"/>
+          <af:table value="#{bindings.allLevels.collectionModel}" var="row"
+                    rows="#{bindings.allLevels.rangeSize}"
+                    emptyText="#{bindings.allLevels.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.allLevels.rangeSize}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.allLevels.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.allLevels.collectionModel.makeCurrent}"
+                    rowSelection="single" id="t1" columnStretching="column:c1">
+            <af:column sortProperty="id" sortable="false" headerText="شناسه"
+                       id="c2">
+              <af:outputText value="#{row.id}" id="ot2"/>
+            </af:column>
+            <af:column sortProperty="name" sortable="false"
+                       headerText="نام مقطع" id="c1">
+              <af:outputText value="#{row.name}" id="ot1"/>
+            </af:column>
+          </af:table>
+        </af:panelCollection>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="start">
+      <af:panelBox text="منو" id="pb3">
+        <f:facet name="toolbar"/>
+        <af:commandLink text="تنظیم کارت امتحان" id="cl1"
+                        action="#{pageFlowScope.courseBean.manageExamLevel}"/>
+        <af:spacer width="10" height="30" id="s1"/>
+        <af:commandLink text="پرینت کارت مقطع" id="cl2">
+          <af:fileDownloadActionListener filename="kart_level.pdf"
+                                         method="#{pageFlowScope.courseBean.print_kart_level}"/>
+        </af:commandLink>
+      </af:panelBox>
+    </f:facet>
+    <f:facet name="end"/>
+    <f:facet name="top"/>
+  </af:panelStretchLayout>
+</jsp:root>

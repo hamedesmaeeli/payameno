@@ -191,6 +191,28 @@ public class ReportManagment {
         }
         return url;
     }
+   
+    public String runrReportKartWithLevel(BigDecimal levelId)
+    {
+        
+        Hashtable ht = new Hashtable();
+        if(levelId!=null)
+          ht.put("level_id",levelId); 
+
+        
+      String url = null; 
+        try {
+
+          System.out.println("getReportFilePath() === "+ getReportFilePath());
+            url = reportBuilder.getReport(getJasperIS("kart_level.jasper"),ht,reportBuilder.PDF);
+            url = getURL() + url;
+            System.out.println("kartEmtehan with  level"+url);
+        } catch (ReportException e) {
+            e.printStackTrace();
+        }
+        return url;
+    }
+    
     
     public String runrReportKartWithCode(BigDecimal studentCode)
     {

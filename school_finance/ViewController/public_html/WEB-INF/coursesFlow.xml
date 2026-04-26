@@ -40,12 +40,6 @@
     <view id="exam">
       <page>/exam.jsff</page>
     </view>
-    <method-call id="getAllTermExamTimes">
-      <method>#{bindings.getAllTermExamTimes.execute}</method>
-      <outcome id="__58">
-        <fixed-outcome>getAllTermExamTimes</fixed-outcome>
-      </outcome>
-    </method-call>
     <view id="examDetails">
       <page>/examTimeDetails.jsff</page>
     </view>
@@ -58,6 +52,15 @@
     <view id="fields">
       <page>/fields.jsff</page>
     </view>
+    <view id="selectLevelExam">
+      <page>/selectLevelExam.jsff</page>
+    </view>
+    <method-call id="getAllTermExamTimes1">
+      <method>#{bindings.getAllTermExamTimes.execute}</method>
+      <outcome id="__109">
+        <fixed-outcome>getAllTermExamTimes</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__2">
       <from-activity-id id="__3">courses</from-activity-id>
       <control-flow-case id="__4">
@@ -74,7 +77,7 @@
       </control-flow-case>
       <control-flow-case id="__59">
         <from-outcome id="__60">exam</from-outcome>
-        <to-activity-id id="__61">exam</to-activity-id>
+        <to-activity-id id="__61">selectLevelExam</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__57">
         <from-outcome id="__75">fields</from-outcome>
@@ -135,11 +138,11 @@
       <from-activity-id id="__63">exam</from-activity-id>
       <control-flow-case id="__64">
         <from-outcome id="__66">back</from-outcome>
-        <to-activity-id id="__65">courses</to-activity-id>
+        <to-activity-id id="__65">selectLevelExam</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__68">
         <from-outcome id="__69">newExamTime</from-outcome>
-        <to-activity-id id="__67">getAllTermExamTimes</to-activity-id>
+        <to-activity-id id="__67">getAllTermExamTimes1</to-activity-id>
       </control-flow-case>
       <control-flow-case id="__77">
         <from-outcome id="__78">examDetail</from-outcome>
@@ -147,14 +150,7 @@
       </control-flow-case>
       <control-flow-case id="__100">
         <from-outcome id="__102">deleteExamTime</from-outcome>
-        <to-activity-id id="__101">getAllTermExamTimes</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__70">
-      <from-activity-id id="__71">getAllTermExamTimes</from-activity-id>
-      <control-flow-case id="__74">
-        <from-outcome id="__73">getAllTermExamTimes</from-outcome>
-        <to-activity-id id="__72">exam</to-activity-id>
+        <to-activity-id id="__101">getAllTermExamTimes1</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__83">
@@ -184,6 +180,20 @@
       <control-flow-case id="__82">
         <from-outcome id="__103">back</from-outcome>
         <to-activity-id id="__81">courses</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__104">
+      <from-activity-id id="__105">selectLevelExam</from-activity-id>
+      <control-flow-case id="__106">
+        <from-outcome id="__108">exam</from-outcome>
+        <to-activity-id id="__107">exam</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__110">
+      <from-activity-id id="__111">getAllTermExamTimes1</from-activity-id>
+      <control-flow-case id="__112">
+        <from-outcome id="__113">getAllTermExamTimes</from-outcome>
+        <to-activity-id id="__114">exam</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>
