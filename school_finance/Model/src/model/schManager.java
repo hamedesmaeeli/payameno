@@ -86,6 +86,8 @@ public class schManager {
     public ArrayList<DebtorInTerm> getDebtorInCurrentTermList() {
         RegistrationManager rm = new RegistrationManager();
         ArrayList<Student> registeredStudents = rm.searchStudents(true, new Field(new BigDecimal(-1),""), new Level(new BigDecimal(-1),""), new Organization(new BigDecimal(-1),""), new StudentStatus(new BigDecimal(-1),""));
+        AccountManager am = new AccountManager();
+        
         ArrayList<DebtorInTerm> debitorsInTerm =   new ArrayList<DebtorInTerm>();
         DebtorInTerm debitorInTerm;
         Registration registration;
@@ -101,10 +103,12 @@ public class schManager {
             debitorInTerm.setLevel(registration.getLevel());
             debitorInTerm.setOrganization(registeredStudents.get(i).getOrganization());
             debitorInTerm.setDebitValue( rm.getStudentAccoutingInRegistration(registration));
+            debitorInTerm.setDebitAllTermsValue(this.getStudentCurrentAccounting(registeredStudents.get(i)));
             //if(debitorInTerm.getDebitValue().compareTo(new BigDecimal(0))!= 0)
             //{
                 debitorsInTerm.add(debitorInTerm);
            // }
+           
            System.out.println("******* stCod= "+registeredStudents.get(i).getStudentCode() ); 
         }
         System.out.println("**********************8");

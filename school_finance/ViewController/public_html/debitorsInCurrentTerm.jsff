@@ -112,6 +112,11 @@
             <af:outputText value="#{row.registration.bindings.otherShahriyAmount.inputValue}"
                            id="ot15"/>
           </af:column>
+          <af:column sortProperty="debitAllTermsValue" sortable="false"
+                     headerText="بدهی کل"
+                     id="c16">
+            <af:outputText value="#{row.debitAllTermsValue}" id="ot16"/>
+          </af:column>
         </af:table>
       </af:panelCollection>
     </f:facet>

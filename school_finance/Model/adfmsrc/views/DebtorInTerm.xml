@@ -3,6 +3,7 @@
           id="DebtorInTerm" Package="views" BeanClass="views.DebtorInTerm"
           isJavaBased="true">
   <Attribute Name="debitValue" Type="java.math.BigDecimal"/>
+  <Attribute Name="debitAllTermsValue" Type="java.math.BigDecimal"/>
   <AccessorAttribute id="student" IsCollection="false"
                      BeanClass="registration.data.Student"
                      CollectionBeanClass="UpdateableSingleValue"/>

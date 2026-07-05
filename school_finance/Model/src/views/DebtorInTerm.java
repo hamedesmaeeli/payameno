@@ -17,6 +17,7 @@ public class DebtorInTerm {
     Field field;
     Level level;
     Organization organization;
+    BigDecimal debitAllTermsValue;
     public DebtorInTerm() {
         super();
     }
@@ -75,5 +76,13 @@ public class DebtorInTerm {
 
     public Organization getOrganization() {
         return organization;
+    }
+
+    public void setDebitAllTermsValue(BigDecimal debitAllTermsValue) {
+        this.debitAllTermsValue = debitAllTermsValue;
+    }
+
+    public BigDecimal getDebitAllTermsValue() {
+        return debitAllTermsValue;
     }
 }

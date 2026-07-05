@@ -22,6 +22,7 @@
                       Name="debtorInCurrentTermList0">
         <AttrNames>
           <Item Value="debitValue"/>
+          <Item Value="debitAllTermsValue"/>
         </AttrNames>
         <Accessors>
           <Item Value="student"/>

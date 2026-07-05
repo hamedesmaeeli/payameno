@@ -254,14 +254,15 @@ CREATE TABLE `reg_exam_kart_config`  (
 -- ----------------------------
 DROP TABLE IF EXISTS `reg_exam_time`;
 CREATE TABLE `reg_exam_time`  (
-  `ID` bigint(20) NOT NULL AUTO_INCREMENT,
-  `term_id` bigint(20) NULL DEFAULT NULL,
+  `ID` bigint NOT NULL AUTO_INCREMENT,
+  `term_id` bigint NULL DEFAULT NULL,
   `exam_date` datetime NULL DEFAULT NULL,
-  `hour` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `hour` varchar(255) CHARACTER SET utf8mb3 COLLATE utf8mb3_general_ci NULL DEFAULT NULL,
+  `level_id` bigint NULL DEFAULT NULL,
   PRIMARY KEY (`ID`) USING BTREE,
-  INDEX `term_id`(`term_id`) USING BTREE,
+  INDEX `term_id`(`term_id` ASC) USING BTREE,
   CONSTRAINT `reg_exam_time_ibfk_1` FOREIGN KEY (`term_id`) REFERENCES `reg_term` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT
-) ENGINE = InnoDB AUTO_INCREMENT = 425 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = COMPACT;
+) ENGINE = InnoDB AUTO_INCREMENT = 427 CHARACTER SET = utf8mb3 COLLATE = utf8mb3_general_ci ROW_FORMAT = COMPACT;
 
 -- ----------------------------
 -- Table structure for reg_field

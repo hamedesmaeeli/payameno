@@ -11,6 +11,7 @@ public class TestSidaCoverter {
         TestSidaCoverter sidaCoverter = new TestSidaCoverter();
         SidaConverter s = new SidaConverter();
         //s.importStudentsFromSida();
+        //s.importSidaEntekhabVahed();
         s.importImages();
     }
 }
